@@ -18,7 +18,6 @@ signal phraseFin()
 #var typeSpeed = 30
 
 func _ready():
-	#typeText(line);
 	pass
 
 func _process(delta): #dialogueInput(event):
@@ -28,10 +27,10 @@ func _process(delta): #dialogueInput(event):
 			typeTimer.stop()
 			typeTimer.emit_signal("timeout")	#Skips to end of current 'yield' timer, based off typing speed
 		else:
-			textPanel.visible = false;
+			closeBox()
 
 func typeText(newText : String):
-	textBox.clear()
+	textBox.text = ""
 	showTextbox(true)
 	setTimerSpeed(1) #Set type speed
 	
@@ -55,6 +54,10 @@ func typeText(newText : String):
 	
 	finished = true
 	emit_signal("phraseFin")
+
+func closeBox():
+	textBox.text = ""
+	textPanel.visible = false;
 
 #https://youtu.be/jhwfA-QF54M?t=403
 func checkTag(fullText, characterIndex):
