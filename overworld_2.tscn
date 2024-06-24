@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://w1p0mgl7mkqt"]
+
+[ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ccdf3"]
+[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_04uqc"]
+[ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_mluv6"]
+[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_lgkiv"]
+[ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_8n4nm"]
+[ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://DialogueBox.tscn" id="6_h8dcw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ysjf"]
+size = Vector2(128, 120)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_27npj"]
+radius = 24.0
+height = 128.0
+
+[node name="Overworld" type="Node"]
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="OW_Player" parent="World" instance=ExtResource("1_ccdf3")]
+metadata/_edit_group_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(600, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+shape = SubResource("RectangleShape2D_6ysjf")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/StaticBody2D"]
+texture = ExtResource("2_04uqc")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/StaticBody2D2"]
+polygon = PackedVector2Array(0, 320, 192, 512, 384, 448, 576, 448, 640, 576, 832, 576, 1088, 192, 960, 64, 960, 0, 1152, 0, 1152, 648, 0, 648)
+
+[node name="Camera2D" type="Camera2D" parent="World"]
+script = ExtResource("3_mluv6")
+
+[node name="Godot Guy" parent="World" instance=ExtResource("4_lgkiv")]
+position = Vector2(584, -64)
+
+[node name="Snowbro" parent="World" instance=ExtResource("4_lgkiv")]
+position = Vector2(320, -24)
+
+[node name="Sprite2D" parent="World/Snowbro" index="0"]
+position = Vector2(0, -72)
+scale = Vector2(4, 4)
+texture = ExtResource("5_8n4nm")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CollisionShape2D" parent="World/Snowbro" index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_27npj")
+
+[node name="OW_UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="OW_UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Dialoguebox" parent="OW_UI" instance=ExtResource("6_h8dcw")]
+layout_mode = 1
+
+[editable path="World/Snowbro"]

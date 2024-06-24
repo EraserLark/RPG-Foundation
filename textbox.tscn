@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvuqng1787hrs"]
+
+[ext_resource type="Script" path="res://Textbox.gd" id="1_dvjkt"]
+[ext_resource type="AudioStream" uid="uid://d8jienloa3u" path="res://Audio/TEST_glass_006.ogg" id="2_cb3e3"]
+
+[node name="Textbox" type="Panel"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 136.0
+grow_horizontal = 2
+script = ExtResource("1_dvjkt")
+line = "Hello!"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 136.0
+grow_horizontal = 2
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cb3e3")

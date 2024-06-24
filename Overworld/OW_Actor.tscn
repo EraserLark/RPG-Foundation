@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://kbweqbjxrnod"]
+
+[ext_resource type="Script" path="res://Overworld/OW_Actor.gd" id="1_4a8gj"]
+[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="1_guc0u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6vju"]
+size = Vector2(128, 128)
+
+[node name="OW_Actor" type="CharacterBody2D"]
+script = ExtResource("1_4a8gj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_guc0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a6vju")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
