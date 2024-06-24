@@ -36,6 +36,7 @@ func typeText(newText : String):
 	
 	var currentDialogue = newText
 	var charIndex = 0
+	finished = false
 	skip = false
 	
 	#for loop instead?
