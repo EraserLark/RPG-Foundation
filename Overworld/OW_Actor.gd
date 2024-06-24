@@ -1,13 +1,10 @@
 extends CharacterBody2D
 class_name OW_Actor
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+signal send_message(name:String, message:String)
 
 func interact():
-	print("You interacted with " + name);
+	speak("You interacted with " + name);
+
+func speak(message : String):
+	emit_signal("send_message", name, message)

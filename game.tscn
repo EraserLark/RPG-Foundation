@@ -11,4 +11,4 @@
 [node name="Overworld" parent="." instance=ExtResource("1_hievl")]
 
 [editable path="Overworld"]
-[editable path="Overworld/World/Snowbro"]
+[editable path="Overworld/World/CastList/Snowbro"]

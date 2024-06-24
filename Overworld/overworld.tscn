@@ -1,18 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=10 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_a0jhu"]
+[ext_resource type="Script" path="res://Overworld/CastList.gd" id="3_dg04a"]
 [ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_f5vhn"]
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_ti8qv"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_adroj"]
 [ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://DialogueBox.tscn" id="6_5x56l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lbh8"]
-size = Vector2(128, 120)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qopq"]
 radius = 24.0
 height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lbh8"]
+size = Vector2(128, 120)
 
 [node name="Overworld" type="Node"]
 
@@ -24,7 +25,7 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Dialoguebox" parent="CanvasLayer/OW_UI" instance=ExtResource("6_5x56l")]
+[node name="DialogueBox" parent="CanvasLayer/OW_UI" instance=ExtResource("6_5x56l")]
 layout_mode = 1
 
 [node name="World" type="Node2D" parent="."]
@@ -32,6 +33,26 @@ y_sort_enabled = true
 
 [node name="OW_Player" parent="World" instance=ExtResource("1_ery32")]
 metadata/_edit_group_ = true
+
+[node name="CastList" type="Node2D" parent="World"]
+script = ExtResource("3_dg04a")
+
+[node name="Godot Guy" parent="World/CastList" instance=ExtResource("4_ti8qv")]
+position = Vector2(584, -64)
+
+[node name="Snowbro" parent="World/CastList" instance=ExtResource("4_ti8qv")]
+position = Vector2(320, -24)
+
+[node name="Sprite2D" parent="World/CastList/Snowbro" index="0"]
+position = Vector2(0, -72)
+scale = Vector2(4, 4)
+texture = ExtResource("5_adroj")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CollisionShape2D" parent="World/CastList/Snowbro" index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2qopq")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="World"]
 modulate = Color(0, 0, 0, 1)
@@ -51,21 +72,4 @@ polygon = PackedVector2Array(0, 320, 192, 512, 384, 448, 576, 448, 640, 576, 832
 [node name="Camera2D" type="Camera2D" parent="World"]
 script = ExtResource("3_f5vhn")
 
-[node name="Godot Guy" parent="World" instance=ExtResource("4_ti8qv")]
-position = Vector2(584, -64)
-
-[node name="Snowbro" parent="World" instance=ExtResource("4_ti8qv")]
-position = Vector2(320, -24)
-
-[node name="Sprite2D" parent="World/Snowbro" index="0"]
-position = Vector2(0, -72)
-scale = Vector2(4, 4)
-texture = ExtResource("5_adroj")
-region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
-
-[node name="CollisionShape2D" parent="World/Snowbro" index="1"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_2qopq")
-
-[editable path="World/Snowbro"]
+[editable path="World/CastList/Snowbro"]
