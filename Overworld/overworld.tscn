@@ -31,11 +31,12 @@ layout_mode = 1
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="OW_Player" parent="World" instance=ExtResource("1_ery32")]
-metadata/_edit_group_ = true
-
 [node name="CastList" type="Node2D" parent="World"]
+y_sort_enabled = true
 script = ExtResource("3_dg04a")
+
+[node name="OW_Player" parent="World/CastList" instance=ExtResource("1_ery32")]
+metadata/_edit_group_ = true
 
 [node name="Godot Guy" parent="World/CastList" instance=ExtResource("4_ti8qv")]
 position = Vector2(584, -64)
