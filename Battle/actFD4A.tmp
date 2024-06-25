@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://djbkplk44r1sh"]
+
+[ext_resource type="PackedScene" uid="uid://bcr5iut1amphg" path="res://Battle/action_button.tscn" id="1_6k8ay"]
+[ext_resource type="Script" path="res://Battle/action_menu.gd" id="1_481s6"]
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_rtd54"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vggtq"]
+atlas = ExtResource("2_rtd54")
+region = Rect2(544, 136, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufbvm"]
+atlas = ExtResource("2_rtd54")
+region = Rect2(680, 187, 16, 16)
+
+[node name="ActionMenu" type="HBoxContainer"]
+offset_right = 128.0
+offset_bottom = 40.0
+script = ExtResource("1_481s6")
+
+[node name="AttackButton" parent="." instance=ExtResource("1_6k8ay")]
+layout_mode = 2
+icon = SubResource("AtlasTexture_vggtq")
+
+[node name="ItemButton" parent="." instance=ExtResource("1_6k8ay")]
+layout_mode = 2
+icon = SubResource("AtlasTexture_ufbvm")
+
+[node name="ReactButton" parent="." instance=ExtResource("1_6k8ay")]
+layout_mode = 2
+
+[connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]

@@ -1,29 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=10 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
 [ext_resource type="Script" path="res://Battle/BattleUI.gd" id="2_o562c"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_ivtdu"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="3_v1yqn"]
-[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="5_n04re"]
 [ext_resource type="Script" path="res://Battle/BattleStage.gd" id="5_r0c4s"]
 [ext_resource type="Script" path="res://Battle/BattleMenu.gd" id="5_viovm"]
+[ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/action_menu.tscn" id="6_ubrn1"]
 [ext_resource type="Script" path="res://Battle/BA_Player.gd" id="8_t8w8o"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f17kn"]
-load_path = "res://.godot/imported/monochrome-transparent.png-80192a833e623282ff0c76da915c4fde.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aksg6"]
-atlas = SubResource("CompressedTexture2D_f17kn")
-region = Rect2(544, 119, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hxe7s"]
-atlas = ExtResource("5_n04re")
-region = Rect2(680, 187, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lsg02"]
-atlas = ExtResource("5_n04re")
-region = Rect2(595, 221, 16, 16)
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_bpw6r")
@@ -57,50 +42,28 @@ offset_right = 744.0
 offset_bottom = 648.0
 script = ExtResource("5_viovm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BattleUI/BattleMenu"]
+[node name="ActionMenu" parent="BattleUI/BattleMenu" instance=ExtResource("6_ubrn1")]
 layout_mode = 0
 offset_top = -40.0
+offset_bottom = 0.0
+
+[node name="AttackMenu" type="PanelContainer" parent="BattleUI/BattleMenu"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_right = 288.0
+offset_bottom = 136.0
 
-[node name="AttackButton" type="Button" parent="BattleUI/BattleMenu"]
+[node name="ItemList" type="ItemList" parent="BattleUI/BattleMenu/AttackMenu"]
 layout_mode = 2
-offset_top = -40.0
-offset_right = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_neighbor_left = NodePath("../ActionButton")
-focus_neighbor_right = NodePath("../ItemButton")
-focus_next = NodePath("../ItemButton")
-focus_previous = NodePath("../ActionButton")
-icon = SubResource("AtlasTexture_aksg6")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ItemButton" type="Button" parent="BattleUI/BattleMenu"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = -40.0
-offset_right = 80.0
-focus_neighbor_left = NodePath("../AttackButton")
-focus_neighbor_right = NodePath("../ActionButton")
-focus_next = NodePath("../ActionButton")
-focus_previous = NodePath("../AttackButton")
-icon = SubResource("AtlasTexture_hxe7s")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ActionButton" type="Button" parent="BattleUI/BattleMenu"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = -40.0
-offset_right = 120.0
-focus_neighbor_left = NodePath("../ItemButton")
-focus_neighbor_right = NodePath("../AttackButton")
-focus_next = NodePath("../AttackButton")
-focus_previous = NodePath("../ItemButton")
-icon = SubResource("AtlasTexture_lsg02")
-icon_alignment = 1
-expand_icon = true
+item_count = 3
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "Item 1"
+item_0/icon = ExtResource("3_ivtdu")
+item_1/text = "Item 2"
+item_1/icon = ExtResource("3_ivtdu")
+item_2/text = "Item 3"
+item_2/icon = ExtResource("3_ivtdu")
 
 [node name="BattleStage" type="Node2D" parent="."]
 script = ExtResource("5_r0c4s")

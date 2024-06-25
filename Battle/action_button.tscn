@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcr5iut1amphg"]
+
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="1_2ffvx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5wff"]
+atlas = ExtResource("1_2ffvx")
+region = Rect2(595, 221, 16, 16)
+
+[node name="ActionButton" type="Button"]
+custom_minimum_size = Vector2(40, 40)
+icon = SubResource("AtlasTexture_t5wff")
+icon_alignment = 1
+expand_icon = true

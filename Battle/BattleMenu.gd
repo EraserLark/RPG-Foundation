@@ -1,11 +1,13 @@
 extends Panel
 
-@onready var attackButton := $"AttackButton"
+@onready var ActionMenu := $ActionMenu
+@onready var AttackMenu := $AttackMenu
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	attackButton.grab_focus()
+	ActionMenu.openAttackMenu.connect(OpenAttackMenu)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func OpenAttackMenu():
+	AttackMenu.visible = true
+
+func CloseAttackMenu():
+	AttackMenu.visible = false
