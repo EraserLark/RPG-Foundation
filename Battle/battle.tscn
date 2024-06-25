@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=12 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://Battle/BattleStage.gd" id="5_r0c4s"]
 [ext_resource type="Script" path="res://Battle/BattleMenu.gd" id="5_viovm"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/action_menu.tscn" id="6_ubrn1"]
+[ext_resource type="Script" path="res://Battle/AttackMenu.gd" id="7_fswt7"]
 [ext_resource type="Script" path="res://Battle/BA_Player.gd" id="8_t8w8o"]
+[ext_resource type="Script" path="res://Battle/ItemMenu.gd" id="9_cq6pm"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_bpw6r")
@@ -53,10 +55,13 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 288.0
 offset_bottom = 136.0
+script = ExtResource("7_fswt7")
 
 [node name="ItemList" type="ItemList" parent="BattleUI/BattleMenu/AttackMenu"]
 layout_mode = 2
-item_count = 3
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+item_count = 6
 fixed_icon_size = Vector2i(16, 16)
 item_0/text = "Item 1"
 item_0/icon = ExtResource("3_ivtdu")
@@ -64,6 +69,33 @@ item_1/text = "Item 2"
 item_1/icon = ExtResource("3_ivtdu")
 item_2/text = "Item 3"
 item_2/icon = ExtResource("3_ivtdu")
+item_3/text = "Item 4"
+item_4/text = "Item 5"
+item_5/text = "Item 6"
+
+[node name="ItemMenu" type="PanelContainer" parent="BattleUI/BattleMenu"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 136.0
+script = ExtResource("9_cq6pm")
+
+[node name="ItemList" type="ItemList" parent="BattleUI/BattleMenu/ItemMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+item_count = 6
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "Item 1"
+item_0/icon = ExtResource("3_ivtdu")
+item_1/text = "Item 2"
+item_1/icon = ExtResource("3_ivtdu")
+item_2/text = "Item 3"
+item_2/icon = ExtResource("3_ivtdu")
+item_3/text = "Item 4"
+item_4/text = "Item 5"
+item_5/text = "Item 6"
 
 [node name="BattleStage" type="Node2D" parent="."]
 script = ExtResource("5_r0c4s")
@@ -83,3 +115,6 @@ scale = Vector2(5, 5)
 texture = ExtResource("3_v1yqn")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
+
+[connection signal="item_activated" from="BattleUI/BattleMenu/AttackMenu/ItemList" to="BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="BattleUI/BattleMenu/ItemMenu/ItemList" to="BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]

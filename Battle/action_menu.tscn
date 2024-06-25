@@ -29,3 +29,4 @@ icon = SubResource("AtlasTexture_ufbvm")
 layout_mode = 2
 
 [connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]
+[connection signal="button_down" from="ItemButton" to="." method="_on_item_button_button_down"]
