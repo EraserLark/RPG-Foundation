@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=11 format=3 uid="uid://wf85spc1lhaa"]
 
+[ext_resource type="Script" path="res://States/StateMachineStack.gd" id="1_5yigp"]
 [ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_a0jhu"]
 [ext_resource type="Script" path="res://Overworld/CastList.gd" id="3_dg04a"]
@@ -16,6 +17,9 @@ height = 128.0
 size = Vector2(128, 120)
 
 [node name="Overworld" type="Node"]
+
+[node name="StateMachineStack" type="Node" parent="."]
+script = ExtResource("1_5yigp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

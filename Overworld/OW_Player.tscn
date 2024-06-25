@@ -1,8 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://b7utuwwqeb7na"]
+[gd_scene load_steps=32 format=3 uid="uid://b7utuwwqeb7na"]
 
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="1_tv04i"]
 [ext_resource type="Script" path="res://Overworld/OW_Player.gd" id="2_hln25"]
 [ext_resource type="Texture2D" uid="uid://bb2l2340x8n2c" path="res://Art/Robot_SpriteSheet_1.0.png" id="3_qsaav"]
+[ext_resource type="Script" path="res://States/StateMachine.gd" id="4_d2h0r"]
+[ext_resource type="Script" path="res://States/Player_Idle.gd" id="5_g1wrp"]
+[ext_resource type="Script" path="res://States/Player_Talking.gd" id="6_npc6g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbb7a"]
 radius = 14.0
@@ -263,3 +266,13 @@ tree_root = SubResource("AnimationNodeStateMachine_w1fng")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
+
+[node name="StateManager" type="Node" parent="." index="6"]
+script = ExtResource("4_d2h0r")
+initialState = NodePath("Active")
+
+[node name="Active" type="Node" parent="StateManager" index="0"]
+script = ExtResource("5_g1wrp")
+
+[node name="Talking" type="Node" parent="StateManager" index="1"]
+script = ExtResource("6_npc6g")

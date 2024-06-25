@@ -10,7 +10,7 @@ signal tranisitoned(stateName)
 
 func _ready():
 	for child in get_children():
-		child.state_machine = self
+		child.stateMachine = self
 	state.enter()
 
 func _unhandled_input(event):
@@ -30,3 +30,6 @@ func transition_to(target_state_name : String, msg: Dictionary = {}):
 	state = get_node(target_state_name)
 	state.enter(msg)
 	emit_signal("transitioned", state.name)
+
+func endStateMachine():
+	state.exit()

@@ -21,15 +21,6 @@ signal boxFin()
 func _ready():
 	pass
 
-func _process(delta): #dialogueInput(event):
-	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):
-		if finished == false:
-			skip = true
-			typeTimer.stop()
-			typeTimer.emit_signal("timeout")	#Skips to end of current 'yield' timer, based off typing speed
-		else:
-			closeBox()
-
 func typeText(newText : String):
 	textBox.text = ""
 	showTextbox(true)
