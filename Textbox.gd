@@ -14,6 +14,7 @@ var skip := false
 var inTag := false
 var finished := false
 signal phraseFin()
+signal boxFin()
 
 #var typeSpeed = 30
 
@@ -59,6 +60,7 @@ func typeText(newText : String):
 func closeBox():
 	textBox.text = ""
 	textPanel.visible = false;
+	emit_signal("boxFin")
 
 #https://youtu.be/jhwfA-QF54M?t=403
 func checkTag(fullText, characterIndex):

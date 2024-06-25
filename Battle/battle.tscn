@@ -26,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_o562c")
+metadata/_edit_lock_ = true
 
 [node name="Textbox" parent="BattleUI" instance=ExtResource("1_nvtlo")]
 layout_mode = 2

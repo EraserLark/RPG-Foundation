@@ -21,7 +21,6 @@ func OpenAttackMenu():
 func CloseAttackMenu():
 	AttackMenu.visible = false
 	prevFocused.grab_focus()
-	#ActionMenu.attackButton.grab_focus()
 
 func OpenItemMenu():
 	ItemMenu.visible = true
