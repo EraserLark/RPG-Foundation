@@ -16,8 +16,9 @@ func openDialogue(name, message):
 	StateMachineStack.addSM($StateMachine)
 
 func newDialogue():
+	line = speakerMessage
 	setName(speakerName)
-	typeText(speakerMessage)
+	typeText()
 
 func setName(name : String):
 	nameLabel.text = name

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=14 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Battle/AttackMenu.gd" id="7_fswt7"]
 [ext_resource type="Script" path="res://Battle/BA_Player.gd" id="8_t8w8o"]
 [ext_resource type="Script" path="res://Battle/ItemMenu.gd" id="9_cq6pm"]
+[ext_resource type="Script" path="res://States/StateMachine.gd" id="12_5ud3q"]
+[ext_resource type="Script" path="res://Battle/StartState.gd" id="13_s3gjj"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_bpw6r")
@@ -29,6 +31,7 @@ script = ExtResource("2_o562c")
 metadata/_edit_lock_ = true
 
 [node name="Textbox" parent="BattleUI" instance=ExtResource("1_nvtlo")]
+visible = false
 layout_mode = 2
 anchors_preset = 0
 anchor_bottom = 0.197531
@@ -116,6 +119,13 @@ scale = Vector2(5, 5)
 texture = ExtResource("3_v1yqn")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("12_5ud3q")
+initialState = NodePath("Start")
+
+[node name="Start" type="Node" parent="StateMachine"]
+script = ExtResource("13_s3gjj")
 
 [connection signal="item_activated" from="BattleUI/BattleMenu/AttackMenu/ItemList" to="BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="BattleUI/BattleMenu/ItemMenu/ItemList" to="BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]

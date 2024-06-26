@@ -2,7 +2,7 @@ extends State
 
 func enter(msg := {}):
 	super()
-	owner.typeText()
+	owner.newDialogue()
 
 func update(delta : float):
 	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):

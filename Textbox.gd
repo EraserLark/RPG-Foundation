@@ -21,12 +21,13 @@ signal boxFin()
 func _ready():
 	pass
 
-func typeText(newText : String):
+#func typeText(newText):
+func typeText():
 	textBox.text = ""
 	showTextbox(true)
 	setTimerSpeed(1) #Set type speed
 	
-	var currentDialogue = newText
+	var currentDialogue = line
 	var charIndex = 0
 	finished = false
 	skip = false

@@ -9,7 +9,9 @@ var currentState = BattleState.START
 
 func _ready():
 	battleUI.advanceBattleState.connect(advanceBattleState)
-	battleUI.textbox.typeText("Battle Start!")
+	$StateMachine/Start.endBattle.connect(endBattle)
+	#battleUI.textbox.typeText("Battle Start!")
+	StateMachineStack.addSM($StateMachine)
 
 func _process(delta):
 	match currentState:
@@ -24,3 +26,6 @@ func _process(delta):
 
 func advanceBattleState():
 	currentState = BattleState.PROMPT
+
+func endBattle():
+	self.queue_free()

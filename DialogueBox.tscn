@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://x3l42a81rsvf"]
+[gd_scene load_steps=4 format=3 uid="uid://x3l42a81rsvf"]
 
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_vsgrr"]
 [ext_resource type="Script" path="res://DialogueBox.gd" id="2_raitk"]
+[ext_resource type="Script" path="res://DBState.gd" id="3_as2cq"]
 
 [node name="Dialoguebox" instance=ExtResource("1_vsgrr")]
 script = ExtResource("2_raitk")
@@ -18,3 +19,6 @@ grow_horizontal = 2
 
 [node name="RichTextLabel" parent="." index="1"]
 offset_top = 24.0
+
+[node name="TBState" parent="StateMachine" index="0"]
+script = ExtResource("3_as2cq")
