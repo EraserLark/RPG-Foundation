@@ -26,6 +26,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="DialogueBox" parent="CanvasLayer/OW_UI" instance=ExtResource("6_5x56l")]
+visible = false
 layout_mode = 1
 
 [node name="World" type="Node2D" parent="."]
@@ -39,7 +40,7 @@ script = ExtResource("3_dg04a")
 metadata/_edit_group_ = true
 
 [node name="Godot Guy" parent="World/CastList" instance=ExtResource("4_ti8qv")]
-position = Vector2(584, -64)
+position = Vector2(768, 304)
 
 [node name="Snowbro" parent="World/CastList" instance=ExtResource("4_ti8qv")]
 position = Vector2(320, -24)
