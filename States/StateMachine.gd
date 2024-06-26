@@ -3,6 +3,7 @@ extends Node
 class_name StateMachine
 
 @onready var state : State = get_node(initialState)
+@onready var manager = StateMachineStack
 
 @export var initialState := NodePath()
 
@@ -11,15 +12,17 @@ signal tranisitoned(stateName)
 func _ready():
 	for child in get_children():
 		child.stateMachine = self
+
+func sm_enter():
 	state.enter()
 
-func _unhandled_input(event):
+func sm_handleInput(event):
 	state.handleInput(event)
 
-func _process(delta):
+func sm_update(delta):
 	state.update(delta)
 
-func _physics_process(delta):
+func sm_physicsUpdate(delta):
 	state.physicsUpdate(delta)
 
 func transition_to(target_state_name : String, msg: Dictionary = {}):

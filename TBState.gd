@@ -1,7 +1,8 @@
 extends State
 
 func enter(msg := {}):
-	pass
+	super()
+	owner.newDialogue()
 
 func update(delta : float):
 	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):
@@ -14,3 +15,4 @@ func update(delta : float):
 
 func exit():
 	owner.closeBox()
+	super()

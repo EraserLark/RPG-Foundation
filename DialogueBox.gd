@@ -2,16 +2,22 @@ extends Textbox
 
 @onready var nameLabel := $NameLabel
 @export var speakerName := ""
+@export var speakerMessage := ""
 
 @onready var castList := get_node("../../../World/CastList")
 
 func _ready():
 	super()		#Runs base constructor
-	castList.actor_speaking.connect(newDialogue)
+	castList.actor_speaking.connect(openDialogue)
 
-func newDialogue(name, message):
-	setName(name)
-	typeText(message)
+func openDialogue(name, message):
+	speakerName = name
+	speakerMessage = message
+	StateMachineStack.addSM($StateMachine)
+
+func newDialogue():
+	setName(speakerName)
+	typeText(speakerMessage)
 
 func setName(name : String):
 	nameLabel.text = name

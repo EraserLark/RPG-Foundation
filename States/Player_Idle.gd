@@ -26,7 +26,7 @@ func update(delta : float):
 		var interactee = owner.interactRay.get_collider()
 		if interactee is OW_Actor:
 			interactee.interact();
-			stateMachine.transition_to("Talking")
+			#stateMachine.transition_to("Talking")
 
 func physicsUpdate(delta : float):
 	pass

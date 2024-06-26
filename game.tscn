@@ -10,5 +10,8 @@
 
 [node name="Overworld" parent="." instance=ExtResource("1_hievl")]
 
+[node name="DialogueBox" parent="Overworld/CanvasLayer/OW_UI" index="0"]
+speakerMessage = ""
+
 [editable path="Overworld"]
 [editable path="Overworld/World/CastList/Snowbro"]
