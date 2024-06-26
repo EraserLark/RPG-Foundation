@@ -3,6 +3,7 @@ extends Node
 @onready var battleUI := $BattleUI
 @onready var battleStage := $BattleStage
 @onready var player := $BA_Player
+@onready var enemy := $BattleStage/Enemy
 
 enum BattleState {START, PROMPT, ACTION, FINISH}
 var currentState = BattleState.START
