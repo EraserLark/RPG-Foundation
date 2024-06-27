@@ -20,7 +20,9 @@ script = ExtResource("1_bpw6r")
 [node name="BA_Player" type="Node" parent="."]
 script = ExtResource("8_t8w8o")
 
-[node name="BattleUI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BattleUI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +32,7 @@ grow_vertical = 2
 script = ExtResource("2_o562c")
 metadata/_edit_lock_ = true
 
-[node name="Textbox" parent="BattleUI" instance=ExtResource("1_nvtlo")]
+[node name="Textbox" parent="CanvasLayer/BattleUI" instance=ExtResource("1_nvtlo")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
@@ -39,7 +41,7 @@ offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="BattleMenu" type="Panel" parent="BattleUI"]
+[node name="BattleMenu" type="Panel" parent="CanvasLayer/BattleUI"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 offset_left = 456.0
@@ -48,12 +50,12 @@ offset_right = 744.0
 offset_bottom = 648.0
 script = ExtResource("5_viovm")
 
-[node name="ActionMenu" parent="BattleUI/BattleMenu" instance=ExtResource("6_ubrn1")]
+[node name="ActionMenu" parent="CanvasLayer/BattleUI/BattleMenu" instance=ExtResource("6_ubrn1")]
 layout_mode = 0
 offset_top = -40.0
 offset_bottom = 0.0
 
-[node name="AttackMenu" type="PanelContainer" parent="BattleUI/BattleMenu"]
+[node name="AttackMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -61,7 +63,7 @@ offset_right = 288.0
 offset_bottom = 136.0
 script = ExtResource("7_fswt7")
 
-[node name="ItemList" type="ItemList" parent="BattleUI/BattleMenu/AttackMenu"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/BattleMenu/AttackMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
@@ -77,7 +79,7 @@ item_3/text = "Item 4"
 item_4/text = "Item 5"
 item_5/text = "Item 6"
 
-[node name="ItemMenu" type="PanelContainer" parent="BattleUI/BattleMenu"]
+[node name="ItemMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -85,7 +87,7 @@ offset_right = 288.0
 offset_bottom = 136.0
 script = ExtResource("9_cq6pm")
 
-[node name="ItemList" type="ItemList" parent="BattleUI/BattleMenu/ItemMenu"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/BattleMenu/ItemMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
@@ -120,6 +122,9 @@ texture = ExtResource("3_v1yqn")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
+[node name="Camera2D" type="Camera2D" parent="BattleStage"]
+anchor_mode = 0
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("12_5ud3q")
 initialState = NodePath("Start")
@@ -127,5 +132,5 @@ initialState = NodePath("Start")
 [node name="Start" type="Node" parent="StateMachine"]
 script = ExtResource("13_s3gjj")
 
-[connection signal="item_activated" from="BattleUI/BattleMenu/AttackMenu/ItemList" to="BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
-[connection signal="item_activated" from="BattleUI/BattleMenu/ItemMenu/ItemList" to="BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]

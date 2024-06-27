@@ -1,7 +1,7 @@
 extends Control
 
 @onready var textbox := $Textbox
-@onready var startState := $"../StateMachine/Start"
+@onready var startState := $"../../StateMachine/Start"
 
 signal advanceBattleState
 

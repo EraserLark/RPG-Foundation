@@ -1,6 +1,6 @@
 extends Node
 
-@onready var battleUI := $BattleUI
+@onready var battleUI := $CanvasLayer/BattleUI
 @onready var battleStage := $BattleStage
 @onready var player := $BA_Player
 @onready var enemy := $BattleStage/Enemy
