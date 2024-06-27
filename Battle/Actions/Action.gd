@@ -2,8 +2,8 @@ extends Node
 class_name Action
 
 var actionName : String
-var sender
-var target
+var sender : Entity
+var target : Entity
 
 func runAction():
 	pass

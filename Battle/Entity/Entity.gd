@@ -8,3 +8,12 @@ class_name Entity
 
 @export var actionList : Dictionary
 @export var sprite : Texture
+
+func takeDamage(dmg : int):
+	var trueDmg := dmg-def
+	if(trueDmg < 0):
+		trueDmg = 0
+	
+	hp -= trueDmg
+	if(hp < 0):
+		hp = 0
