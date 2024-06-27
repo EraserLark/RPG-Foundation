@@ -24,7 +24,7 @@ func update(delta : float):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		var interactee = owner.interactRay.get_collider()
-		if interactee is OW_Actor:
+		if interactee is OW_Actor or OW_Enemy:
 			interactee.interact();
 			#stateMachine.transition_to("Talking")
 
