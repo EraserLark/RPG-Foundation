@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name Entity
 
 @export var entityName : String
@@ -6,5 +6,5 @@ class_name Entity
 @export var atk : int
 @export var def : int
 
-var actionList : Array[Action]
-var sprite : Texture
+@export var actionList : Dictionary
+@export var sprite : Texture
