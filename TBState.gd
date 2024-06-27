@@ -2,7 +2,9 @@ extends State
 
 func enter(msg := {}):
 	super()
+	owner.openBox()
 	owner.typeText()
+	
 
 func update(delta : float):
 	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):
@@ -15,4 +17,4 @@ func update(delta : float):
 
 func exit():
 	owner.closeBox()
-	super()
+	StateMachineStack.removeSM()

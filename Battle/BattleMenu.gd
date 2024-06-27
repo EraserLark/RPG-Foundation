@@ -12,6 +12,10 @@ func _ready():
 	ActionMenu.openItemMenu.connect(OpenItemMenu)
 	ItemMenu.closeItemMenu.connect(CloseItemMenu)
 
+func showMenu():
+	visible = true
+	ActionMenu.attackButton.grab_focus()
+
 func OpenAttackMenu():
 	AttackMenu.visible = true
 	prevFocused = get_viewport().gui_get_focus_owner()

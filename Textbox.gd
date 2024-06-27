@@ -49,9 +49,12 @@ func typeText():
 	finished = true
 	emit_signal("phraseFin")
 
+func openBox():
+	textPanel.visible = true
+
 func closeBox():
 	textBox.text = ""
-	textPanel.visible = false;
+	textPanel.visible = false
 	emit_signal("boxFin")
 
 #https://youtu.be/jhwfA-QF54M?t=403

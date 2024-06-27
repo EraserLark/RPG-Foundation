@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=15 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Battle/ItemMenu.gd" id="9_cq6pm"]
 [ext_resource type="Script" path="res://States/StateMachine.gd" id="12_5ud3q"]
 [ext_resource type="Script" path="res://Battle/StartState.gd" id="13_s3gjj"]
+[ext_resource type="Script" path="res://Battle/PromptState.gd" id="14_m5lso"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_bpw6r")
@@ -42,6 +43,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="BattleMenu" type="Panel" parent="CanvasLayer/BattleUI"]
+visible = false
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 offset_left = 456.0
@@ -131,6 +133,9 @@ initialState = NodePath("Start")
 
 [node name="Start" type="Node" parent="StateMachine"]
 script = ExtResource("13_s3gjj")
+
+[node name="Prompt" type="Node" parent="StateMachine"]
+script = ExtResource("14_m5lso")
 
 [connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]

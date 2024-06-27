@@ -18,4 +18,4 @@ func physicsUpdate(delta : float):
 	pass
 
 func exit():
-	StateMachineStack.removeSM()
+	pass
