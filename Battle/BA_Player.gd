@@ -1,15 +1,18 @@
-extends Node
+extends Entity
 
-@export var playerName := "Skerblammo"
-@export var hp := 10
-@export var atk := 3
-@export var def := 2
+@export var playerInfo : Resource
 
-# Called when the node enters the scene tree for the first time.
+var exp : int
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 	pass
+	#entityName = playerInfo.entName
+	#sprite = playerInfo.sprite
+	#hp = playerInfo.hp
+	#atk = playerInfo.atk
+	#def = playerInfo.def
+	#actionList = playerInfo.actionList
+	#Set area2D size and collision shape if necessary
+	#AudioStreamPlayer2D.stream = playerInfo.audio
+	
+	#
