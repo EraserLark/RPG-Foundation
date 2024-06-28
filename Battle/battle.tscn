@@ -1,25 +1,33 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=21 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
 [ext_resource type="Script" path="res://Battle/BattleUI.gd" id="2_o562c"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_ivtdu"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="3_v1yqn"]
+[ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/TestPlayerResource.tres" id="3_w38py"]
 [ext_resource type="Script" path="res://Battle/BattleStage.gd" id="5_r0c4s"]
 [ext_resource type="Script" path="res://Battle/BattleMenu.gd" id="5_viovm"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/action_menu.tscn" id="6_ubrn1"]
 [ext_resource type="Script" path="res://Battle/AttackMenu.gd" id="7_fswt7"]
 [ext_resource type="Script" path="res://Battle/BA_Player.gd" id="8_t8w8o"]
 [ext_resource type="Script" path="res://Battle/ItemMenu.gd" id="9_cq6pm"]
+[ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/ba_enemy.tscn" id="11_ia2tq"]
 [ext_resource type="Script" path="res://States/StateMachine.gd" id="12_5ud3q"]
+[ext_resource type="Resource" uid="uid://k5uqhj12jxh8" path="res://Battle/Entity/TestEnemyResource.tres" id="13_4gm5m"]
 [ext_resource type="Script" path="res://Battle/StartState.gd" id="13_s3gjj"]
 [ext_resource type="Script" path="res://Battle/PromptState.gd" id="14_m5lso"]
+[ext_resource type="Script" path="res://Battle/EventQueue.gd" id="15_ytve7"]
+[ext_resource type="Script" path="res://Battle/ActionState.gd" id="16_kuxj6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdhrk"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_bpw6r")
 
 [node name="BA_Player" type="Node" parent="."]
 script = ExtResource("8_t8w8o")
+playerInfo = ExtResource("3_w38py")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -117,7 +125,24 @@ position = Vector2(576, 328)
 scale = Vector2(9, 5.125)
 texture = ExtResource("3_ivtdu")
 
+[node name="BA_Enemy" parent="BattleStage" instance=ExtResource("11_ia2tq")]
+position = Vector2(608, 320)
+scale = Vector2(5, 5)
+enemyInfo = ExtResource("13_4gm5m")
+
+[node name="Sprite2D" parent="BattleStage/BA_Enemy" index="0"]
+texture = ExtResource("3_v1yqn")
+hframes = 3
+
+[node name="Area2D" parent="BattleStage/BA_Enemy" index="1"]
+position = Vector2(0, 10)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleStage/BA_Enemy/Area2D" index="1"]
+position = Vector2(-0.400002, -18.6)
+shape = SubResource("CircleShape2D_fdhrk")
+
 [node name="Enemy" type="Sprite2D" parent="BattleStage"]
+visible = false
 position = Vector2(608, 320)
 scale = Vector2(5, 5)
 texture = ExtResource("3_v1yqn")
@@ -137,5 +162,14 @@ script = ExtResource("13_s3gjj")
 [node name="Prompt" type="Node" parent="StateMachine"]
 script = ExtResource("14_m5lso")
 
+[node name="Action" type="Node" parent="StateMachine"]
+script = ExtResource("16_kuxj6")
+
+[node name="EventQueue" type="Node" parent="."]
+script = ExtResource("15_ytve7")
+
+[connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="StateMachine/Start" method="_on_battle_ui_finish_start_phase"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]
+
+[editable path="BattleStage/BA_Enemy"]

@@ -3,7 +3,7 @@ extends Control
 @onready var textbox := $Textbox
 @onready var startState := $"../../StateMachine/Start"
 
-signal advanceBattleState
+signal finishStartPhase
 
 func _ready():
 	startState.send_message.connect(textboxNewMessage)
@@ -14,4 +14,4 @@ func textboxNewMessage(message):
 	StateMachineStack.addSM($Textbox/StateMachine)
 
 func textboxFinished():
-	emit_signal("advanceBattleState")
+	emit_signal("finishStartPhase")

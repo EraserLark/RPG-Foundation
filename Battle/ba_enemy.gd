@@ -1,4 +1,4 @@
-extends Entity
+extends Node2D
 
 @export var enemyInfo : Resource
 

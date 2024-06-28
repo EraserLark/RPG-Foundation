@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://k5uqhj12jxh8"]
+
+[ext_resource type="Script" path="res://Battle/Entity/Entity.gd" id="1_rluw5"]
+
+[resource]
+script = ExtResource("1_rluw5")
+entityName = "Snowbro"
+hp = 5
+atk = 2
+def = 0
+actionList = {}

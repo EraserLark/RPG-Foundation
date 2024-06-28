@@ -1,5 +1,6 @@
 extends State
 
+signal moveToPromptPhase
 signal send_message(message : String)
 signal endBattle()
 
@@ -18,5 +19,7 @@ func physicsUpdate(delta : float):
 	pass
 
 func exit():
-	#stateMachine.transitionTo("Prompt")
 	pass
+
+func _on_battle_ui_finish_start_phase():
+	emit_signal("moveToPromptPhase")

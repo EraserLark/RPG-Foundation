@@ -4,7 +4,6 @@ func enter(msg := {}):
 	super()
 	owner.openBox()
 	owner.typeText()
-	
 
 func update(delta : float):
 	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):
@@ -13,8 +12,8 @@ func update(delta : float):
 			owner.typeTimer.stop()
 			owner.typeTimer.emit_signal("timeout")	#Skips to end of current 'yield' timer, based off typing speed
 		else:
-			stateMachine.endStateMachine()
+			exit()
 
 func exit():
 	owner.closeBox()
-	StateMachineStack.removeSM()
+	stateMachine.endStateMachine()

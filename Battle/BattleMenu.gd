@@ -6,15 +6,25 @@ extends Panel
 
 var prevFocused : Control = null
 
+signal moveToActionPhase
+
 func _ready():
 	ActionMenu.openAttackMenu.connect(OpenAttackMenu)
-	AttackMenu.closeAttackMenu.connect(CloseAttackMenu)
+	AttackMenu.attackSelected.connect(actionSelected)
 	ActionMenu.openItemMenu.connect(OpenItemMenu)
 	ItemMenu.closeItemMenu.connect(CloseItemMenu)
 
 func showMenu():
 	visible = true
 	ActionMenu.attackButton.grab_focus()
+
+func hideMenu():
+	visible = false
+
+func actionSelected(index : int):
+	CloseAttackMenu()
+	hideMenu()
+	emit_signal("moveToActionPhase")
 
 func OpenAttackMenu():
 	AttackMenu.visible = true
