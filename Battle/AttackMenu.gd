@@ -1,17 +1,16 @@
 extends PanelContainer
 
 @onready var itemList := $ItemList
-var attackDict : Dictionary
+var attackList : Array[Action]
 
 signal attackSelected(attackNum)
 
-func initMenu(attacks : Dictionary):
-	attackDict = attacks
+func initMenu(attacks : Array[Action]):
+	attackList = attacks
 	
 	itemList = get_node("ItemList")
 	
-	for key in attackDict:
-		var attack = attackDict[key]
+	for attack in attackList:
 		itemList.add_item(attack.actionName)
 
 func _on_item_list_item_activated(index):

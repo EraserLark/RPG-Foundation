@@ -5,9 +5,9 @@ class_name Entity
 @export var hp : int
 @export var atk : int
 @export var def : int
-
-@export var actionList : Dictionary
 @export var sprite : Texture
+
+var actionList : Array[Action]
 
 func takeDamage(dmg : int):
 	var trueDmg := dmg-def
