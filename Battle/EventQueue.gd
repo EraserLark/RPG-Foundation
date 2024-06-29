@@ -11,14 +11,15 @@ var queue : Array[Action]
 signal eventFinished
 
 func _ready():
-	var playerAction = Attack.new(self, "Player Attack", player.playerInfo, enemy.enemyInfo, 1, 0)
-	var enemyAction = Attack.new(self, "Enemy Attack", enemy.enemyInfo, player.playerInfo, 2, 0)
-	var resultsMessage : String = str("Player health: ", player.playerInfo.hp, "\nEnemy health: ", enemy.enemyInfo.hp)
-	var results = TB_Action.new(self, battleUI, resultsMessage)
-	
-	queue.append(playerAction)
-	queue.append(enemyAction)
-	queue.append(results)
+	#var playerAction = Attack.new(self, "Player Attack", player.playerInfo, enemy.enemyInfo, 1, 0)
+	#var enemyAction = Attack.new(self, "Enemy Attack", enemy.enemyInfo, player.playerInfo, 2, 0)
+	#var resultsMessage : String = str("Player health: ", player.playerInfo.hp, "\nEnemy health: ", enemy.enemyInfo.hp)
+	#var results = TB_Action.new(self, battleUI, resultsMessage)
+	#
+	#queue.append(playerAction)
+	#queue.append(enemyAction)
+	#queue.append(results)
+	pass
 
 func popQueue():
 	if(!queue.is_empty()):

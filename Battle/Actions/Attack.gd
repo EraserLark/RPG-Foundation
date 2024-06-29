@@ -18,3 +18,11 @@ func runAction():
 	super()
 	target.takeDamage(baseDamage)
 	finishAction()
+
+
+
+class FireAttack:
+	extends Attack
+
+class Uppercut:
+	extends Attack
