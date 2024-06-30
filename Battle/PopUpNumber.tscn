@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://jrnkf8f8j5v3"]
+
+[ext_resource type="Script" path="res://Battle/PopUpNumber.gd" id="1_kn87b"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kn87b")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 32.0
+offset_bottom = 23.0
+text = "10"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -4,6 +4,8 @@ extends Node2D
 
 @onready var animPlayer := $AnimationPlayer
 
+var damageNum := preload("res://Battle/PopUpNumber.tscn")
+
 func _ready():
 	enemyInfo.damageTaken.connect(damageFeedback)
 	#entityName = enemyInfo.entName
@@ -17,4 +19,7 @@ func _ready():
 
 func damageFeedback(dmgAmt : int):
 	animPlayer.play("TakeDamage")
-	print(str("Took ", dmgAmt, " damage!"))
+	var damageNumber := damageNum.instantiate()
+	damageNumber.setLabel(dmgAmt)
+	add_child(damageNumber)
+	#print(str("Took ", dmgAmt, " damage!"))
