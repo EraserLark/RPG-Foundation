@@ -103,6 +103,28 @@ item_3/text = "Item 4"
 item_4/text = "Item 5"
 item_5/text = "Item 6"
 
+[node name="Stats" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
+layout_mode = 0
+offset_left = -16.0
+offset_bottom = 136.0
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BattleUI/BattleMenu/Stats"]
+self_modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(16, 112)
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+fill_mode = 3
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BattleUI/BattleMenu/Stats"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/normal_font_size = 10
+text = "10/10"
+scroll_active = false
+
 [node name="BattleStage" type="Node2D" parent="."]
 script = ExtResource("5_r0c4s")
 metadata/_edit_lock_ = true

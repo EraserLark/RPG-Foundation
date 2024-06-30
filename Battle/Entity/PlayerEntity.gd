@@ -7,3 +7,7 @@ class_name PlayerEntity
 
 func _ready():
 	pass
+
+func takeDamage(dmg : int):
+	super(dmg)
+	emit_signal("healthRemaining", hp)

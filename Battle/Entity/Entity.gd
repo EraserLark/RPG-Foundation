@@ -10,6 +10,7 @@ class_name Entity
 var actionList : Array[Action]
 
 signal damageTaken(dmg)
+signal healthRemaining(health)
 
 func takeDamage(dmg : int):
 	var trueDmg := dmg-def
