@@ -17,9 +17,10 @@ func _init(eManager, attackName:String, sender:Entity, target:Entity, dmg:int, c
 func runAction():
 	super()
 	target.takeDamage(baseDamage)
+
+#once all actions in the runAction() func are finished running, then finishAction()
+func finishAttack():
 	finishAction()
-
-
 
 class FireAttack:
 	extends Attack

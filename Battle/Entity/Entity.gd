@@ -7,7 +7,13 @@ class_name Entity
 @export var def : int
 @export var sprite : Texture
 
+var owner
 var actionList : Array[Action]
+var animPlayer : AnimationPlayer
+var audioPlayer : AudioStreamPlayer2D
+
+var animFinished : bool = false
+var audioFinished : bool = false
 
 signal damageTaken(dmg)
 signal healthRemaining(health)

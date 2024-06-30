@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var background := $Background
-@onready var enemy := $Enemy
+@onready var enemy := $BA_Enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

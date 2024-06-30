@@ -6,7 +6,12 @@ extends Node2D
 
 var damageNum := preload("res://Battle/PopUpNumber.tscn")
 
+signal reactionComplete
+
 func _ready():
+	enemyInfo.animPlayer = self.animPlayer
+	enemyInfo.audioPlayer = get_node("AudioStreamPlayer2D")
+	
 	enemyInfo.damageTaken.connect(damageFeedback)
 	#entityName = enemyInfo.entName
 	#sprite = enemyInfo.sprite
@@ -23,3 +28,13 @@ func damageFeedback(dmgAmt : int):
 	damageNumber.setLabel(dmgAmt)
 	add_child(damageNumber)
 	#print(str("Took ", dmgAmt, " damage!"))
+
+func _on_animation_player_animation_finished(anim_name):
+	enemyInfo.animFinished = true
+	enemyInfo.audioFinished = true
+	
+	if(enemyInfo.animFinished && enemyInfo.audioFinished):
+		enemyInfo.animFinished = false
+		enemyInfo.audioFinished = false
+		
+		emit_signal("reactionComplete")

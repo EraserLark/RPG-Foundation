@@ -6,10 +6,14 @@ extends Node
 @onready var enemy = $"../BattleStage/BA_Enemy"
 @onready var statsUI = $"../CanvasLayer/BattleUI/BattleMenu/Stats"
 @onready var attackMenu = $"../CanvasLayer/BattleUI/BattleMenu/AttackMenu"
+@onready var animPlayer = $"AnimationPlayer"
+
+signal reactionComplete
 
 func _ready():
 	attackMenu.attackSelected.connect(attackChosen)
 	playerInfo.healthRemaining.connect(takenDamage)
+	playerInfo.damageTaken.connect(damageFeedback)
 	
 	var attack1 = Attack.new(eventManager, "Basic Attack", playerInfo, enemy.enemyInfo, 1, 0)
 	var attack2 = Attack.new(eventManager, "Fireball", playerInfo, enemy.enemyInfo, 3, 0)
@@ -24,6 +28,16 @@ func _ready():
 func attackChosen(attackNum : int):
 	eventManager.queue.append(playerInfo.actionList[attackNum])
 
+func damageFeedback(dmgAmt : int):
+	animPlayer.play("PlayerDamaged")
+	#var damageNumber := damageNum.instantiate()
+	#damageNumber.setLabel(dmgAmt)
+	#add_child(damageNumber)
+	#print(str("Took ", dmgAmt, " damage!"))
+
 func takenDamage(remainingHealth : int):
 	statsUI.get_node("ProgressBar").value = remainingHealth
 	statsUI.get_node("RichTextLabel").text = str(remainingHealth, " /10")
+
+func _on_animation_player_animation_finished(anim_name):
+	emit_signal("reactionComplete")
