@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends TabBar
 
 @onready var attackButton := $"AttackButton"
 

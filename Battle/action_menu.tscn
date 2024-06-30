@@ -12,21 +12,29 @@ region = Rect2(544, 136, 16, 16)
 atlas = ExtResource("2_rtd54")
 region = Rect2(680, 187, 16, 16)
 
-[node name="ActionMenu" type="HBoxContainer"]
+[node name="ActionMenu" type="TabBar"]
 offset_right = 128.0
 offset_bottom = 40.0
 script = ExtResource("1_481s6")
 
 [node name="AttackButton" parent="." instance=ExtResource("1_6k8ay")]
 layout_mode = 2
+offset_right = 40.0
+offset_bottom = 40.0
 icon = SubResource("AtlasTexture_vggtq")
 
 [node name="ItemButton" parent="." instance=ExtResource("1_6k8ay")]
 layout_mode = 2
+offset_left = 44.0
+offset_right = 84.0
+offset_bottom = 40.0
 icon = SubResource("AtlasTexture_ufbvm")
 
 [node name="ReactButton" parent="." instance=ExtResource("1_6k8ay")]
 layout_mode = 2
+offset_left = 88.0
+offset_right = 128.0
+offset_bottom = 40.0
 
 [connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_down" from="ItemButton" to="." method="_on_item_button_button_down"]
