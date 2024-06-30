@@ -32,7 +32,7 @@ func transition_to(target_state_name : String, msg: Dictionary = {}):
 	state.exit()
 	state = get_node(target_state_name)
 	state.enter(msg)
-	emit_signal("transitioned", state.name)
+	emit_signal("tranisitoned", state.name)
 
 func endStateMachine():
 	StateMachineStack.removeSM()

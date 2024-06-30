@@ -1,9 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqnlls711sdtk"]
+[gd_scene load_steps=6 format=3 uid="uid://dqnlls711sdtk"]
 
 [ext_resource type="Script" path="res://Battle/ba_enemy.gd" id="1_qiqf2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krvsh"]
 radius = 12.8063
+
+[sub_resource type="Animation" id="Animation_s0le0"]
+resource_name = "TakeDamage"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 0), Vector2(8, 0), Vector2(-6, 0), Vector2(4, 0), Vector2(-2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5x3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86w5x"]
+_data = {
+"RESET": SubResource("Animation_d5x3w"),
+"TakeDamage": SubResource("Animation_s0le0")
+}
 
 [node name="BA_Enemy" type="Node2D"]
 script = ExtResource("1_qiqf2")
@@ -16,6 +53,9 @@ script = ExtResource("1_qiqf2")
 shape = SubResource("CircleShape2D_krvsh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_86w5x")
+}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 

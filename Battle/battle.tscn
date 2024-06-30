@@ -131,14 +131,6 @@ position = Vector2(0, 10)
 position = Vector2(-0.400002, -18.6)
 shape = SubResource("CircleShape2D_fdhrk")
 
-[node name="Enemy" type="Sprite2D" parent="BattleStage"]
-visible = false
-position = Vector2(608, 320)
-scale = Vector2(5, 5)
-texture = ExtResource("3_v1yqn")
-region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
-
 [node name="Camera2D" type="Camera2D" parent="BattleStage"]
 anchor_mode = 0
 

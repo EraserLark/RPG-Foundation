@@ -9,6 +9,8 @@ class_name Entity
 
 var actionList : Array[Action]
 
+signal damageTaken(dmg)
+
 func takeDamage(dmg : int):
 	var trueDmg := dmg-def
 	if(trueDmg < 0):
@@ -17,3 +19,5 @@ func takeDamage(dmg : int):
 	hp -= trueDmg
 	if(hp < 0):
 		hp = 0
+	
+	emit_signal("damageTaken", trueDmg)
