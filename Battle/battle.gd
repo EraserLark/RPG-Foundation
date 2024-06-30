@@ -11,11 +11,9 @@ enum BattleState {START, PROMPT, ACTION, FINISH}
 var currentState = BattleState.START
 
 func _ready():
-	#battleUI.advanceBattleState.connect(advanceBattleState)
 	stateMachine.get_node("Start").endBattle.connect(endBattle)
 	stateMachine.get_node("Start").moveToPromptPhase.connect(advanceBattleState)
 	battleUI.get_node("BattleMenu").moveToActionPhase.connect(advanceBattleState)
-	#battleUI.textbox.typeText("Battle Start!")
 	StateMachineStack.addSM(stateMachine)
 
 func advanceBattleState():
