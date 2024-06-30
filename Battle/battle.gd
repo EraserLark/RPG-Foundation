@@ -3,7 +3,7 @@ extends Node
 @onready var battleUI := $CanvasLayer/BattleUI
 @onready var battleStage := $BattleStage
 @onready var player := $BA_Player
-@onready var enemy := $BattleStage/Enemy
+@onready var enemy := $BattleStage/BA_Enemy
 @onready var eventQueue := $EventQueue
 @onready var stateMachine := $StateMachine
 

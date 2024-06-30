@@ -21,6 +21,8 @@ script = ExtResource("1_481s6")
 layout_mode = 2
 offset_right = 40.0
 offset_bottom = 40.0
+focus_neighbor_left = NodePath("../ReactButton")
+focus_neighbor_right = NodePath("../ItemButton")
 icon = SubResource("AtlasTexture_vggtq")
 
 [node name="ItemButton" parent="." instance=ExtResource("1_6k8ay")]
@@ -28,6 +30,8 @@ layout_mode = 2
 offset_left = 44.0
 offset_right = 84.0
 offset_bottom = 40.0
+focus_neighbor_left = NodePath("../AttackButton")
+focus_neighbor_right = NodePath("../ReactButton")
 icon = SubResource("AtlasTexture_ufbvm")
 
 [node name="ReactButton" parent="." instance=ExtResource("1_6k8ay")]
@@ -35,6 +39,8 @@ layout_mode = 2
 offset_left = 88.0
 offset_right = 128.0
 offset_bottom = 40.0
+focus_neighbor_left = NodePath("../ItemButton")
+focus_neighbor_right = NodePath("../AttackButton")
 
 [connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]
 [connection signal="button_down" from="ItemButton" to="." method="_on_item_button_button_down"]

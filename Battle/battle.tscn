@@ -22,7 +22,7 @@
 
 [sub_resource type="Animation" id="Animation_84obq"]
 resource_name = "PlayerDamaged"
-length = 0.5
+length = 0.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
