@@ -9,6 +9,7 @@ extends Node
 @onready var animPlayer = $"AnimationPlayer"
 
 signal reactionComplete
+signal playerDied
 
 func _ready():
 	attackMenu.attackSelected.connect(attackChosen)
@@ -38,6 +39,13 @@ func damageFeedback(dmgAmt : int):
 func takenDamage(remainingHealth : int):
 	statsUI.get_node("ProgressBar").value = remainingHealth
 	statsUI.get_node("RichTextLabel").text = str(remainingHealth, " /10")
+	
+	if(remainingHealth <= 0):
+		playerDead()
+
+func playerDead():
+	print("You Lose :(")
+	emit_signal("playerDied")
 
 func _on_animation_player_animation_finished(anim_name):
 	emit_signal("reactionComplete")

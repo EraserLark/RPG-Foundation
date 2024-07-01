@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=24 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Battle/PromptState.gd" id="14_m5lso"]
 [ext_resource type="Script" path="res://Battle/EventQueue.gd" id="15_ytve7"]
 [ext_resource type="Script" path="res://Battle/ActionState.gd" id="16_kuxj6"]
+[ext_resource type="Script" path="res://Battle/FinishState.gd" id="18_4uttl"]
 
 [sub_resource type="Animation" id="Animation_84obq"]
 resource_name = "PlayerDamaged"
@@ -205,6 +206,9 @@ script = ExtResource("14_m5lso")
 
 [node name="Action" type="Node" parent="StateMachine"]
 script = ExtResource("16_kuxj6")
+
+[node name="Finish" type="Node" parent="StateMachine"]
+script = ExtResource("18_4uttl")
 
 [node name="EventQueue" type="Node" parent="."]
 script = ExtResource("15_ytve7")

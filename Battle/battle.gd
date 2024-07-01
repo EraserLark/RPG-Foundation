@@ -31,7 +31,10 @@ func advanceBattleState():
 			currentState = BattleState.PROMPT
 			print("Moving to: PROMPT")
 		BattleState.FINISH:
-			pass
+			stateMachine.transition_to("Finish")
+			currentState = BattleState.FINISH
+			print("Moving to: FINISH")
 
-func endBattle():
-	self.queue_free()
+func endBattle():	
+	currentState = BattleState.FINISH
+	advanceBattleState()

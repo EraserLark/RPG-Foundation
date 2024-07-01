@@ -7,6 +7,7 @@ extends Node2D
 var damageNum := preload("res://Battle/PopUpNumber.tscn")
 
 signal reactionComplete
+signal enemyDied
 
 func _ready():
 	enemyInfo.animPlayer = self.animPlayer
@@ -28,6 +29,12 @@ func damageFeedback(dmgAmt : int):
 	damageNumber.setLabel(dmgAmt)
 	add_child(damageNumber)
 	#print(str("Took ", dmgAmt, " damage!"))
+	if(dmgAmt >= enemyInfo.hp + dmgAmt):
+		enemyDead()
+
+func enemyDead():
+	print("You Win! :D")
+	emit_signal("enemyDied")
 
 func _on_animation_player_animation_finished(anim_name):
 	enemyInfo.animFinished = true
