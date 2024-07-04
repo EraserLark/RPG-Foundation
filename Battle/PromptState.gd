@@ -11,7 +11,7 @@ func enter(msg := {}):
 
 func update(delta : float):
 	if Input.is_action_just_pressed("ui_cancel"):
-		stateMachine.endStateMachine()
+		exit()
 
 func physicsUpdate(delta : float):
 	pass

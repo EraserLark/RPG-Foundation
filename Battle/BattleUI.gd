@@ -11,7 +11,7 @@ func _ready():
 
 func textboxNewMessage(message):
 	textbox.line = message
-	StateMachineStack.addSM($Textbox/StateMachine)
+	StateStack.addState($Textbox/StateMachine)
 
 func textboxFinished():
 	emit_signal("finishStartPhase")

@@ -1,18 +1,25 @@
 extends State
+class_name DB_State
+
+var dialogueBox = null
+
+func _init(sStack, db):
+	super(sStack)
+	dialogueBox = db
 
 func enter(msg := {}):
 	super()
-	owner.newDialogue()
+	dialogueBox.newDialogue()
 
 func update(delta : float):
 	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):
-		if owner.finished == false:
-			owner.skip = true
-			owner.typeTimer.stop()
-			owner.typeTimer.emit_signal("timeout")	#Skips to end of current 'yield' timer, based off typing speed
+		if dialogueBox.finished == false:
+			dialogueBox.skip = true
+			dialogueBox.typeTimer.stop()
+			dialogueBox.typeTimer.emit_signal("timeout")	#Skips to end of current 'yield' timer, based off typing speed
 		else:
-			stateMachine.endStateMachine()
+			exit()
 
 func exit():
-	owner.closeBox()
+	dialogueBox.closeBox()
 	super()

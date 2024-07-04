@@ -2,13 +2,15 @@
 extends Node
 class_name State
 
-var stateMachine = null
+var stateStack = null
+
+func _init(sStack : StateStack):
+	stateStack = sStack
 
 func handleInput(event : InputEvent):
 	pass
 
 func enter(msg := {}):
-	#StateMachineStack.addSM(stateMachine)
 	pass
 
 func update(delta : float):
@@ -17,5 +19,8 @@ func update(delta : float):
 func physicsUpdate(delta : float):
 	pass
 
-func exit():
+func resumeState():
 	pass
+
+func exit():
+	stateStack.removeState()

@@ -9,4 +9,5 @@ extends OW_Actor
 var rayLength := 72;
 
 func _ready():
-	StateMachineStack.addSM($StateManager)
+	var currentState = Player_Active.new(StateStack, self)
+	StateStack.addState(currentState)

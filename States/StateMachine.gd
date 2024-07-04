@@ -3,7 +3,7 @@ extends Node
 class_name StateMachine
 
 @onready var state : State = get_node(initialState)
-@onready var manager = StateMachineStack
+@onready var manager = StateStack
 
 @export var initialState := NodePath()
 
@@ -35,4 +35,4 @@ func transition_to(target_state_name : String, msg: Dictionary = {}):
 	emit_signal("tranisitoned", state.name)
 
 func endStateMachine():
-	StateMachineStack.removeSM()
+	StateStack.removeSM()

@@ -16,5 +16,4 @@ func physicsUpdate(delta : float):
 
 func exit():
 	set_process_input(false)
-	stateMachine.endStateMachine()
 	battleStage.queue_free()

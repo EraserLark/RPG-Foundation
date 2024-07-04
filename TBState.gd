@@ -16,4 +16,4 @@ func update(delta : float):
 
 func exit():
 	owner.closeBox()
-	stateMachine.endStateMachine()
+	super()

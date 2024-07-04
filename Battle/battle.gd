@@ -14,7 +14,7 @@ func _ready():
 	stateMachine.get_node("Start").endBattle.connect(endBattle)
 	stateMachine.get_node("Start").moveToPromptPhase.connect(advanceBattleState)
 	battleUI.get_node("BattleMenu").moveToActionPhase.connect(advanceBattleState)
-	StateMachineStack.addSM(stateMachine)
+	StateStack.addState(stateMachine)
 
 func advanceBattleState():
 	match currentState:

@@ -13,7 +13,8 @@ func _ready():
 func openDialogue(name, message):
 	speakerName = name
 	speakerMessage = message
-	StateMachineStack.addSM($StateMachine)
+	var dbState = DB_State.new(StateStack, self)
+	StateStack.addState(dbState)
 
 func newDialogue():
 	line = speakerMessage
