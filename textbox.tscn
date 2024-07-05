@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvuqng1787hrs"]
+[gd_scene load_steps=4 format=3 uid="uid://cvuqng1787hrs"]
 
 [ext_resource type="Script" path="res://Textbox.gd" id="1_dvjkt"]
 [ext_resource type="AudioStream" uid="uid://d8jienloa3u" path="res://Audio/TEST_glass_006.ogg" id="2_cb3e3"]
-[ext_resource type="Script" path="res://States/StateMachine.gd" id="3_qmla8"]
 [ext_resource type="Script" path="res://TBState.gd" id="4_4tiro"]
 
 [node name="Textbox" type="Panel"]
@@ -26,8 +25,6 @@ grow_horizontal = 2
 stream = ExtResource("2_cb3e3")
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_qmla8")
-initialState = NodePath("TBState")
 
 [node name="TBState" type="Node" parent="StateMachine"]
 script = ExtResource("4_4tiro")

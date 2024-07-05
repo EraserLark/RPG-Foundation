@@ -3,12 +3,16 @@ class_name EventQueue
 
 var queue : Array[Event]
 var currentEvent : Event
-var parentState = null
+var startState = null
 
 signal queueEmpty
 
-func _init(pState : State):
-	parentState = pState
+func _init():
+	pass
+	#startState = sState
+
+func addEvent(e : Event):
+	queue.append(e)
 
 func finishEvent():
 	pass

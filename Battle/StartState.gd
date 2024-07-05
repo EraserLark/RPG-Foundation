@@ -1,25 +1,28 @@
-extends State
+extends Event
+class_name Start_Phase
 
 signal moveToPromptPhase
 signal send_message(message : String)
 signal endBattle()
 
-func handleInput(event : InputEvent):
-	pass
+var ui
+var thisEventManager : EventQueue = EventQueue.new()
 
-func enter(msg := {}):
-	#StateMachineStack.addSM(stateMachine)
-	emit_signal("send_message", "Battle Start!!")
+func _init(eManager, UI):
+	super(eManager)
+	ui = UI
 
-func update(delta : float):
-	if Input.is_action_just_pressed("ui_cancel"):
-		exit()
+func runEvent():
+	var textbox = ui.get_node("Textbox")
+	var tbEvent = TB_Event.new(thisEventManager, textbox, "Battle Start :O")
+	thisEventManager.addEvent(tbEvent)
+	thisEventManager.popQueue()
 
-func physicsUpdate(delta : float):
-	pass
+func resumeEvent():
+	finishEvent()
 
-func exit():
-	pass
-
-func _on_battle_ui_finish_start_phase():
-	emit_signal("moveToPromptPhase")
+func finishEvent():
+	var battleMenu = ui.get_node("BattleMenu")
+	var promptPhase = Prompt_Phase.new(eventManager, battleMenu)
+	eventManager.addEvent(promptPhase)
+	super()

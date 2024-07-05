@@ -1,22 +1,17 @@
-extends State
+extends Event
+class_name Prompt_Phase
 
-signal send_message(message : String)
-signal endBattle()
+var thisEventManager = EventQueue.new()
 
-func handleInput(event : InputEvent):
-	pass
+func _init(eManager, battleMenu):
+	super(eManager)
+	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
+	StateStack.addState(battleMenuState)
 
-func enter(msg := {}):
-	$"../../CanvasLayer/BattleUI/BattleMenu".showMenu()
+func resumeEvent():
+	finishEvent()
 
-func update(delta : float):
-	if Input.is_action_just_pressed("ui_cancel"):
-		exit()
-
-func physicsUpdate(delta : float):
-	pass
-
-func exit():
-	pass
-	#StateMachineStack.removeSM()
-	#emit_signal("endBattle")
+func finishEvent():
+	var actionPhase = Action_Phase.new(eventManager)
+	eventManager.addEvent(actionPhase)
+	eventManager.popQueue()

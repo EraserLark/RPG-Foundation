@@ -2,7 +2,7 @@ extends Node
 
 @export var playerInfo : Resource
 
-@onready var eventManager = $"../EventQueue"
+var eventManager
 @onready var enemy = $"../BattleStage/BA_Enemy"
 @onready var statsUI = $"../CanvasLayer/BattleUI/BattleMenu/Stats"
 @onready var attackMenu = $"../CanvasLayer/BattleUI/BattleMenu/AttackMenu"
@@ -12,6 +12,8 @@ signal reactionComplete
 signal playerDied
 
 func _ready():
+	eventManager = EventQueue.new()
+	
 	attackMenu.attackSelected.connect(attackChosen)
 	playerInfo.healthRemaining.connect(takenDamage)
 	playerInfo.damageTaken.connect(damageFeedback)
@@ -27,7 +29,7 @@ func _ready():
 	attackMenu.initMenu(playerInfo.actionList)
 
 func attackChosen(attackNum : int):
-	eventManager.queue.append(playerInfo.actionList[attackNum])
+	eventManager.addEvent(playerInfo.actionList[attackNum])
 
 func damageFeedback(dmgAmt : int):
 	animPlayer.play("PlayerDamaged")

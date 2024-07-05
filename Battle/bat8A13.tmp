@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=22 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/ba_enemy.tscn" id="11_ia2tq"]
 [ext_resource type="Resource" uid="uid://k5uqhj12jxh8" path="res://Battle/Entity/TestEnemyResource.tres" id="13_4gm5m"]
 [ext_resource type="Script" path="res://Battle/StartState.gd" id="13_s3gjj"]
-[ext_resource type="Script" path="res://Battle/BattleState.gd" id="14_eqshw"]
 [ext_resource type="Script" path="res://Battle/PromptState.gd" id="14_m5lso"]
 [ext_resource type="Script" path="res://Battle/ActionState.gd" id="16_kuxj6"]
 [ext_resource type="Script" path="res://Battle/FinishState.gd" id="18_4uttl"]
@@ -193,25 +192,24 @@ shape = SubResource("CircleShape2D_fdhrk")
 [node name="Camera2D" type="Camera2D" parent="BattleStage"]
 anchor_mode = 0
 
-[node name="BattleState" type="Node" parent="."]
-script = ExtResource("14_eqshw")
+[node name="StateMachine" type="Node" parent="."]
 
-[node name="Start" type="Node" parent="BattleState"]
+[node name="Start" type="Node" parent="StateMachine"]
 script = ExtResource("13_s3gjj")
 
-[node name="Prompt" type="Node" parent="BattleState"]
+[node name="Prompt" type="Node" parent="StateMachine"]
 script = ExtResource("14_m5lso")
 
-[node name="Action" type="Node" parent="BattleState"]
+[node name="Action" type="Node" parent="StateMachine"]
 script = ExtResource("16_kuxj6")
 
-[node name="Finish" type="Node" parent="BattleState"]
+[node name="Finish" type="Node" parent="StateMachine"]
 script = ExtResource("18_4uttl")
 
 [node name="EventQueue" type="Node" parent="."]
 
 [connection signal="animation_finished" from="BA_Player/AnimationPlayer" to="BA_Player" method="_on_animation_player_animation_finished"]
-[connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="BattleState/Start" method="_on_battle_ui_finish_start_phase"]
+[connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="StateMachine/Start" method="_on_battle_ui_finish_start_phase"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]
 

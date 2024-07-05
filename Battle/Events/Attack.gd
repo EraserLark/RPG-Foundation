@@ -7,20 +7,20 @@ class_name Attack
 #Associate minigame
 
 func _init(eManager, attackName:String, sender:Entity, target:Entity, dmg:int, cost:int):
-	super(eManager)
-	actionName = attackName
+	super(eManager, sender, target)
+	eventName = attackName
 	self.sender = sender
 	self.target = target
 	baseDamage = dmg
 	specialCost = cost
 
-func runAction():
+func runEvent():
 	super()
 	target.takeDamage(baseDamage)
 
 #once all actions in the runAction() func are finished running, then finishAction()
 func finishAttack():
-	finishAction()
+	finishEvent()
 
 class FireAttack:
 	extends Attack

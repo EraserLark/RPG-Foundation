@@ -11,7 +11,7 @@ func initMenu(attacks : Array[Action]):
 	itemList = get_node("ItemList")
 	
 	for attack in attackList:
-		itemList.add_item(attack.actionName)
+		itemList.add_item(attack.eventName)
 
 func _on_item_list_item_activated(index):
 	#Whatever comes next for starting the attack. Selecting target.

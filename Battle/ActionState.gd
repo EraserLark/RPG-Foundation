@@ -1,4 +1,5 @@
-extends State
+extends Event
+class_name Action_Phase
 
 @onready var eventQueue := $"../../EventQueue"
 
