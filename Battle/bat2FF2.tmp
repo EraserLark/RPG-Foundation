@@ -1,0 +1,218 @@
+[gd_scene load_steps=23 format=3 uid="uid://b1vfgrbgsn1dq"]
+
+[ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
+[ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
+[ext_resource type="Script" path="res://Battle/BattleUI.gd" id="2_o562c"]
+[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_ivtdu"]
+[ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/TestPlayerResource.tres" id="3_w38py"]
+[ext_resource type="Script" path="res://Battle/BattleStage.gd" id="5_r0c4s"]
+[ext_resource type="Script" path="res://Battle/BattleMenu.gd" id="5_viovm"]
+[ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/action_menu.tscn" id="6_ubrn1"]
+[ext_resource type="Script" path="res://Battle/AttackMenu.gd" id="7_fswt7"]
+[ext_resource type="Script" path="res://Battle/BA_Player.gd" id="8_t8w8o"]
+[ext_resource type="Script" path="res://Battle/ItemMenu.gd" id="9_cq6pm"]
+[ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/ba_enemy.tscn" id="11_ia2tq"]
+[ext_resource type="Resource" uid="uid://k5uqhj12jxh8" path="res://Battle/Entity/TestEnemyResource.tres" id="13_4gm5m"]
+[ext_resource type="Script" path="res://Battle/StartState.gd" id="13_s3gjj"]
+[ext_resource type="Script" path="res://Battle/BattleState.gd" id="14_eqshw"]
+[ext_resource type="Script" path="res://Battle/PromptState.gd" id="14_m5lso"]
+[ext_resource type="Script" path="res://Battle/ActionState.gd" id="16_kuxj6"]
+[ext_resource type="Script" path="res://Battle/FinishState.gd" id="18_4uttl"]
+
+[sub_resource type="Animation" id="Animation_84obq"]
+resource_name = "PlayerDamaged"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BattleStage/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 0), Vector2(-8, 0), Vector2(6, 0), Vector2(-4, 0), Vector2(2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t1tul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../BattleStage/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_72d87"]
+_data = {
+"PlayerDamaged": SubResource("Animation_84obq"),
+"RESET": SubResource("Animation_t1tul")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdhrk"]
+
+[node name="Battle" type="Node"]
+script = ExtResource("1_bpw6r")
+
+[node name="BA_Player" type="Node" parent="."]
+script = ExtResource("8_t8w8o")
+playerInfo = ExtResource("3_w38py")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BA_Player"]
+libraries = {
+"": SubResource("AnimationLibrary_72d87")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BattleUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_o562c")
+metadata/_edit_lock_ = true
+
+[node name="Textbox" parent="CanvasLayer/BattleUI" instance=ExtResource("1_nvtlo")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_bottom = 0.197531
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="BattleMenu" type="Panel" parent="CanvasLayer/BattleUI"]
+visible = false
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+offset_left = 456.0
+offset_top = 512.0
+offset_right = 744.0
+offset_bottom = 648.0
+script = ExtResource("5_viovm")
+
+[node name="ActionMenu" parent="CanvasLayer/BattleUI/BattleMenu" instance=ExtResource("6_ubrn1")]
+layout_mode = 0
+offset_top = -40.0
+offset_bottom = 0.0
+
+[node name="AttackMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 136.0
+script = ExtResource("7_fswt7")
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/BattleMenu/AttackMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+fixed_icon_size = Vector2i(16, 16)
+
+[node name="ItemMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 136.0
+script = ExtResource("9_cq6pm")
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/BattleMenu/ItemMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+item_count = 6
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "Item 1"
+item_0/icon = ExtResource("3_ivtdu")
+item_1/text = "Item 2"
+item_1/icon = ExtResource("3_ivtdu")
+item_2/text = "Item 3"
+item_2/icon = ExtResource("3_ivtdu")
+item_3/text = "Item 4"
+item_4/text = "Item 5"
+item_5/text = "Item 6"
+
+[node name="Stats" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
+layout_mode = 0
+offset_left = -16.0
+offset_bottom = 136.0
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BattleUI/BattleMenu/Stats"]
+self_modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(16, 112)
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+fill_mode = 3
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BattleUI/BattleMenu/Stats"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/normal_font_size = 10
+text = "10/10"
+scroll_active = false
+
+[node name="BattleStage" type="Node2D" parent="."]
+script = ExtResource("5_r0c4s")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Background" type="Sprite2D" parent="BattleStage"]
+visible = false
+modulate = Color(0, 0, 1, 0.427451)
+position = Vector2(576, 328)
+scale = Vector2(9, 5.125)
+texture = ExtResource("3_ivtdu")
+
+[node name="BA_Enemy" parent="BattleStage" instance=ExtResource("11_ia2tq")]
+position = Vector2(608, 320)
+scale = Vector2(5, 5)
+enemyInfo = ExtResource("13_4gm5m")
+
+[node name="Area2D" parent="BattleStage/BA_Enemy" index="1"]
+position = Vector2(0, 10)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleStage/BA_Enemy/Area2D" index="1"]
+position = Vector2(-0.400002, -18.6)
+shape = SubResource("CircleShape2D_fdhrk")
+
+[node name="Camera2D" type="Camera2D" parent="BattleStage"]
+anchor_mode = 0
+
+[node name="BattleState" type="Node" parent="."]
+script = ExtResource("14_eqshw")
+
+[node name="Start" type="Node" parent="BattleState"]
+script = ExtResource("13_s3gjj")
+
+[node name="Prompt" type="Node" parent="BattleState"]
+script = ExtResource("14_m5lso")
+
+[node name="Action" type="Node" parent="BattleState"]
+script = ExtResource("16_kuxj6")
+
+[node name="Finish" type="Node" parent="BattleState"]
+script = ExtResource("18_4uttl")
+
+[node name="EventQueue" type="Node" parent="."]
+
+[connection signal="animation_finished" from="BA_Player/AnimationPlayer" to="BA_Player" method="_on_animation_player_animation_finished"]
+[connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="BattleState/Start" method="_on_battle_ui_finish_start_phase"]
+[connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]
+
+[editable path="BattleStage/BA_Enemy"]

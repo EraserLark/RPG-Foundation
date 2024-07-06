@@ -1,30 +1,35 @@
 extends Event
 class_name Action_Phase
 
-@onready var eventQueue := $"../../EventQueue"
-
-@onready var battleUI = $"../../CanvasLayer/BattleUI"
-@onready var player = $"../../BA_Player"
-@onready var enemy = $"../../BattleStage/BA_Enemy"
+var battleUI
+var player
+var enemy
 
 func handleInput(event : InputEvent):
 	pass
 
-func enter(msg := {}):
-	var enemyAction = Attack.new(eventQueue, "Enemy Attack", enemy.enemyInfo, player.playerInfo, 2, 0)
-	#var resultsMessage : String = str("Player health: ", player.playerInfo.hp, "\nEnemy health: ", enemy.enemyInfo.hp)
-	#var results = TB_Action.new(eventQueue, battleUI, resultsMessage)
+func _init(eManager, e, p, bui):
+	super(eManager)
+	enemy = e
+	player = p
+	battleUI = bui
+
+func runEvent(msg := {}):
+	var playerAction = player.playerInfo.selectedAction
+	var enemyAction = Attack.new(eventManager, "Enemy Attack", enemy.enemyInfo, player.playerInfo, 2, 0)
 	
-	eventQueue.queue.append(enemyAction)
-	#eventQueue.queue.append(results)
-	
-	eventQueue.popQueue()
+	eventManager.queue.append(playerAction)
+	eventManager.queue.append(enemyAction)
+	eventManager.popQueue()
 
-func update(delta : float):
-	pass
+func resumeEvent():
+	if(eventManager.queue.front() == eventManager.currentEvent):
+		finishEvent()
+	else:
+		eventManager.currentEvent.resumeEvent()
 
-func physicsUpdate(delta : float):
-	pass
-
-func exit():
-	pass
+func finishEvent():
+	var battleMenu = battleUI.get_node("BattleMenu")
+	var promptPhase = Prompt_Phase.new(eventManager, enemy, player, battleMenu)
+	eventManager.addEvent(promptPhase)
+	super()

@@ -13,11 +13,11 @@ var currentState = BattleState.START
 func _ready():
 	#stateMachine.get_node("Start").endBattle.connect(endBattle)
 	#stateMachine.get_node("Start").moveToPromptPhase.connect(advanceBattleState)
-	battleUI.get_node("BattleMenu").moveToActionPhase.connect(advanceBattleState)
+	#battleUI.get_node("BattleMenu").moveToActionPhase.connect(advanceBattleState)
 	#StateStack.addState(stateMachine)
 	
 	var battleUI = $"CanvasLayer/BattleUI"
-	var battleState = Battle_State.new(StateStack, battleUI)
+	var battleState = Battle_State.new(StateStack, enemy, player, battleUI)
 	StateStack.addState(battleState)
 
 func advanceBattleState():

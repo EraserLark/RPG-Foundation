@@ -3,10 +3,11 @@ extends Panel
 @onready var ActionMenu := $ActionMenu
 @onready var AttackMenu := $AttackMenu
 @onready var ItemMenu := $ItemMenu
+@onready var player := $"../../../BA_Player"
 
 var prevFocused : Control = null
 
-signal moveToActionPhase
+signal selectionMade
 
 func _ready():
 	ActionMenu.openAttackMenu.connect(OpenAttackMenu)
@@ -14,7 +15,7 @@ func _ready():
 	ActionMenu.openItemMenu.connect(OpenItemMenu)
 	ItemMenu.closeItemMenu.connect(CloseItemMenu)
 
-func showMenu():
+func showActionMenu():
 	visible = true
 	ActionMenu.attackButton.grab_focus()
 
@@ -24,7 +25,10 @@ func hideMenu():
 func actionSelected(index : int):
 	CloseAttackMenu()
 	hideMenu()
-	emit_signal("moveToActionPhase")
+	
+	player.playerInfo.selectedAction = player.playerInfo.actionList[index]
+	
+	emit_signal("selectionMade")
 
 func OpenAttackMenu():
 	AttackMenu.visible = true

@@ -6,8 +6,10 @@ var battleMenu
 func _init(sStack : StateStack, bMenu):
 	super(sStack)
 	battleMenu = bMenu
+	battleMenu.selectionMade.connect(exit)
 
 func enter(msg := {}):
-	battleMenu.visible = true
+	battleMenu.showActionMenu()
 
-
+func exit():
+	super()

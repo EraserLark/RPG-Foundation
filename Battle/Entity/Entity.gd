@@ -9,6 +9,7 @@ class_name Entity
 
 var owner
 var actionList : Array[Action]
+var selectedAction : Action
 var animPlayer : AnimationPlayer
 var audioPlayer : AudioStreamPlayer2D
 
