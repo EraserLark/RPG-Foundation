@@ -10,6 +10,7 @@ signal reactionComplete
 signal enemyDied
 
 func _ready():
+	enemyInfo.owner = self
 	enemyInfo.animPlayer = self.animPlayer
 	enemyInfo.audioPlayer = get_node("AudioStreamPlayer2D")
 	
@@ -24,7 +25,7 @@ func _ready():
 	#AudioStreamPlayer2D.stream = enemyInfo.audio
 
 func damageFeedback(dmgAmt : int):
-	animPlayer.play("TakeDamage")
+	animPlayer.play("SnowbroDamaged")
 	var damageNumber := damageNum.instantiate()
 	damageNumber.setLabel(dmgAmt)
 	add_child(damageNumber)

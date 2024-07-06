@@ -25,3 +25,4 @@ func finishEvent():
 	var actionPhase = Action_Phase.new(eventManager, enemy, player, battleUI)
 	eventManager.addEvent(actionPhase)
 	eventManager.popQueue()
+	#queue_free()

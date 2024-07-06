@@ -12,4 +12,5 @@ func enter(msg := {}):
 	battleMenu.showActionMenu()
 
 func exit():
+	battleMenu.selectionMade.disconnect(exit)
 	super()

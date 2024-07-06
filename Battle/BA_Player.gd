@@ -12,6 +12,8 @@ signal reactionComplete
 signal playerDied
 
 func _ready():
+	playerInfo.owner = self
+	
 	eventManager = EventQueue.new()
 	
 	attackMenu.attackSelected.connect(attackChosen)

@@ -17,9 +17,11 @@ func _init(eManager, attackName:String, sender:Entity, target:Entity, dmg:int, c
 func runEvent():
 	super()
 	target.takeDamage(baseDamage)
+	target.owner.reactionComplete.connect(finishAttack)
 
-#once all actions in the runAction() func are finished running, then finishAction()
+#once all actions in the runEvent() func are finished running, then finishAction()
 func finishAttack():
+	target.owner.reactionComplete.disconnect(finishAttack)
 	finishEvent()
 
 class FireAttack:
