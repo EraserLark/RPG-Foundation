@@ -16,6 +16,7 @@ func _init(eManager, attackName:String, sender:Entity, target:Entity, dmg:int, c
 
 func runEvent():
 	super()
+	sender.attack()
 	target.takeDamage(baseDamage)
 	target.reactionComplete.connect(finishAttack)
 

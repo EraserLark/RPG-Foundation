@@ -13,6 +13,9 @@ func initialize(bm : BattleManager):
 	
 	localEnemy = enemyInfo
 
+func attack():
+	enemyActor.attackFeedback()
+
 func takeDamage(dmg : int):
 	var trueDmg = localEnemy.calcDamage(dmg)
 	localEnemy.takeDamage(dmg)
@@ -27,4 +30,5 @@ func enemyDead():
 	pass
 
 func _on_animation_player_animation_finished(anim_name):
-	emit_signal("reactionComplete")
+	if(anim_name == "SnowbroDamaged"):
+		emit_signal("reactionComplete")

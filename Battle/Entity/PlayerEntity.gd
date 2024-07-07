@@ -32,6 +32,9 @@ func initialize(bm : BattleManager):
 func attackChosen(attackNum : int):
 	localPlayer.selectedAction = localPlayer.actionList[attackNum]
 
+func attack():
+	pass
+
 func takeDamage(dmg : int):
 	var trueDmg = localPlayer.calcDamage(dmg)
 	localPlayer.takeDamage(trueDmg)

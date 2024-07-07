@@ -18,3 +18,6 @@ func damageFeedback(dmgAmt : int):
 	var damageNumber := damageNum.instantiate()
 	damageNumber.setLabel(dmgAmt)
 	add_child(damageNumber)
+
+func attackFeedback():
+	animPlayer.play("AttackPlayer")
