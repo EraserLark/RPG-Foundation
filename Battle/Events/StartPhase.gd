@@ -1,10 +1,6 @@
 extends Event
 class_name Start_Phase
 
-signal moveToPromptPhase
-signal send_message(message : String)
-signal endBattle()
-
 var battleUI
 var thisEventManager : EventQueue = EventQueue.new()
 var battleManager
@@ -16,9 +12,8 @@ func _init(eManager, bm):
 
 func runEvent():
 	var textbox = battleUI.get_node("Textbox")
-	var tbEvent = TB_Event.new(thisEventManager, textbox, "Battle Start :O")
-	thisEventManager.addEvent(tbEvent)
-	thisEventManager.popQueue()
+	var tbState = Textbox_State.new(StateStack, textbox, "Battle Time!!")
+	StateStack.addState(tbState)
 
 func resumeEvent():
 	finishEvent()

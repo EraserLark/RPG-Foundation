@@ -6,6 +6,8 @@ var player
 var enemy
 var battleManager
 
+var actionEventQueue := EventQueue.new()
+
 func _init(eManager, bm):
 	super(eManager)
 	battleManager = bm
@@ -13,23 +15,23 @@ func _init(eManager, bm):
 	player = bm.playerEntity
 	battleUI = bm.battleUI
 	
-	eManager.queueEmpty.connect(finishEvent)
+	actionEventQueue.queueEmpty.connect(finishEvent)
 
 func runEvent(msg := {}):
 	var playerAction = player.playerInfo.selectedAction
-	playerAction.eventManager = self.eventManager
+	playerAction.eventManager = self.actionEventQueue
 	playerAction.target = enemy
-	var enemyAction = Attack.new(eventManager, "Enemy Attack", enemy, player, 2, 0)
+	var enemyAction = Attack.new(actionEventQueue, "Enemy Attack", enemy, player, 2, 0)
 	
-	eventManager.queue.append(playerAction)
-	eventManager.queue.append(enemyAction)
-	eventManager.popQueue()
+	actionEventQueue.queue.append(playerAction)
+	actionEventQueue.queue.append(enemyAction)
+	actionEventQueue.popQueue()
 
 func resumeEvent():
-	if(eventManager.queue.front() == eventManager.currentEvent):
+	if(actionEventQueue.queue.front() == actionEventQueue.currentEvent):
 		finishEvent()
 	else:
-		eventManager.currentEvent.resumeEvent()
+		actionEventQueue.currentEvent.resumeEvent()
 
 func finishEvent():
 	var promptPhase = Prompt_Phase.new(eventManager, battleManager)

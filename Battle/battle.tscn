@@ -17,10 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/2D/EnemyActor.tscn" id="15_2s7hj"]
 [ext_resource type="Script" path="res://Battle/2D/PlayerActor.gd" id="16_uccub"]
 [ext_resource type="Script" path="res://Battle/States/BattleState.gd" id="17_6gfpt"]
-[ext_resource type="Script" path="res://Battle/States/StartState.gd" id="18_skicr"]
-[ext_resource type="Script" path="res://Battle/States/PromptState.gd" id="19_p0epv"]
+[ext_resource type="Script" path="res://Battle/Events/StartPhase.gd" id="18_56cgw"]
+[ext_resource type="Script" path="res://Battle/Events/PromptPhase.gd" id="19_1ilki"]
 [ext_resource type="Script" path="res://Battle/Events/ActionPhase.gd" id="20_a8p5w"]
-[ext_resource type="Script" path="res://Battle/States/FinishState.gd" id="21_pt81o"]
+[ext_resource type="Script" path="res://Battle/Events/FinishPhase.gd" id="21_jxd88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdhrk"]
 
@@ -213,16 +213,16 @@ anchor_mode = 0
 script = ExtResource("17_6gfpt")
 
 [node name="Start" type="Node" parent="BattleState"]
-script = ExtResource("18_skicr")
+script = ExtResource("18_56cgw")
 
 [node name="Prompt" type="Node" parent="BattleState"]
-script = ExtResource("19_p0epv")
+script = ExtResource("19_1ilki")
 
 [node name="Action" type="Node" parent="BattleState"]
 script = ExtResource("20_a8p5w")
 
 [node name="Finish" type="Node" parent="BattleState"]
-script = ExtResource("21_pt81o")
+script = ExtResource("21_jxd88")
 
 [connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="BattleState/Start" method="_on_battle_ui_finish_start_phase"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/AttackMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/AttackMenu" method="_on_item_list_item_activated"]

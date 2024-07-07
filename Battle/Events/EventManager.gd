@@ -25,4 +25,5 @@ func popQueue():
 		currentEvent = queue.pop_front()
 		currentEvent.runEvent()
 	else:
+		#currentEvent.resumeEvent()
 		emit_signal("queueEmpty")
