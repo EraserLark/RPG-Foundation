@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_mluv6"]
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_lgkiv"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_8n4nm"]
-[ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://DialogueBox.tscn" id="6_h8dcw"]
+[ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://UI/DialogueBox.tscn" id="6_h8dcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ysjf"]
 size = Vector2(128, 120)

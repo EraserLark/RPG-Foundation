@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqnlls711sdtk"]
 
-[ext_resource type="Script" path="res://Battle/EnemyActor.gd" id="1_3v1kr"]
+[ext_resource type="Script" path="res://Battle/2D/EnemyActor.gd" id="1_3v1kr"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="2_n2i4y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krvsh"]

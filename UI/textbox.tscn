@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvuqng1787hrs"]
 
-[ext_resource type="Script" path="res://Textbox.gd" id="1_dvjkt"]
+[ext_resource type="Script" path="res://UI/Textbox.gd" id="1_dvjkt"]
 [ext_resource type="AudioStream" uid="uid://d8jienloa3u" path="res://Audio/TEST_glass_006.ogg" id="2_cb3e3"]
 
 [node name="Textbox" type="Panel"]

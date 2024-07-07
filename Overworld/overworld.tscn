@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_ti8qv"]
 [ext_resource type="Script" path="res://Overworld/OW_Enemy.gd" id="5_12g4i"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_adroj"]
-[ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://DialogueBox.tscn" id="6_5x56l"]
+[ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://UI/DialogueBox.tscn" id="6_5x56l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qopq"]
 radius = 24.0

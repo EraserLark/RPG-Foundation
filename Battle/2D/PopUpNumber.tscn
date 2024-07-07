@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://jrnkf8f8j5v3"]
 
-[ext_resource type="Script" path="res://Battle/PopUpNumber.gd" id="1_kn87b"]
+[ext_resource type="Script" path="res://Battle/2D/PopUpNumber.gd" id="1_vvm7y"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_kn87b")
+script = ExtResource("1_vvm7y")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 32.0

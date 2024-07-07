@@ -1,12 +1,12 @@
 [gd_scene load_steps=26 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
+[ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
 [ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_ivtdu"]
 [ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/TestPlayerResource.tres" id="3_w38py"]
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
-[ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://UI/textbox.tscn" id="7_qx7tv"]
 [ext_resource type="Script" path="res://Battle/UI/BattleMenu.gd" id="8_2gtag"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/action_menu.tscn" id="9_vhn0o"]
 [ext_resource type="Script" path="res://Battle/UI/AttackMenu.gd" id="10_tcqst"]
@@ -86,7 +86,7 @@ grow_vertical = 2
 script = ExtResource("6_jkbya")
 metadata/_edit_lock_ = true
 
-[node name="Textbox" parent="CanvasLayer/BattleUI" instance=ExtResource("7_qx7tv")]
+[node name="Textbox" parent="CanvasLayer/BattleUI" instance=ExtResource("1_nvtlo")]
 visible = false
 layout_mode = 2
 anchors_preset = 0
