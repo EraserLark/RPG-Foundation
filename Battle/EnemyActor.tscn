@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqnlls711sdtk"]
 
-[ext_resource type="Script" path="res://Battle/ba_enemy.gd" id="1_qiqf2"]
-[ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="2_2kn23"]
+[ext_resource type="Script" path="res://Battle/EnemyActor.gd" id="1_3v1kr"]
+[ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="2_n2i4y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krvsh"]
 radius = 12.8063
@@ -84,11 +84,11 @@ _data = {
 "SnowbroDamaged": SubResource("Animation_s0le0")
 }
 
-[node name="BA_Enemy" type="Node2D"]
-script = ExtResource("1_qiqf2")
+[node name="EnemyActor" type="Node2D"]
+script = ExtResource("1_3v1kr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2kn23")
+texture = ExtResource("2_n2i4y")
 hframes = 3
 
 [node name="Area2D" type="Area2D" parent="."]

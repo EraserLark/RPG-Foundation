@@ -27,26 +27,3 @@ func _ready():
 	var battleUI = $"CanvasLayer/BattleUI"
 	var battleState = Battle_State.new(StateStack, self)
 	StateStack.addState(battleState)
-
-#func advanceBattleState():
-	#match currentState:
-		#BattleState.START:
-			#stateMachine.transition_to("Prompt")
-			#currentState = BattleState.PROMPT
-			#print("Moving to: PROMPT")
-		#BattleState.PROMPT:
-			#stateMachine.transition_to("Action")
-			#currentState = BattleState.ACTION
-			#print("Moving to: ACTION")
-		#BattleState.ACTION:
-			#stateMachine.transition_to("Prompt")
-			#currentState = BattleState.PROMPT
-			#print("Moving to: PROMPT")
-		#BattleState.FINISH:
-			#stateMachine.transition_to("Finish")
-			#currentState = BattleState.FINISH
-			#print("Moving to: FINISH")
-#
-#func endBattle():	
-	#currentState = BattleState.FINISH
-	#advanceBattleState()

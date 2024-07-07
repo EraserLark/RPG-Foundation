@@ -2,6 +2,8 @@ extends TabBar
 
 @onready var attackButton := $"AttackButton"
 
+var playerUI
+
 signal openAttackMenu
 signal openItemMenu
 

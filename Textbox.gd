@@ -4,24 +4,21 @@ class_name Textbox
 @onready var textPanel := self
 @onready var textBox := $RichTextLabel
 @onready var typeTimer := $Timer
-
 @onready var typeAudio := $AudioStreamPlayer
-var defaultTypeSpeed := 0.05
+
 @export var line := "";
-#var charIndex : int = 0
-#var currentDialogue
+
+var defaultTypeSpeed := 0.05
 var skip := false
 var inTag := false
 var finished := false
+
 signal phraseFin()
 signal boxFin()
-
-#var typeSpeed = 30
 
 func _ready():
 	pass
 
-#func typeText(newText):
 func typeText():
 	textBox.text = ""
 	showTextbox(true)

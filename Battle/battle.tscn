@@ -12,13 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/action_menu.tscn" id="6_ubrn1"]
 [ext_resource type="Script" path="res://Battle/AttackMenu.gd" id="7_fswt7"]
 [ext_resource type="Script" path="res://Battle/ItemMenu.gd" id="9_cq6pm"]
-[ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/ba_enemy.tscn" id="11_ia2tq"]
 [ext_resource type="Script" path="res://Battle/Stats.gd" id="12_vo0b5"]
 [ext_resource type="Resource" uid="uid://k5uqhj12jxh8" path="res://Battle/Entity/TestEnemyResource.tres" id="13_4gm5m"]
 [ext_resource type="Script" path="res://Battle/StartState.gd" id="13_s3gjj"]
 [ext_resource type="Script" path="res://Battle/BattleState.gd" id="14_eqshw"]
 [ext_resource type="Script" path="res://Battle/PromptState.gd" id="14_m5lso"]
 [ext_resource type="Script" path="res://Battle/PlayerActor.gd" id="14_pdyrn"]
+[ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/EnemyActor.tscn" id="15_2nl2h"]
 [ext_resource type="Script" path="res://Battle/ActionState.gd" id="16_kuxj6"]
 [ext_resource type="Script" path="res://Battle/FinishState.gd" id="18_4uttl"]
 
@@ -183,7 +183,7 @@ position = Vector2(576, 328)
 scale = Vector2(9, 5.125)
 texture = ExtResource("3_ivtdu")
 
-[node name="EnemyActor" parent="BattleStage" instance=ExtResource("11_ia2tq")]
+[node name="EnemyActor" parent="BattleStage" instance=ExtResource("15_2nl2h")]
 position = Vector2(608, 320)
 scale = Vector2(5, 5)
 
@@ -194,10 +194,6 @@ position = Vector2(0, 10)
 position = Vector2(-0.400002, -18.6)
 shape = SubResource("CircleShape2D_fdhrk")
 
-[node name="Camera2D" type="Camera2D" parent="BattleStage"]
-position = Vector2(10, 0)
-anchor_mode = 0
-
 [node name="PlayerActor" type="Node2D" parent="BattleStage"]
 script = ExtResource("14_pdyrn")
 
@@ -206,6 +202,12 @@ root_node = NodePath("../../../BattleRoster/PlayerEntity")
 libraries = {
 "": SubResource("AnimationLibrary_72d87")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage/PlayerActor"]
+
+[node name="Camera2D" type="Camera2D" parent="BattleStage"]
+position = Vector2(10, 0)
+anchor_mode = 0
 
 [node name="BattleState" type="Node" parent="."]
 script = ExtResource("14_eqshw")
