@@ -9,6 +9,13 @@ signal reactionComplete
 
 func initialize(bm : BattleManager):
 	super(bm)
+	
+	if(enemyInfo == null):
+		enemyInfo = EntityInfo.new()
+		enemyInfo.entityName = "Snowbro"
+		enemyInfo.hp = 5
+		enemyInfo.atk = 2
+	
 	enemyActor = bm.enemyActor
 	
 	localEnemy = enemyInfo

@@ -31,7 +31,10 @@ func update(delta : float):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		var interactee = player.interactRay.get_collider()
-		if interactee is OW_Actor or OW_Enemy:
+		if interactee == null:
+			return
+		
+		if (interactee == OW_Actor || OW_Enemy):
 			interactee.interact();
 			#stateMachine.transition_to("Talking")
 

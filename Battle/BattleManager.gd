@@ -20,8 +20,6 @@ var battleState
 
 #Other
 @onready var camera := $BattleStage/Camera2D
-var loser : Entity
-var victor : Entity
 
 func _ready():
 	playerEntity.initialize(self)

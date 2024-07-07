@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://Battle/UI/AttackMenu.gd" id="10_tcqst"]
 [ext_resource type="Script" path="res://Battle/UI/ItemMenu.gd" id="11_hgxlw"]
 [ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="13_3de6x"]
-[ext_resource type="Resource" uid="uid://k5uqhj12jxh8" path="res://Battle/Entity/TestEnemyResource.tres" id="13_4gm5m"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
 [ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/2D/EnemyActor.tscn" id="15_2s7hj"]
 [ext_resource type="Script" path="res://Battle/2D/PlayerActor.gd" id="16_uccub"]
@@ -20,6 +19,7 @@
 [ext_resource type="Script" path="res://Battle/Events/StartPhase.gd" id="18_56cgw"]
 [ext_resource type="Script" path="res://Battle/Events/PromptPhase.gd" id="19_1ilki"]
 [ext_resource type="Script" path="res://Battle/Events/ActionPhase.gd" id="20_a8p5w"]
+[ext_resource type="Texture2D" uid="uid://18dlppb0l7c6" path="res://Art/BattleBG_Snow1.png" id="20_pstye"]
 [ext_resource type="Script" path="res://Battle/Events/FinishPhase.gd" id="21_jxd88"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdhrk"]
@@ -72,7 +72,6 @@ playerInfo = ExtResource("3_w38py")
 
 [node name="EnemyEntity" type="Node" parent="BattleRoster"]
 script = ExtResource("4_6xbfu")
-enemyInfo = ExtResource("13_4gm5m")
 
 [node name="BattleState" type="Node" parent="."]
 script = ExtResource("17_6gfpt")
@@ -192,11 +191,9 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="BattleStage"]
-visible = false
-modulate = Color(0, 0, 1, 0.427451)
 position = Vector2(576, 328)
-scale = Vector2(9, 5.125)
-texture = ExtResource("3_ivtdu")
+scale = Vector2(5, 5)
+texture = ExtResource("20_pstye")
 
 [node name="EnemyActor" parent="BattleStage" instance=ExtResource("15_2s7hj")]
 position = Vector2(608, 320)

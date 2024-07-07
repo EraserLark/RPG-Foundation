@@ -21,6 +21,7 @@ func _init(eManager, bm):
 func runEvent(msg := {}):
 	var playerAction = player.playerInfo.selectedAction
 	playerAction.eventManager = self.actionEventQueue
+	playerAction.sender = player
 	playerAction.target = enemy
 	
 	var enemyAtk = enemy.enemyInfo.atk

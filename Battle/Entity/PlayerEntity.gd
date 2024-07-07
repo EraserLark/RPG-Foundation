@@ -15,17 +15,14 @@ func initialize(bm : BattleManager):
 	playerUI = bm.playerUI
 	localPlayer = playerInfo
 	
+	localPlayer.playerEntity = self
 	playerActor.player = self
 	playerUI.player = self
 	
-	var attack1 = Attack.new(null, "Basic Attack", self, null, 1, 0)
-	var attack2 = Attack.new(null, "Fireball", self, null, 3, 0)
-	var attack3 = Attack.new(null, "Uppercut", self, null, 2, 0)
+	if(localPlayer.actionList.is_empty()):
+		localPlayer.setupAttacks()
 	
-	localPlayer.actionList.append(attack1)
-	localPlayer.actionList.append(attack2)
-	localPlayer.actionList.append(attack3)
-	
+	playerUI.stats.changeHealth(localPlayer.hp)
 	playerUI.attackMenu.initMenu(localPlayer.actionList)
 
 func attackChosen(attackNum : int):
