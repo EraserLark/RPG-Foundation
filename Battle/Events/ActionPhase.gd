@@ -24,8 +24,10 @@ func runEvent(msg := {}):
 	playerAction.sender = player
 	playerAction.target = enemy
 	
-	var enemyAtk = enemy.enemyInfo.atk
-	var enemyAction = Attack.new(actionEventQueue, "Enemy Attack", enemy, player, enemyAtk, 0)
+	var enemyAction = enemy.chooseAttack()
+	enemyAction.eventManager = self.actionEventQueue
+	enemyAction.sender = enemy
+	enemyAction.target = player
 	
 	actionEventQueue.queue.append(playerAction)
 	actionEventQueue.queue.append(enemyAction)

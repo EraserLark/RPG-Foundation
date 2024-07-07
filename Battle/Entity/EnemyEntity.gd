@@ -15,10 +15,20 @@ func initialize(bm : BattleManager):
 		enemyInfo.entityName = "Snowbro"
 		enemyInfo.hp = 5
 		enemyInfo.atk = 2
-	
-	enemyActor = bm.enemyActor
+		
+		var enemyAtk = enemyInfo.atk
+		var enemyAction1 = Attack.new(null, "Punch", self, null, enemyAtk, 0)
+		var enemyAction2 = Attack.new(null, "Bingo", self, null, enemyAtk + 2, 0)
+		
+		enemyInfo.actionList.append_array([enemyAction1, enemyAction2])
 	
 	localEnemy = enemyInfo
+	
+	enemyActor = bm.enemyActor
+
+func chooseAttack():
+	var chosenAction = localEnemy.actionList.pick_random()
+	return chosenAction
 
 func attack():
 	enemyActor.attackFeedback()
