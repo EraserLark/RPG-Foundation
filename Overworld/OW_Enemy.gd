@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name OW_Enemy
 
 @onready var battleScene = preload("res://Battle/battle.tscn")
+@onready var player = $"../OW_Player"
 
 signal send_message(name:String, message:String)
 

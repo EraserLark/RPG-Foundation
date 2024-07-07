@@ -61,7 +61,7 @@ _data = {
 "RESET": SubResource("Animation_t1tul")
 }
 
-[node name="BattleManager" type="Node"]
+[node name="BattleManager" type="Node2D"]
 script = ExtResource("1_70l2y")
 
 [node name="BattleRoster" type="Node" parent="."]
@@ -73,6 +73,21 @@ playerInfo = ExtResource("3_w38py")
 [node name="EnemyEntity" type="Node" parent="BattleRoster"]
 script = ExtResource("4_6xbfu")
 enemyInfo = ExtResource("13_4gm5m")
+
+[node name="BattleState" type="Node" parent="."]
+script = ExtResource("17_6gfpt")
+
+[node name="Start" type="Node" parent="BattleState"]
+script = ExtResource("18_56cgw")
+
+[node name="Prompt" type="Node" parent="BattleState"]
+script = ExtResource("19_1ilki")
+
+[node name="Action" type="Node" parent="BattleState"]
+script = ExtResource("20_a8p5w")
+
+[node name="Finish" type="Node" parent="BattleState"]
+script = ExtResource("21_jxd88")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -208,21 +223,6 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="BattleStage"]
 position = Vector2(10, 0)
 anchor_mode = 0
-
-[node name="BattleState" type="Node" parent="."]
-script = ExtResource("17_6gfpt")
-
-[node name="Start" type="Node" parent="BattleState"]
-script = ExtResource("18_56cgw")
-
-[node name="Prompt" type="Node" parent="BattleState"]
-script = ExtResource("19_1ilki")
-
-[node name="Action" type="Node" parent="BattleState"]
-script = ExtResource("20_a8p5w")
-
-[node name="Finish" type="Node" parent="BattleState"]
-script = ExtResource("21_jxd88")
 
 [connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="BattleState/Start" method="_on_battle_ui_finish_start_phase"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/AttackMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/AttackMenu" method="_on_item_list_item_activated"]

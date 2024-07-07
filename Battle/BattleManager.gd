@@ -17,12 +17,17 @@ class_name BattleManager
 #Enemy
 @onready var enemyActor := $BattleStage/EnemyActor
 
+#Other
+@onready var camera := $BattleStage/Camera2D
+
 enum BattleState {START, PROMPT, ACTION, FINISH}
 var currentState = BattleState.START
 
 func _ready():
 	playerEntity.initialize(self)
 	enemyEntity.initialize(self)
+	
+	camera.make_current()
 	
 	var battleUI = $"CanvasLayer/BattleUI"
 	var battleState = Battle_State.new(StateStack, self)
