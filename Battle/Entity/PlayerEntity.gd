@@ -27,7 +27,7 @@ func initialize(bm : BattleManager):
 	localPlayer.actionList.append(attack2)
 	localPlayer.actionList.append(attack3)
 	
-	playerUI.AttackMenu.initMenu(localPlayer.actionList)
+	playerUI.attackMenu.initMenu(localPlayer.actionList)
 
 func attackChosen(attackNum : int):
 	localPlayer.selectedAction = localPlayer.actionList[attackNum]

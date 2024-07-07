@@ -9,7 +9,7 @@ func _init(sStack : StateStack, bMenu):
 	battleMenu.selectionMade.connect(exit)
 
 func enter(msg := {}):
-	battleMenu.showActionMenu()
+	battleMenu.showActionMenu(true)
 
 func exit():
 	battleMenu.selectionMade.disconnect(exit)

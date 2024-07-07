@@ -1,56 +1,53 @@
 extends Panel
 
-@onready var ActionMenu := $ActionMenu
-@onready var AttackMenu := $AttackMenu
-@onready var ItemMenu := $ItemMenu
+@onready var actionMenu := $ActionMenu
+@onready var attackMenu := $AttackMenu
+@onready var itemMenu := $ItemMenu
 @onready var stats := $Stats
 
 var player
 
 var prevFocused : Control = null
+var menus : Array[Menu]
+var openMenu : Menu = null
 
 signal selectionMade
 
 func _ready():
-	ActionMenu.openAttackMenu.connect(OpenAttackMenu)
-	AttackMenu.attackSelected.connect(actionSelected)
-	ActionMenu.openItemMenu.connect(OpenItemMenu)
-	ItemMenu.closeItemMenu.connect(CloseItemMenu)
+	for node in get_children():
+		node.playerUI = self
+	
+	#Populate menus array
+	menus += [attackMenu, itemMenu]
 
-func showActionMenu():
-	visible = true
-	ActionMenu.attackButton.grab_focus()
-
-func hideMenu():
-	visible = false
+func showActionMenu(condition : bool):
+	visible = condition
+	
+	if(condition):
+		actionMenu.attackButton.grab_focus()
 
 func actionSelected(index : int):
-	CloseAttackMenu()
-	hideMenu()
+	#Whatever comes next for starting the attack. Selecting target.
+	#...
+	
+	CloseActionMenu()
+	showActionMenu(false)
 	
 	player.attackChosen(index)
 	emit_signal("selectionMade")
 
-func OpenAttackMenu():
-	AttackMenu.visible = true
+func itemSelected(index : int):
+	CloseActionMenu()
+
+func OpenActionMenu(menuNum : int):
+	openMenu = menus[menuNum]
 	prevFocused = get_viewport().gui_get_focus_owner()
-	AttackMenu.itemList.grab_focus()
-	AttackMenu.itemList.select(0)
+	openMenu.OpenMenu()
 
-func CloseAttackMenu():
-	AttackMenu.visible = false
+func CloseActionMenu():
+	openMenu.CloseMenu()
+	openMenu = null
 	prevFocused.grab_focus()
-
-func OpenItemMenu():
-	ItemMenu.visible = true
-	prevFocused = get_viewport().gui_get_focus_owner()
-	ItemMenu.itemList.grab_focus()
-	ItemMenu.itemList.select(0)
-
-func CloseItemMenu():
-	ItemMenu.visible = false
-	prevFocused.grab_focus()
-
 
 func changeStatsHealth(remaningHP : int):
 	stats.changeHealth(remaningHP)

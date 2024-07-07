@@ -1,9 +1,12 @@
-extends PanelContainer
+extends Menu
 
 @onready var itemList := $ItemList
 
-signal closeItemMenu
+func OpenMenu():
+	super()
+	get_viewport().gui_get_focus_owner()
+	itemList.grab_focus()
+	itemList.select(0)
 
 func _on_item_list_item_activated(index):
-	#Whatever comes next for starting the attack. Selecting target.
-	emit_signal("closeItemMenu")
+	playerUI.itemSelected(index)

@@ -4,16 +4,11 @@ extends TabBar
 
 var playerUI
 
-signal openAttackMenu
-signal openItemMenu
-
-var currentMenu = null
-
 func _ready():
 	attackButton.grab_focus()
 
 func _on_attack_button_button_down():
-	emit_signal("openAttackMenu")
+	playerUI.OpenActionMenu(0)
 
 func _on_item_button_button_down():
-	emit_signal("openItemMenu")
+	playerUI.OpenActionMenu(1)

@@ -1,9 +1,7 @@
-extends PanelContainer
+extends Menu
 
 @onready var itemList := $ItemList
 var attackList : Array[Action]
-
-signal attackSelected(attackNum)
 
 func initMenu(attacks : Array[Action]):
 	attackList = attacks
@@ -13,6 +11,13 @@ func initMenu(attacks : Array[Action]):
 	for attack in attackList:
 		itemList.add_item(attack.eventName)
 
+func OpenMenu():
+	super()
+	itemList.grab_focus()
+	itemList.select(0)
+
+func CloseMenu():
+	super()
+
 func _on_item_list_item_activated(index):
-	#Whatever comes next for starting the attack. Selecting target.
-	emit_signal("attackSelected", index)
+	playerUI.actionSelected(index)
