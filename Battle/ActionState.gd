@@ -4,19 +4,22 @@ class_name Action_Phase
 var battleUI
 var player
 var enemy
+var battleManager
 
-func _init(eManager, e, p, bui):
+func _init(eManager, bm):
 	super(eManager)
-	enemy = e
-	player = p
-	battleUI = bui
+	battleManager = bm
+	enemy = bm.enemyEntity
+	player = bm.playerEntity
+	battleUI = bm.battleUI
 	
 	eManager.queueEmpty.connect(finishEvent)
 
 func runEvent(msg := {}):
 	var playerAction = player.playerInfo.selectedAction
 	playerAction.eventManager = self.eventManager
-	var enemyAction = Attack.new(eventManager, "Enemy Attack", enemy.enemyInfo, player.playerInfo, 2, 0)
+	playerAction.target = enemy
+	var enemyAction = Attack.new(eventManager, "Enemy Attack", enemy, player, 2, 0)
 	
 	eventManager.queue.append(playerAction)
 	eventManager.queue.append(enemyAction)
@@ -29,8 +32,7 @@ func resumeEvent():
 		eventManager.currentEvent.resumeEvent()
 
 func finishEvent():
-	var battleMenu = battleUI.get_node("BattleMenu")
-	var promptPhase = Prompt_Phase.new(eventManager, enemy, player, battleUI)
+	var promptPhase = Prompt_Phase.new(eventManager, battleManager)
 	eventManager.addEvent(promptPhase)
 	eventManager.queueEmpty.disconnect(finishEvent)
 	super()

@@ -3,7 +3,9 @@ extends Panel
 @onready var ActionMenu := $ActionMenu
 @onready var AttackMenu := $AttackMenu
 @onready var ItemMenu := $ItemMenu
-@onready var player := $"../../../BA_Player"
+@onready var stats := $Stats
+
+var player
 
 var prevFocused : Control = null
 
@@ -26,8 +28,7 @@ func actionSelected(index : int):
 	CloseAttackMenu()
 	hideMenu()
 	
-	player.playerInfo.selectedAction = player.playerInfo.actionList[index]
-	
+	player.attackChosen(index)
 	emit_signal("selectionMade")
 
 func OpenAttackMenu():
@@ -49,3 +50,7 @@ func OpenItemMenu():
 func CloseItemMenu():
 	ItemMenu.visible = false
 	prevFocused.grab_focus()
+
+
+func changeStatsHealth(remaningHP : int):
+	stats.changeHealth(remaningHP)

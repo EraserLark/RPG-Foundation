@@ -1,23 +1,28 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=26 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/battle.gd" id="1_bpw6r"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://textbox.tscn" id="1_nvtlo"]
+[ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
 [ext_resource type="Script" path="res://Battle/BattleUI.gd" id="2_o562c"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_ivtdu"]
 [ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/TestPlayerResource.tres" id="3_w38py"]
+[ext_resource type="Script" path="res://Battle/EnemyEntity.gd" id="4_iikf4"]
 [ext_resource type="Script" path="res://Battle/BattleStage.gd" id="5_r0c4s"]
 [ext_resource type="Script" path="res://Battle/BattleMenu.gd" id="5_viovm"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/action_menu.tscn" id="6_ubrn1"]
 [ext_resource type="Script" path="res://Battle/AttackMenu.gd" id="7_fswt7"]
-[ext_resource type="Script" path="res://Battle/BA_Player.gd" id="8_t8w8o"]
 [ext_resource type="Script" path="res://Battle/ItemMenu.gd" id="9_cq6pm"]
 [ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/ba_enemy.tscn" id="11_ia2tq"]
+[ext_resource type="Script" path="res://Battle/Stats.gd" id="12_vo0b5"]
 [ext_resource type="Resource" uid="uid://k5uqhj12jxh8" path="res://Battle/Entity/TestEnemyResource.tres" id="13_4gm5m"]
 [ext_resource type="Script" path="res://Battle/StartState.gd" id="13_s3gjj"]
 [ext_resource type="Script" path="res://Battle/BattleState.gd" id="14_eqshw"]
 [ext_resource type="Script" path="res://Battle/PromptState.gd" id="14_m5lso"]
+[ext_resource type="Script" path="res://Battle/PlayerActor.gd" id="14_pdyrn"]
 [ext_resource type="Script" path="res://Battle/ActionState.gd" id="16_kuxj6"]
 [ext_resource type="Script" path="res://Battle/FinishState.gd" id="18_4uttl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdhrk"]
 
 [sub_resource type="Animation" id="Animation_84obq"]
 resource_name = "PlayerDamaged"
@@ -25,7 +30,7 @@ length = 0.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../BattleStage/Camera2D:position")
+tracks/0/path = NodePath("../../BattleStage/Camera2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +45,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../BattleStage/Camera2D:position")
+tracks/0/path = NodePath("../../BattleStage/Camera2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,19 +61,18 @@ _data = {
 "RESET": SubResource("Animation_t1tul")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fdhrk"]
-
 [node name="Battle" type="Node"]
 script = ExtResource("1_bpw6r")
 
-[node name="BA_Player" type="Node" parent="."]
-script = ExtResource("8_t8w8o")
+[node name="BattleRoster" type="Node" parent="."]
+
+[node name="PlayerEntity" type="Node" parent="BattleRoster"]
+script = ExtResource("2_1wv47")
 playerInfo = ExtResource("3_w38py")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BA_Player"]
-libraries = {
-"": SubResource("AnimationLibrary_72d87")
-}
+[node name="EnemyEntity" type="Node" parent="BattleRoster"]
+script = ExtResource("4_iikf4")
+enemyInfo = ExtResource("13_4gm5m")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -91,7 +95,7 @@ offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="BattleMenu" type="Panel" parent="CanvasLayer/BattleUI"]
+[node name="PlayerUI" type="Panel" parent="CanvasLayer/BattleUI"]
 visible = false
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
@@ -101,12 +105,12 @@ offset_right = 744.0
 offset_bottom = 648.0
 script = ExtResource("5_viovm")
 
-[node name="ActionMenu" parent="CanvasLayer/BattleUI/BattleMenu" instance=ExtResource("6_ubrn1")]
+[node name="ActionMenu" parent="CanvasLayer/BattleUI/PlayerUI" instance=ExtResource("6_ubrn1")]
 layout_mode = 0
 offset_top = -40.0
 offset_bottom = 0.0
 
-[node name="AttackMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
+[node name="AttackMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -114,13 +118,13 @@ offset_right = 288.0
 offset_bottom = 136.0
 script = ExtResource("7_fswt7")
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/BattleMenu/AttackMenu"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/AttackMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 fixed_icon_size = Vector2i(16, 16)
 
-[node name="ItemMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
+[node name="ItemMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -128,7 +132,7 @@ offset_right = 288.0
 offset_bottom = 136.0
 script = ExtResource("9_cq6pm")
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/BattleMenu/ItemMenu"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/ItemMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
@@ -144,12 +148,13 @@ item_3/text = "Item 4"
 item_4/text = "Item 5"
 item_5/text = "Item 6"
 
-[node name="Stats" type="PanelContainer" parent="CanvasLayer/BattleUI/BattleMenu"]
+[node name="Stats" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI"]
 layout_mode = 0
 offset_left = -16.0
 offset_bottom = 136.0
+script = ExtResource("12_vo0b5")
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BattleUI/BattleMenu/Stats"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BattleUI/PlayerUI/Stats"]
 self_modulate = Color(0, 1, 0, 1)
 custom_minimum_size = Vector2(16, 112)
 layout_mode = 2
@@ -158,7 +163,7 @@ value = 10.0
 fill_mode = 3
 show_percentage = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BattleUI/BattleMenu/Stats"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BattleUI/PlayerUI/Stats"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 8
@@ -178,20 +183,29 @@ position = Vector2(576, 328)
 scale = Vector2(9, 5.125)
 texture = ExtResource("3_ivtdu")
 
-[node name="BA_Enemy" parent="BattleStage" instance=ExtResource("11_ia2tq")]
+[node name="EnemyActor" parent="BattleStage" instance=ExtResource("11_ia2tq")]
 position = Vector2(608, 320)
 scale = Vector2(5, 5)
-enemyInfo = ExtResource("13_4gm5m")
 
-[node name="Area2D" parent="BattleStage/BA_Enemy" index="1"]
+[node name="Area2D" parent="BattleStage/EnemyActor" index="1"]
 position = Vector2(0, 10)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleStage/BA_Enemy/Area2D" index="1"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleStage/EnemyActor/Area2D" index="1"]
 position = Vector2(-0.400002, -18.6)
 shape = SubResource("CircleShape2D_fdhrk")
 
 [node name="Camera2D" type="Camera2D" parent="BattleStage"]
+position = Vector2(10, 0)
 anchor_mode = 0
+
+[node name="PlayerActor" type="Node2D" parent="BattleStage"]
+script = ExtResource("14_pdyrn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleStage/PlayerActor"]
+root_node = NodePath("../../../BattleRoster/PlayerEntity")
+libraries = {
+"": SubResource("AnimationLibrary_72d87")
+}
 
 [node name="BattleState" type="Node" parent="."]
 script = ExtResource("14_eqshw")
@@ -208,11 +222,10 @@ script = ExtResource("16_kuxj6")
 [node name="Finish" type="Node" parent="BattleState"]
 script = ExtResource("18_4uttl")
 
-[node name="EventQueue" type="Node" parent="."]
-
-[connection signal="animation_finished" from="BA_Player/AnimationPlayer" to="BA_Player" method="_on_animation_player_animation_finished"]
 [connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="BattleState/Start" method="_on_battle_ui_finish_start_phase"]
-[connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/AttackMenu" method="_on_item_list_item_activated"]
-[connection signal="item_activated" from="CanvasLayer/BattleUI/BattleMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/BattleMenu/ItemMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/AttackMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/AttackMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/ItemMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/ItemMenu" method="_on_item_list_item_activated"]
+[connection signal="animation_finished" from="BattleStage/EnemyActor/AnimationPlayer" to="BattleRoster/EnemyEntity" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="BattleStage/PlayerActor/AnimationPlayer" to="BattleRoster/PlayerEntity" method="_on_animation_player_animation_finished"]
 
-[editable path="BattleStage/BA_Enemy"]
+[editable path="BattleStage/EnemyActor"]

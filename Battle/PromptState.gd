@@ -3,18 +3,13 @@ class_name Prompt_Phase
 
 var thisEventManager = EventQueue.new()
 
-var battleUI
-var player
-var enemy
+var battleMenu
+var battleManager
 
-func _init(eManager, e, p, ui):
+func _init(eManager, bm):
 	super(eManager)
-	
-	battleUI = ui
-	enemy = e
-	player = p
-	
-	var battleMenu = battleUI.get_node("BattleMenu")
+	battleManager = bm
+	battleMenu = bm.playerEntity.playerUI
 	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
 	StateStack.addState(battleMenuState)
 
@@ -22,7 +17,7 @@ func resumeEvent():
 	finishEvent()
 
 func finishEvent():
-	var actionPhase = Action_Phase.new(eventManager, enemy, player, battleUI)
+	var actionPhase = Action_Phase.new(eventManager, battleManager)
 	eventManager.addEvent(actionPhase)
 	eventManager.popQueue()
 	#queue_free()

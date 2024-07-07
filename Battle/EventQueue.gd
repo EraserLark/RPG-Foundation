@@ -1,5 +1,4 @@
 extends Node
-class_name EventQueue
 
 var queue : Array[Event]
 var currentEvent : Event

@@ -1,18 +1,13 @@
 extends State
 class_name Battle_State
 
-var battleUI
-var enemy
-var player
-
 var eventQueue = EventQueue.new()
+var battleManager
 
-func _init(sStack : StateStack, e, p, ui):
+func _init(sStack : StateStack, bm):
 	stateStack = sStack
-	enemy = e
-	player = p
-	battleUI = ui
-	var startingEvent = Start_Phase.new(eventQueue, enemy, player, battleUI)
+	battleManager = bm
+	var startingEvent = Start_Phase.new(eventQueue, battleManager)
 	eventQueue.addEvent(startingEvent)
 
 func handleInput(event : InputEvent):

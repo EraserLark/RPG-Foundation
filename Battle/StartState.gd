@@ -5,16 +5,14 @@ signal moveToPromptPhase
 signal send_message(message : String)
 signal endBattle()
 
-var enemy
-var player
 var battleUI
 var thisEventManager : EventQueue = EventQueue.new()
+var battleManager
 
-func _init(eManager, e, p, ui):
+func _init(eManager, bm):
 	super(eManager)
-	battleUI = ui
-	enemy = e
-	player = p
+	battleManager = bm
+	battleUI = bm.battleUI
 
 func runEvent():
 	var textbox = battleUI.get_node("Textbox")
@@ -26,6 +24,6 @@ func resumeEvent():
 	finishEvent()
 
 func finishEvent():
-	var promptPhase = Prompt_Phase.new(eventManager, enemy, player, battleUI)
+	var promptPhase = Prompt_Phase.new(eventManager, battleManager)
 	eventManager.addEvent(promptPhase)
 	super()
