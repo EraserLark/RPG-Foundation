@@ -5,6 +5,7 @@ var battleUI
 var player
 var enemy
 var battleManager
+var isOver := false
 
 var actionEventQueue := EventQueue.new()
 
@@ -21,7 +22,9 @@ func runEvent(msg := {}):
 	var playerAction = player.playerInfo.selectedAction
 	playerAction.eventManager = self.actionEventQueue
 	playerAction.target = enemy
-	var enemyAction = Attack.new(actionEventQueue, "Enemy Attack", enemy, player, 2, 0)
+	
+	var enemyAtk = enemy.enemyInfo.atk
+	var enemyAction = Attack.new(actionEventQueue, "Enemy Attack", enemy, player, enemyAtk, 0)
 	
 	actionEventQueue.queue.append(playerAction)
 	actionEventQueue.queue.append(enemyAction)
@@ -33,8 +36,16 @@ func resumeEvent():
 	else:
 		actionEventQueue.currentEvent.resumeEvent()
 
+func battleOver():
+	actionEventQueue.queue.clear()
+	var finishPhase = Finish_Phase.new(eventManager, battleManager)
+	eventManager.addEvent(finishPhase)
+	isOver = true
+
 func finishEvent():
-	var promptPhase = Prompt_Phase.new(eventManager, battleManager)
-	eventManager.addEvent(promptPhase)
+	if(!isOver):
+		var promptPhase = Prompt_Phase.new(eventManager, battleManager)
+		eventManager.addEvent(promptPhase)
+	
 	eventManager.queueEmpty.disconnect(finishEvent)
 	super()

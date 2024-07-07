@@ -2,7 +2,6 @@ extends Event
 class_name Start_Phase
 
 var battleUI
-var thisEventManager : EventQueue = EventQueue.new()
 var battleManager
 
 func _init(eManager, bm):

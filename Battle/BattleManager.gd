@@ -7,6 +7,7 @@ class_name BattleManager
 @onready var enemyEntity := $BattleRoster/EnemyEntity
 
 #Systems
+var battleState
 @onready var battleUI := $CanvasLayer/BattleUI
 @onready var battleStage := $BattleStage
 
@@ -19,9 +20,8 @@ class_name BattleManager
 
 #Other
 @onready var camera := $BattleStage/Camera2D
-
-enum BattleState {START, PROMPT, ACTION, FINISH}
-var currentState = BattleState.START
+var loser : Entity
+var victor : Entity
 
 func _ready():
 	playerEntity.initialize(self)
@@ -29,6 +29,5 @@ func _ready():
 	
 	camera.make_current()
 	
-	var battleUI = $"CanvasLayer/BattleUI"
-	var battleState = Battle_State.new(StateStack, self)
+	battleState = Battle_State.new(StateStack, self)
 	StateStack.addState(battleState)

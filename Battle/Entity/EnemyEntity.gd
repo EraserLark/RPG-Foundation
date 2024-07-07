@@ -27,7 +27,7 @@ func takeDamage(dmg : int):
 		enemyDead()
 
 func enemyDead():
-	pass
+	battleManager.battleState.eventQueue.currentEvent.battleOver()
 
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "SnowbroDamaged"):

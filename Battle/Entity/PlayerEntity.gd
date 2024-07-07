@@ -13,7 +13,6 @@ func initialize(bm : BattleManager):
 	super(bm)
 	playerActor = bm.playerActor
 	playerUI = bm.playerUI
-	
 	localPlayer = playerInfo
 	
 	playerActor.player = self
@@ -48,8 +47,7 @@ func takeDamage(dmg : int):
 		playerDead()
 
 func playerDead():
-	print("You Lose :(")
-	emit_signal("playerDied")
+	battleManager.battleState.eventQueue.currentEvent.battleOver()
 
 func _on_animation_player_animation_finished(anim_name):
 	emit_signal("reactionComplete")

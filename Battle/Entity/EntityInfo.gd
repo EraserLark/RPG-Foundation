@@ -30,5 +30,3 @@ func takeDamage(dmg : int):
 	hp -= dmg
 	if(hp < 0):
 		hp = 0
-	
-	emit_signal("damageTaken", dmg)
