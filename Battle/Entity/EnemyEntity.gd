@@ -43,6 +43,11 @@ func takeDamage(dmg : int):
 	if(remainingHealth <= 0):
 		enemyDead()
 
+func gainStatus(statusName : String):
+	if(statusName == "Poison"):
+		battleManager.createStatus(PoisonStatus, self)
+	emit_signal("reactionComplete")
+
 func enemyDead():
 	battleManager.battleState.eventQueue.currentEvent.battleOver()
 

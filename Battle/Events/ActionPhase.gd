@@ -31,6 +31,14 @@ func runEvent(msg := {}):
 	
 	actionEventQueue.queue.append(playerAction)
 	actionEventQueue.queue.append(enemyAction)
+	
+	var statuses = battleManager.statusRoster
+	for status in statuses:
+		var statusAction = status.runStatus()
+		statusAction.eventManager = self.actionEventQueue
+		actionEventQueue.queue.append(statusAction)
+		status.checkStatusCount()
+	
 	actionEventQueue.popQueue()
 
 func resumeEvent():
@@ -47,6 +55,7 @@ func battleOver():
 
 func finishEvent():
 	if(!isOver):
+		battleManager.updateTurnCount()
 		var promptPhase = Prompt_Phase.new(eventManager, battleManager)
 		eventManager.addEvent(promptPhase)
 	

@@ -5,9 +5,11 @@ class_name BattleManager
 @onready var battleRoster := $BattleRoster
 @onready var playerEntity := $BattleRoster/PlayerEntity
 @onready var enemyEntity := $BattleRoster/EnemyEntity
+var statusRoster : Array[StatusEffect]
+var turnCount := 0
 
 #Systems
-var battleState
+var battleState : Battle_State
 @onready var battleUI := $CanvasLayer/BattleUI
 @onready var battleStage := $BattleStage
 
@@ -29,3 +31,12 @@ func _ready():
 	
 	battleState = Battle_State.new(StateStack, self)
 	StateStack.addState(battleState)
+
+func updateTurnCount():
+	turnCount += 1
+	for status in statusRoster:
+		status.currentCount += 1
+
+func createStatus(statusEffect, target):
+	var newStatus = statusEffect.new(self, target, statusRoster)
+	statusRoster.append(newStatus)

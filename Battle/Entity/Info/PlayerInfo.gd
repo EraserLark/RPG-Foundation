@@ -26,7 +26,8 @@ func setupAttacks():
 
 func setupItems():
 	var healItem = Item_Heal.new()
-	itemList.append(healItem)
+	var poisonItem = Item_Poison.new()
+	itemList.append_array([healItem, poisonItem])
 
 func setupMisc():
 	var defend = Defend.new(null, null, null)
