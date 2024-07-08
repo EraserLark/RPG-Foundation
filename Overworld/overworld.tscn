@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=12 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_a0jhu"]
@@ -16,6 +16,8 @@ height = 128.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lbh8"]
 size = Vector2(128, 120)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_estis"]
+
 [node name="Overworld" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -32,12 +34,15 @@ layout_mode = 1
 
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
+metadata/_edit_lock_ = true
 
 [node name="CastList" type="Node2D" parent="World"]
 y_sort_enabled = true
 script = ExtResource("3_dg04a")
+metadata/_edit_lock_ = true
 
 [node name="OW_Player" parent="World/CastList" instance=ExtResource("1_ery32")]
+playerInfo = null
 metadata/_edit_group_ = true
 
 [node name="Godot Guy" parent="World/CastList" instance=ExtResource("4_ti8qv")]
@@ -75,5 +80,15 @@ polygon = PackedVector2Array(0, 320, 192, 512, 384, 448, 576, 448, 640, 576, 832
 
 [node name="Camera2D" type="Camera2D" parent="World"]
 script = ExtResource("3_f5vhn")
+
+[node name="Item" type="Node2D" parent="World"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Item"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Item/StaticBody2D"]
+position = Vector2(135, 208)
+shape = SubResource("CapsuleShape2D_estis")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Item"]
 
 [editable path="World/CastList/Snowbro"]
