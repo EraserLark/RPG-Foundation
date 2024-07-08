@@ -22,10 +22,10 @@ func initialize(bm : BattleManager):
 	if(localPlayer.actionList.is_empty()):
 		localPlayer.setupAttacks()
 	
-	var item = Item_Heal.new()
-	var itemArray : Array[Item] = [item]
-	if(localPlayer.itemList.is_empty()):
-		localPlayer.setupItems(itemArray)
+	#var item = Item_Heal.new()
+	#var itemArray : Array[Item] = [item]
+	#if(localPlayer.itemList.is_empty()):
+		#localPlayer.setupItems(itemArray)
 	
 	playerUI.stats.changeHealth(localPlayer.hp)
 	playerUI.attackMenu.initMenu(localPlayer.actionList)

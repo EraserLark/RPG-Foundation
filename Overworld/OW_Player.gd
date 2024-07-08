@@ -13,3 +13,12 @@ var rayLength := 72;
 func _ready():
 	var currentState = Player_Active.new(StateStack, self)
 	StateStack.addState(currentState)
+
+func interact(interactee : Object):
+	if(interactee == null):
+		return
+	
+	interactee.interactAction(self)
+
+func addItemToInv(item : Item):
+	playerInfo.itemList.append(item)

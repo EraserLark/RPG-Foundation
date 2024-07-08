@@ -31,12 +31,16 @@ func update(delta : float):
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		var interactee = player.interactRay.get_collider()
-		if interactee == null:
-			return
+		if(interactee is StaticBody2D):
+			interactee = interactee.get_parent()
 		
-		if (interactee == OW_Actor || OW_Enemy):
-			interactee.interact();
-			#stateMachine.transition_to("Talking")
+		player.interact(interactee)
+		#if interactee == null:
+			#return
+		#
+		#if (interactee == OW_Actor || OW_Enemy):
+			#interactee.interact();
+			##stateMachine.transition_to("Talking")
 
 func physicsUpdate(delta : float):
 	pass

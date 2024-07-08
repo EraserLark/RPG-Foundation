@@ -237,6 +237,7 @@ graph_offset = Vector2(-102, -5.12281)
 [node name="OW_Player" instance=ExtResource("1_tv04i")]
 script = ExtResource("2_hln25")
 speed = 500
+playerInfo = null
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(3.8147e-06, -40)
