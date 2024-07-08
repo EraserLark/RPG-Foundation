@@ -3,6 +3,7 @@ extends Panel
 @onready var actionMenu := $ActionMenu
 @onready var attackMenu := $AttackMenu
 @onready var itemMenu := $ItemMenu
+@onready var miscMenu := $MiscMenu
 @onready var stats := $Stats
 
 var player
@@ -18,13 +19,23 @@ func _ready():
 		node.playerUI = self
 	
 	#Populate menus array
-	menus += [attackMenu, itemMenu]
+	menus += [attackMenu, itemMenu, miscMenu]
 
 func showActionMenu(condition : bool):
 	visible = condition
 	
 	if(condition):
 		actionMenu.attackButton.grab_focus()
+
+func attackSelected(index : int):
+	#Whatever comes next for starting the attack. Selecting target.
+	#...
+	
+	CloseActionMenu()
+	showActionMenu(false)
+	
+	player.attackChosen(index)
+	emit_signal("selectionMade")
 
 func actionSelected(index : int):
 	#Whatever comes next for starting the attack. Selecting target.
@@ -33,7 +44,7 @@ func actionSelected(index : int):
 	CloseActionMenu()
 	showActionMenu(false)
 	
-	player.attackChosen(index)
+	player.actionChosen(index)
 	emit_signal("selectionMade")
 
 func itemSelected(index : int):

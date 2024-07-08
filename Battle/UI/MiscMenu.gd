@@ -1,15 +1,15 @@
 extends Menu
 
 @onready var itemList := $ItemList
-var attackList : Array[Action]
+var miscList : Array[Action]
 
-func initMenu(attacks : Array[Action]):
-	attackList = attacks
+func initMenu(actions : Array[Action]):
+	miscList = actions
 	
 	itemList = get_node("ItemList")
 	
-	for attack in attackList:
-		itemList.add_item(attack.eventName)
+	for action in miscList:
+		itemList.add_item(action.eventName)
 
 func OpenMenu():
 	super()
@@ -20,4 +20,4 @@ func CloseMenu():
 	super()
 
 func _on_item_list_item_activated(index):
-	playerUI.attackSelected(index)
+	playerUI.actionSelected(index)

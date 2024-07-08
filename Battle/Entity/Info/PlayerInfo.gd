@@ -24,5 +24,10 @@ func setupAttacks():
 	
 	actionList += [attack1, attack2, attack3]
 
-func setupItems(items : Array[Item]):
-	itemList += items
+func setupItems():
+	var healItem = Item_Heal.new()
+	itemList.append(healItem)
+
+func setupMisc():
+	var defend = Defend.new(null, null, null)
+	miscList.append(defend)

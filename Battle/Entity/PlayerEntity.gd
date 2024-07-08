@@ -22,17 +22,21 @@ func initialize(bm : BattleManager):
 	if(localPlayer.actionList.is_empty()):
 		localPlayer.setupAttacks()
 	
-	#var item = Item_Heal.new()
-	#var itemArray : Array[Item] = [item]
-	#if(localPlayer.itemList.is_empty()):
-		#localPlayer.setupItems(itemArray)
+	if(localPlayer.itemList.is_empty()):
+		localPlayer.setupItems()
+	
+	localPlayer.setupMisc()
 	
 	playerUI.stats.changeHealth(localPlayer.hp)
 	playerUI.attackMenu.initMenu(localPlayer.actionList)
 	playerUI.itemMenu.initMenu(localPlayer.itemList)
-
+	playerUI.miscMenu.initMenu(localPlayer.miscList)
+	
 func attackChosen(attackNum : int):
 	localPlayer.selectedAction = localPlayer.actionList[attackNum]
+
+func actionChosen(actionNum : int):
+	localPlayer.selectedAction = localPlayer.miscList[actionNum]
 
 func itemChosen(itemNum : int):
 	var item = localPlayer.itemList[itemNum]
@@ -59,6 +63,13 @@ func gainHealth(amt : int):
 	
 	var remainingHealth = localPlayer.hp
 	playerUI.changeStatsHealth(remainingHealth)
+	
+	emit_signal("reactionComplete")
+
+func boostDefense(amt : int):
+	#This should be a status
+	
+	localPlayer.def += 1
 	
 	emit_signal("reactionComplete")
 
