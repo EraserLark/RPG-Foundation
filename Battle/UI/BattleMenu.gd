@@ -38,6 +38,10 @@ func actionSelected(index : int):
 
 func itemSelected(index : int):
 	CloseActionMenu()
+	showActionMenu(false)
+	
+	player.itemChosen(index)
+	emit_signal("selectionMade")
 
 func OpenActionMenu(menuNum : int):
 	openMenu = menus[menuNum]

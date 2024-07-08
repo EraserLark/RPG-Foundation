@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=25 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
-[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_ivtdu"]
-[ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/TestPlayerResource.tres" id="3_w38py"]
+[ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/Info/TestPlayerResource.tres" id="3_c76yb"]
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://UI/textbox.tscn" id="7_qx7tv"]
@@ -68,7 +67,7 @@ script = ExtResource("1_70l2y")
 
 [node name="PlayerEntity" type="Node" parent="BattleRoster"]
 script = ExtResource("2_1wv47")
-playerInfo = ExtResource("3_w38py")
+playerInfo = ExtResource("3_c76yb")
 
 [node name="EnemyEntity" type="Node" parent="BattleRoster"]
 script = ExtResource("4_6xbfu")
@@ -150,17 +149,7 @@ script = ExtResource("11_hgxlw")
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
-item_count = 6
 fixed_icon_size = Vector2i(16, 16)
-item_0/text = "Item 1"
-item_0/icon = ExtResource("3_ivtdu")
-item_1/text = "Item 2"
-item_1/icon = ExtResource("3_ivtdu")
-item_2/text = "Item 3"
-item_2/icon = ExtResource("3_ivtdu")
-item_3/text = "Item 4"
-item_4/text = "Item 5"
-item_5/text = "Item 6"
 
 [node name="Stats" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI"]
 layout_mode = 0

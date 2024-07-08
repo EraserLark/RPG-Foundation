@@ -3,16 +3,19 @@ class_name EntityInfo
 
 @export var entityName : String
 @export var hp : int
+@export var hpMax : int
 @export var atk : int
 @export var def : int
 @export var sprite : Texture
 
-var owner
+#var owner
 var actionList : Array[Action]
+var itemList : Array[Item]
+var miscList : Array[Action]
 var selectedAction : Action
+
 var animPlayer : AnimationPlayer
 var audioPlayer : AudioStreamPlayer2D
-
 var animFinished : bool = false
 var audioFinished : bool = false
 
@@ -30,3 +33,8 @@ func takeDamage(dmg : int):
 	hp -= dmg
 	if(hp < 0):
 		hp = 0
+
+func addHealth(amt : int):
+	hp += amt
+	if(hp > hpMax):
+		hp = hpMax
