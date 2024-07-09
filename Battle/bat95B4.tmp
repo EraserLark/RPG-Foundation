@@ -133,7 +133,6 @@ script = ExtResource("8_2gtag")
 
 [node name="PlayerPointer" type="TextureRect" parent="CanvasLayer/BattleUI/PlayerUI"]
 visible = false
-self_modulate = Color(0, 0, 1, 1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -12,7 +12,7 @@ func enter(msg := {}):
 	dialogueBox.newDialogue()
 
 func update(delta : float):
-	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		if dialogueBox.finished == false:
 			dialogueBox.skip = true
 			dialogueBox.typeTimer.stop()

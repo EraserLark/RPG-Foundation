@@ -3,7 +3,7 @@ class_name Action_Phase
 
 var battleUI
 var player
-var enemy
+var enemies
 var battleManager
 
 var isOver := false
@@ -14,7 +14,7 @@ var actionEventQueue
 func _init(eManager, bm):
 	super(eManager)
 	battleManager = bm
-	enemy = bm.enemyEntity
+	enemies = bm.battleRoster.enemies
 	player = bm.playerEntity
 	battleUI = bm.battleUI
 	
@@ -25,30 +25,18 @@ func runEvent(msg := {}):
 	var playerAction = player.playerInfo.selectedAction
 	playerAction.eventManager = self.actionEventQueue
 	playerAction.sender = player
-	if(playerAction.target == null):
-		playerAction.target = enemy
-	
-	var enemyAction = enemy.chooseAttack()
-	enemyAction.eventManager = self.actionEventQueue
-	enemyAction.sender = enemy
-	enemyAction.target = player
-	
+	#if(playerAction.target == null):
+		#playerAction.target = enemy
 	actionEventQueue.queue.append(playerAction)
-	actionEventQueue.queue.append(enemyAction)
+	
+	for enemy in battleManager.battleRoster.enemies:
+		var enemyAction = enemy.chooseAttack()
+		enemyAction.eventManager = self.actionEventQueue
+		enemyAction.sender = enemy
+		enemyAction.target = player
+		actionEventQueue.queue.append(enemyAction)
 	
 	unresolvedStatuses = battleManager.statusRoster.duplicate()
-	
-	#var statuses = battleManager.statusRoster
-	#for status in statuses:
-		#status.checkStatusCount()
-		#
-		#if status == null:
-			#return
-		#
-		#var statusAction = status.runStatus()
-		#statusAction.eventManager = self.actionEventQueue
-		#status.addToEventQueue(eventManager)
-		##actionEventQueue.queue.append(statusAction)
 	
 	actionEventQueue.popQueue()
 

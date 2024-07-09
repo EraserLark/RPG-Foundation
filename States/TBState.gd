@@ -16,7 +16,7 @@ func enter(msg := {}):
 	textbox.typeText()
 
 func update(delta : float):
-	if Input.is_action_just_pressed("ui_accept"): #event.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		if textbox.finished == false:
 			textbox.skip = true
 			textbox.typeTimer.stop()

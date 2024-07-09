@@ -5,3 +5,6 @@ var battleManager : BattleManager
 
 func initialize(bm : BattleManager):
 	battleManager = bm
+
+func getClassInstance():
+	return self

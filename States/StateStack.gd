@@ -22,7 +22,6 @@ func removeState():
 		print("STACK EMPTY")
 		#var backupState = StateD.new(self)
 		#addState(backupState)
-		
 	currentState = stateStack.front()
 	for state in stateStack:
 		print(state.get_script().resource_path.get_file())

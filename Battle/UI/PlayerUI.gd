@@ -1,12 +1,15 @@
-extends Panel
+extends Control
 
-@onready var actionMenu := $ActionMenu
-@onready var attackMenu := $AttackMenu
-@onready var itemMenu := $ItemMenu
-@onready var miscMenu := $MiscMenu
-@onready var stats := $Stats
+@onready var actionMenu := $PlayerMenu/ActionMenu
+@onready var attackMenu := $PlayerMenu/AttackMenu
+@onready var itemMenu := $PlayerMenu/ItemMenu
+@onready var miscMenu := $PlayerMenu/MiscMenu
+@onready var stats := $PlayerMenu/Stats
+@onready var playerPointer := $PlayerPointer
+@onready var playerMenu := $PlayerMenu
 
 var player
+var battleManager
 
 var prevFocused : Control = null
 var menus : Array[Menu]
@@ -15,26 +18,27 @@ var openMenu : Menu = null
 signal selectionMade
 
 func _ready():
-	for node in get_children():
-		node.playerUI = self
-	
+	playerMenu.populateVars(self)
 	#Populate menus array
 	menus += [attackMenu, itemMenu, miscMenu]
 
 func showActionMenu(condition : bool):
-	visible = condition
+	playerMenu.visible = condition
 	
 	if(condition):
 		actionMenu.attackButton.grab_focus()
 
 func attackSelected(index : int):
-	#Whatever comes next for starting the attack. Selecting target.
-	#...
+	get_viewport().set_input_as_handled()
+	player.attackChosen(index)
 	
 	CloseActionMenu()
 	showActionMenu(false)
-	
-	player.attackChosen(index)
+	#Whatever comes next for starting the attack. Selecting target.
+	var selectionState = SelectionState.new(StateStack, playerPointer, self, battleManager)
+	StateStack.addState(selectionState)
+
+func attackTargetSelected():
 	emit_signal("selectionMade")
 
 func actionSelected(index : int):
