@@ -67,10 +67,16 @@ func gainHealth(amt : int):
 	emit_signal("reactionComplete")
 
 func boostDefense(amt : int):
-	#This should be a status
-	
-	localPlayer.def += 1
-	
+	localPlayer.def += amt
+
+func revertStatus():
+	localPlayer.def -= 1
+
+func gainStatus(statusName : String):
+	if(statusName == "Poison"):
+		battleManager.createStatus(PoisonStatus, self)
+	elif(statusName == "Defend"):
+		battleManager.createStatus(DefenseStatus, self)
 	emit_signal("reactionComplete")
 
 func playerDead():

@@ -4,6 +4,9 @@ class_name Battle_State
 var eventQueue = EventQueue.new()
 var battleManager
 
+enum battlePhases {START, PROMPT, ACTION, FINISH}
+var currentPhase : battlePhases
+
 func _init(sStack : StateStack, bm):
 	stateStack = sStack
 	battleManager = bm

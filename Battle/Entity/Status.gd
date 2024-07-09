@@ -22,6 +22,9 @@ func checkStatusCount():
 	if(currentCount >= turnCount):
 		endStatus()
 
+func addToEventQueue(eq):
+	pass
+
 func endStatus():
 	#Recovery animation + sfx
 	statusRoster.erase(self)

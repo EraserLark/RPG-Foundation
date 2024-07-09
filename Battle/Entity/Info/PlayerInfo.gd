@@ -30,5 +30,5 @@ func setupItems():
 	itemList.append_array([healItem, poisonItem])
 
 func setupMisc():
-	var defend = Defend.new(null, null, null)
+	var defend = Defend.new(null, null, playerEntity)
 	miscList.append(defend)

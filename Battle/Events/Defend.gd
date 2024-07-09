@@ -6,9 +6,10 @@ func _init(eManager, send, targ):
 	eventName = "Defend"
 
 func runEvent():
-	target = sender
 	target.reactionComplete.connect(resumeEvent)
-	target.boostDefense(1)
+	target.gainStatus("Defend")
+	#target = sender
+	#target.boostDefense(1)
 
 func resumeEvent():
 	target.reactionComplete.disconnect(resumeEvent)

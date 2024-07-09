@@ -40,3 +40,6 @@ func updateTurnCount():
 func createStatus(statusEffect, target):
 	var newStatus = statusEffect.new(self, target, statusRoster)
 	statusRoster.append(newStatus)
+	
+	#if(battleState.currentPhase == battleState.battlePhases.ACTION):
+	battleState.eventQueue.currentEvent.unresolvedStatuses.append(newStatus)

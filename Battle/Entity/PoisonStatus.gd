@@ -7,6 +7,10 @@ func _init(bm, tg, sr):
 	super(bm, status_name, turnCount, tg, sr)
 	statusAction = PoisonAction.new(null, self, target)
 
+func addToEventQueue(eq):
+	var eventQueue = eq
+	eventQueue.queue.append(statusAction)
+
 class PoisonAction:
 	extends Action
 	func _init(eManager, send, targ):

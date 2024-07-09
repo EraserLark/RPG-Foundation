@@ -12,7 +12,7 @@ func _init(eManager, bm):
 	battleMenu = bm.playerEntity.playerUI
 	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
 	StateStack.addState(battleMenuState)
-
+	
 func resumeEvent():
 	finishEvent()
 
