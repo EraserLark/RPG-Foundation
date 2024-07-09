@@ -7,6 +7,9 @@ func _init(bm, tg, sr):
 	super(bm, status_name, turnCount, tg, sr)
 	statusAction = DefendedAction.new(null, self, target, battleManager)
 
+func runStatus():
+	return statusAction
+
 func addToEventQueue(eq):
 	var eventQueue = eq
 	eventQueue.queue.push_front(statusAction)

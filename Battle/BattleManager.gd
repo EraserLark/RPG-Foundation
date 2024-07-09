@@ -43,3 +43,4 @@ func createStatus(statusEffect, target):
 	
 	#if(battleState.currentPhase == battleState.battlePhases.ACTION):
 	battleState.eventQueue.currentEvent.unresolvedStatuses.append(newStatus)
+	print("Stall")

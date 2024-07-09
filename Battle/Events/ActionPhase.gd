@@ -36,7 +36,7 @@ func runEvent(msg := {}):
 	actionEventQueue.queue.append(playerAction)
 	actionEventQueue.queue.append(enemyAction)
 	
-	unresolvedStatuses = battleManager.statusRoster
+	unresolvedStatuses = battleManager.statusRoster.duplicate()
 	
 	#var statuses = battleManager.statusRoster
 	#for status in statuses:

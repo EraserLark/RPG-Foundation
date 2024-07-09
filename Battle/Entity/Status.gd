@@ -28,4 +28,5 @@ func addToEventQueue(eq):
 func endStatus():
 	#Recovery animation + sfx
 	statusRoster.erase(self)
+	battleManager.battleState.eventQueue.currentEvent.unresolvedStatuses.erase(self)
 	queue_free()
