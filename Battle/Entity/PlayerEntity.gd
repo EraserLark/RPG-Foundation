@@ -25,7 +25,8 @@ func initialize(bm : BattleManager):
 	if(localPlayer.itemList.is_empty()):
 		localPlayer.setupItems()
 	
-	localPlayer.setupMisc()
+	if(localPlayer.miscList.is_empty()):
+		localPlayer.setupMisc()
 	
 	playerUI.stats.changeHealth(localPlayer.hp)
 	playerUI.attackMenu.initMenu(localPlayer.actionList)
