@@ -13,10 +13,10 @@ func runEvent():
 	var textbox = battleUI.get_node("Textbox")
 	
 	var message = ""
-	if(battleManager.enemyEntity.localEnemy.hp <= 0):
-		message = "You win!! :D"
-	elif(battleManager.playerEntity.localPlayer.hp <= 0):
+	if(battleManager.playerEntity.localPlayer.hp <= 0):
 		message = "You Lose :("
+	elif(battleManager.enemyEntities.size() <= 0):
+		message = "You win!! :D"
 	
 	var tbState = Textbox_State.new(StateStack, textbox, message)
 	StateStack.addState(tbState)

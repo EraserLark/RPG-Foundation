@@ -1,5 +1,5 @@
 extends Node2D
 
 @onready var background := $Background
-@onready var enemy := $EnemyActor
+@onready var enemies := $EnemyActors
 @onready var music := $AudioStreamPlayer2D

@@ -1,6 +1,8 @@
 extends Entity
 class_name EnemyEntity
 
+var enemyActorScene = preload("res://Battle/2D/EnemyActor.tscn")
+
 @export var enemyInfo : Resource
 var enemyActor : Node2D
 var localEnemy : EntityInfo
@@ -24,10 +26,15 @@ func initialize(bm : BattleManager):
 	
 	localEnemy = enemyInfo
 	
-	enemyActor = bm.enemyActor
+	if(enemyActor == null):
+		enemyActor = enemyActorScene.instantiate()
+		battleManager.battleStage.enemies.add_child(enemyActor)
+		enemyActor.position = Vector2(randi_range(100,1000), randi_range(200,400))
+		enemyActor.animPlayer.animation_finished.connect(_on_animation_player_animation_finished)
 
 func chooseAttack():
 	var chosenAction = localEnemy.actionList.pick_random()
+	localEnemy.selectedAction = chosenAction
 	return chosenAction
 
 func attack():
@@ -49,7 +56,11 @@ func gainStatus(statusName : String):
 	emit_signal("reactionComplete")
 
 func enemyDead():
-	battleManager.battleState.eventQueue.currentEvent.battleOver()
+	battleManager.battleRoster.enemies.erase(self)
+	battleManager.battleState.eventQueue.currentEvent.actionEventQueue.queue.erase(localEnemy.selectedAction)
+	enemyActor.queue_free()
+	emit_signal("reactionComplete")
+	queue_free()
 
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "SnowbroDamaged"):

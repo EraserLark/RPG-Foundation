@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=30 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="13_3de6x"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerPointer.gd" id="14_w6irq"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
-[ext_resource type="PackedScene" uid="uid://dqnlls711sdtk" path="res://Battle/2D/EnemyActor.tscn" id="15_2s7hj"]
 [ext_resource type="Script" path="res://Battle/UI/MiscMenu.gd" id="15_jhbnu"]
 [ext_resource type="Script" path="res://Battle/PlayerMenu.gd" id="16_mth5x"]
 [ext_resource type="Script" path="res://Battle/2D/PlayerActor.gd" id="16_uccub"]
@@ -30,8 +29,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbj4b"]
 atlas = ExtResource("18_v6xlx")
 region = Rect2(595, 170, 16, 16)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fdhrk"]
 
 [sub_resource type="Animation" id="Animation_84obq"]
 resource_name = "PlayerDamaged"
@@ -83,6 +80,9 @@ playerInfo = ExtResource("3_c76yb")
 [node name="Enemies" type="Node" parent="BattleRoster"]
 
 [node name="EnemyEntity" type="Node" parent="BattleRoster/Enemies"]
+script = ExtResource("4_6xbfu")
+
+[node name="EnemyEntity2" type="Node" parent="BattleRoster/Enemies"]
 script = ExtResource("4_6xbfu")
 
 [node name="BattleState" type="Node" parent="."]
@@ -229,17 +229,6 @@ position = Vector2(576, 328)
 scale = Vector2(5, 5)
 texture = ExtResource("20_pstye")
 
-[node name="EnemyActor" parent="BattleStage" instance=ExtResource("15_2s7hj")]
-position = Vector2(608, 320)
-scale = Vector2(5, 5)
-
-[node name="Area2D" parent="BattleStage/EnemyActor" index="1"]
-position = Vector2(0, 10)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleStage/EnemyActor/Area2D" index="1"]
-position = Vector2(-0.400002, -18.6)
-shape = SubResource("CircleShape2D_fdhrk")
-
 [node name="PlayerActor" type="Node2D" parent="BattleStage"]
 script = ExtResource("16_uccub")
 
@@ -250,6 +239,8 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage/PlayerActor"]
+
+[node name="EnemyActors" type="Node2D" parent="BattleStage"]
 
 [node name="Camera2D" type="Camera2D" parent="BattleStage"]
 position = Vector2(10, 0)
@@ -263,8 +254,6 @@ stream = ExtResource("22_dbrhh")
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ItemMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/MiscMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/MiscMenu" method="_on_item_list_item_activated"]
-[connection signal="animation_finished" from="BattleStage/EnemyActor/AnimationPlayer" to="BattleRoster/Enemies/EnemyEntity" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="BattleStage/PlayerActor/AnimationPlayer" to="BattleRoster/PlayerEntity" method="_on_animation_player_animation_finished"]
 
 [editable path="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ActionMenu"]
-[editable path="BattleStage/EnemyActor"]
