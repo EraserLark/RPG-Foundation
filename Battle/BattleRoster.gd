@@ -1,5 +1,7 @@
 extends Node
 
+var battleManager
+
 @onready var enemies : Array[EnemyEntity]
 
 func _ready():
@@ -7,3 +9,7 @@ func _ready():
 	
 	for enemyNode in enemyNodes:
 		enemies.append(enemyNode.getClassInstance())
+
+func checkEnemiesAlive():
+	if(enemies.size() <= 0):
+		battleManager.battleState.eventQueue.currentEvent.battleOver()

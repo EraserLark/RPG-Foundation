@@ -59,6 +59,7 @@ func enemyDead():
 	battleManager.battleRoster.enemies.erase(self)
 	battleManager.battleState.eventQueue.currentEvent.actionEventQueue.queue.erase(localEnemy.selectedAction)
 	enemyActor.queue_free()
+	battleManager.battleRoster.checkEnemiesAlive()
 	emit_signal("reactionComplete")
 	queue_free()
 

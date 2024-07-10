@@ -4,7 +4,7 @@ class_name BattleManager
 #BattleManager
 @onready var battleRoster := $BattleRoster
 @onready var playerEntity := $BattleRoster/PlayerEntity
-@onready var enemyEntities := $BattleRoster/Enemies
+var enemyEntities
 var statusRoster : Array[StatusEffect]
 var turnCount := 0
 
@@ -25,10 +25,12 @@ var battleState : Battle_State
 
 func _ready():
 	playerUI.battleManager = self
+	battleRoster.battleManager = self
+	enemyEntities = battleRoster.enemies
 	
 	playerEntity.initialize(self)
 	
-	for enemy in battleRoster.enemies:
+	for enemy in enemyEntities:
 		enemy.initialize(self)
 	
 	camera.make_current()
