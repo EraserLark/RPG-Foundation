@@ -10,9 +10,8 @@ func _init(eManager, bm):
 	battleUI = bm.battleUI
 
 func runEvent():
-	var textbox = battleUI.get_node("Textbox")
-	var tbState = Textbox_State.new(StateStack, textbox, "Battle Time!!")
-	StateStack.addState(tbState)
+	var introCutscene = BattleIntro.new(StateStack, battleManager.cutsceneManager, battleManager)
+	StateStack.addState(introCutscene)
 
 func resumeEvent():
 	finishEvent()

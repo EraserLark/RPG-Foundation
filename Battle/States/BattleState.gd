@@ -10,6 +10,7 @@ var currentPhase : battlePhases
 func _init(sStack : StateStack, bm):
 	stateStack = sStack
 	battleManager = bm
+	
 	var startingEvent = Start_Phase.new(eventQueue, battleManager)
 	eventQueue.addEvent(startingEvent)
 
@@ -26,4 +27,4 @@ func resumeState():
 		eventQueue.currentEvent.resumeEvent()
 
 func exit():
-	stateStack.removeState()
+	super()

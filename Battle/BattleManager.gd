@@ -12,6 +12,7 @@ var turnCount := 0
 var battleState : Battle_State
 @onready var battleUI := $CanvasLayer/BattleUI
 @onready var battleStage := $BattleStage
+@onready var cutsceneManager := $CutsceneManager
 
 #Player
 @onready var playerActor := $BattleStage/PlayerActor

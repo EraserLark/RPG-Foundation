@@ -18,7 +18,6 @@ config/icon="res://Art/icon.svg"
 [autoload]
 
 StateStack="*res://States/StateStack.gd"
-BattleDebug="*res://Battle/Debug/BattleDebug.gd"
 
 [display]
 
