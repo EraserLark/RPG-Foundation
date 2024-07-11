@@ -53,10 +53,11 @@ func battleOver():
 	isOver = true
 
 func finishEvent():
+	eventManager.queueEmpty.disconnect(finishEvent)
+	
 	if(!isOver):
 		battleManager.updateTurnCount()
 		var promptPhase = Prompt_Phase.new(eventManager, battleManager)
 		eventManager.addEvent(promptPhase)
 	
-	eventManager.queueEmpty.disconnect(finishEvent)
 	super()

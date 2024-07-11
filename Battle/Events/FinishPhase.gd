@@ -18,8 +18,15 @@ func runEvent():
 	elif(battleManager.enemyEntities.size() <= 0):
 		message = "You win!! :D"
 	
-	var tbState = Textbox_State.new(StateStack, textbox, message)
-	StateStack.addState(tbState)
+	var tbEvent = TB_Event.new(eventManager, StateStack, textbox, message)
+	eventManager.addEvent(tbEvent)
+	
+	var cutsceneEvent = CutsceneEvent.new(eventManager, battleManager, BattleOutro)
+	eventManager.addEvent(cutsceneEvent)
+	
+	eventManager.queueEmpty.connect(resumeEvent)
+	print(eventManager.queueEmpty.is_connected(self.resumeEvent))
+	eventManager.popQueue()
 
 func resumeEvent():
 	finishEvent()
