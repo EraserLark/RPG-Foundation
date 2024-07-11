@@ -368,7 +368,6 @@ anchor_mode = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage"]
 stream = ExtResource("22_dbrhh")
-autoplay = true
 
 [node name="CutsceneManager" type="AnimationPlayer" parent="."]
 libraries = {

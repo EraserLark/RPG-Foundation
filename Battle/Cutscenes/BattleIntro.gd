@@ -10,6 +10,9 @@ func enter(msg := {}):
 	var fadeIn = AnimationEvent.new(eventQueue, cutsceneManager, "FadeIn")
 	eventQueue.addEvent(fadeIn)
 	
+	var enemiesEntering = EnemyEnter.new(eventQueue, battleManager.enemyEntities)
+	eventQueue.addEvent(enemiesEntering)
+	
 	var introMessage = TB_Event.new(eventQueue, StateStack, battleManager.battleUI.textbox, "Snowbros are ready to tussle!")
 	eventQueue.addEvent(introMessage)
 	
