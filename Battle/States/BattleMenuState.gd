@@ -8,7 +8,7 @@ func _init(sStack : StateStack, bMenu):
 	battleMenu = bMenu
 	battleMenu.selectionMade.connect(exit)
 
-func enter(msg := {}):
+func enter(_msg := {}):
 	battleMenu.visible = true
 	battleMenu.showActionMenu(true)
 

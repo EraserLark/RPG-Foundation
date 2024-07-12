@@ -3,13 +3,11 @@ class_name EventQueue
 
 var queue : Array[Event]
 var currentEvent : Event
-var startState = null
 
 signal queueEmpty
 
 func _init():
 	pass
-	#startState = sState
 
 func addEvent(e : Event):
 	queue.append(e)
@@ -26,4 +24,5 @@ func popQueue():
 		currentEvent.runEvent()
 	else:
 		#currentEvent.resumeEvent()
+		currentEvent = null
 		emit_signal("queueEmpty")

@@ -22,7 +22,7 @@ func checkStatusCount():
 	if(currentCount >= turnCount):
 		endStatus()
 
-func addToEventQueue(eq):
+func addToEventQueue(_eq):
 	pass
 
 func endStatus():

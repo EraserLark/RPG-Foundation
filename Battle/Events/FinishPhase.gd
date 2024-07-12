@@ -4,8 +4,10 @@ class_name Finish_Phase
 var battleUI
 var battleManager
 
-func _init(eManager, bm):
-	super(eManager)
+var finshEQ = EventQueue.new()
+
+func _init(battleEQ, bm):
+	super(battleEQ)
 	battleUI = bm.battleUI
 	battleManager = bm
 
@@ -18,20 +20,19 @@ func runEvent():
 	elif(battleManager.enemyEntities.size() <= 0):
 		message = "You win!! :D"
 	
-	var tbEvent = TB_Event.new(eventManager, StateStack, textbox, message)
-	eventManager.addEvent(tbEvent)
+	Textbox_State.createEvent(finshEQ, StateStack, textbox, message)
 	
-	var cutsceneEvent = CutsceneEvent.new(eventManager, battleManager, BattleOutro)
-	eventManager.addEvent(cutsceneEvent)
+	Cutscene_State.createEvent(finshEQ, battleManager, BattleOutro)
 	
-	eventManager.queueEmpty.connect(resumeEvent)
-	print(eventManager.queueEmpty.is_connected(self.resumeEvent))
-	eventManager.popQueue()
+	finshEQ.queueEmpty.connect(resumeEvent)
+	print(finshEQ.queueEmpty.is_connected(self.resumeEvent))
+	finshEQ.popQueue()
 
 func resumeEvent():
-	finishEvent()
+	if(finshEQ.queue.is_empty() && finshEQ.currentEvent == null):
+		finishEvent()
+	else:
+		finshEQ.currentEvent.resumeEvent()
 
 func finishEvent():
-	set_process_input(false)
-	StateStack.removeState()
-	battleManager.queue_free()
+	super()

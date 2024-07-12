@@ -1,13 +1,11 @@
 extends Event
 class_name Prompt_Phase
 
-var thisEventManager = EventQueue.new()
-
 var battleMenu
 var battleManager
 
-func _init(eManager, bm):
-	super(eManager)
+func _init(battleEQ, bm):
+	super(battleEQ)
 	battleManager = bm
 	battleMenu = bm.playerEntity.playerUI
 	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)

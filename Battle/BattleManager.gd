@@ -18,9 +18,6 @@ var battleState : Battle_State
 @onready var playerActor := $BattleStage/PlayerActor
 @onready var playerUI := $CanvasLayer/BattleUI/PlayerUI
 
-#Enemy
-@onready var enemyActor := $BattleStage/EnemyActor
-
 #Other
 @onready var camera := $BattleStage/Camera2D
 

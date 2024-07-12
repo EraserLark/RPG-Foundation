@@ -2,7 +2,7 @@ extends State
 class_name Cutscene_State
 
 var cutsceneManager : CutsceneManager
-var eventQueue = EventQueue.new()
+var cutsceneEQ = EventQueue.new()
 var battleManager
 
 func _init(sStack, cm, bm):
@@ -11,14 +11,42 @@ func _init(sStack, cm, bm):
 	battleManager = bm
 	
 	cutsceneManager.currentCutscene = self
+	cutsceneEQ.queueEmpty.connect(exit)
 
 func animFin():
-	eventQueue.currentEvent.resumeEvent() 
+	cutsceneEQ.currentEvent.resumeEvent()
+
+func exit():
+	cutsceneEQ.queueEmpty.disconnect(exit)
+	super()
 
 func resumeState():
-	if(eventQueue.queue.front() == eventQueue.currentEvent):
+	if(cutsceneEQ.queue.is_empty() && cutsceneEQ.currentEvent == null):
 		exit()
-	elif(eventQueue.queue.is_empty()):
+	elif(cutsceneEQ.queue.front() == cutsceneEQ.currentEvent):
 		exit()
 	else:
-		eventQueue.currentEvent.resumeEvent()
+		cutsceneEQ.currentEvent.resumeEvent()
+
+static func createEvent(eManager, bm, cc):
+	var cutsceneEvent = EventClass.new(eManager, bm, cc)
+	eManager.addEvent(cutsceneEvent)
+
+class EventClass:
+	#class_name CutsceneEvent
+	extends Event
+	
+	var battleManager
+	var cutsceneClass
+	
+	func _init(eManager, bm, cc):
+		super(eManager)
+		battleManager = bm
+		cutsceneClass = cc
+	
+	func runEvent():
+		var cutscene = cutsceneClass.new(StateStack, battleManager.cutsceneManager, battleManager)
+		StateStack.addState(cutscene)
+	
+	func resumeEvent():
+		finishEvent()

@@ -7,16 +7,16 @@ var stateStack = null
 func _init(sStack : StateStack):
 	stateStack = sStack
 
-func handleInput(event : InputEvent):
+func handleInput(_event : InputEvent):
 	pass
 
-func enter(msg := {}):
+func enter(_msg := {}):
 	pass
 
-func update(delta : float):
+func update(_delta : float):
 	pass	
 
-func physicsUpdate(delta : float):
+func physicsUpdate(_delta : float):
 	pass
 
 func resumeState():
@@ -24,3 +24,6 @@ func resumeState():
 
 func exit():
 	stateStack.removeState()
+
+class EventClass:
+	pass

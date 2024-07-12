@@ -1,7 +1,7 @@
 extends EntityInfo
 class_name PlayerInfo
 
-@export var exp : int
+@export var xp : int
 @export var money : int
 @export var items : Array[String]
 

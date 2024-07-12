@@ -359,6 +359,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage/PlayerActor"]
+autoplay = true
 
 [node name="EnemyActors" type="Node2D" parent="BattleStage"]
 
@@ -368,6 +369,7 @@ anchor_mode = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage"]
 stream = ExtResource("22_dbrhh")
+autoplay = true
 
 [node name="CutsceneManager" type="AnimationPlayer" parent="."]
 libraries = {

@@ -9,13 +9,13 @@ func _init(sStack, tb, m):
 	textbox = tb
 	message = m
 
-func enter(msg := {}):
+func enter(_msg := {}):
 	super()
 	textbox.line = message
 	textbox.openBox()
 	textbox.typeText()
 
-func update(delta : float):
+func update(_delta : float):
 	if Input.is_action_just_pressed("ui_accept"):
 		if textbox.finished == false:
 			textbox.skip = true
@@ -27,3 +27,30 @@ func update(delta : float):
 func exit():
 	textbox.closeBox()
 	super()
+
+static func createEvent(eManager, ss, tb, m):
+	var tbEvent = EventClass.new(eManager, ss, tb, m)
+	eManager.addEvent(tbEvent)
+
+class EventClass:
+	extends Event
+
+	var stateStack
+	var textbox
+	var message
+
+	func _init(eManager, ss, tb, m):
+		super(eManager)
+		stateStack = ss
+		textbox = tb
+		message = m
+
+	func runEvent():
+		var tbState = Textbox_State.new(StateStack, textbox, message)
+		StateStack.addState(tbState)
+
+	func resumeEvent():
+		finishEvent()
+
+	func finishEvent():
+		eventManager.popQueue()

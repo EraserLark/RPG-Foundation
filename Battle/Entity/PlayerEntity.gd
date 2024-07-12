@@ -81,7 +81,7 @@ func gainStatus(statusName : String):
 	emit_signal("reactionComplete")
 
 func playerDead():
-	battleManager.battleState.eventQueue.currentEvent.battleOver()
+	battleManager.battleState.battleEQ.currentEvent.battleOver()
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	emit_signal("reactionComplete")

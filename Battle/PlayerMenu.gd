@@ -2,6 +2,6 @@ extends Panel
 
 var playerUI
 
-func populateVars(playerUI):
+func populateVars(pUI):
 	for node in get_children():
-		node.playerUI = playerUI
+		node.playerUI = pUI

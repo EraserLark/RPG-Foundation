@@ -1,7 +1,7 @@
 extends State
 class_name Battle_State
 
-var eventQueue = EventQueue.new()
+var battleEQ = EventQueue.new()
 var battleManager
 
 enum battlePhases {START, PROMPT, ACTION, FINISH}
@@ -11,20 +11,27 @@ func _init(sStack : StateStack, bm):
 	stateStack = sStack
 	battleManager = bm
 	
-	var startingEvent = Start_Phase.new(eventQueue, battleManager)
-	eventQueue.addEvent(startingEvent)
+	var startingEvent = Start_Phase.new(battleEQ, battleManager)
+	battleEQ.addEvent(startingEvent)
+	
+	battleEQ.queueEmpty.connect(exit)
 
-func handleInput(event : InputEvent):
+func handleInput(_event : InputEvent):
 	pass
 
-func enter(msg := {}):
-	eventQueue.popQueue()
+func enter(_msg := {}):
+	battleEQ.popQueue()
 
 func resumeState():
-	if(eventQueue.queue.front() == eventQueue.currentEvent):
+	if(battleEQ.queue.is_empty() && battleEQ.currentEvent == null):
+		exit()
+	elif(battleEQ.queue.front() == battleEQ.currentEvent):
 		exit()
 	else:
-		eventQueue.currentEvent.resumeEvent()
+		battleEQ.currentEvent.resumeEvent()
 
 func exit():
+	set_process_input(false)
+	battleEQ.queueEmpty.disconnect(exit)
 	super()
+	battleManager.queue_free()

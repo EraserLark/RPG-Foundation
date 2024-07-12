@@ -16,12 +16,12 @@ func _init(sStack : StateStack, pp, plui, bm):
 	battleManager = bm
 	enemies = battleManager.battleRoster.enemies
 
-func enter(msg := {}):
+func enter(_msg := {}):
 	currentSelection = 0
 	moveCursor(currentSelection)
 	playerPointer.visible = true
 
-func handleInput(event):
+func handleInput(_event):
 	if Input.is_action_just_pressed("ui_accept"):
 		confirmSelection()
 	elif Input.is_action_just_pressed("ui_left"):

@@ -4,13 +4,13 @@ class_name BattleOutro
 func _init(sStack, cm, bm):
 	super(sStack, cm, bm)
 	
-	#eventQueue.queueEmpty.connect(exit)
+	#cutsceneEQ.queueEmpty.connect(exit)
 
-func enter(msg := {}):
-	var fadeOut = AnimationEvent.new(eventQueue, cutsceneManager, "FadeOut")
-	eventQueue.addEvent(fadeOut)
+func enter(_msg := {}):
+	var fadeOut = AnimationEvent.new(cutsceneEQ, cutsceneManager, "FadeOut")
+	cutsceneEQ.addEvent(fadeOut)
 	
-	eventQueue.popQueue()
+	cutsceneEQ.popQueue()
 
 func exit():
 	super()

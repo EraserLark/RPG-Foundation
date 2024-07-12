@@ -9,45 +9,43 @@ var battleManager
 var isOver := false
 var unresolvedStatuses : Array[StatusEffect]
 
-var actionEventQueue
+var actionEQ : BattleActionQueue
 
-func _init(eManager, bm):
-	super(eManager)
+func _init(battleEQ, bm):
+	super(battleEQ)
 	battleManager = bm
 	enemies = bm.battleRoster.enemies
 	player = bm.playerEntity
 	battleUI = bm.battleUI
 	
-	actionEventQueue = BattleActionQueue.new(battleManager, self)
-	actionEventQueue.queueEmpty.connect(finishEvent)
+	actionEQ = BattleActionQueue.new(battleManager, self)
+	actionEQ.queueEmpty.connect(finishEvent)
 
-func runEvent(msg := {}):
+func runEvent(_msg := {}):
 	var playerAction = player.playerInfo.selectedAction
-	playerAction.eventManager = self.actionEventQueue
+	playerAction.eventManager = self.actionEQ
 	playerAction.sender = player
-	#if(playerAction.target == null):
-		#playerAction.target = enemy
-	actionEventQueue.queue.append(playerAction)
+	actionEQ.queue.append(playerAction)
 	
 	for enemy in battleManager.battleRoster.enemies:
 		var enemyAction = enemy.chooseAttack()
-		enemyAction.eventManager = self.actionEventQueue
+		enemyAction.eventManager = self.actionEQ
 		enemyAction.sender = enemy
 		enemyAction.target = player
-		actionEventQueue.queue.append(enemyAction)
+		actionEQ.queue.append(enemyAction)
 	
 	unresolvedStatuses = battleManager.statusRoster.duplicate()
 	
-	actionEventQueue.popQueue()
+	actionEQ.popQueue()
 
 func resumeEvent():
-	if(actionEventQueue.queue.front() == actionEventQueue.currentEvent):
+	if(actionEQ.queue.front() == actionEQ.currentEvent):
 		finishEvent()
 	else:
-		actionEventQueue.currentEvent.resumeEvent()
+		actionEQ.currentEvent.resumeEvent()
 
 func battleOver():
-	actionEventQueue.queue.clear()
+	actionEQ.queue.clear()
 	var finishPhase = Finish_Phase.new(eventManager, battleManager)
 	eventManager.addEvent(finishPhase)
 	isOver = true

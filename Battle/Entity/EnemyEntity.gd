@@ -43,9 +43,9 @@ func attack():
 
 func takeDamage(dmg : int):
 	var trueDmg = localEnemy.calcDamage(dmg)
-	localEnemy.takeDamage(dmg)
+	localEnemy.takeDamage(trueDmg)
 	
-	enemyActor.damageFeedback(dmg)
+	enemyActor.damageFeedback(trueDmg)
 	
 	var remainingHealth = localEnemy.hp
 	if(remainingHealth <= 0):
@@ -58,7 +58,7 @@ func gainStatus(statusName : String):
 
 func enemyDead():
 	battleManager.battleRoster.enemies.erase(self)
-	battleManager.battleState.eventQueue.currentEvent.actionEventQueue.queue.erase(localEnemy.selectedAction)
+	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(localEnemy.selectedAction)
 	enemyActor.queue_free()
 	battleManager.battleRoster.checkEnemiesAlive()
 	emit_signal("reactionComplete")

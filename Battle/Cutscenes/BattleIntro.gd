@@ -3,20 +3,18 @@ class_name BattleIntro
 
 func _init(sStack, cm, bm):
 	super(sStack, cm, bm)
-	
-	#eventQueue.queueEmpty.connect(exit)
 
-func enter(msg := {}):
-	var fadeIn = AnimationEvent.new(eventQueue, cutsceneManager, "FadeIn")
-	eventQueue.addEvent(fadeIn)
+func enter(_msg := {}):
+	var fadeIn = AnimationEvent.new(cutsceneEQ, cutsceneManager, "FadeIn")
+	cutsceneEQ.addEvent(fadeIn)
 	
-	var enemiesEntering = EnemyEnter.new(eventQueue, battleManager.enemyEntities)
-	eventQueue.addEvent(enemiesEntering)
+	var enemiesEntering = EnemyEnter.new(cutsceneEQ, battleManager.enemyEntities)
+	cutsceneEQ.addEvent(enemiesEntering)
 	
-	var introMessage = TB_Event.new(eventQueue, StateStack, battleManager.battleUI.textbox, "Snowbros are ready to tussle!")
-	eventQueue.addEvent(introMessage)
+	#var introMessage = Textbox_State.TB_Event.new(cutsceneEQ, StateStack, battleManager.battleUI.textbox, "Snowbros are ready to tussle!")
+	Textbox_State.createEvent(cutsceneEQ, StateStack, battleManager.battleUI.textbox, "Snowbros are ready to tussle!")
 	
-	eventQueue.popQueue()
+	cutsceneEQ.popQueue()
 
 func exit():
 	super()

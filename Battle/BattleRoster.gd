@@ -12,4 +12,4 @@ func _ready():
 
 func checkEnemiesAlive():
 	if(enemies.size() <= 0):
-		battleManager.battleState.eventQueue.currentEvent.battleOver()
+		battleManager.battleState.battleEQ.currentEvent.battleOver()

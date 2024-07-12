@@ -4,8 +4,8 @@ class_name Start_Phase
 var battleUI
 var battleManager
 
-func _init(eManager, bm):
-	super(eManager)
+func _init(battleEQ, bm):
+	super(battleEQ)
 	battleManager = bm
 	battleUI = bm.battleUI
 
