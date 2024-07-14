@@ -18,3 +18,7 @@ func _ready():
 func checkEnemiesAlive():
 	if(enemies.size() <= 0):
 		battleManager.battleState.battleEQ.currentEvent.battleOver()
+
+func checkPlayersAlive():
+	if(players.size() <= 0):
+		battleManager.battleState.battleEQ.currentEvent.battleOver()

@@ -355,7 +355,6 @@ texture = ExtResource("20_pstye")
 script = ExtResource("16_uccub")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleStage/PlayerActor"]
-root_node = NodePath("../../../BattleRoster/Players/PlayerEntity")
 libraries = {
 "": SubResource("AnimationLibrary_72d87")
 }

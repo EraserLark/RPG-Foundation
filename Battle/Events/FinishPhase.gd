@@ -15,7 +15,7 @@ func runEvent():
 	var textbox = battleUI.get_node("Textbox")
 	
 	var message = ""
-	if(battleManager.playerEntity.localPlayer.hp <= 0):
+	if(battleManager.playerEntities.size() <= 0):
 		message = "You Lose :("
 	elif(battleManager.enemyEntities.size() <= 0):
 		message = "You win!! :D"
