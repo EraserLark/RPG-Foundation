@@ -15,7 +15,7 @@ func _init(battleEQ, bm):
 	super(battleEQ)
 	battleManager = bm
 	enemies = bm.battleRoster.enemies
-	player = bm.playerEntity
+	player = bm.playerEntities[0]
 	battleUI = bm.battleUI
 	
 	actionEQ = BattleActionQueue.new(battleManager, self)

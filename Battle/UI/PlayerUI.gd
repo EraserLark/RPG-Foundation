@@ -29,33 +29,26 @@ func showActionMenu(condition : bool):
 		actionMenu.attackButton.grab_focus()
 
 func attackSelected(index : int):
-	get_viewport().set_input_as_handled()
-	player.attackChosen(index)
-	
-	CloseActionMenu()
-	showActionMenu(false)
-	#Whatever comes next for starting the attack. Selecting target.
-	var selectionState = SelectionState.new(StateStack, playerPointer, self, battleManager)
-	StateStack.addState(selectionState)
-
-func attackTargetSelected():
-	emit_signal("selectionMade")
+	var selectedAction = player.attackChosen(index)
+	setupSelection(selectedAction)
 
 func actionSelected(index : int):
-	#Whatever comes next for starting the attack. Selecting target.
-	#...
-	
-	CloseActionMenu()
-	showActionMenu(false)
-	
-	player.actionChosen(index)
-	emit_signal("selectionMade")
+	var selectedAction = player.actionChosen(index)
+	setupSelection(selectedAction)
 
 func itemSelected(index : int):
+	var selectedAction = player.itemChosen(index)
+	setupSelection(selectedAction)
+
+func setupSelection(selectedAction : Action):
+	get_viewport().set_input_as_handled() #prevents input from carrying thru
 	CloseActionMenu()
 	showActionMenu(false)
 	
-	player.itemChosen(index)
+	var selectionState = SelectionState.new(StateStack, playerPointer, self, battleManager, selectedAction)
+	StateStack.addState(selectionState)
+
+func actionTargetSelected():
 	emit_signal("selectionMade")
 
 func OpenActionMenu(menuNum : int):

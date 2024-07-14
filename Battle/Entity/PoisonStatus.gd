@@ -5,7 +5,8 @@ func _init(bm, tg, sr):
 	status_name = "Posioned"
 	turnCount = 3
 	super(bm, status_name, turnCount, tg, sr)
-	statusAction = PoisonAction.new(null, self, target)
+	var targets = [bm.enemyEntities, bm.playerEntities]
+	statusAction = PoisonAction.new(null, self, target, targets)
 
 func addToEventQueue(eq):
 	var eventQueue = eq
@@ -13,8 +14,8 @@ func addToEventQueue(eq):
 
 class PoisonAction:
 	extends Action
-	func _init(eManager, send, targ):
-		super(eManager, send, targ)
+	func _init(eManager, send, targ, targOpts):
+		super(eManager, send, targ, targOpts)
 	func runEvent():
 		target.reactionComplete.connect(resumeEvent)
 		target.takeDamage(1)

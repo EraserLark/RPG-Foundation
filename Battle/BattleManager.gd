@@ -3,7 +3,7 @@ class_name BattleManager
 
 #BattleManager
 @onready var battleRoster := $BattleRoster
-@onready var playerEntity := $BattleRoster/PlayerEntity
+var playerEntities
 var enemyEntities
 var statusRoster : Array[StatusEffect]
 var turnCount := 0
@@ -24,9 +24,12 @@ var battleState : Battle_State
 func _ready():
 	playerUI.battleManager = self
 	battleRoster.battleManager = self
+	
+	playerEntities = battleRoster.players
 	enemyEntities = battleRoster.enemies
 	
-	playerEntity.initialize(self)
+	for player in playerEntities:
+		player.initialize(self)
 	
 	for enemy in enemyEntities:
 		enemy.initialize(self)
@@ -45,6 +48,5 @@ func createStatus(statusEffect, target):
 	var newStatus = statusEffect.new(self, target, statusRoster)
 	statusRoster.append(newStatus)
 	
-	#if(battleState.currentPhase == battleState.battlePhases.ACTION):
-	battleState.eventQueue.currentEvent.unresolvedStatuses.append(newStatus)
+	battleState.battleEQ.currentEvent.unresolvedStatuses.append(newStatus)
 	print("Stall")

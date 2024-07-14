@@ -19,8 +19,8 @@ func initialize(bm : BattleManager):
 		enemyInfo.atk = 2
 		
 		var enemyAtk = enemyInfo.atk
-		var enemyAction1 = Attack.new(null, "Punch", self, null, enemyAtk, 0)
-		var enemyAction2 = Attack.new(null, "Bingo", self, null, enemyAtk + 2, 0)
+		var enemyAction1 = Attack.new(null, "Punch", self, null, battleManager.battleRoster.players, enemyAtk, 0)
+		var enemyAction2 = Attack.new(null, "Bingo", self, null, battleManager.battleRoster.players, enemyAtk + 2, 0)
 		
 		enemyInfo.actionList.append_array([enemyAction1, enemyAction2])
 	
@@ -28,6 +28,7 @@ func initialize(bm : BattleManager):
 	
 	if(enemyActor == null):
 		enemyActor = enemyActorScene.instantiate()
+		actor = enemyActor
 		battleManager.battleStage.enemies.add_child(enemyActor)
 		enemyActor.position = Vector2(randi_range(100,1000), randi_range(200,300))
 		enemyActor.animPlayer.animation_finished.connect(_on_animation_player_animation_finished)

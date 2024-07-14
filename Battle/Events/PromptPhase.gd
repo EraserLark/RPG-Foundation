@@ -7,7 +7,7 @@ var battleManager
 func _init(battleEQ, bm):
 	super(battleEQ)
 	battleManager = bm
-	battleMenu = bm.playerEntity.playerUI
+	battleMenu = bm.playerEntities[0].playerUI
 	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
 	StateStack.addState(battleMenuState)
 	

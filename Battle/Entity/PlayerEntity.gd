@@ -19,14 +19,16 @@ func initialize(bm : BattleManager):
 	playerActor.player = self
 	playerUI.player = self
 	
+	actor = playerActor
+	
 	if(localPlayer.actionList.is_empty()):
-		localPlayer.setupAttacks()
+		localPlayer.setupAttacks(battleManager)
 	
 	if(localPlayer.itemList.is_empty()):
-		localPlayer.setupItems()
+		localPlayer.setupItems(battleManager)
 	
 	if(localPlayer.miscList.is_empty()):
-		localPlayer.setupMisc()
+		localPlayer.setupMisc(battleManager)
 	
 	playerUI.stats.changeHealth(localPlayer.hp)
 	playerUI.attackMenu.initMenu(localPlayer.actionList)
@@ -35,14 +37,17 @@ func initialize(bm : BattleManager):
 	
 func attackChosen(attackNum : int):
 	localPlayer.selectedAction = localPlayer.actionList[attackNum]
+	return localPlayer.selectedAction
 
 func actionChosen(actionNum : int):
 	localPlayer.selectedAction = localPlayer.miscList[actionNum]
+	return localPlayer.selectedAction
 
 func itemChosen(itemNum : int):
 	var item = localPlayer.itemList[itemNum]
 	localPlayer.selectedAction = item.itemAction
 	localPlayer.itemList.remove_at(itemNum)
+	return localPlayer.selectedAction
 
 func attack():
 	pass

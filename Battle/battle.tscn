@@ -188,10 +188,6 @@ script = ExtResource("1_70l2y")
 [node name="BattleRoster" type="Node" parent="."]
 script = ExtResource("2_l87y1")
 
-[node name="PlayerEntity" type="Node" parent="BattleRoster"]
-script = ExtResource("2_1wv47")
-playerInfo = ExtResource("3_c76yb")
-
 [node name="Enemies" type="Node" parent="BattleRoster"]
 
 [node name="EnemyEntity" type="Node" parent="BattleRoster/Enemies"]
@@ -199,6 +195,12 @@ script = ExtResource("4_6xbfu")
 
 [node name="EnemyEntity2" type="Node" parent="BattleRoster/Enemies"]
 script = ExtResource("4_6xbfu")
+
+[node name="Players" type="Node" parent="BattleRoster"]
+
+[node name="PlayerEntity" type="Node" parent="BattleRoster/Players"]
+script = ExtResource("2_1wv47")
+playerInfo = ExtResource("3_c76yb")
 
 [node name="BattleState" type="Node" parent="."]
 script = ExtResource("17_6gfpt")
@@ -353,7 +355,7 @@ texture = ExtResource("20_pstye")
 script = ExtResource("16_uccub")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleStage/PlayerActor"]
-root_node = NodePath("../../../BattleRoster/PlayerEntity")
+root_node = NodePath("../../../BattleRoster/Players/PlayerEntity")
 libraries = {
 "": SubResource("AnimationLibrary_72d87")
 }
@@ -382,7 +384,7 @@ script = ExtResource("26_8cjoh")
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ItemMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/MiscMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/MiscMenu" method="_on_item_list_item_activated"]
-[connection signal="animation_finished" from="BattleStage/PlayerActor/AnimationPlayer" to="BattleRoster/PlayerEntity" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="BattleStage/PlayerActor/AnimationPlayer" to="BattleRoster/Players/PlayerEntity" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="CutsceneManager" to="CutsceneManager" method="_on_animation_finished"]
 
 [editable path="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ActionMenu"]

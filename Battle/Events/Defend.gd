@@ -1,8 +1,8 @@
 extends Action
 class_name Defend
 
-func _init(eManager, send, targ):
-	super(eManager, send, targ)
+func _init(eManager, send, targ, targOpts):
+	super(eManager, send, targ, targOpts)
 	eventName = "Defend"
 
 func runEvent():

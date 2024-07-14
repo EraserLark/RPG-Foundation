@@ -5,7 +5,7 @@ func _init(bm, tg, sr):
 	status_name = "Defense Raised"
 	turnCount = 1
 	super(bm, status_name, turnCount, tg, sr)
-	statusAction = DefendedAction.new(null, self, target, battleManager)
+	statusAction = DefendedAction.new(null, self, target, bm.players, battleManager)
 
 func runStatus():
 	return statusAction
@@ -21,8 +21,8 @@ func endStatus():
 class DefendedAction:
 	extends Action
 	var battleManager
-	func _init(eManager, send, targ, bm):
-		super(eManager, send, targ)
+	func _init(eManager, send, targ, targOpts, bm):
+		super(eManager, send, targ, targOpts)
 		battleManager = bm
 	func runEvent():
 		target.reactionComplete.connect(resumeEvent)

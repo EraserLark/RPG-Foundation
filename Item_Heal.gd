@@ -1,13 +1,14 @@
 extends Item
 class_name Item_Heal
 
-func _init():
-	itemAction = HealAction.new(null, null, null)
+func _init(bm : BattleManager):
+	super(bm)
+	itemAction = HealAction.new(null, bm.playerEntities[0], null, bm.playerEntities)
 
 class HealAction:
 	extends Action
-	func _init(eManager, send, targ):
-		super(eManager, send, targ)
+	func _init(eManager, send, targ, targOpts):
+		super(eManager, send, targ, targOpts)
 		eventName = "Mushroom"
 	func runEvent():
 		target = sender

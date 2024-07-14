@@ -5,16 +5,18 @@ var playerPointer : Control
 var playerUI : Control
 var battleManager
 
-var enemies : Array[EnemyEntity]
-var currentEnemy : EnemyEntity
+var selectedAction : Action
+var targets : Array
+var currentTarget : Entity
 var currentSelection : int
 
-func _init(sStack : StateStack, pp, plui, bm):
+func _init(sStack : StateStack, pp, plui, bm, sa):
 	super(sStack)
 	playerPointer = pp
 	playerUI = plui
 	battleManager = bm
-	enemies = battleManager.battleRoster.enemies
+	selectedAction = sa
+	targets = selectedAction.targetOptions
 
 func enter(_msg := {}):
 	currentSelection = 0
@@ -26,24 +28,24 @@ func handleInput(_event):
 		confirmSelection()
 	elif Input.is_action_just_pressed("ui_left"):
 		currentSelection -= 1
-		currentSelection %= enemies.size()
+		currentSelection %= targets.size()
 		moveCursor(currentSelection)
 	elif Input.is_action_just_pressed("ui_right"):
 		currentSelection += 1
-		currentSelection %= enemies.size()
+		currentSelection %= targets.size()
 		moveCursor(currentSelection)
 
 func exit():
 	playerPointer.visible = false
-	playerUI.attackTargetSelected()
+	playerUI.actionTargetSelected()
 	super()
 
 func moveCursor(selection : int):
-	currentEnemy = enemies[selection]
-	var enemyPos = currentEnemy.enemyActor.position
+	currentTarget = targets[selection]
+	var targetPos = currentTarget.actor.position
 	
-	playerPointer.moveToPosition(enemyPos)
+	playerPointer.moveToPosition(targetPos)
 
 func confirmSelection():
-	battleManager.playerEntity.localPlayer.selectedAction.target = currentEnemy
+	selectedAction.target = currentTarget
 	exit()
