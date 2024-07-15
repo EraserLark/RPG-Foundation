@@ -14,7 +14,7 @@ class PoisoningAction:
 		eventName = "Poison Pudding"
 	func runEvent():
 		target.reactionComplete.connect(resumeEvent)
-		target.gainStatus("Poison")
+		target.gainStatus(Status.Type.POISON)
 	func resumeEvent():
 		target.reactionComplete.disconnect(resumeEvent)
 		finishEvent()

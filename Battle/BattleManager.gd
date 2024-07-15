@@ -43,10 +43,3 @@ func updateTurnCount():
 	turnCount += 1
 	for status in statusRoster:
 		status.currentCount += 1
-
-func createStatus(statusEffect, target):
-	var newStatus = statusEffect.new(self, target, statusRoster)
-	statusRoster.append(newStatus)
-	
-	battleState.battleEQ.currentEvent.unresolvedStatuses.append(newStatus)
-	print("Stall")

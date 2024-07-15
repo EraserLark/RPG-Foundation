@@ -56,7 +56,7 @@ func takeDamage(dmg : int):
 	var trueDmg = localPlayer.calcDamage(dmg)
 	localPlayer.takeDamage(trueDmg)
 	
-	playerActor.damageAnimation()
+	playerActor.damageAnimation(trueDmg)
 	
 	var remainingHealth = localPlayer.hp
 	playerUI.changeStatsHealth(remainingHealth)
@@ -78,11 +78,11 @@ func boostDefense(amt : int):
 func revertStatus():
 	localPlayer.def -= 1
 
-func gainStatus(statusName : String):
-	if(statusName == "Poison"):
-		battleManager.createStatus(PoisonStatus, self)
-	elif(statusName == "Defend"):
-		battleManager.createStatus(DefenseStatus, self)
+func gainStatus(statusType):
+	if(statusType == Status.Type.POISON):
+		applyStatus(PoisonStatus, battleManager.statusRoster)
+	elif(statusType == Status.Type.DEFUP):
+		applyStatus(DefenseStatus, battleManager.statusRoster)
 	emit_signal("reactionComplete")
 
 func playerDead():

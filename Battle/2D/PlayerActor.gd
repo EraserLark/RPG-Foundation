@@ -6,5 +6,10 @@ var player
 @onready var cam = $"../Camera2D"
 @onready var animPlayer = $AnimationPlayer
 
-func damageAnimation():
+var damageNum := preload("res://Battle/2D/PopUpNumber.tscn")
+
+func damageAnimation(dmgAmt : int):
 	animPlayer.play("PlayerDamaged")
+	var damageNumber := damageNum.instantiate()
+	damageNumber.setLabel(dmgAmt)
+	add_child(damageNumber)

@@ -8,9 +8,7 @@ func _init(eManager, send, targ, targType, bm):
 
 func runEvent():
 	target.reactionComplete.connect(resumeEvent)
-	target.gainStatus("Defend")
-	#target = sender
-	#target.boostDefense(1)
+	target.gainStatus(Status.Type.DEFUP)
 
 func resumeEvent():
 	target.reactionComplete.disconnect(resumeEvent)

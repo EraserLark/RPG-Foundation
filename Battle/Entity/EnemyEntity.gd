@@ -55,15 +55,17 @@ func takeDamage(dmg : int):
 	if(remainingHealth <= 0):
 		enemyDead()
 
-func gainStatus(statusName : String):
-	if(statusName == "Poison"):
-		battleManager.createStatus(PoisonStatus, self)
+func gainStatus(statusType):
+	if(statusType == Status.Type.POISON):
+		applyStatus(PoisonStatus, battleManager.statusRoster)
 	emit_signal("reactionComplete")
 
 func enemyDead():
 	battleManager.battleRoster.enemies.erase(self)
 	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(localEnemy.selectedAction)
 	enemyActor.queue_free()
+	for effect in statusEffects:
+		effect.endStatus()
 	battleManager.battleRoster.checkEnemiesAlive()
 	emit_signal("reactionComplete")
 	queue_free()
