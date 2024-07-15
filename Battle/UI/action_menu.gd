@@ -1,6 +1,6 @@
 extends TabBar
 
-@onready var attackButton := $"AttackButton"
+@onready var attackButton:= $"AttackButton"
 
 var playerUI
 

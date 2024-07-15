@@ -1,11 +1,11 @@
 extends Entity
 class_name PlayerEntity
 
-var playerUI : Control
+var playerUI: Control
 
 signal playerDied
 
-func initialize(bm : BattleManager):
+func initialize(bm: BattleManager):
 	super(bm)
 	
 	actor = bm.playerActor
@@ -29,15 +29,15 @@ func initialize(bm : BattleManager):
 	playerUI.itemMenu.initMenu(localInfo.itemList)
 	playerUI.miscMenu.initMenu(localInfo.miscList)
 	
-func attackChosen(attackNum : int):
+func attackChosen(attackNum: int):
 	localInfo.selectedAction = localInfo.actionList[attackNum]
 	return localInfo.selectedAction
 
-func actionChosen(actionNum : int):
+func actionChosen(actionNum: int):
 	localInfo.selectedAction = localInfo.miscList[actionNum]
 	return localInfo.selectedAction
 
-func itemChosen(itemNum : int):
+func itemChosen(itemNum: int):
 	var item = localInfo.itemList[itemNum]
 	localInfo.selectedAction = item.itemAction
 	localInfo.itemList.remove_at(itemNum)
@@ -46,13 +46,13 @@ func itemChosen(itemNum : int):
 func attack():
 	pass
 
-func takeDamage(dmg : int):
+func takeDamage(dmg: int):
 	super(dmg)
 
-func gainHealth(amt : int):
+func gainHealth(amt: int):
 	super(amt)
 
-func updateUI(hp : int):
+func updateUI(hp: int):
 	playerUI.changeStatsHealth(hp)
 
 func checkRoster():

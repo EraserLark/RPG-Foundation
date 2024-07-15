@@ -6,10 +6,10 @@ var player
 var enemies
 var battleManager
 
-var isOver := false
-var unresolvedStatuses : Array[StatusEffect]
+var isOver:= false
+var unresolvedStatuses: Array[StatusEffect]
 
-var actionEQ : BattleActionQueue
+var actionEQ: BattleActionQueue
 
 func _init(battleEQ, bm):
 	super(battleEQ)
@@ -21,7 +21,7 @@ func _init(battleEQ, bm):
 	actionEQ = BattleActionQueue.new(battleManager, self)
 	actionEQ.queueEmpty.connect(finishEvent)
 
-func runEvent(_msg := {}):
+func runEvent(_msg:= {}):
 	var playerAction = player.localInfo.selectedAction
 	playerAction.eventManager = self.actionEQ
 	playerAction.sender = player

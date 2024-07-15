@@ -1,12 +1,12 @@
 extends Node
 
-var stateStack : Array[State]
-var currentState : State = null
+var stateStack: Array[State]
+var currentState: State = null
 
 func _ready():
 	pass
 
-func addState(s : State):
+func addState(s: State):
 	stateStack.push_front(s)
 	currentState = stateStack.front()
 	currentState.stateStack = self
@@ -20,8 +20,6 @@ func removeState():
 	
 	if(stateStack.is_empty()):
 		print("STACK EMPTY")
-		#var backupState = StateD.new(self)
-		#addState(backupState)
 	currentState = stateStack.front()
 	for state in stateStack:
 		print(state.get_script().resource_path.get_file())

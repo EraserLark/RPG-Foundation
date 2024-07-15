@@ -5,9 +5,9 @@ var battleEQ = EventQueue.new()
 var battleManager
 
 enum battlePhases {START, PROMPT, ACTION, FINISH}
-var currentPhase : battlePhases
+var currentPhase: battlePhases
 
-func _init(sStack : StateStack, bm):
+func _init(sStack: StateStack, bm):
 	stateStack = sStack
 	battleManager = bm
 	
@@ -16,10 +16,10 @@ func _init(sStack : StateStack, bm):
 	
 	battleEQ.queueEmpty.connect(exit)
 
-func handleInput(_event : InputEvent):
+func handleInput(_event: InputEvent):
 	pass
 
-func enter(_msg := {}):
+func enter(_msg:= {}):
 	battleEQ.popQueue()
 
 func resumeState():

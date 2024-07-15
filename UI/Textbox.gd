@@ -1,17 +1,17 @@
 extends Panel
 class_name Textbox
 
-@onready var textPanel := self
-@onready var textBox := $RichTextLabel
-@onready var typeTimer := $Timer
-@onready var typeAudio := $AudioStreamPlayer
+@onready var textPanel:= self
+@onready var textBox:= $RichTextLabel
+@onready var typeTimer:= $Timer
+@onready var typeAudio:= $AudioStreamPlayer
 
-@export var line := "";
+@export var line:= "";
 
-var defaultTypeSpeed := 0.05
-var skip := false
-var inTag := false
-var finished := false
+var defaultTypeSpeed:= 0.05
+var skip:= false
+var inTag:= false
+var finished:= false
 
 signal phraseFin()
 signal boxFin()

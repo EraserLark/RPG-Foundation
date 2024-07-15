@@ -1,9 +1,9 @@
 extends Menu
 
-@onready var itemList := $ItemList
-var attackList : Array[Action]
+@onready var itemList:= $ItemList
+var attackList: Array[Action]
 
-func initMenu(attacks : Array[Action]):
+func initMenu(attacks: Array[Action]):
 	attackList = attacks
 	
 	itemList = get_node("ItemList")

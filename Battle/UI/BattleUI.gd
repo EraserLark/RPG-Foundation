@@ -1,6 +1,6 @@
 extends Control
 
-@onready var textbox := $Textbox
+@onready var textbox:= $Textbox
 
 signal finishStartPhase
 
