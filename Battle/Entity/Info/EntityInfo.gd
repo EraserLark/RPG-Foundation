@@ -38,3 +38,13 @@ func addHealth(amt : int):
 	hp += amt
 	if(hp > hpMax):
 		hp = hpMax
+
+func duplicate_deep_workaround() -> EntityInfo:
+	var dup: EntityInfo = duplicate(true) as EntityInfo
+	for i: int in dup.actionList.size():
+		dup.actionList[i] = dup.actionList[i].duplicate(true)
+	for i: int in dup.itemList.size():
+		dup.itemList[i] = dup.itemList[i].duplicate(true)
+	for i: int in dup.miscList.size():
+		dup.miscList[i] = dup.miscList[i].duplicate(true)
+	return dup

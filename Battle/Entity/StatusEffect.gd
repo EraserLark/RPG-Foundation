@@ -1,6 +1,7 @@
-extends Entity
+extends Node #extends Entity
 class_name StatusEffect
 
+var battleManager
 var statusRoster
 var status_name : String
 var turnCount : int
@@ -9,7 +10,7 @@ var statusAction : Action
 var target : Entity
 
 func _init(bm, sn, tc, tg, sr):
-	initialize(bm)
+	battleManager = bm
 	status_name = sn
 	turnCount = tc
 	target = tg

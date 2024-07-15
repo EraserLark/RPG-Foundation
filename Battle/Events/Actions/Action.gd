@@ -1,8 +1,8 @@
 extends Event
 class_name Action
 
-var sender : Entity
-var target : Entity
+var sender# : Entity
+var target# : Entity
 var targetOptions : Array
 var battleManager : BattleManager
 

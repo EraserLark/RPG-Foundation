@@ -3,7 +3,7 @@ class_name Item_Heal
 
 func _init(bm : BattleManager):
 	super(bm)
-	itemAction = HealAction.new(null, bm.playerEntities[0], null, Action.TargetTypes.PLAYER, bm)
+	itemAction = HealAction.new(null, null, null, Action.TargetTypes.PLAYER, bm)
 
 class HealAction:
 	extends Action

@@ -5,13 +5,14 @@ var battleManager : BattleManager
 var actor
 var statusEffects : Array[StatusEffect]
 @export var entityInfo : Resource
-var localInfo
+var localInfo : EntityInfo
 
 signal reactionComplete
 
 func initialize(bm : BattleManager):
 	battleManager = bm
-	localInfo = entityInfo.duplicate()
+	localInfo = entityInfo.duplicate_deep_workaround()
+	print("Stall")
 
 func getClassInstance():
 	return self
@@ -31,25 +32,25 @@ func applyStatus(statusEffect, statusRoster):
 	battleManager.battleState.battleEQ.currentEvent.unresolvedStatuses.append(newStatus)
 
 func boostDefense(amt : int):
-	entityInfo.def += amt
+	localInfo.def += amt
 
 func revertStatus():
-	entityInfo.def -= 1
+	localInfo.def -= 1
 
 func gainHealth(amt : int):
-	entityInfo.addHealth(amt)
+	localInfo.addHealth(amt)
 	
-	var remainingHealth = entityInfo.hp
+	var remainingHealth = localInfo.hp
 	
 	emit_signal("reactionComplete")
 
 func takeDamage(dmg : int):
-	var trueDmg = entityInfo.calcDamage(dmg)
-	entityInfo.takeDamage(trueDmg)
+	var trueDmg = localInfo.calcDamage(dmg)
+	localInfo.takeDamage(trueDmg)
 	
 	actor.damageFeedback(trueDmg)
 	
-	var remainingHealth = entityInfo.hp
+	var remainingHealth = localInfo.hp
 	updateUI(remainingHealth)
 	
 	if(remainingHealth <= 0):
@@ -60,7 +61,7 @@ func updateUI(hp : int):
 
 func entityDead():
 	#battleManager.battleRoster.enemies.erase(self)
-	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(entityInfo.selectedAction)
+	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(localInfo.selectedAction)
 	actor.queue_free()
 	for effect in statusEffects:
 		effect.endStatus()
