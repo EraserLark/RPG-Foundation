@@ -55,10 +55,17 @@ func gainHealth(amt : int):
 func updateUI(hp : int):
 	playerUI.changeStatsHealth(hp)
 
+func checkRoster():
+	var result = battleManager.battleRoster.checkPlayersAlive()
+	return result
+
 func entityDead():
 	battleManager.battleRoster.players.erase(self)
 	battleManager.battleRoster.checkPlayersAlive()
 	super()
 
-func _on_animation_player_animation_finished(_anim_name):
-	emit_signal("reactionComplete")
+func _on_animation_player_animation_finished(anim_name):
+	if(anim_name == "PlayerDamaged"):
+		emit_signal("reactionComplete")
+	elif(anim_name == "Death"):
+		entityDead()

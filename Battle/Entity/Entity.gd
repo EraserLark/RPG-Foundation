@@ -54,7 +54,11 @@ func takeDamage(dmg : int):
 	updateUI(remainingHealth)
 	
 	if(remainingHealth <= 0):
-		entityDead()
+		var deathEvent = Death_Event.new(battleManager.battleState.battleEQ.currentEvent.actionEQ, self, battleManager)
+		battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.push_front(deathEvent)
+
+func checkRoster():
+	pass
 
 func updateUI(hp : int):
 	pass

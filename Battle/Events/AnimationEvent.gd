@@ -10,12 +10,12 @@ func _init(eManager, ap, an):
 	animName = an
 
 func runEvent():
-	animPlayer.animation_finished.connect(resumeEvent)
+	animPlayer.animation_finished.connect(animFinished)
 	animPlayer.play(animName)
 
-func resumeEvent():
+func animFinished(animName):
 	finishEvent()
 
 func finishEvent():
-	animPlayer.animation_finished.disconnect(resumeEvent)
+	animPlayer.animation_finished.disconnect(animFinished)
 	eventManager.popQueue()
