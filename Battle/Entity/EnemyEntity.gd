@@ -3,11 +3,9 @@ class_name EnemyEntity
 
 var enemyActorScene = preload("res://Battle/2D/EnemyActor.tscn")
 
-#@export var localInfo : Resource
-var enemyActor : Node2D
-#var localEnemy : EntityInfo
+var enemyActor: Node2D
 
-func initialize(bm : BattleManager):
+func initialize(bm: BattleManager):
 	super(bm)
 	
 	var enemyAtk = localInfo.atk
@@ -34,21 +32,6 @@ func chooseAttack():
 
 func attack():
 	enemyActor.attackFeedback()
-
-#func takeDamage(dmg : int):
-	#var trueDmg = localEnemy.calcDamage(dmg)
-	#localEnemy.takeDamage(trueDmg)
-	#
-	#enemyActor.damageFeedback(trueDmg)
-	#
-	#var remainingHealth = localEnemy.hp
-	#if(remainingHealth <= 0):
-		#enemyDead()
-
-#func gainStatus(statusType):
-	#if(statusType == Status.Type.POISON):
-		#applyStatus(PoisonStatus, battleManager.statusRoster)
-	#emit_signal("reactionComplete")
 
 func entityDead():
 	battleManager.battleRoster.enemies.erase(self)

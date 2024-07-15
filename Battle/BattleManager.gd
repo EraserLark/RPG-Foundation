@@ -2,24 +2,24 @@ extends Node
 class_name BattleManager
 
 #BattleManager
-@onready var battleRoster := $BattleRoster
+@onready var battleRoster:= $BattleRoster
 var playerEntities
 var enemyEntities
-var statusRoster : Array[StatusEffect]
-var turnCount := 0
+var statusRoster: Array[StatusEffect]
+var turnCount:= 0
 
 #Systems
-var battleState : Battle_State
-@onready var battleUI := $CanvasLayer/BattleUI
-@onready var battleStage := $BattleStage
-@onready var cutsceneManager := $CutsceneManager
+var battleState: Battle_State
+@onready var battleUI:= $CanvasLayer/BattleUI
+@onready var battleStage:= $BattleStage
+@onready var cutsceneManager:= $CutsceneManager
 
 #Player
-@onready var playerActor := $BattleStage/PlayerActor
-@onready var playerUI := $CanvasLayer/BattleUI/PlayerUI
+@onready var playerActor:= $BattleStage/PlayerActor
+@onready var playerUI:= $CanvasLayer/BattleUI/PlayerUI
 
 #Other
-@onready var camera := $BattleStage/Camera2D
+@onready var camera:= $BattleStage/Camera2D
 
 func _ready():
 	playerUI.battleManager = self

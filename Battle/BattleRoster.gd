@@ -2,8 +2,8 @@ extends Node
 
 var battleManager
 
-@onready var enemies : Array[EnemyEntity]
-@onready var players : Array[PlayerEntity]
+@onready var enemies: Array[EnemyEntity]
+@onready var players: Array[PlayerEntity]
 
 func _ready():
 	var enemyNodes = get_node("Enemies").get_children()

@@ -1,10 +1,7 @@
 extends Entity
 class_name PlayerEntity
 
-#@export var playerInfo : Resource
-#var playerActor : Node2D
 var playerUI : Control
-#var localInfo : EntityInfo
 
 signal playerDied
 
@@ -57,20 +54,6 @@ func gainHealth(amt : int):
 
 func updateUI(hp : int):
 	playerUI.changeStatsHealth(hp)
-
-#
-#func boostDefense(amt : int):
-	#localInfo.def += amt
-#
-#func revertStatus():
-	#localInfo.def -= 1
-
-#func gainStatus(statusType):
-	#if(statusType == Status.Type.POISON):
-		#applyStatus(PoisonStatus, battleManager.statusRoster)
-	#elif(statusType == Status.Type.DEFUP):
-		#applyStatus(DefenseStatus, battleManager.statusRoster)
-	#emit_signal("reactionComplete")
 
 func entityDead():
 	battleManager.battleRoster.players.erase(self)

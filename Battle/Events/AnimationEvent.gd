@@ -1,19 +1,21 @@
 extends Event
 class_name AnimationEvent
 
-var cutsceneManager : CutsceneManager
+var animPlayer : AnimationPlayer
 var animName : String
 
-func _init(eManager, cm, an):
+func _init(eManager, ap, an):
 	super(eManager)
-	cutsceneManager = cm
+	animPlayer = ap
 	animName = an
 
 func runEvent():
-	cutsceneManager.play(animName)
+	animPlayer.animation_finished.connect(resumeEvent)
+	animPlayer.play(animName)
 
 func resumeEvent():
 	finishEvent()
 
 func finishEvent():
+	animPlayer.animation_finished.disconnect(resumeEvent)
 	eventManager.popQueue()
