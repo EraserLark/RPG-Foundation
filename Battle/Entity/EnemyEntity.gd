@@ -19,8 +19,11 @@ func initialize(bm : BattleManager):
 		enemyInfo.atk = 2
 		
 		var enemyAtk = enemyInfo.atk
-		var enemyAction1 = Attack.new(null, "Punch", self, null, battleManager.battleRoster.players, enemyAtk, 0)
-		var enemyAction2 = Attack.new(null, "Bingo", self, null, battleManager.battleRoster.players, enemyAtk + 2, 0)
+		var enemyAction1 = Attack.new(null, battleManager, "Punch", self, null, Action.TargetTypes.PLAYER, enemyAtk, 0)
+		var enemyAction2 = Attack.new(null, battleManager, "Bingo", self, null, Action.TargetTypes.PLAYER, enemyAtk + 2, 0)
+		
+		enemyAction1.targetType = Action.TargetTypes.PLAYER
+		enemyAction2.targetType = Action.TargetTypes.PLAYER
 		
 		enemyInfo.actionList.append_array([enemyAction1, enemyAction2])
 	

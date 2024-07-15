@@ -18,9 +18,9 @@ func addHealth(amt : int):
 	super(amt)
 
 func setupAttacks(bm : BattleManager):
-	var attack1 = Attack.new(null, "Basic Attack", null, null, bm.battleRoster.enemies, 1, 0)
-	var attack2 = Attack.new(null, "Fireball", null, null, bm.battleRoster.enemies, 3, 0)
-	var attack3 = Attack.new(null, "Uppercut", null, null, bm.battleRoster.enemies, 2, 0)
+	var attack1 = Attack.new(null, bm, "Basic Attack", null, null, Action.TargetTypes.ENEMY, 1, 0)
+	var attack2 = Attack.new(null, bm, "Fireball", null, null, Action.TargetTypes.ENEMY, 3, 0)
+	var attack3 = Attack.new(null, bm, "Uppercut", null, null, Action.TargetTypes.ENEMY, 2, 0)
 	
 	actionList += [attack1, attack2, attack3]
 
@@ -30,5 +30,5 @@ func setupItems(bm : BattleManager):
 	itemList.append_array([healItem, poisonItem])
 
 func setupMisc(bm : BattleManager):
-	var defend = Defend.new(null, null, playerEntity, bm.playerEntities)
+	var defend = Defend.new(null, null, playerEntity, Action.TargetTypes.PLAYER, bm)
 	miscList.append(defend)

@@ -6,8 +6,8 @@ class_name Attack
 #@export var effect : StatusEffect = null
 #Associate minigame
 
-func _init(eManager, attackName:String, send:Entity, targ:Entity, targOpts:Array, dmg:int, cost:int):
-	super(eManager, send, targ, targOpts)
+func _init(eManager, battleManager, attackName:String, send:Entity, targ:Entity, targType, dmg:int, cost:int):
+	super(eManager, send, targ, targType, battleManager)
 	eventName = attackName
 	self.sender = send
 	self.target = targ

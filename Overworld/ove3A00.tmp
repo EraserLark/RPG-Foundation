@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://wf85spc1lhaa"]
+
+[ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
+[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_a0jhu"]
+[ext_resource type="Script" path="res://Overworld/CastList.gd" id="3_dg04a"]
+[ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_f5vhn"]
+[ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/Info/TestPlayerResource.tres" id="4_of4yd"]
+[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_ti8qv"]
+[ext_resource type="Script" path="res://Overworld/OW_Enemy.gd" id="5_12g4i"]
+[ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_adroj"]
+[ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://UI/DialogueBox.tscn" id="6_5x56l"]
+[ext_resource type="Script" path="res://Overworld/OW_Item.gd" id="9_r1ypc"]
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="10_2cs4b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qopq"]
+radius = 24.0
+height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lbh8"]
+size = Vector2(128, 120)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_estis"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpvpc"]
+atlas = ExtResource("10_2cs4b")
+region = Rect2(714, 170, 16, 16)
+
+[node name="Overworld" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OW_UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="DialogueBox" parent="CanvasLayer/OW_UI" instance=ExtResource("6_5x56l")]
+visible = false
+layout_mode = 1
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="CastList" type="Node2D" parent="World"]
+y_sort_enabled = true
+script = ExtResource("3_dg04a")
+metadata/_edit_lock_ = true
+
+[node name="OW_Player" parent="World/CastList" instance=ExtResource("1_ery32")]
+playerInfo = ExtResource("4_of4yd")
+metadata/_edit_group_ = true
+
+[node name="Godot Guy" parent="World/CastList" instance=ExtResource("4_ti8qv")]
+position = Vector2(768, 304)
+
+[node name="Snowbro" parent="World/CastList" instance=ExtResource("4_ti8qv")]
+position = Vector2(320, -24)
+script = ExtResource("5_12g4i")
+
+[node name="Sprite2D" parent="World/CastList/Snowbro" index="0"]
+position = Vector2(0, -72)
+scale = Vector2(4, 4)
+texture = ExtResource("5_adroj")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CollisionShape2D" parent="World/CastList/Snowbro" index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2qopq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(600, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+shape = SubResource("RectangleShape2D_2lbh8")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/StaticBody2D"]
+texture = ExtResource("2_a0jhu")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="World/StaticBody2D2"]
+polygon = PackedVector2Array(0, 320, 192, 512, 384, 448, 576, 448, 640, 576, 832, 576, 1088, 192, 960, 64, 960, 0, 1152, 0, 1152, 648, 0, 648)
+
+[node name="Camera2D" type="Camera2D" parent="World"]
+script = ExtResource("3_f5vhn")
+
+[node name="Item" type="Node2D" parent="World"]
+position = Vector2(100, 200)
+script = ExtResource("9_r1ypc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Item"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Item/StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_estis")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Item"]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_vpvpc")
+
+[editable path="World/CastList/Snowbro"]

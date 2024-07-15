@@ -30,6 +30,7 @@ func showActionMenu(condition : bool):
 
 func attackSelected(index : int):
 	var selectedAction = player.attackChosen(index)
+	
 	setupSelection(selectedAction)
 
 func actionSelected(index : int):

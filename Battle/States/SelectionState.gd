@@ -6,7 +6,7 @@ var playerUI : Control
 var battleManager
 
 var selectedAction : Action
-var targets : Array
+var targetRoster : Array
 var currentTarget : Entity
 var currentSelection : int
 
@@ -16,9 +16,11 @@ func _init(sStack : StateStack, pp, plui, bm, sa):
 	playerUI = plui
 	battleManager = bm
 	selectedAction = sa
-	targets = selectedAction.targetOptions
 
 func enter(_msg := {}):
+	selectedAction.setupTargetOptions()
+	targetRoster = selectedAction.targetOptions
+	
 	currentSelection = 0
 	moveCursor(currentSelection)
 	playerPointer.visible = true
@@ -28,11 +30,11 @@ func handleInput(_event):
 		confirmSelection()
 	elif Input.is_action_just_pressed("ui_left"):
 		currentSelection -= 1
-		currentSelection %= targets.size()
+		currentSelection %= targetRoster.size()
 		moveCursor(currentSelection)
 	elif Input.is_action_just_pressed("ui_right"):
 		currentSelection += 1
-		currentSelection %= targets.size()
+		currentSelection %= targetRoster.size()
 		moveCursor(currentSelection)
 
 func exit():
@@ -41,7 +43,7 @@ func exit():
 	super()
 
 func moveCursor(selection : int):
-	currentTarget = targets[selection]
+	currentTarget = targetRoster[selection]
 	var targetPos = currentTarget.actor.position
 	
 	playerPointer.moveToPosition(targetPos)
