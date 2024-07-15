@@ -3,31 +3,21 @@ class_name EnemyEntity
 
 var enemyActorScene = preload("res://Battle/2D/EnemyActor.tscn")
 
-@export var enemyInfo : Resource
+#@export var localInfo : Resource
 var enemyActor : Node2D
-var localEnemy : EntityInfo
-
-signal reactionComplete
+#var localEnemy : EntityInfo
 
 func initialize(bm : BattleManager):
 	super(bm)
 	
-	if(enemyInfo == null):
-		enemyInfo = EntityInfo.new()
-		enemyInfo.entityName = "Snowbro"
-		enemyInfo.hp = 5
-		enemyInfo.atk = 2
-		
-		var enemyAtk = enemyInfo.atk
-		var enemyAction1 = Attack.new(null, battleManager, "Punch", self, null, Action.TargetTypes.PLAYER, enemyAtk, 0)
-		var enemyAction2 = Attack.new(null, battleManager, "Bingo", self, null, Action.TargetTypes.PLAYER, enemyAtk + 2, 0)
-		
-		enemyAction1.targetType = Action.TargetTypes.PLAYER
-		enemyAction2.targetType = Action.TargetTypes.PLAYER
-		
-		enemyInfo.actionList.append_array([enemyAction1, enemyAction2])
+	var enemyAtk = localInfo.atk
+	var enemyAction1 = Attack.new(null, bm, "Punch", self, null, Action.TargetTypes.PLAYER, enemyAtk, 0)
+	var enemyAction2 = Attack.new(null, bm, "Bingo", self, null, Action.TargetTypes.PLAYER, enemyAtk + 2, 0)
 	
-	localEnemy = enemyInfo
+	enemyAction1.targetType = Action.TargetTypes.PLAYER
+	enemyAction2.targetType = Action.TargetTypes.PLAYER
+	
+	localInfo.actionList.append_array([enemyAction1, enemyAction2])
 	
 	if(enemyActor == null):
 		enemyActor = enemyActorScene.instantiate()
@@ -38,37 +28,32 @@ func initialize(bm : BattleManager):
 		enemyActor.sprite.visible = false
 
 func chooseAttack():
-	var chosenAction = localEnemy.actionList.pick_random()
-	localEnemy.selectedAction = chosenAction
+	var chosenAction = localInfo.actionList.pick_random()
+	localInfo.selectedAction = chosenAction
 	return chosenAction
 
 func attack():
 	enemyActor.attackFeedback()
 
-func takeDamage(dmg : int):
-	var trueDmg = localEnemy.calcDamage(dmg)
-	localEnemy.takeDamage(trueDmg)
-	
-	enemyActor.damageFeedback(trueDmg)
-	
-	var remainingHealth = localEnemy.hp
-	if(remainingHealth <= 0):
-		enemyDead()
+#func takeDamage(dmg : int):
+	#var trueDmg = localEnemy.calcDamage(dmg)
+	#localEnemy.takeDamage(trueDmg)
+	#
+	#enemyActor.damageFeedback(trueDmg)
+	#
+	#var remainingHealth = localEnemy.hp
+	#if(remainingHealth <= 0):
+		#enemyDead()
 
-func gainStatus(statusType):
-	if(statusType == Status.Type.POISON):
-		applyStatus(PoisonStatus, battleManager.statusRoster)
-	emit_signal("reactionComplete")
+#func gainStatus(statusType):
+	#if(statusType == Status.Type.POISON):
+		#applyStatus(PoisonStatus, battleManager.statusRoster)
+	#emit_signal("reactionComplete")
 
-func enemyDead():
+func entityDead():
 	battleManager.battleRoster.enemies.erase(self)
-	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(localEnemy.selectedAction)
-	enemyActor.queue_free()
-	for effect in statusEffects:
-		effect.endStatus()
 	battleManager.battleRoster.checkEnemiesAlive()
-	emit_signal("reactionComplete")
-	queue_free()
+	super()
 
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "SnowbroDamaged"):

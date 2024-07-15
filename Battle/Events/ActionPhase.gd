@@ -22,7 +22,7 @@ func _init(battleEQ, bm):
 	actionEQ.queueEmpty.connect(finishEvent)
 
 func runEvent(_msg := {}):
-	var playerAction = player.playerInfo.selectedAction
+	var playerAction = player.localInfo.selectedAction
 	playerAction.eventManager = self.actionEQ
 	playerAction.sender = player
 	actionEQ.queue.append(playerAction)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=36 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
 [ext_resource type="Script" path="res://Battle/BattleRoster.gd" id="2_l87y1"]
 [ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/Info/TestPlayerResource.tres" id="3_c76yb"]
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
+[ext_resource type="Resource" uid="uid://k5uqhj12jxh8" path="res://Battle/Entity/Info/TestEnemyResource.tres" id="4_ihbei"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
 [ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://UI/textbox.tscn" id="7_qx7tv"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI.gd" id="8_2gtag"]
@@ -192,15 +193,17 @@ script = ExtResource("2_l87y1")
 
 [node name="EnemyEntity" type="Node" parent="BattleRoster/Enemies"]
 script = ExtResource("4_6xbfu")
+entityInfo = ExtResource("4_ihbei")
 
 [node name="EnemyEntity2" type="Node" parent="BattleRoster/Enemies"]
 script = ExtResource("4_6xbfu")
+entityInfo = ExtResource("4_ihbei")
 
 [node name="Players" type="Node" parent="BattleRoster"]
 
 [node name="PlayerEntity" type="Node" parent="BattleRoster/Players"]
 script = ExtResource("2_1wv47")
-playerInfo = ExtResource("3_c76yb")
+entityInfo = ExtResource("3_c76yb")
 
 [node name="BattleState" type="Node" parent="."]
 script = ExtResource("17_6gfpt")

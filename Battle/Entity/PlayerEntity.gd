@@ -1,97 +1,81 @@
 extends Entity
 class_name PlayerEntity
 
-@export var playerInfo : Resource
-var playerActor : Node2D
+#@export var playerInfo : Resource
+#var playerActor : Node2D
 var playerUI : Control
-var localPlayer : EntityInfo
+#var localInfo : EntityInfo
 
-signal reactionComplete
 signal playerDied
 
 func initialize(bm : BattleManager):
 	super(bm)
-	playerActor = bm.playerActor
-	playerUI = bm.playerUI
-	localPlayer = playerInfo
 	
-	localPlayer.playerEntity = self
-	playerActor.player = self
+	actor = bm.playerActor
+	playerUI = bm.playerUI
+	
+	localInfo.playerEntity = self
+	actor.player = self
 	playerUI.player = self
 	
-	actor = playerActor
+	if(localInfo.actionList.is_empty()):
+		localInfo.setupAttacks(battleManager)
 	
-	if(localPlayer.actionList.is_empty()):
-		localPlayer.setupAttacks(battleManager)
+	if(localInfo.itemList.is_empty()):
+		localInfo.setupItems(battleManager)
 	
-	if(localPlayer.itemList.is_empty()):
-		localPlayer.setupItems(battleManager)
+	if(localInfo.miscList.is_empty()):
+		localInfo.setupMisc(battleManager)
 	
-	if(localPlayer.miscList.is_empty()):
-		localPlayer.setupMisc(battleManager)
-	
-	playerUI.stats.changeHealth(localPlayer.hp)
-	playerUI.attackMenu.initMenu(localPlayer.actionList)
-	playerUI.itemMenu.initMenu(localPlayer.itemList)
-	playerUI.miscMenu.initMenu(localPlayer.miscList)
+	playerUI.stats.changeHealth(localInfo.hp)
+	playerUI.attackMenu.initMenu(localInfo.actionList)
+	playerUI.itemMenu.initMenu(localInfo.itemList)
+	playerUI.miscMenu.initMenu(localInfo.miscList)
 	
 func attackChosen(attackNum : int):
-	localPlayer.selectedAction = localPlayer.actionList[attackNum]
-	return localPlayer.selectedAction
+	localInfo.selectedAction = localInfo.actionList[attackNum]
+	return localInfo.selectedAction
 
 func actionChosen(actionNum : int):
-	localPlayer.selectedAction = localPlayer.miscList[actionNum]
-	return localPlayer.selectedAction
+	localInfo.selectedAction = localInfo.miscList[actionNum]
+	return localInfo.selectedAction
 
 func itemChosen(itemNum : int):
-	var item = localPlayer.itemList[itemNum]
-	localPlayer.selectedAction = item.itemAction
-	localPlayer.itemList.remove_at(itemNum)
-	return localPlayer.selectedAction
+	var item = localInfo.itemList[itemNum]
+	localInfo.selectedAction = item.itemAction
+	localInfo.itemList.remove_at(itemNum)
+	return localInfo.selectedAction
 
 func attack():
 	pass
 
 func takeDamage(dmg : int):
-	var trueDmg = localPlayer.calcDamage(dmg)
-	localPlayer.takeDamage(trueDmg)
-	
-	playerActor.damageAnimation(trueDmg)
-	
-	var remainingHealth = localPlayer.hp
-	playerUI.changeStatsHealth(remainingHealth)
-	
-	if(remainingHealth <= 0):
-		playerDead()
+	super(dmg)
 
 func gainHealth(amt : int):
-	localPlayer.addHealth(amt)
-	
-	var remainingHealth = localPlayer.hp
-	playerUI.changeStatsHealth(remainingHealth)
-	
-	emit_signal("reactionComplete")
+	super(amt)
 
-func boostDefense(amt : int):
-	localPlayer.def += amt
+func updateUI(hp : int):
+	playerUI.changeStatsHealth(hp)
 
-func revertStatus():
-	localPlayer.def -= 1
+#
+#func boostDefense(amt : int):
+	#localInfo.def += amt
+#
+#func revertStatus():
+	#localInfo.def -= 1
 
-func gainStatus(statusType):
-	if(statusType == Status.Type.POISON):
-		applyStatus(PoisonStatus, battleManager.statusRoster)
-	elif(statusType == Status.Type.DEFUP):
-		applyStatus(DefenseStatus, battleManager.statusRoster)
-	emit_signal("reactionComplete")
+#func gainStatus(statusType):
+	#if(statusType == Status.Type.POISON):
+		#applyStatus(PoisonStatus, battleManager.statusRoster)
+	#elif(statusType == Status.Type.DEFUP):
+		#applyStatus(DefenseStatus, battleManager.statusRoster)
+	#emit_signal("reactionComplete")
 
-func playerDead():
+func entityDead():
 	battleManager.battleRoster.players.erase(self)
-	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(localPlayer.selectedAction)
-	playerActor.queue_free()
 	battleManager.battleRoster.checkPlayersAlive()
-	emit_signal("reactionComplete")
-	queue_free()
+	super()
 
 func _on_animation_player_animation_finished(_anim_name):
 	emit_signal("reactionComplete")
