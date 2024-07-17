@@ -4,7 +4,7 @@ class_name Finish_Phase
 var battleUI
 var battleManager
 
-var finshEQ = EventQueue.new()
+var finishEQ = EventQueue.new()
 
 func _init(battleEQ, bm):
 	super(battleEQ)
@@ -12,27 +12,28 @@ func _init(battleEQ, bm):
 	battleManager = bm
 
 func runEvent():
-	var textbox = battleUI.get_node("Textbox")
+	var resultEvent : Event
 	
-	var message = ""
 	if(battleManager.playerEntities.size() <= 0):
-		message = "You Lose :("
+		resultEvent = VictoryEvent.new(finishEQ, battleManager)
 	elif(battleManager.enemyEntities.size() <= 0):
-		message = "You win!! :D"
+		resultEvent = DefeatEvent.new(finishEQ, battleManager)
 	
-	Textbox_State.createEvent(finshEQ, StateStack, textbox, message)
+	finishEQ.addEvent(resultEvent)
 	
-	Cutscene_State.createEvent(finshEQ, battleManager, BattleOutro)
+	#Textbox_State.createEvent(finishEQ, StateStack, textbox, message)
+	#
+	#Cutscene_State.createEvent(finishEQ, battleManager, BattleOutro)
 	
-	finshEQ.queueEmpty.connect(resumeEvent)
-	print(finshEQ.queueEmpty.is_connected(self.resumeEvent))
-	finshEQ.popQueue()
+	finishEQ.queueEmpty.connect(resumeEvent)
+	print(finishEQ.queueEmpty.is_connected(self.resumeEvent))
+	finishEQ.popQueue()
 
 func resumeEvent():
-	if(finshEQ.queue.is_empty() && finshEQ.currentEvent == null):
+	if(finishEQ.queue.is_empty() && finishEQ.currentEvent == null):
 		finishEvent()
 	else:
-		finshEQ.currentEvent.resumeEvent()
+		finishEQ.currentEvent.resumeEvent()
 
 func finishEvent():
 	super()

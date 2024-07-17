@@ -7,5 +7,5 @@ script = ExtResource("1_rluw5")
 entityName = "Snowbro"
 hp = 5
 hpMax = 0
-atk = 2
+atk = 11
 def = 0
