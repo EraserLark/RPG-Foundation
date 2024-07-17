@@ -10,7 +10,9 @@ func _init(eManager, bm):
 	battleManager = bm
 
 func runEvent():
-	var message = "You win!"
+	battleManager.playerEntities[0].localInfo.xp += battleManager.xpBank
+	
+	var message = str("You win! Gained ", battleManager.xpBank, "xp!")
 	var textbox = battleManager.battleUI.textbox
 	
 	Textbox_State.createEvent(victoryEQ, StateStack, textbox, message)

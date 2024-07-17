@@ -18,12 +18,14 @@ func runEvent():
 	deathEQ.popQueue()
 
 func resumeEvent():
-	var someAlive = deadEntity.checkRoster()
-	if(!someAlive):
-		battleManager.battleState.battleEQ.currentEvent.battleOver()
 	finishEvent()
 
 func finishEvent():
 	deathEQ.queueEmpty.disconnect(resumeEvent)
 	deadEntity.entityDead()
+	
+	var someAlive = deadEntity.checkRoster()
+	if(!someAlive):
+		battleManager.battleState.battleEQ.currentEvent.battleOver()
+	
 	eventManager.popQueue()

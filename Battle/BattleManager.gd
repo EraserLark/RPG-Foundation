@@ -7,6 +7,7 @@ var playerEntities
 var enemyEntities
 var statusRoster: Array[StatusEffect]
 var turnCount:= 0
+var xpBank := 0
 
 #Systems
 var battleState: Battle_State

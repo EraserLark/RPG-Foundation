@@ -40,10 +40,11 @@ func checkRoster():
 func entityDead():
 	battleManager.battleRoster.enemies.erase(self)
 	battleManager.battleRoster.checkEnemiesAlive()
+	battl eManager.xpBank += localInfo.xpReward
 	super()
 
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "SnowbroDamaged"):
 		emit_signal("reactionComplete")
-	elif(anim_name == "Death"):
-		entityDead()
+	#elif(anim_name == "Death"):
+		#entityDead()
