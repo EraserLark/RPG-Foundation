@@ -334,7 +334,6 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="PlayerUI" type="Control" parent="CanvasLayer/BattleUI"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -360,6 +359,22 @@ offset_top = 512.0
 offset_right = 744.0
 offset_bottom = 648.0
 script = ExtResource("16_mth5x")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(288, 136)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/SubViewportContainer/SubViewport"]
 
 [node name="ActionMenu" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu" instance=ExtResource("9_vhn0o")]
 layout_mode = 0
