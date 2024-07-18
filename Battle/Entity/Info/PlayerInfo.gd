@@ -2,6 +2,8 @@ extends EntityInfo
 class_name PlayerInfo
 
 @export var xp : int
+@export var nextLevelCost : int
+@export var level : int
 @export var money : int
 @export var items : Array[String]
 
@@ -16,6 +18,11 @@ func takeDamage(dmg : int):
 
 func addHealth(amt : int):
 	super(amt)
+
+func levelUp():
+	level += 1
+	xp -= nextLevelCost
+	nextLevelCost += 5
 
 func setupAttacks(bm : BattleManager):
 	var attack1 = Attack.new(null, bm, "Basic Attack", null, null, Action.TargetTypes.ENEMY, 1, 0)
