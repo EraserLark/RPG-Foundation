@@ -18,7 +18,7 @@ class PoisonAction:
 		super(eManager, send, targ, targOpts, bm)
 	func runEvent():
 		target.reactionComplete.connect(resumeEvent)
-		target.takeDamage(1)
+		target.takeDamage(1, true)
 	func resumeEvent():
 		target.reactionComplete.disconnect(resumeEvent)
 		finishEvent()

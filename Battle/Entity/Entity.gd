@@ -44,10 +44,13 @@ func gainHealth(amt : int):
 	
 	emit_signal("reactionComplete")
 
-func takeDamage(dmg : int):
-	var trueDmg = localInfo.calcDamage(dmg)
-	localInfo.takeDamage(trueDmg)
+func takeDamage(dmg : int, pierce : bool):
+	var trueDmg = dmg
 	
+	if(!pierce):
+		trueDmg = localInfo.calcDamage(dmg)
+	
+	localInfo.takeDamage(trueDmg)
 	actor.damageFeedback(trueDmg)
 	
 	var remainingHealth = localInfo.hp

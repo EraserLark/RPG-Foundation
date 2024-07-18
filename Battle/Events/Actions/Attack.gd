@@ -18,7 +18,7 @@ func runEvent():
 	super()
 	target.reactionComplete.connect(finishAttack)
 	sender.attack()
-	target.takeDamage(baseDamage)
+	target.takeDamage(baseDamage, false)
 
 #once all actions in the runEvent() func are finished running, then finishAction()
 func finishAttack():

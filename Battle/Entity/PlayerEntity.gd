@@ -46,8 +46,8 @@ func itemChosen(itemNum: int):
 func attack():
 	pass
 
-func takeDamage(dmg: int):
-	super(dmg)
+func takeDamage(dmg: int, pierce: bool):
+	super(dmg, pierce)
 
 func gainHealth(amt: int):
 	super(amt)
