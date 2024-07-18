@@ -23,10 +23,10 @@ func exit():
 func resumeState():
 	if(cutsceneEQ.queue.is_empty() && cutsceneEQ.currentEvent == null):
 		exit()
-	elif(cutsceneEQ.queue.front() == cutsceneEQ.currentEvent):
-		exit()
 	else:
 		cutsceneEQ.currentEvent.resumeEvent()
+	#elif(cutsceneEQ.queue.front() == cutsceneEQ.currentEvent):
+		#exit()
 
 static func createEvent(eManager, bm, cc):
 	var cutsceneEvent = EventClass.new(eManager, bm, cc)

@@ -19,7 +19,7 @@ func _init(battleEQ, bm):
 	battleUI = bm.battleUI
 	
 	actionEQ = BattleActionQueue.new(battleManager, self)
-	actionEQ.queueEmpty.connect(finishEvent)
+	#actionEQ.queueEmpty.connect(finishEvent)
 
 func runEvent(_msg:= {}):
 	var playerAction = player.localInfo.selectedAction
@@ -39,10 +39,12 @@ func runEvent(_msg:= {}):
 	actionEQ.popQueue()
 
 func resumeEvent():
-	if(actionEQ.queue.front() == actionEQ.currentEvent):
+	if(actionEQ.queue.is_empty() && actionEQ.currentEvent == null):
 		finishEvent()
 	else:
 		actionEQ.currentEvent.resumeEvent()
+	#if(actionEQ.queue.front() == actionEQ.currentEvent):
+		#finishEvent()
 
 func battleOver():
 	actionEQ.queue.clear()
@@ -51,7 +53,7 @@ func battleOver():
 	isOver = true
 
 func finishEvent():
-	eventManager.queueEmpty.disconnect(finishEvent)
+	#eventManager.queueEmpty.disconnect(finishEvent)
 	
 	if(!isOver):
 		battleManager.updateTurnCount()

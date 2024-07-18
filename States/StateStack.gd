@@ -15,6 +15,9 @@ func addState(s: State):
 	print("\n")
 	currentState.enter()
 
+func resumeCurrentState():
+	currentState.resumeState()
+
 func removeState():
 	stateStack.pop_front()
 	
@@ -25,7 +28,7 @@ func removeState():
 		print(state.get_script().resource_path.get_file())
 	print("\n")
 	
-	currentState.resumeState()
+	resumeCurrentState()
 
 func _unhandled_input(event):
 	currentState.handleInput(event)

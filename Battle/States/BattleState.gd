@@ -25,10 +25,10 @@ func enter(_msg:= {}):
 func resumeState():
 	if(battleEQ.queue.is_empty() && battleEQ.currentEvent == null):
 		exit()
-	elif(battleEQ.queue.front() == battleEQ.currentEvent):
-		exit()
 	else:
 		battleEQ.currentEvent.resumeEvent()
+	#elif(battleEQ.queue.front() == battleEQ.currentEvent):
+		#exit()
 
 func exit():
 	set_process_input(false)

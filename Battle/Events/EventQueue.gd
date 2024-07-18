@@ -23,6 +23,6 @@ func popQueue():
 		currentEvent = queue.pop_front()
 		currentEvent.runEvent()
 	else:
-		#currentEvent.resumeEvent()
 		currentEvent = null
-		emit_signal("queueEmpty")
+		StateStack.resumeCurrentState()
+		#emit_signal("queueEmpty")

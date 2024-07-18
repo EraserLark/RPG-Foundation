@@ -11,7 +11,6 @@ func _init(eManager, bm):
 
 func runEvent():
 	var playerInfo = battleManager.playerEntities[0].localInfo
-	
 	playerInfo.xp += battleManager.xpBank
 	
 	var message = str("You win! Gained ", battleManager.xpBank, "xp!")
@@ -20,10 +19,10 @@ func runEvent():
 	Textbox_State.createEvent(victoryEQ, StateStack, textbox, message)
 	
 	if(playerInfo.xp >= playerInfo.nextLevelCost):
-		var lvlUp = LevelUp_Event.new(victoryEQ, battleManager)
+		var lvlUp = LevelUp_Event.new(eventManager, battleManager)
 		victoryEQ.addEvent(lvlUp)
 	
-	Cutscene_State.createEvent(victoryEQ, battleManager, BattleOutro)
+	Cutscene_State.createEvent(eventManager, battleManager, BattleOutro)
 	
 	victoryEQ.queueEmpty.connect(resumeEvent)
 	print(victoryEQ.queueEmpty.is_connected(self.resumeEvent))
