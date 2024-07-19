@@ -27,8 +27,6 @@ func resumeState():
 		exit()
 	else:
 		battleEQ.currentEvent.resumeEvent()
-	#elif(battleEQ.queue.front() == battleEQ.currentEvent):
-		#exit()
 
 func exit():
 	set_process_input(false)

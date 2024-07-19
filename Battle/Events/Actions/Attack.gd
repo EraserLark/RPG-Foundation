@@ -1,10 +1,11 @@
 extends Action
 class_name Attack
 
-@export var baseDamage : int = 1
-@export var specialCost : int = 0
-#@export var effect : StatusEffect = null
-#Associate minigame
+@export var baseDamage:= 1
+var bonusDamage:= 0
+@export var specialCost:= 0
+
+var actionMinigame = preload("res://Battle/Minigames/TestMinigame.tscn")
 
 func _init(eManager, battleManager, attackName:String, send:Entity, targ:Entity, targType, dmg:int, cost:int):
 	super(eManager, send, targ, targType, battleManager)
@@ -18,7 +19,8 @@ func runEvent():
 	super()
 	target.reactionComplete.connect(finishAttack)
 	sender.attack()
-	target.takeDamage(baseDamage, false)
+	var trueDamage = baseDamage + bonusDamage
+	target.takeDamage(trueDamage, false)
 
 #once all actions in the runEvent() func are finished running, then finishAction()
 func finishAttack():

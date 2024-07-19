@@ -7,6 +7,7 @@ extends Control
 @onready var stats:= $PlayerMenu/Stats
 @onready var playerPointer:= $PlayerPointer
 @onready var playerMenu:= $PlayerMenu
+@onready var minigameView:= $PlayerMenu/SubViewportContainer
 
 var player
 var battleManager
@@ -21,9 +22,13 @@ func _ready():
 	playerMenu.populateVars(self)
 	#Populate menus array
 	menus += [attackMenu, itemMenu, miscMenu]
+	
+	showActionMenu(false)
 
 func showActionMenu(condition: bool):
 	playerMenu.visible = condition
+	actionMenu.visible = condition
+	minigameView.visible = false
 	
 	if(condition):
 		actionMenu.attackButton.grab_focus()
@@ -46,8 +51,17 @@ func setupSelection(selectedAction: Action):
 	CloseActionMenu()
 	showActionMenu(false)
 	
-	var selectionState = SelectionState.new(StateStack, playerPointer, self, battleManager, selectedAction)
-	StateStack.addState(selectionState)
+	#Change to event, have it enqueued in the promptEQ
+	var promptQueue = battleManager.battleState.battleEQ.currentEvent.promptEQ
+	SelectionState.createEvent(promptQueue, battleManager, StateStack, playerPointer, self, selectedAction)
+	#StateStack.addState(selectionState)
+	
+	if(selectedAction.actionMinigame != null):
+		var minigameEvent = CreateMinigameEvent.new(promptQueue, battleManager, selectedAction.actionMinigame)
+		promptQueue.addEvent(minigameEvent)
+	
+	promptQueue.currentEvent = promptQueue.queue[0]
+	StateStack.resumeCurrentState()
 
 func actionTargetSelected():
 	emit_signal("selectionMade")
@@ -64,3 +78,9 @@ func CloseActionMenu():
 
 func changeStatsHealth(remaningHP: int):
 	stats.changeHealth(remaningHP)
+
+func showMinigame(case: bool):
+	actionMenu.visible = false
+	self.visible = case
+	playerMenu.visible = case
+	minigameView.visible = case

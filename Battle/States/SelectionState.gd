@@ -23,7 +23,10 @@ func enter(_msg := {}):
 	
 	currentSelection = 0
 	moveCursor(currentSelection)
-	playerPointer.visible = true
+	
+	playerPointer.set_visible(true)
+	print(playerPointer.is_visible_in_tree())
+	print("Stall")
 
 func handleInput(_event):
 	if Input.is_action_just_pressed("ui_accept"):
@@ -51,3 +54,31 @@ func moveCursor(selection : int):
 func confirmSelection():
 	selectedAction.target = currentTarget
 	exit()
+
+static func createEvent(eManager, bm, ss, pp, plui, sa):
+	var selectionEvent = EventClass.new(eManager, bm, ss, pp, plui, sa)
+	eManager.addEvent(selectionEvent)
+
+class EventClass:
+	extends Event
+	
+	var battleManager
+	var stateStack
+	var playerPointer
+	var playerUI
+	var selectedAction
+	
+	func _init(eManager, bm, ss, pp, plui, sa):
+		super(eManager)
+		battleManager = bm
+		stateStack = ss
+		playerPointer = pp
+		playerUI = plui
+		selectedAction = sa
+	
+	func runEvent():
+		var selectionSt = SelectionState.new(stateStack, playerPointer, playerUI, battleManager, selectedAction)
+		StateStack.addState(selectionSt)
+	
+	func resumeEvent():
+		finishEvent()

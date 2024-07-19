@@ -12,7 +12,10 @@ func enter(_msg := {}):
 	battleMenu.visible = true
 	battleMenu.showActionMenu(true)
 
+func resumeState():
+	exit()
+
 func exit():
 	battleMenu.selectionMade.disconnect(exit)
-	battleMenu.visible = false
+	#battleMenu.visible = false
 	super()

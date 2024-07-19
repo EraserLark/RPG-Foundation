@@ -1,7 +1,14 @@
 extends Panel
 
+@onready var actionMenu:= $ActionMenu
+@onready var attackMenu= $AttackMenu
+@onready var itemMenu:= $ItemMenu
+@onready var miscMenu:= $MiscMenu
+
 var playerUI
 
 func populateVars(pUI):
-	for node in get_children():
-		node.playerUI = pUI
+	actionMenu.playerUI = pUI
+	attackMenu.playerUI = pUI
+	itemMenu.playerUI = pUI
+	miscMenu.playerUI = pUI
