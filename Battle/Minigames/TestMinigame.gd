@@ -41,10 +41,12 @@ func wrapUp():
 	successPercent = clampi(successPercent, 0, 100)
 	var attackBoost := 0
 	
-	if(successPercent <= 50):
+	if(successPercent == 100):
 		attackBoost = 1
-	elif(successPercent == 100):
-		attackBoost = 2
+	elif(successPercent >= 50):
+		attackBoost = 0
+	elif(successPercent < 50):
+		attackBoost = -999
 	
 	minigameState.atkBoost = attackBoost
 	minigameState.resumeState()
