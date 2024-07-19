@@ -62,6 +62,7 @@ func closeBox():
 
 #https://youtu.be/jhwfA-QF54M?t=403
 func checkTag(fullText, characterIndex):
+		setTimer(defaultTypeSpeed)
 		if fullText[characterIndex] == "<":
 			inTag = true
 			var nextChar = fullText[characterIndex + 1]
@@ -74,6 +75,8 @@ func checkTag(fullText, characterIndex):
 			elif nextChar == "P":
 				var pauseTime = int(fullText[characterIndex + 2])
 				setTimer(pauseTime)
+		elif fullText[characterIndex] == ".":
+			setTimer(.25)
 		elif inTag:
 			if fullText[characterIndex - 1] == ">":
 				inTag = false
