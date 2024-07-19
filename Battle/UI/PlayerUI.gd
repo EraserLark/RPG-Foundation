@@ -56,10 +56,6 @@ func setupSelection(selectedAction: Action):
 	SelectionState.createEvent(promptQueue, battleManager, StateStack, playerPointer, self, selectedAction)
 	#StateStack.addState(selectionState)
 	
-	if(selectedAction.actionMinigame != null):
-		var minigameEvent = CreateMinigameEvent.new(promptQueue, battleManager, selectedAction.actionMinigame)
-		promptQueue.addEvent(minigameEvent)
-	
 	promptQueue.currentEvent = promptQueue.queue[0]
 	StateStack.resumeCurrentState()
 

@@ -5,6 +5,7 @@ var sender# : Entity
 var target# : Entity
 var targetOptions : Array
 var battleManager : BattleManager
+var actionMinigame
 
 enum TargetTypes {PLAYER, ENEMY, ALL}
 var targetType : TargetTypes
