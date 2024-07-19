@@ -3,21 +3,29 @@ extends Node2D
 var battleManager
 var minigameState
 var successPercent := 0
+var stageWidth
 
 var lights:= 4
 var litCount:= 0
 
 @onready var timer:= $Timer
+@onready var progressBar:= $TextureRect
 @onready var lightSprites:= $Lights
 var onSprite = preload("res://Art/Full.png")
 
 func _ready():
 	minigameState = MinigameState.new(StateStack, self,  battleManager)
+	stageWidth = get_viewport_rect().size.x
 	timer.start()
 
 func update(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		newLight()
+	
+	var currentTime = timer.wait_time - timer.time_left
+	var ratio: float = currentTime / timer.wait_time
+	var currentPos = stageWidth * ratio
+	progressBar.position.x = currentPos
 
 func newLight():
 	if(litCount >= lightSprites.get_child_count()):

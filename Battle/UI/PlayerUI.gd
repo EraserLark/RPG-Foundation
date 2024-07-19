@@ -7,7 +7,10 @@ extends Control
 @onready var stats:= $PlayerMenu/Stats
 @onready var playerPointer:= $PlayerPointer
 @onready var playerMenu:= $PlayerMenu
-@onready var minigameView:= $PlayerMenu/SubViewportContainer
+
+@onready var minigameContainer:= $PlayerMenu/SubViewportContainer
+@onready var minigameView:= $PlayerMenu/SubViewportContainer/SubViewport
+@onready var minigameZone:= $PlayerMenu/SubViewportContainer/SubViewport/MinigameZone
 
 var player
 var battleManager
@@ -28,7 +31,7 @@ func _ready():
 func showActionMenu(condition: bool):
 	playerMenu.visible = condition
 	actionMenu.visible = condition
-	minigameView.visible = false
+	minigameContainer.visible = false
 	
 	if(condition):
 		actionMenu.attackButton.grab_focus()
@@ -79,4 +82,4 @@ func showMinigame(case: bool):
 	actionMenu.visible = false
 	self.visible = case
 	playerMenu.visible = case
-	minigameView.visible = case
+	minigameContainer.visible = case

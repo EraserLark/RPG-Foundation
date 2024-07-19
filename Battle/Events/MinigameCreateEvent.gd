@@ -13,7 +13,7 @@ func _init(eManager, bm, mg):
 func runEvent():
 	var mg = minigame.instantiate()
 	mg.battleManager = battleManager
-	battleManager.playerUI.minigameView.get_node("SubViewport").add_child(mg)
+	battleManager.playerUI.minigameZone.add_child(mg)
 
 func resumeEvent():
 	finishEvent()
