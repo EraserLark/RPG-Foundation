@@ -12,7 +12,7 @@ func enter(_msg := {}):
 	cutsceneEQ.addEvent(enemiesEntering)
 	
 	#var introMessage = Textbox_State.TB_Event.new(cutsceneEQ, StateStack, battleManager.battleUI.textbox, "Snowbros are ready to tussle!")
-	Textbox_State.createEvent(cutsceneEQ, StateStack, battleManager.battleUI.textbox, "Snowbros are ready to tussle!")
+	Textbox_State.createEvent(cutsceneEQ, StateStack, battleManager.battleUI.textbox, "[b]Snowbros[/b] are ready to tussle!")
 	
 	cutsceneEQ.popQueue()
 

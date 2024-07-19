@@ -13,29 +13,35 @@ var skip:= false
 var inTag:= false
 var finished:= false
 
+#https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html#:~:text=(message)%5D)-,Stripping%20BBCode%20tags,another%20Control%20that%20does%20not%20support%20BBCode%20(such%20as%20a%20tooltip)%3A,-extends%20RichTextLabel%0A%0Afunc
+var regex
+
 signal phraseFin()
 signal boxFin()
 
 func _ready():
-	pass
+	regex = RegEx.new()
+	regex.compile("\\[.*?\\]")
 
 func typeText():
-	textBox.text = ""
+	textBox.text = line
+	textBox.visible_characters = 0
 	showTextbox(true)
 	setTimerSpeed(1) #Set type speed
 	
-	var currentDialogue = line
+	var cleanText = regex.sub(line, "", true)	#Strips bbcode tags out of line
 	var charIndex = 0
 	finished = false
 	skip = false
 	
 	#for loop instead?
-	while charIndex < currentDialogue.length():
+	while charIndex < cleanText.length():
 		#https://youtu.be/jhwfA-QF54M?t=414
-		checkTag(currentDialogue, charIndex)
+		checkTag(cleanText, charIndex)
 		
 		if !inTag:
-			textBox.text += currentDialogue[charIndex]
+			#textBox.text += currentDialogue[charIndex]
+			textBox.visible_characters += 1
 			typeAudio.play()
 			if !skip:
 				typeTimer.start()
@@ -68,7 +74,6 @@ func checkTag(fullText, characterIndex):
 			elif nextChar == "P":
 				var pauseTime = int(fullText[characterIndex + 2])
 				setTimer(pauseTime)
-				
 		elif inTag:
 			if fullText[characterIndex - 1] == ">":
 				inTag = false
