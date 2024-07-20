@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://tlwsd57qjv2q"]
+
+[ext_resource type="PackedScene" uid="uid://cf4rw4sjniddv" path="res://Battle/Minigames/MinigameFoundation.tscn" id="1_ls5sl"]
+[ext_resource type="Script" path="res://Battle/Minigames/MG_OneScreenPlatformer.gd" id="2_m7bd3"]
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_nm00c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67cab"]
+size = Vector2(64, 32)
+
+[sub_resource type="Gradient" id="Gradient_b0oi6"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aawwj"]
+gradient = SubResource("Gradient_b0oi6")
+width = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj65q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qti6q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk1qp"]
+atlas = ExtResource("2_nm00c")
+region = Rect2(561, 170, 16, 16)
+
+[node name="Minigame" instance=ExtResource("1_ls5sl")]
+script = ExtResource("2_m7bd3")
+
+[node name="Timer" parent="." index="1"]
+wait_time = 5.0
+
+[node name="Area2D" type="StaticBody2D" parent="Stage" index="0"]
+position = Vector2(32, 146)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_67cab")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stage/Area2D" index="1"]
+rotation = -1.5708
+scale = Vector2(1, 64)
+texture = SubResource("GradientTexture1D_aawwj")
+
+[node name="Area2D2" type="StaticBody2D" parent="Stage" index="1"]
+position = Vector2(128, 146)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Area2D2" index="0"]
+shape = SubResource("RectangleShape2D_67cab")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stage/Area2D2" index="1"]
+rotation = -1.5708
+scale = Vector2(1, 64)
+texture = SubResource("GradientTexture1D_aawwj")
+
+[node name="Area2D3" type="StaticBody2D" parent="Stage" index="2"]
+position = Vector2(240, 146)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Area2D3" index="0"]
+shape = SubResource("RectangleShape2D_67cab")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stage/Area2D3" index="1"]
+rotation = -1.5708
+scale = Vector2(1, 64)
+texture = SubResource("GradientTexture1D_aawwj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Stage" index="3"]
+position = Vector2(16, 76)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/CharacterBody2D" index="0"]
+shape = SubResource("RectangleShape2D_yj65q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stage/CharacterBody2D" index="1"]
+scale = Vector2(1.375, 1.375)
+texture = ExtResource("2_nm00c")
+region_enabled = true
+region_rect = Rect2(510, 153, 16, 16)
+
+[node name="Goal" type="Area2D" parent="Stage" index="4"]
+position = Vector2(255, 66)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Goal" index="0"]
+shape = SubResource("CircleShape2D_qti6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Stage/Goal" index="1"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_dk1qp")
+
+[connection signal="area_entered" from="Stage/Goal" to="." method="_on_goal_area_entered"]
+[connection signal="body_entered" from="Stage/Goal" to="." method="_on_goal_body_entered"]
