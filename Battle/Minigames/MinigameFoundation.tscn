@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf4rw4sjniddv"]
+
+[ext_resource type="Script" path="res://Battle/Minigames/MinigameFoundation.gd" id="1_noflq"]
+
+[sub_resource type="Gradient" id="Gradient_072uj"]
+colors = PackedColorArray(0, 0, 0, 0.196078, 0, 0, 0, 0.196078)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jivej"]
+gradient = SubResource("Gradient_072uj")
+
+[node name="Minigame" type="Node2D"]
+script = ExtResource("1_noflq")
+metadata/_edit_vertical_guides_ = [288.0]
+metadata/_edit_horizontal_guides_ = [162.0]
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_direction = 3
+offset_left = -288.0
+offset_bottom = 162.0
+texture = SubResource("GradientTexture1D_jivej")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Stage" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

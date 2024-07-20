@@ -7,15 +7,13 @@ var battleManager : BattleManager
 func _init(eManager, bm):
 	super(eManager)
 	battleManager = bm
-	
-	levelUpEQ.queueEmpty.connect(resumeEvent)
 
 func runEvent():
 	battleManager.playerEntities[0].localInfo.levelUp()
 	
 	battleManager.cutsceneManager.play("LevelUp")
 	
-	var message = str("LEVEL UP! You are now Level ", battleManager.playerEntities[0].localInfo.level)
+	var message = str("[rainbow]LEVEL UP![/rainbow] You are now Level ", battleManager.playerEntities[0].localInfo.level)
 	var textbox = battleManager.battleUI.textbox
 	
 	Textbox_State.createEvent(levelUpEQ, StateStack, textbox, message)
@@ -29,5 +27,4 @@ func resumeEvent():
 		levelUpEQ.currentEvent.resumeEvent()
 
 func finishEvent():
-	levelUpEQ.queueEmpty.disconnect(resumeEvent)
 	super()

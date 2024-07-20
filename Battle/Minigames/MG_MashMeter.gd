@@ -1,29 +1,28 @@
 extends MinigameFoundation
-class_name Minigame_Test
+class_name MG_MashMeter
 
-@onready var lightSprites:= $Lights
-var lights:= 4
-var litCount:= 0
-var onSprite = preload("res://Art/Full.png")
+@onready var mashBar:= $Stage/ProgressBar
+var meterAmt: float
 
 func _ready():
 	super()
 
 func update(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		newLight()
+		addMeter()
+	
+	meterAmt -= 0.25
+	if(meterAmt <= 0):
+		meterAmt = 0
+	mashBar.value = meterAmt
 	
 	super(delta)
 
-func newLight():
-	if(litCount >= lightSprites.get_child_count()):
-		return
-	
-	lightSprites.get_child(litCount).texture = onSprite
-	litCount += 1
-	successPercent += 25
-	
+func addMeter():
+	meterAmt += 7.5
+
 func wrapUp():
+	successPercent = meterAmt
 	super()
 
 func guageSuccess():

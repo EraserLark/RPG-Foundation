@@ -9,8 +9,8 @@ func initialize(bm: BattleManager):
 	super(bm)
 	
 	var enemyAtk = localInfo.atk
-	var enemyAction1 = Attack.new(null, bm, "Punch", self, null, Action.TargetTypes.PLAYER, enemyAtk, 0)
-	var enemyAction2 = Attack.new(null, bm, "Bingo", self, null, Action.TargetTypes.PLAYER, enemyAtk + 2, 0)
+	var enemyAction1 = Attack.new(null, bm, "Punch", self, null, Action.TargetTypes.PLAYER, enemyAtk, 0, "")
+	var enemyAction2 = Attack.new(null, bm, "Bingo", self, null, Action.TargetTypes.PLAYER, enemyAtk + 2, 0, "")
 	
 	enemyAction1.targetType = Action.TargetTypes.PLAYER
 	enemyAction2.targetType = Action.TargetTypes.PLAYER

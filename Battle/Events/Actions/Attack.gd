@@ -5,7 +5,7 @@ class_name Attack
 var bonusDamage:= 0
 @export var specialCost:= 0
 
-func _init(eManager, battleManager, attackName:String, send:Entity, targ:Entity, targType, dmg:int, cost:int):
+func _init(eManager, battleManager, attackName:String, send:Entity, targ:Entity, targType, dmg:int, cost:int, mg:String):
 	super(eManager, send, targ, targType, battleManager)
 	eventName = attackName
 	self.sender = send
@@ -13,7 +13,8 @@ func _init(eManager, battleManager, attackName:String, send:Entity, targ:Entity,
 	baseDamage = dmg
 	specialCost = cost
 	
-	actionMinigame = preload("res://Battle/Minigames/TestMinigame.tscn")
+	if mg != "":
+		actionMinigame = load(mg)
 
 func runEvent():
 	super()

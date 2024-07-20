@@ -16,8 +16,9 @@ func handleInput(_event : InputEvent):
 	minigameManager.handleInput(_event)
 
 func enter(_msg := {}):
-	battleManager.playerUI.showMinigame(true)
-
+	if(battleManager != null):
+		battleManager.playerUI.showMinigame(true)
+ 
 func update(_delta : float):
 	minigameManager.update(_delta)	
 
