@@ -31,4 +31,5 @@ func endStatus():
 	target.statusEffects.erase(self)
 	statusRoster.erase(self)
 	battleManager.battleState.battleEQ.currentEvent.unresolvedStatuses.erase(self)
+	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(statusAction)
 	queue_free()
