@@ -11,13 +11,11 @@ func _init(sStack, cm, bm):
 	battleManager = bm
 	
 	cutsceneManager.currentCutscene = self
-	cutsceneEQ.queueEmpty.connect(exit)
 
 func animFin():
 	cutsceneEQ.currentEvent.resumeEvent()
 
 func exit():
-	cutsceneEQ.queueEmpty.disconnect(exit)
 	super()
 
 func resumeState():
@@ -25,8 +23,6 @@ func resumeState():
 		exit()
 	else:
 		cutsceneEQ.currentEvent.resumeEvent()
-	#elif(cutsceneEQ.queue.front() == cutsceneEQ.currentEvent):
-		#exit()
 
 static func createEvent(eManager, bm, cc):
 	var cutsceneEvent = EventClass.new(eManager, bm, cc)

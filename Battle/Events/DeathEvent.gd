@@ -9,7 +9,6 @@ func _init(eManager, entity, bm):
 	super(eManager)
 	deadEntity = entity
 	battleManager = bm
-	deathEQ.queueEmpty.connect(resumeEvent)
 
 func runEvent():
 	var deathAnim = AnimationEvent.new(deathEQ, deadEntity.actor.animPlayer, "Death")
@@ -21,7 +20,6 @@ func resumeEvent():
 	finishEvent()
 
 func finishEvent():
-	deathEQ.queueEmpty.disconnect(resumeEvent)
 	deadEntity.entityDead()
 	
 	var someAlive = deadEntity.checkRoster()

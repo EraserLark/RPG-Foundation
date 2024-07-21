@@ -21,8 +21,6 @@ func runEvent():
 	
 	finishEQ.addEvent(resultEvent)
 	
-	finishEQ.queueEmpty.connect(resumeEvent)
-	print(finishEQ.queueEmpty.is_connected(self.resumeEvent))
 	finishEQ.popQueue()
 
 func resumeEvent():

@@ -13,8 +13,6 @@ func _init(sStack: StateStack, bm):
 	
 	var startingEvent = Start_Phase.new(battleEQ, battleManager)
 	battleEQ.addEvent(startingEvent)
-	
-	battleEQ.queueEmpty.connect(exit)
 
 func handleInput(_event: InputEvent):
 	pass
@@ -30,6 +28,5 @@ func resumeState():
 
 func exit():
 	set_process_input(false)
-	battleEQ.queueEmpty.disconnect(exit)
 	super()
 	battleManager.queue_free()
