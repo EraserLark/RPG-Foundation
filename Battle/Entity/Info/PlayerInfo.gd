@@ -25,9 +25,9 @@ func levelUp():
 	nextLevelCost += 5
 
 func setupAttacks(bm : BattleManager):
-	var attack1 = Attack.new(null, bm, "Basic Attack", null, null, Action.TargetTypes.ENEMY, 1, 0, "res://Battle/Minigames/MG_OneScreenPlatformer.tscn")
-	var attack2 = Attack.new(null, bm, "Fireball", null, null, Action.TargetTypes.ENEMY, 3, 0, "res://Battle/Minigames/TestMinigame.tscn")
-	var attack3 = Attack.new(null, bm, "Uppercut", null, null, Action.TargetTypes.ENEMY, 2, 0, "res://Battle/Minigames/MG_MashMeter.tscn")
+	var attack1 = Attack.new(null, bm, "Basic Attack", null, null, Action.TargetTypes.ENEMY, 1, 0, "res://Battle/Minigames/TestMinigame.tscn")
+	var attack2 = Attack.new(null, bm, "Fireball", null, null, Action.TargetTypes.ENEMY, 3, 0, "res://Battle/Minigames/MG_MashMeter.tscn")
+	var attack3 = Attack.new(null, bm, "Jump Kick", null, null, Action.TargetTypes.ENEMY, 2, 0, "res://Battle/Minigames/MG_OneScreenPlatformer.tscn")
 	
 	actionList += [attack1, attack2, attack3]
 
