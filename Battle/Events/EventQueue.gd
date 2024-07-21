@@ -4,8 +4,6 @@ class_name EventQueue
 var queue : Array[Event]
 var currentEvent : Event
 
-signal queueEmpty
-
 func _init():
 	pass
 
@@ -25,4 +23,3 @@ func popQueue():
 	else:
 		currentEvent = null
 		StateStack.resumeCurrentState()
-		#emit_signal("queueEmpty")

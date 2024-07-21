@@ -29,7 +29,8 @@ func applyStatus(statusEffect, statusRoster):
 	statusEffects.append(newStatus)
 	statusRoster.append(newStatus)
 	
-	battleManager.battleState.battleEQ.currentEvent.unresolvedStatuses.append(newStatus)
+	battleManager.actionPhase.unresolvedStatuses.append(newStatus)
+	#battleManager.battleState.battleEQ.currentEvent.unresolvedStatuses.append(newStatus)
 
 func boostDefense(amt : int):
 	localInfo.def += amt

@@ -10,6 +10,8 @@ func _init(battleEQ, bm):
 	super(battleEQ)
 	battleManager = bm
 	battleMenu = bm.playerEntities[0].playerUI
+	bm.promptPhase = self
+	
 	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
 	StateStack.addState(battleMenuState)
 	
@@ -22,4 +24,5 @@ func resumeEvent():
 func finishEvent():
 	var actionPhase = Action_Phase.new(eventManager, battleManager)
 	eventManager.addEvent(actionPhase)
-	eventManager.popQueue()
+	battleManager.promptPhase = null
+	super()

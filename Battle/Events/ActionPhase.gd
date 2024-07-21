@@ -17,9 +17,9 @@ func _init(battleEQ, bm):
 	enemies = bm.battleRoster.enemies
 	player = bm.playerEntities[0]
 	battleUI = bm.battleUI
+	bm.actionPhase = self
 	
 	actionEQ = BattleActionQueue.new(battleManager, self)
-	#actionEQ.queueEmpty.connect(finishEvent)
 
 func runEvent(_msg:= {}):
 	var playerAction = player.localInfo.selectedAction
@@ -46,8 +46,6 @@ func resumeEvent():
 		finishEvent()
 	else:
 		actionEQ.currentEvent.resumeEvent()
-	#if(actionEQ.queue.front() == actionEQ.currentEvent):
-		#finishEvent()
 
 func battleOver():
 	actionEQ.queue.clear()
@@ -56,11 +54,10 @@ func battleOver():
 	isOver = true
 
 func finishEvent():
-	#eventManager.queueEmpty.disconnect(finishEvent)
-	
 	if(!isOver):
 		battleManager.updateTurnCount()
 		var promptPhase = Prompt_Phase.new(eventManager, battleManager)
 		eventManager.addEvent(promptPhase)
+	battleManager.actionPhase = null
 	
 	super()
