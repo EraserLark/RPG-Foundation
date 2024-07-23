@@ -24,6 +24,6 @@ func finishEvent():
 	
 	var someAlive = deadEntity.checkRoster()
 	if(!someAlive):
-		battleManager.battleState.battleEQ.currentEvent.battleOver()
+		battleManager.battleState.battlePM.actionPhase.battleOver()
 	
 	eventManager.popQueue()

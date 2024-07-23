@@ -58,8 +58,8 @@ func takeDamage(dmg : int, pierce : bool):
 	updateUI(remainingHealth)
 	
 	if(remainingHealth <= 0):
-		var deathEvent = Death_Event.new(battleManager.battleState.battleEQ.currentEvent.actionEQ, self, battleManager)
-		battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.push_front(deathEvent)
+		var deathEvent = Death_Event.new(battleManager.actionPhase.actionEQ, self, battleManager)
+		battleManager.actionPhase.actionEQ.queue.push_front(deathEvent)
 
 func checkRoster():
 	pass
@@ -69,7 +69,7 @@ func updateUI(hp : int):
 
 func entityDead():
 	#battleManager.battleRoster.enemies.erase(self)
-	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(localInfo.selectedAction)
+	battleManager.actionPhase.actionEQ.queue.erase(localInfo.selectedAction)
 	actor.queue_free()
 	for effect in statusEffects:
 		effect.endStatus()

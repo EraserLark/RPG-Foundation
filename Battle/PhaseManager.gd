@@ -22,8 +22,8 @@ func resumeCurrentPhase():
 	currentPhase.resumePhase()
 
 func phaseFinished():
-	#Run clean function in currentPhase
-	StateStack.resumeCurrentState()
+	currentPhase.cleanPhase()
+	determineNextPhase()
 
 func finishManager():
 	managerFinished = true

@@ -1,4 +1,4 @@
-extends Event
+extends Phase
 class_name Action_Phase
 
 var battleUI
@@ -11,24 +11,23 @@ var unresolvedStatuses: Array[StatusEffect]
 
 var actionEQ: BattleActionQueue
 
-func _init(battleEQ, bm):
-	super(battleEQ)
+func _init(battlePM, bm):
+	super(battlePM)
 	battleManager = bm
 	enemies = bm.battleRoster.enemies
 	player = bm.playerEntities[0]
 	battleUI = bm.battleUI
-	bm.actionPhase = self
 	
 	actionEQ = BattleActionQueue.new(battleManager, self)
 
-func runEvent(_msg:= {}):
+func runPhase():
 	var playerAction = player.localInfo.selectedAction
 	if(playerAction.actionMinigame != null):
 		var minigameEvent = CreateMinigameEvent.new(actionEQ, battleManager, playerAction.actionMinigame)
 		actionEQ.addEvent(minigameEvent)
 	playerAction.eventManager = actionEQ
 	playerAction.sender = player
-	actionEQ.queue.append(playerAction)	
+	actionEQ.queue.append(playerAction)
 	
 	for enemy in battleManager.battleRoster.enemies:
 		var enemyAction = enemy.chooseAttack()
@@ -41,23 +40,23 @@ func runEvent(_msg:= {}):
 	
 	actionEQ.popQueue()
 
-func resumeEvent():
+func resumePhase():
 	if(actionEQ.queue.is_empty() && actionEQ.currentEvent == null):
-		finishEvent()
+		finishPhase()
 	else:
 		actionEQ.currentEvent.resumeEvent()
 
 func battleOver():
 	actionEQ.queue.clear()
-	var finishPhase = Finish_Phase.new(eventManager, battleManager)
-	eventManager.addEvent(finishPhase)
+	#var finishPhase = Finish_Phase.new(eventManager, battleManager)
+	#eventManager.addEvent(finishPhase)
 	isOver = true
 
-func finishEvent():
+func finishPhase():
 	if(!isOver):
 		battleManager.updateTurnCount()
-		var promptPhase = Prompt_Phase.new(eventManager, battleManager)
-		eventManager.addEvent(promptPhase)
-	battleManager.actionPhase = null
 	
 	super()
+
+func cleanPhase():
+	actionEQ.queue.clear()

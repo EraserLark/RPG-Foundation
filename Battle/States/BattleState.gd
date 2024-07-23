@@ -1,7 +1,7 @@
 extends State
 class_name Battle_State
 
-var battleEQ = EventQueue.new()
+var battlePM
 var battleManager
 
 enum battlePhases {START, PROMPT, ACTION, FINISH}
@@ -11,20 +11,19 @@ func _init(sStack: StateStack, bm):
 	stateStack = sStack
 	battleManager = bm
 	
-	var startingEvent = Start_Phase.new(battleEQ, battleManager)
-	battleEQ.addEvent(startingEvent)
+	battlePM = PM_Battle.new(battleManager)
 
 func handleInput(_event: InputEvent):
 	pass
 
 func enter(_msg:= {}):
-	battleEQ.popQueue()
+	battlePM.runCurrentPhase()
 
 func resumeState():
-	if(battleEQ.queue.is_empty() && battleEQ.currentEvent == null):
+	if(battlePM.managerFinished):
 		exit()
 	else:
-		battleEQ.currentEvent.resumeEvent()
+		battlePM.resumeCurrentPhase()
 
 func exit():
 	set_process_input(false)

@@ -30,6 +30,6 @@ func endStatus():
 	#Recovery animation + sfx
 	target.statusEffects.erase(self)
 	statusRoster.erase(self)
-	battleManager.battleState.battleEQ.currentEvent.unresolvedStatuses.erase(self)
-	battleManager.battleState.battleEQ.currentEvent.actionEQ.queue.erase(statusAction)
+	battleManager.battleState.battlePM.actionPhase.unresolvedStatuses.erase(self)
+	battleManager.battleState.battlePM.actionPhase.actionEQ.queue.erase(statusAction)
 	queue_free()

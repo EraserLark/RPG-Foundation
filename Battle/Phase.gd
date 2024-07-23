@@ -1,8 +1,8 @@
 extends Node
 class_name Phase
 
-var phaseName : String
-var phaseManager = null
+var phaseName: String
+var phaseManager: PhaseManager
 
 func _init(pManager):
 	phaseManager = pManager
@@ -14,7 +14,7 @@ func resumePhase():
 	pass
 
 func finishPhase():
-	pass
+	phaseManager.phaseFinished()
 
 func cleanPhase():
 	pass

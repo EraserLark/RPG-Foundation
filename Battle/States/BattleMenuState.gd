@@ -17,5 +17,4 @@ func resumeState():
 
 func exit():
 	battleMenu.selectionMade.disconnect(exit)
-	#battleMenu.visible = false
 	super()

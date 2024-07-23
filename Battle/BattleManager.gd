@@ -14,6 +14,7 @@ var battleState: Battle_State
 @onready var battleUI:= $CanvasLayer/BattleUI
 @onready var battleStage:= $BattleStage
 @onready var cutsceneManager:= $CutsceneManager
+
 var promptPhase: Prompt_Phase = null
 var actionPhase: Action_Phase = null
 

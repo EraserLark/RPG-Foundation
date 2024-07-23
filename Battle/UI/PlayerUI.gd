@@ -55,7 +55,7 @@ func setupSelection(selectedAction: Action):
 	showActionMenu(false)
 	
 	#Change to event, have it enqueued in the promptEQ
-	var promptQueue = battleManager.battleState.battleEQ.currentEvent.promptEQ
+	var promptQueue = battleManager.battleState.battlePM.promptPhase.promptEQ
 	SelectionState.createEvent(promptQueue, battleManager, StateStack, playerPointer, self, selectedAction)
 	#StateStack.addState(selectionState)
 	

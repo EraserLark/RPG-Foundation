@@ -1,4 +1,4 @@
-extends Event
+extends Phase
 class_name Prompt_Phase
 
 var battleMenu
@@ -6,23 +6,20 @@ var battleManager
 
 var promptEQ = EventQueue.new()
 
-func _init(battleEQ, bm):
-	super(battleEQ)
+func _init(battlePM, bm):
+	super(battlePM)
 	battleManager = bm
 	battleMenu = bm.playerEntities[0].playerUI
-	bm.promptPhase = self
-	
+
+func runPhase():
 	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
 	StateStack.addState(battleMenuState)
-	
-func resumeEvent():
+
+func resumePhase():
 	if(promptEQ.queue.is_empty() && promptEQ.currentEvent == null):
-		finishEvent()
+		finishPhase()
 	else:
 		promptEQ.currentEvent.resumeEvent()
 
-func finishEvent():
-	var actionPhase = Action_Phase.new(eventManager, battleManager)
-	eventManager.addEvent(actionPhase)
-	battleManager.promptPhase = null
+func finishPhase():
 	super()

@@ -1,22 +1,23 @@
-extends Event
+extends Phase
 class_name Start_Phase
 
 var battleUI
 var battleManager
 
-func _init(battleEQ, bm):
-	super(battleEQ)
+func _init(battlePM, bm):
+	super(battlePM)
 	battleManager = bm
 	battleUI = bm.battleUI
 
-func runEvent():
+func runPhase():
 	var introCutscene = BattleIntro.new(StateStack, battleManager.cutsceneManager, battleManager)
 	StateStack.addState(introCutscene)
 
-func resumeEvent():
-	finishEvent()
+func resumePhase():
+	finishPhase()
 
-func finishEvent():
-	var promptPhase = Prompt_Phase.new(eventManager, battleManager)
-	eventManager.addEvent(promptPhase)
+func finishPhase():
 	super()
+
+func cleanPhase():
+	pass
