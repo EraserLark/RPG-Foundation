@@ -8,25 +8,13 @@ func determineNextPhase():
 	pass
 
 func runCurrentPhase():
-	if(currentPhase != null):
-		currentPhase.runPhase()
-	else:
-		determineNextPhase()
+	super()
 
 func resumeCurrentPhase():
-	currentPhase.resumePhase()
+	super()
 
-func phaseFinished(p: Phase):
-	#Run clean function in phase
-	StateStack.resumeCurrentState()
+func phaseFinished():
+	super()
 
 func finishManager():
-	managerFinished = true
-
-#func popQueue():
-	#if(!queue.is_empty()):
-		#currentPhase = queue.pop_front()
-		#currentPhase.runPhase()
-	#else:
-		#currentPhase = null
-		#StateStack.resumeCurrentState()
+	super()

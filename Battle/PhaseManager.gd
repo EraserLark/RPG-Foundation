@@ -10,6 +10,7 @@ func _init():
 
 func determineNextPhase():
 	pass
+	#Set this in inherited classes
 
 func runCurrentPhase():
 	if(currentPhase != null):
@@ -20,17 +21,10 @@ func runCurrentPhase():
 func resumeCurrentPhase():
 	currentPhase.resumePhase()
 
-func phaseFinished(p: Phase):
-	#Run clean function in phase
+func phaseFinished():
+	#Run clean function in currentPhase
 	StateStack.resumeCurrentState()
 
 func finishManager():
 	managerFinished = true
-
-#func popQueue():
-	#if(!queue.is_empty()):
-		#currentPhase = queue.pop_front()
-		#currentPhase.runPhase()
-	#else:
-		#currentPhase = null
-		#StateStack.resumeCurrentState()
+	#Notify phaseManager owner that the manager is done
