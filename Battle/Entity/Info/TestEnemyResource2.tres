@@ -8,5 +8,5 @@ xpReward = 5
 entityName = "Snowbro"
 hp = 20
 hpMax = 0
-atk = 2
+atk = 11
 def = 0

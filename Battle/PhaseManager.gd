@@ -27,4 +27,4 @@ func phaseFinished():
 
 func finishManager():
 	managerFinished = true
-	#Notify phaseManager owner that the manager is done
+	StateStack.resumeCurrentState()
