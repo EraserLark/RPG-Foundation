@@ -28,7 +28,7 @@ func exit():
 	textbox.closeBox()
 	super()
 
-static func createEvent(eManager, ss, tb, m):
+static func createEvent(eManager:EventQueue, ss:StateStack, tb:Textbox, m:String):
 	var tbEvent = EventClass.new(eManager, ss, tb, m)
 	eManager.addEvent(tbEvent)
 

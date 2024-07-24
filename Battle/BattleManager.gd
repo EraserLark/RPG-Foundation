@@ -5,7 +5,6 @@ class_name BattleManager
 @onready var battleRoster:= $BattleRoster
 var playerEntities
 var enemyEntities
-var statusRoster: Array[StatusEffect]
 var turnCount:= 0
 var xpBank := 0
 
@@ -15,6 +14,7 @@ var battleState: Battle_State
 @onready var battleStage:= $BattleStage
 @onready var cutsceneManager:= $CutsceneManager
 
+#Phases
 var promptPhase: Prompt_Phase = null
 var actionPhase: Action_Phase = null
 
@@ -45,5 +45,4 @@ func _ready():
 
 func updateTurnCount():
 	turnCount += 1
-	for status in statusRoster:
-		status.currentCount += 1
+	return turnCount

@@ -6,10 +6,12 @@ var player
 var enemies
 var battleManager
 
+var turnUpdated:= false
 var isOver:= false
-var unresolvedStatuses: Array[StatusEffect]
 
 var actionEQ: BattleActionQueue
+var statusRoster: Array[StatusEffect]
+var unresolvedStatuses: Array[StatusEffect]
 
 func _init(battlePM, bm):
 	super(battlePM)
@@ -36,25 +38,30 @@ func runPhase():
 		enemyAction.target = player
 		actionEQ.queue.append(enemyAction)
 	
-	unresolvedStatuses = battleManager.statusRoster.duplicate()
+	unresolvedStatuses = statusRoster.duplicate()
 	
 	actionEQ.popQueue()
 
 func resumePhase():
 	if(actionEQ.queue.is_empty() && actionEQ.currentEvent == null):
-		finishPhase()
+		if(!turnUpdated):
+			turnUpdated = true
+			var turnEvent = UpdateTurn.new(actionEQ, battleManager)
+			actionEQ.addEvent(turnEvent)
+			actionEQ.popQueue()
+		elif(turnUpdated):
+			turnUpdated = false
+			finishPhase()
 	else:
 		actionEQ.currentEvent.resumeEvent()
 
 func battleOver():
 	actionEQ.queue.clear()
-	#var finishPhase = Finish_Phase.new(eventManager, battleManager)
-	#eventManager.addEvent(finishPhase)
 	isOver = true
 
 func finishPhase():
-	if(!isOver):
-		battleManager.updateTurnCount()
+	#if(!isOver):
+		#battleManager.updateTurnCount()
 	
 	super()
 

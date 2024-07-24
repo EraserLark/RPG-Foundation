@@ -1,35 +1,54 @@
 extends Node #extends Entity
 class_name StatusEffect
 
-var battleManager
+var battleManager: BattleManager
+var actionPhase: Action_Phase
 var statusRoster
-var status_name : String
-var turnCount : int
-var currentCount := 0
-var statusAction : Action
-var target : Entity
+var unresolvedStatuses
 
-func _init(bm, sn, tc, tg, sr):
-	battleManager = bm
+var status_name: String
+var turnCountLimit: int
+var startingTurn: int
+var statusAction: Action
+var target: Entity
+
+func _init(sn, tc, tg, bm, sr, us):
 	status_name = sn
-	turnCount = tc
+	turnCountLimit = tc
 	target = tg
+	battleManager = bm
+	actionPhase = bm.actionPhase
 	statusRoster = sr
+	unresolvedStatuses = us
+	
+	startingTurn = battleManager.turnCount
 
 func runStatus():
 	return statusAction
 
-func checkStatusCount():
-	if(currentCount >= turnCount):
-		endStatus()
+func checkStatusCount(battleTurnCount):
+	if(battleTurnCount >= (turnCountLimit + startingTurn)):
+		#endStatus()
+		return true
+	else:
+		return false
 
 func addToEventQueue(_eq):
 	pass
 
+func revertStatus():
+	pass
+
 func endStatus():
 	#Recovery animation + sfx
+	revertStatus()
 	target.statusEffects.erase(self)
 	statusRoster.erase(self)
-	battleManager.battleState.battlePM.actionPhase.unresolvedStatuses.erase(self)
-	battleManager.battleState.battlePM.actionPhase.actionEQ.queue.erase(statusAction)
+	unresolvedStatuses.erase(self)
+	actionPhase.actionEQ.queue.erase(statusAction)
+	
+	#var message = str(status_name, " has ended!")
+	#var endTB = Textbox_State.new(StateStack, battleManager.battleUI.textbox, message)
+	#StateStack.addState(endTB)
+	
 	queue_free()

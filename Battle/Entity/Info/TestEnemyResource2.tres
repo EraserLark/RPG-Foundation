@@ -6,7 +6,7 @@
 script = ExtResource("1_es78s")
 xpReward = 5
 entityName = "Snowbro"
-hp = 1
+hp = 20
 hpMax = 0
 atk = 2
 def = 0

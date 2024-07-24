@@ -3,9 +3,9 @@ class_name DefenseStatus
 
 func _init(bm, tg, sr):
 	status_name = "Defense Raised"
-	turnCount = 1
-	super(bm, status_name, turnCount, tg, sr)
-	statusAction = DefendedAction.new(null, self, target, Action.TargetTypes.PLAYER, battleManager)
+	turnCountLimit = 1
+	super(status_name, turnCountLimit, tg, bm, sr, bm.actionPhase.unresolvedStatuses)
+	statusAction = DefendedAction.new(null, self, target, Action.TargetTypes.PLAYER, bm)
 
 func runStatus():
 	return statusAction
@@ -14,8 +14,11 @@ func addToEventQueue(eq):
 	var eventQueue = eq
 	eventQueue.queue.push_front(statusAction)
 
+func revertStatus():
+	target.decreaseDefense(1)
+
 func endStatus():
-	target.revertStatus()
+	#target.revertStatus()
 	super()
 
 class DefendedAction:

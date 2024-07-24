@@ -17,8 +17,6 @@ func runEvent():
 	
 	Cutscene_State.createEvent(defeatEQ, battleManager, BattleOutro)
 	
-	defeatEQ.queueEmpty.connect(resumeEvent)
-	print(defeatEQ.queueEmpty.is_connected(self.resumeEvent))
 	defeatEQ.popQueue()
 
 func resumeEvent():

@@ -3,14 +3,17 @@ class_name PoisonStatus
 
 func _init(bm, tg, sr):
 	status_name = "Posioned"
-	turnCount = 3
-	super(bm, status_name, turnCount, tg, sr)
+	turnCountLimit = 3
+	super(status_name, turnCountLimit, tg, bm, sr, bm.actionPhase.unresolvedStatuses)
 	var targets = [bm.enemyEntities, bm.playerEntities]
-	statusAction = PoisonAction.new(null, self, target, Action.TargetTypes.ALL, battleManager)
+	statusAction = PoisonAction.new(null, self, target, Action.TargetTypes.ALL, bm)
 
 func addToEventQueue(eq):
 	var eventQueue = eq
 	eventQueue.queue.append(statusAction)
+
+func revertStatus():
+	pass
 
 class PoisonAction:
 	extends Action

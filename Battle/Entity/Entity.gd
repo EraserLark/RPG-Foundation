@@ -19,9 +19,9 @@ func getClassInstance():
 
 func gainStatus(statusType):
 	if(statusType == Status.Type.POISON):
-		applyStatus(PoisonStatus, battleManager.statusRoster)
+		applyStatus(PoisonStatus, battleManager.actionPhase.statusRoster)
 	elif(statusType == Status.Type.DEFUP):
-		applyStatus(DefenseStatus, battleManager.statusRoster)
+		applyStatus(DefenseStatus, battleManager.actionPhase.statusRoster)
 	emit_signal("reactionComplete")
 
 func applyStatus(statusEffect, statusRoster):
@@ -30,10 +30,12 @@ func applyStatus(statusEffect, statusRoster):
 	statusRoster.append(newStatus)
 	
 	battleManager.actionPhase.unresolvedStatuses.append(newStatus)
-	#battleManager.battleState.battleEQ.currentEvent.unresolvedStatuses.append(newStatus)
 
 func boostDefense(amt : int):
 	localInfo.def += amt
+
+func decreaseDefense(amt : int):
+	localInfo.def -= amt
 
 func revertStatus():
 	localInfo.def -= 1
