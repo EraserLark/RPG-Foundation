@@ -252,7 +252,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pbb7a")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="2"]
-target_position = Vector2(0, 128)
+target_position = Vector2(0, 24)
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {

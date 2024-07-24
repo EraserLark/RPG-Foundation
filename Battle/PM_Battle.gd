@@ -36,6 +36,7 @@ func determineNextPhase():
 				
 		bPhases.FINISH:
 			finishManager()
+			return
 		_:
 			currentEnumPhase = bPhases.START
 	

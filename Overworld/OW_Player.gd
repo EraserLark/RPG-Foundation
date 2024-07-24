@@ -8,7 +8,7 @@ class_name OW_Player
 @onready var animState = animTree.get("parameters/playback")
 @onready var interactRay = $"RayCast2D"
 
-var rayLength := 72;
+var rayLength := 32;
 
 func _ready():
 	var currentState = Player_Active.new(StateStack, self)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Battle/2D/PopUpNumber.gd" id="1_vvm7y"]
 
 [node name="Node2D" type="Node2D"]
+z_index = 1
 script = ExtResource("1_vvm7y")
 
 [node name="Label" type="Label" parent="."]
