@@ -49,9 +49,11 @@ func resumePhase():
 			var turnEvent = UpdateTurn.new(actionEQ, battleManager)
 			actionEQ.addEvent(turnEvent)
 			actionEQ.popQueue()
+			
 		elif(turnUpdated):
 			turnUpdated = false
 			finishPhase()
+			
 	else:
 		actionEQ.currentEvent.resumeEvent()
 
