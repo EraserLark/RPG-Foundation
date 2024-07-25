@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=19 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
+[ext_resource type="Script" path="res://Overworld/World.gd" id="2_fscot"]
 [ext_resource type="Texture2D" uid="uid://cx5njjx60mlfq" path="res://Art/Tileset_SnowPath_UPSC.png" id="2_grl8x"]
 [ext_resource type="Script" path="res://Overworld/CastList.gd" id="3_dg04a"]
 [ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_f5vhn"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://UI/DialogueBox.tscn" id="6_5x56l"]
 [ext_resource type="Script" path="res://Overworld/OW_Item.gd" id="9_r1ypc"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="10_2cs4b"]
+[ext_resource type="AudioStream" uid="uid://d4gp1tjc4uixo" path="res://Audio/Tundra.mp3" id="12_exalw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xwbj"]
 resource_name = "Tundra"
@@ -3692,6 +3694,7 @@ layout_mode = 1
 
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
+script = ExtResource("2_fscot")
 metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMap" parent="World"]
@@ -3756,5 +3759,9 @@ shape = SubResource("CapsuleShape2D_estis")
 [node name="Sprite2D" type="Sprite2D" parent="World/Item"]
 scale = Vector2(3, 3)
 texture = SubResource("AtlasTexture_vpvpc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
+stream = ExtResource("12_exalw")
+autoplay = true
 
 [editable path="World/CastList/Snowbro"]
