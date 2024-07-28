@@ -1,6 +1,8 @@
 extends OW_Actor
 class_name OW_Player
 
+var owManager: OverworldManager
+
 @export var speed := 500
 @export var playerInfo : EntityInfo
 
@@ -10,8 +12,10 @@ class_name OW_Player
 
 var rayLength := 32;
 
-func _ready():
-	var currentState = Player_Active.new(StateStack, self)
+func initialize(owm):
+	owManager = owm
+	
+	var currentState = Player_Active.new(StateStack, self, owManager)
 	StateStack.addState(currentState)
 
 func interact(interactee : Object):

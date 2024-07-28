@@ -2,10 +2,12 @@ extends State
 class_name Player_Active
 
 var player = null
+var owManager
 
-func _init(sStack, plyr):
+func _init(sStack, plyr, om):
 	super(sStack)
 	player = plyr
+	owManager = om
 
 func handleInput(event : InputEvent):
 	pass
@@ -35,12 +37,10 @@ func update(delta : float):
 			interactee = interactee.get_parent()
 		
 		player.interact(interactee)
-		#if interactee == null:
-			#return
-		#
-		#if (interactee == OW_Actor || OW_Enemy):
-			#interactee.interact();
-			##stateMachine.transition_to("Talking")
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		var menuState = PlayerMenu_State.new(StateStack, owManager.ui)
+		StateStack.addState(menuState)
 
 func physicsUpdate(delta : float):
 	pass
