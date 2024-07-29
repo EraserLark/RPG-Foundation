@@ -2,27 +2,20 @@ extends State
 class_name Textbox_State
 
 var textbox
+var ui
 var message
 
-func _init(sStack, tb, m):
+func _init(sStack, m, userintf):
 	super(sStack)
-	textbox = tb
 	message = m
+	ui = userintf
 
 func enter(_msg := {}):
-	super()
-	textbox.line = message
-	textbox.openBox()
-	textbox.typeText()
+	textbox = Textbox.createInstance(ui, message, Vector2.ZERO, Vector2(300,100))
 
 func update(_delta : float):
 	if Input.is_action_just_pressed("ui_accept"):
-		if textbox.finished == false:
-			textbox.skip = true
-			textbox.typeTimer.stop()
-			textbox.typeTimer.emit_signal("timeout")	#Skips to end of current 'yield' timer, based off typing speed
-		else:
-			exit()
+		textbox.advance()
 
 func exit():
 	textbox.closeBox()

@@ -1,10 +1,10 @@
 extends Textbox
 
-@onready var nameLabel := $NameLabel
-@export var speakerName := ""
-@export var speakerMessage := ""
+@onready var nameLabel:= $NameLabel
+@export var speakerName:= ""
+@export var speakerMessage:= ""
 
-@onready var castList := get_node("../../../World/CastList")
+@onready var castList:= get_node("../../../World/CastList")
 
 func _ready():
 	super()		#Runs base constructor
@@ -17,9 +17,9 @@ func openDialogue(name, message):
 	StateStack.addState(dbState)
 
 func newDialogue():
-	line = speakerMessage
+	currentLine = speakerMessage
 	setName(speakerName)
-	typeText()
+	typeText(currentLine)
 
-func setName(name : String):
+func setName(name: String):
 	nameLabel.text = name
