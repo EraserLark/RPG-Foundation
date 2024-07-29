@@ -11,12 +11,13 @@ func _init(sStack : StateStack, userintf):
 
 func enter(_msg := {}):
 	ui.showPlayerMenu(true)
-	var focus = playerMenu.get_node("GridContainer").get_node("Button")
+	var focus = playerMenu.get_node("InitialMenu").get_node("MenuList")
 	focus.grab_focus()
+	focus.select(0)
 
 func update(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		exit()
+		playerMenu.CloseMenu()
 
 func resumeState():
 	pass

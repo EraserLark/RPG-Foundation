@@ -3718,49 +3718,26 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ivsee")
 script = ExtResource("3_mylkc")
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/OW_UI/PlayerMenu"]
+[node name="InitialMenu" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerMenu"]
+layout_mode = 2
+
+[node name="MenuList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/InitialMenu"]
+custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-columns = 2
+item_count = 3
+max_columns = 2
+same_column_width = true
+item_0/text = "Inventory"
+item_1/text = "Attacks"
+item_2/text = "Settings"
 
-[node name="Button" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="Button2" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="Button3" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="Button4" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="Button5" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="Button6" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="Button7" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="Button8" type="Button" parent="CanvasLayer/OW_UI/PlayerMenu/GridContainer"]
-layout_mode = 2
-text = "Inventory"
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerMenu"]
+[node name="PlayerInfoContainer" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerMenu/InitialMenu"]
 custom_minimum_size = Vector2(118, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/OW_UI/PlayerMenu/InitialMenu/PlayerInfoContainer"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -3768,13 +3745,20 @@ size_flags_vertical = 8
 bbcode_enabled = true
 text = "HP: __/__"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/OW_UI/PlayerMenu/InitialMenu/PlayerInfoContainer"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("2_561dd")
 stretch_mode = 5
+
+[node name="InventoryMenu" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerMenu"]
+visible = false
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/InventoryMenu"]
+layout_mode = 2
 
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -3847,5 +3831,7 @@ texture = SubResource("AtlasTexture_vpvpc")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
 stream = ExtResource("12_exalw")
 autoplay = true
+
+[connection signal="item_activated" from="CanvasLayer/OW_UI/PlayerMenu/InitialMenu/MenuList" to="CanvasLayer/OW_UI/PlayerMenu" method="_on_menu_list_item_activated"]
 
 [editable path="World/CastList/Snowbro"]
