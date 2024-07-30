@@ -7,11 +7,11 @@
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
 [ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Battle/Entity/Info/TestEnemyResource2.tres" id="4_gehmf"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
-[ext_resource type="Script" path="res://Battle/UI/PlayerUI.gd" id="8_2gtag"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/action_menu.tscn" id="9_vhn0o"]
 [ext_resource type="Script" path="res://Battle/UI/AttackMenu.gd" id="10_tcqst"]
 [ext_resource type="Script" path="res://Battle/UI/ItemMenu.gd" id="11_hgxlw"]
 [ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="13_3de6x"]
+[ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="13_vxg26"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerPointer.gd" id="14_w6irq"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
 [ext_resource type="Script" path="res://Battle/UI/MiscMenu.gd" id="15_jhbnu"]
@@ -325,7 +325,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("8_2gtag")
+script = ExtResource("13_vxg26")
 
 [node name="PlayerPointer" type="TextureRect" parent="CanvasLayer/BattleUI/PlayerUI"]
 visible = false

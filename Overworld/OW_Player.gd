@@ -5,7 +5,7 @@ class_name OW_Player
 var owManager: OverworldManager
 
 @export var speed := 500
-@export var playerInfo : EntityInfo
+@export var playerInfo : PlayerInfo
 
 @onready var animTree = $"AnimationTree"
 @onready var animState = animTree.get("parameters/playback")

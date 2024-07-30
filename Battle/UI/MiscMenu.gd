@@ -6,8 +6,6 @@ var miscList: Array[Action]
 func initMenu(actions: Array[Action]):
 	miscList = actions
 	
-	itemList = get_node("ItemList")
-	
 	for action in miscList:
 		itemList.add_item(action.eventName)
 
