@@ -15,11 +15,14 @@ func showSubMenu(menu: Menu):
 	menuStack.pushMenu(menu)
 
 func closeSubMenu():
-	if(menuStack.currentMenu == baseMenu && mandatory):
-		return
-	else:
-		menuStack.popMenu()
+	menuStack.popMenu()
 	
 	if(menuStack.currentMenu == null):
 		isFinished = true
 		StateStack.resumeCurrentState()
+
+func backOut():
+	if(menuStack.currentMenu == baseMenu && mandatory):
+		return
+	else:
+		closeSubMenu()
