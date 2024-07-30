@@ -3,7 +3,7 @@ class_name Textbox
 
 static var scenePath = "res://UI/textbox.tscn"
 
-@onready var textField:= $RichTextLabel
+@onready var textField:= $MarginContainer/RichTextLabel
 @onready var typeTimer:= $Timer
 @onready var typeAudio:= $AudioStreamPlayer
 @onready var boxBG:= $NinePatchRect

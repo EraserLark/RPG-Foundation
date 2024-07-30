@@ -2,7 +2,7 @@ extends Item
 class_name Item_Heal
 
 func _init(bm : BattleManager):
-	super(bm)
+	super(bm, "Mushroom")
 	itemAction = HealAction.new(null, null, null, Action.TargetTypes.PLAYER, bm)
 
 class HealAction:

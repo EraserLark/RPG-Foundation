@@ -3755,6 +3755,15 @@ layout_mode = 2
 [node name="ItemList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/InventoryMenu"]
 layout_mode = 2
 
+[node name="TBContainer" type="MarginContainer" parent="CanvasLayer/OW_UI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("2_fscot")
@@ -3789,9 +3798,6 @@ metadata/_edit_group_ = true
 
 [node name="Godot Guy" parent="World/CastList" instance=ExtResource("4_ti8qv")]
 position = Vector2(768, 304)
-
-[node name="SpeechSpot" type="Node2D" parent="World/CastList/Godot Guy"]
-position = Vector2(100, -100)
 
 [node name="Snowbro" parent="World/CastList" instance=ExtResource("4_ti8qv")]
 position = Vector2(544, 336)

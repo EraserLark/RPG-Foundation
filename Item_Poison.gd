@@ -2,7 +2,7 @@ extends Item
 class_name Item_Poison
 
 func _init(bm : BattleManager):
-	super(bm)
+	super(bm, "Poison Pudding")
 	var targets = bm.enemyEntities
 	targets += bm.playerEntities
 	itemAction = PoisoningAction.new(null, bm.playerEntities[0], null, Action.TargetTypes.ALL, bm)
