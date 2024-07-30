@@ -10,10 +10,12 @@ func _init(eManager, bm):
 	battleManager = bm
 
 func runEvent():
-	var message = "You lose!"
+	var message = ["You lose!"]
 	var textbox = battleManager.battleUI.textbox
 	
-	Textbox_State.createEvent(defeatEQ, StateStack, textbox, message)
+	battleManager.playerUI.showPlayerMenu()	#gross, will be obsolete soon
+	Textbox_State.createEvent(defeatEQ, StateStack, message, battleManager.battleUI.tbContainer)
+
 	
 	Cutscene_State.createEvent(defeatEQ, battleManager, BattleOutro)
 	

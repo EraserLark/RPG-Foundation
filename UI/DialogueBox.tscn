@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://UI/DialogueBox.gd" id="2_raitk"]
 
 [node name="Dialoguebox" instance=ExtResource("1_vsgrr")]
+anchors_preset = 8
 script = ExtResource("2_raitk")
 speakerName = "Henry"
 speakerMessage = ""
@@ -15,5 +16,5 @@ anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="RichTextLabel" parent="." index="1"]
+[node name="RichTextLabel" parent="." index="2"]
 offset_top = 24.0

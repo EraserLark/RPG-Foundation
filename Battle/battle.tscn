@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=37 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
 [ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Battle/Entity/Info/TestEnemyResource2.tres" id="4_gehmf"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
-[ext_resource type="PackedScene" uid="uid://cvuqng1787hrs" path="res://UI/textbox.tscn" id="7_qx7tv"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI.gd" id="8_2gtag"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/action_menu.tscn" id="9_vhn0o"]
 [ext_resource type="Script" path="res://Battle/UI/AttackMenu.gd" id="10_tcqst"]
@@ -304,11 +303,6 @@ script = ExtResource("21_jxd88")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 1168.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
-
 [node name="LevelUp" type="ColorRect" parent="CanvasLayer"]
 visible = false
 offset_right = 1168.0
@@ -322,15 +316,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_jkbya")
-metadata/_edit_lock_ = true
-
-[node name="Textbox" parent="CanvasLayer/BattleUI" instance=ExtResource("7_qx7tv")]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-anchor_bottom = 0.197531
-offset_bottom = 0.0
-metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="PlayerUI" type="Control" parent="CanvasLayer/BattleUI"]
@@ -457,6 +442,20 @@ theme_override_font_sizes/normal_font_size = 10
 text = "10/10"
 scroll_active = false
 
+[node name="TBContainer" type="MarginContainer" parent="CanvasLayer/BattleUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 139.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1168.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
 [node name="BattleStage" type="Node2D" parent="."]
 script = ExtResource("14_yybxn")
 metadata/_edit_lock_ = true
@@ -498,7 +497,6 @@ libraries = {
 }
 script = ExtResource("26_8cjoh")
 
-[connection signal="finishStartPhase" from="CanvasLayer/BattleUI" to="BattleState/Start" method="_on_battle_ui_finish_start_phase"]
 [connection signal="button_down" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ActionMenu/ReactButton" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ActionMenu" method="_on_react_button_button_down"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/AttackMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ItemMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ItemMenu" method="_on_item_list_item_activated"]

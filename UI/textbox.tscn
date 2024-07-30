@@ -1,22 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvuqng1787hrs"]
+[gd_scene load_steps=4 format=3 uid="uid://cvuqng1787hrs"]
 
 [ext_resource type="Script" path="res://UI/Textbox.gd" id="1_dvjkt"]
 [ext_resource type="AudioStream" uid="uid://d8jienloa3u" path="res://Audio/TEST_glass_006.ogg" id="2_cb3e3"]
+[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_vsovq"]
 
-[node name="Textbox" type="Panel"]
-anchors_preset = 10
+[node name="Textbox" type="Control"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 136.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dvjkt")
+metadata/_edit_group_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vsovq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 136.0
+offset_bottom = 50.0
 grow_horizontal = 2
 bbcode_enabled = true
+scroll_active = false
 
 [node name="Timer" type="Timer" parent="."]
 

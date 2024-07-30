@@ -3699,7 +3699,13 @@ script = ExtResource("1_4a7eq")
 
 [node name="DialogueBox" parent="CanvasLayer/OW_UI" instance=ExtResource("6_5x56l")]
 visible = false
+self_modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
+anchors_preset = 10
+anchor_bottom = 0.0
+offset_bottom = 136.0
+grow_vertical = 1
 
 [node name="PlayerMenu" type="PanelContainer" parent="CanvasLayer/OW_UI"]
 visible = false

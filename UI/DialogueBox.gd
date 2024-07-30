@@ -7,7 +7,7 @@ extends Textbox
 @onready var castList:= get_node("../../../World/CastList")
 
 func _ready():
-	super()		#Runs base constructor
+	#super()		#Runs base constructor
 	castList.actor_speaking.connect(openDialogue)
 
 func openDialogue(name, message):

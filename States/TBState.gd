@@ -1,9 +1,9 @@
 extends State
 class_name Textbox_State
 
-var textbox
-var ui
-var message
+var textbox: Textbox
+var ui: Control
+var message: Array[String]
 
 func _init(sStack, m, userintf):
 	super(sStack)
@@ -11,35 +11,40 @@ func _init(sStack, m, userintf):
 	ui = userintf
 
 func enter(_msg := {}):
-	textbox = Textbox.createInstance(ui, message, Vector2.ZERO, Vector2(300,100))
+	textbox = Textbox.createInstance(ui, message, null)
+	textbox.advanceLineQueue()
 
 func update(_delta : float):
 	if Input.is_action_just_pressed("ui_accept"):
 		textbox.advance()
 
+func resumeState():
+	if(textbox.tbFinished):
+		exit()
+
 func exit():
-	textbox.closeBox()
+	textbox.closeTextbox()
 	super()
 
-static func createEvent(eManager:EventQueue, ss:StateStack, tb:Textbox, m:String):
-	var tbEvent = EventClass.new(eManager, ss, tb, m)
+static func createEvent(eManager:EventQueue, ss:StateStack, m:Array[String], userintf: Control):
+	var tbEvent = EventClass.new(eManager, ss, m, userintf)
 	eManager.addEvent(tbEvent)
 
 class EventClass:
 	extends Event
-
+	
+	var ui
 	var stateStack
-	var textbox
 	var message
 
-	func _init(eManager, ss, tb, m):
+	func _init(eManager, ss, m, userintf):
 		super(eManager)
 		stateStack = ss
-		textbox = tb
 		message = m
+		ui = userintf
 
 	func runEvent():
-		var tbState = Textbox_State.new(StateStack, textbox, message)
+		var tbState = Textbox_State.new(StateStack, message, ui)
 		StateStack.addState(tbState)
 
 	func resumeEvent():

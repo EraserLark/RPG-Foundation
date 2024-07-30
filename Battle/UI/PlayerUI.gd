@@ -83,3 +83,8 @@ func showMinigame(case: bool):
 	self.visible = case
 	playerMenu.visible = case
 	minigameContainer.visible = case
+
+func showPlayerMenu(case: bool):
+	self.visible = case
+	playerMenu.visible = case
+	actionMenu.visible = false

@@ -13,10 +13,10 @@ func runEvent():
 	
 	battleManager.cutsceneManager.play("LevelUp")
 	
-	var message = str("[rainbow]LEVEL UP![/rainbow] You are now Level ", battleManager.playerEntities[0].localInfo.level)
-	var textbox = battleManager.battleUI.textbox
+	var message: Array[String] = ["[rainbow]LEVEL UP![/rainbow]", str("You are now Level ", battleManager.playerEntities[0].localInfo.level)]
 	
-	Textbox_State.createEvent(levelUpEQ, StateStack, textbox, message)
+	battleManager.playerUI.showPlayerMenu(true)	#gross, will be obsolete soon
+	Textbox_State.createEvent(levelUpEQ, StateStack, message, battleManager.playerUI.playerMenu)
 	
 	levelUpEQ.popQueue()
 

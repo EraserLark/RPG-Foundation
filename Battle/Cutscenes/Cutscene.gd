@@ -3,7 +3,7 @@ class_name Cutscene_State
 
 var cutsceneManager : CutsceneManager
 var cutsceneEQ = EventQueue.new()
-var battleManager
+var battleManager: BattleManager
 
 func _init(sStack, cm, bm):
 	super(sStack)

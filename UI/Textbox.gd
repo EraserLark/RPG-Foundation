@@ -3,41 +3,58 @@ class_name Textbox
 
 static var scenePath = "res://UI/textbox.tscn"
 
-@onready var textPanel:= self
 @onready var textField:= $RichTextLabel
 @onready var typeTimer:= $Timer
 @onready var typeAudio:= $AudioStreamPlayer
+@onready var boxBG:= $NinePatchRect
 
 var lineQueue: Array[String]
 @export var currentLine:= "";
+
+#var customSize: Vector2
+#var customPosition: Vector2
+var target
 
 var defaultTypeSpeed:= 0.05
 var skip:= false
 var inTag:= false
 var finished:= false
+var tbFinished:= false
 
 #https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html#:~:text=(message)%5D)-,Stripping%20BBCode%20tags,another%20Control%20that%20does%20not%20support%20BBCode%20(such%20as%20a%20tooltip)%3A,-extends%20RichTextLabel%0A%0Afunc
 var regex
 
-#signal phraseFin()
-#signal boxFin()
-
-static func createInstance(parent: Node, lines: Array[String], screenPos: Vector2, dimensions: Vector2):
+static func createInstance(parent: Node, lines: Array[String], UItarget: Control) -> Textbox:
 	var scene = load(scenePath)
-	var inst = scene.instatiate()
+	var inst = scene.instantiate()
 	parent.add_child(inst)
 	
 	inst.lineQueue = lines
-	inst.textPanel.set_position(screenPos)
-	inst.textPanel.set_size(dimensions)
+	inst.target = parent
+	#inst.customSize = dimensions
+	#inst.customPosition = screenPos
+	inst.positionBox()
 	
 	return inst
 
 func _ready():
 	regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
-	
-	advanceLineQueue()
+
+func positionBox():
+	pass
+	#if(target):
+		##target.add_child(self)
+		#self.set_anchors_preset(Control.PRESET_FULL_RECT)
+		#target.visible = true
+	#else:
+		#var viewportSize = get_viewport_rect().size
+		#var gSize = Vector2(viewportSize.x, viewportSize.y * 0.5)
+		#self.size = gSize
+		#
+		#self.set_anchors_preset(Control.PRESET_CENTER_TOP)
+		#
+		#self.position = Vector2.ZERO
 
 func advance():
 	#Skip to end of line
@@ -55,6 +72,7 @@ func advanceLineQueue():
 		typeText(currentLine)
 	else:
 		closeTextbox()
+		StateStack.resumeCurrentState()
 
 func typeText(textToType: String):
 	textField.text = textToType
@@ -85,14 +103,6 @@ func typeText(textToType: String):
 	finished = true
 	emit_signal("phraseFin")
 
-func openBox():
-	textPanel.visible = true
-
-func closeBox():
-	textField.text = ""
-	textPanel.visible = false
-	emit_signal("boxFin")
-
 #https://youtu.be/jhwfA-QF54M?t=403
 func checkTag(fullText, characterIndex):
 		setTimer(defaultTypeSpeed)
@@ -115,7 +125,10 @@ func checkTag(fullText, characterIndex):
 				inTag = false
 
 func closeTextbox():
-	StateStack.resumeCurrentState()
+	#if(target):
+		#target.visible = false
+	
+	tbFinished = true
 	self.queue_free()
 
 func setTimerSpeed(multiplier):
@@ -128,4 +141,4 @@ func setText(newText : String):
 	textField.text = newText
 
 func showTextbox(condition : bool):
-	textPanel.visible = condition
+	boxBG.visible = condition
