@@ -1,4 +1,5 @@
-extends PanelContainer
+extends MenuSystem
+class_name PlayerUI_OW
 
 @onready var initialMenu:= $InitialMenu
 @onready var menuList:= $InitialMenu/MenuList
@@ -9,30 +10,40 @@ var prevFocused: Control
 
 func _ready():
 	menus = self.get_children()
+	baseMenu = initialMenu
 
-func checkIfClose():
-	if(initialMenu.visible == true):
-		return true
-	else:
-		return false
+func open():
+	self.visible = true
+	super()
+
+#func checkIfClose():
+	#if(initialMenu.visible == true):
+		#return true
+	#else:
+		#return false
 
 func _on_menu_list_item_activated(menuNum):
-	openMenu = menus[menuNum]
-	prevFocused = get_viewport().gui_get_focus_owner()
-	initialMenu.visible = false
-	OpenMenu()
+	showSubMenu(menus[menuNum])
+	#openMenu = menus[menuNum]
+	#prevFocused = get_viewport().gui_get_focus_owner()
+	#initialMenu.visible = false
+	#OpenMenu()
 
-func OpenMenu():
-	openMenu.visible = true
-	var itemList = openMenu.get_child(0)
-	itemList.grab_focus()
-	itemList.select(0)
+func closeMenuSystem():
+	self.visible = false
+	super()
 
-func CloseMenu():
-	if(initialMenu.visible == true):
-		#exit
-		pass
-	else:
-		openMenu.visible = false
-		openMenu = null
-		prevFocused.grab_focus()
+#func OpenMenu():
+	#openMenu.visible = true
+	#var itemList = openMenu.get_child(0)
+	#itemList.grab_focus()
+	#itemList.select(0)
+#
+#func CloseMenu():
+	#if(initialMenu.visible == true):
+		##exit
+		#pass
+	#else:
+		#openMenu.visible = false
+		#openMenu = null
+		#prevFocused.grab_focus()

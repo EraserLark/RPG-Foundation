@@ -18,11 +18,14 @@ func closeSubMenu():
 	menuStack.popMenu()
 	
 	if(menuStack.currentMenu == null):
-		isFinished = true
-		StateStack.resumeCurrentState()
+		closeMenuSystem()
 
 func backOut():
 	if(menuStack.currentMenu == baseMenu && mandatory):
 		return
 	else:
 		closeSubMenu()
+
+func closeMenuSystem():
+	isFinished = true
+	StateStack.resumeCurrentState()

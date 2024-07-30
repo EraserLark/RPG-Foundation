@@ -39,7 +39,7 @@ func update(delta : float):
 		player.interact(interactee)
 	
 	if Input.is_action_just_pressed("ui_cancel"):
-		var menuState = PlayerMenu_State.new(StateStack, owManager.ui)
+		var menuState = MenuState.new(StateStack, owManager.ui.playerMenu)
 		StateStack.addState(menuState)
 
 func physicsUpdate(delta : float):

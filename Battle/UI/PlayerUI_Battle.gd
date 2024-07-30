@@ -23,14 +23,6 @@ func _ready():
 func open():
 	super()
 
-#func showActionMenu(condition: bool):
-	#playerMenu.visible = condition
-	#actionMenu.visible = condition
-	#minigameContainer.visible = false
-	#
-	#if(condition):
-		#actionMenu.attackButton.grab_focus()
-
 func attackSelected(index: int):
 	var selectedAction = player.attackChosen(index)
 	setupSelection(selectedAction)

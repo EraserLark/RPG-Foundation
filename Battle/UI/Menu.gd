@@ -1,15 +1,10 @@
 extends Control
 class_name Menu
 
-var playerUI: MenuSystem
+var menuManager: MenuSystem
 var isOpen
 var firstFocus
 var prevFocused
-
-#func _unhandled_input(event):
-	#if(isOpen):
-		#if(event.is_action_pressed("ui_cancel")):
-			#playerUI.CloseActionMenu()
 
 func OpenMenu():
 	self.visible = true
