@@ -21,3 +21,7 @@ func popMenu():
 	else:
 		currentMenu = stack.front()
 		currentMenu.ResumeMenu()
+
+func emptyStack():
+	stack.clear()
+	currentMenu = null

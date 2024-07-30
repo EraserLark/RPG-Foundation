@@ -1,17 +1,19 @@
-extends TabBar
+extends Menu
 
 @onready var attackButton:= $"AttackButton"
-
-var playerUI
+@onready var attackMenu:= $"../AttackMenu"
+@onready var itemMenu:= $"../ItemMenu"
+@onready var miscMenu:= $"../MiscMenu"
 
 func _ready():
-	attackButton.grab_focus()
+	#firstFocus = attackButton
+	pass
 
 func _on_attack_button_button_down():
-	playerUI.OpenActionMenu(0)
+	playerUI.showSubMenu(attackMenu)
 
 func _on_item_button_button_down():
-	playerUI.OpenActionMenu(1)
+	playerUI.showSubMenu(itemMenu)
 
 func _on_react_button_button_down():
-	playerUI.OpenActionMenu(2)
+	playerUI.showSubMenu(miscMenu)

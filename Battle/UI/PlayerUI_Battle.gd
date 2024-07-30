@@ -16,30 +16,23 @@ class_name PlayerUI_Battle
 var player
 var battleManager
 
-var prevFocused: Control = null
-var menus: Array[Menu]
-var openMenu: Menu = null
-
-signal selectionMade
-
 func _ready():
 	playerMenu.populateVars(self)
-	#Populate menus array
-	menus += [attackMenu, itemMenu, miscMenu]
-	
-	showActionMenu(false)
+	baseMenu = playerMenu
 
-func showActionMenu(condition: bool):
-	playerMenu.visible = condition
-	actionMenu.visible = condition
-	minigameContainer.visible = false
-	
-	if(condition):
-		actionMenu.attackButton.grab_focus()
+func open():
+	super()
+
+#func showActionMenu(condition: bool):
+	#playerMenu.visible = condition
+	#actionMenu.visible = condition
+	#minigameContainer.visible = false
+	#
+	#if(condition):
+		#actionMenu.attackButton.grab_focus()
 
 func attackSelected(index: int):
 	var selectedAction = player.attackChosen(index)
-	
 	setupSelection(selectedAction)
 
 func actionSelected(index: int):
@@ -52,8 +45,8 @@ func itemSelected(index: int):
 
 func setupSelection(selectedAction: Action):
 	get_viewport().set_input_as_handled() #prevents input from carrying thru
-	CloseActionMenu()
-	showActionMenu(false)
+	#CloseActionMenu()
+	#showActionMenu(false)
 	
 	#Change to event, have it enqueued in the promptEQ
 	var promptQueue = battleManager.battleState.battlePM.promptPhase.promptEQ
@@ -65,16 +58,6 @@ func setupSelection(selectedAction: Action):
 
 func actionTargetSelected():
 	emit_signal("selectionMade")
-
-func OpenActionMenu(menuNum: int):
-	openMenu = menus[menuNum]
-	prevFocused = get_viewport().gui_get_focus_owner()
-	openMenu.OpenMenu()
-
-func CloseActionMenu():
-	openMenu.CloseMenu()
-	openMenu = null
-	prevFocused.grab_focus()
 
 func changeStatsHealth(remaningHP: int):
 	stats.changeHealth(remaningHP)

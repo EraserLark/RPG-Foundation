@@ -1,11 +1,13 @@
-extends Panel
+extends Menu
+class_name PlayerBattleMenu
 
 @onready var actionMenu:= $ActionMenu
 @onready var attackMenu= $AttackMenu
 @onready var itemMenu:= $ItemMenu
 @onready var miscMenu:= $MiscMenu
 
-var playerUI
+func _ready():
+	firstFocus = actionMenu.attackButton
 
 func populateVars(pUI):
 	actionMenu.playerUI = pUI

@@ -326,6 +326,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("13_vxg26")
+mandatory = true
 
 [node name="PlayerPointer" type="TextureRect" parent="CanvasLayer/BattleUI/PlayerUI"]
 visible = false
@@ -337,6 +338,7 @@ texture = SubResource("AtlasTexture_pbj4b")
 script = ExtResource("14_w6irq")
 
 [node name="PlayerMenu" type="Panel" parent="CanvasLayer/BattleUI/PlayerUI"]
+visible = false
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 offset_left = 456.0
@@ -357,7 +359,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(288, 136)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/SubViewportContainer/SubViewport"]
 anchor_mode = 0

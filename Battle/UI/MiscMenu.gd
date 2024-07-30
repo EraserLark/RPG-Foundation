@@ -9,13 +9,9 @@ func initMenu(actions: Array[Action]):
 	for action in miscList:
 		itemList.add_item(action.eventName)
 
-func OpenMenu():
-	super()
+func grabFirstFocus():
 	itemList.grab_focus()
 	itemList.select(0)
-
-func CloseMenu():
-	super()
 
 func _on_item_list_item_activated(index):
 	playerUI.actionSelected(index)

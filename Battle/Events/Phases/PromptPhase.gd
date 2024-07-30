@@ -2,7 +2,7 @@ extends Phase
 class_name Prompt_Phase
 
 var battleMenu
-var battleManager
+var battleManager: BattleManager
 
 var promptEQ = EventQueue.new()
 
@@ -12,7 +12,9 @@ func _init(battlePM, bm):
 	battleMenu = bm.playerEntities[0].playerUI
 
 func runPhase():
-	var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
+	#var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
+	#StateStack.addState(battleMenuState)
+	var battleMenuState = MenuState.new(StateStack, battleManager.playerUI)
 	StateStack.addState(battleMenuState)
 
 func resumePhase():

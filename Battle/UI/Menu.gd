@@ -1,7 +1,7 @@
 extends Control
 class_name Menu
 
-var playerUI
+var playerUI: MenuSystem
 var isOpen
 var firstFocus
 var prevFocused
@@ -14,15 +14,15 @@ var prevFocused
 func OpenMenu():
 	self.visible = true
 	isOpen = true
-	firstFocus.grab_focus()
+	grabFirstFocus()
 
 func ResumeMenu():
 	self.visible = true
 	isOpen = true
 	if(prevFocused):
-		prevFocused.grab_focus()
+		grabPrevFocused()
 	else:
-		firstFocus.grab_focus()
+		grabFirstFocus()
 
 func CloseMenu():
 	self.visible = false
@@ -30,3 +30,9 @@ func CloseMenu():
 
 func setPrevFocus():
 	prevFocused = get_viewport().gui_get_focus_owner()
+
+func grabFirstFocus():
+	firstFocus.grab_focus()
+
+func grabPrevFocused():
+	prevFocused.grab_focus()

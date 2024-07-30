@@ -9,13 +9,9 @@ func initMenu(attacks: Array[Action]):
 	for attack in attackList:
 		itemList.add_item(attack.eventName)
 
-func OpenMenu():
-	super()
+func grabFirstFocus():
 	itemList.grab_focus()
 	itemList.select(0)
-
-func CloseMenu():
-	super()
 
 func _on_item_list_item_activated(index):
 	playerUI.attackSelected(index)
