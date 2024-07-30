@@ -24,7 +24,7 @@ var tbFinished:= false
 #https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html#:~:text=(message)%5D)-,Stripping%20BBCode%20tags,another%20Control%20that%20does%20not%20support%20BBCode%20(such%20as%20a%20tooltip)%3A,-extends%20RichTextLabel%0A%0Afunc
 var regex
 
-static func createInstance(parent: Node, lines: Array[String], UItarget: Control) -> Textbox:
+static func createInstance(parent: Node, lines: Array[String]) -> Textbox:
 	var scene = load(scenePath)
 	var inst = scene.instantiate()
 	parent.add_child(inst)

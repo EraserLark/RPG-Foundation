@@ -4,10 +4,8 @@
 [ext_resource type="Script" path="res://UI/DialogueBox.gd" id="2_raitk"]
 
 [node name="Dialoguebox" instance=ExtResource("1_vsgrr")]
-anchors_preset = 8
 script = ExtResource("2_raitk")
 speakerName = "Henry"
-speakerMessage = ""
 
 [node name="NameLabel" type="Label" parent="." index="0"]
 layout_mode = 1

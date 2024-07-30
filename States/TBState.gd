@@ -11,7 +11,7 @@ func _init(sStack, m, userintf):
 	ui = userintf
 
 func enter(_msg := {}):
-	textbox = Textbox.createInstance(ui, message, null)
+	textbox = Textbox.createInstance(ui, message)
 	textbox.advanceLineQueue()
 
 func update(_delta : float):

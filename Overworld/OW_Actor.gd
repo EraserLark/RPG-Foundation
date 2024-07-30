@@ -1,11 +1,22 @@
 extends CharacterBody2D
 class_name OW_Actor
 
-signal send_message(name:String, message:String)
+var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
+
+@onready var ui:= $"../../../CanvasLayer/OW_UI"
+@onready var speechSpot:= $SpeechSpot
 
 func interactAction(interacter : OW_Player):
-	var message = "[b]I[/b] [i]think[/i] [u]I[/u] [s]had[/s] [font_size=30]some[/font_size] [b][i]bad[/i][/b] [color=yellow]tofu [bgcolor=red]earlier[/bgcolor][/color]. [wave]I'm feeling [rainbow]fruity[/rainbow].[/wave]"
+	var message: Array[String] = ["Don't talk to that snowman next to me.", "That guy is [shake]PISSED[/shake]"]
 	speak(message)
 
-func speak(message : String):
-	emit_signal("send_message", name, message)
+func speak(message : Array[String]):
+	#Create dialogueBubbleContainer
+	var dbc = load(dbcPath)
+	var inst = dbc.instantiate()
+	ui.add_child(inst)
+	#Assign its transform to the SpeechSpot
+	inst.refSpot = speechSpot
+	#Create a Dialoguebox state. Pass in the dbc as the parent
+	var dbState = DialogueBox_State.new(StateStack, message, self.name, inst)
+	StateStack.addState(dbState)
