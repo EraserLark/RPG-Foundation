@@ -1,9 +1,9 @@
 extends Menu
 
 @onready var attackButton:= $"AttackButton"
-@onready var attackMenu:= $"../AttackMenu"
-@onready var itemMenu:= $"../ItemMenu"
-@onready var miscMenu:= $"../MiscMenu"
+@onready var attackMenu:= $"../MarginContainer/AttackMenu"
+@onready var itemMenu:= $"../MarginContainer/ItemMenu"
+@onready var miscMenu:= $"../MarginContainer/MiscMenu"
 
 func _ready():
 	#firstFocus = attackButton

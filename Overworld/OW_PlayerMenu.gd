@@ -1,8 +1,8 @@
 extends MenuSystem
 class_name PlayerUI_OW
 
-@onready var initialMenu:= $InitialMenu
-@onready var menuList:= $InitialMenu/MenuList
+@onready var initialMenu:= $MarginContainer/InitialMenu
+@onready var menuList:= $MarginContainer/InitialMenu/ItemList
 
 var menus: Array
 var openMenu: Control

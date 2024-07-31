@@ -18,10 +18,11 @@ func runPhase():
 	StateStack.addState(battleMenuState)
 
 func resumePhase():
-	if(promptEQ.queue.is_empty() && promptEQ.currentEvent == null):
+	#if(promptEQ.queue.is_empty() && promptEQ.currentEvent == null):
+		#finishPhase()
+	#else:
+		#promptEQ.currentEvent.resumeEvent()
 		finishPhase()
-	else:
-		promptEQ.currentEvent.resumeEvent()
 
 func finishPhase():
 	super()

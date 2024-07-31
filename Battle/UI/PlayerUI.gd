@@ -27,5 +27,6 @@ func backOut():
 		closeSubMenu()
 
 func closeMenuSystem():
+	menuStack.emptyStack() 
 	isFinished = true
 	StateStack.resumeCurrentState()

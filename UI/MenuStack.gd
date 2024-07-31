@@ -23,5 +23,7 @@ func popMenu():
 		currentMenu.ResumeMenu()
 
 func emptyStack():
+	for menu in stack:
+		menu.CloseMenu()
 	stack.clear()
 	currentMenu = null

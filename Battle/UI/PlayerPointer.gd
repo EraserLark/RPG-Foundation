@@ -1,8 +1,5 @@
-extends Menu
-class_name SelectionMenu
+extends TextureRect
+class_name Cursor
 
 func moveToPosition(pos: Vector2):
 	self.global_position = pos
-
-func grabFirstFocus():
-	pass

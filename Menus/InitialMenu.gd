@@ -1,7 +1,7 @@
 extends Menu
 class_name InitialMenu
 
-@onready var itemList:= $MenuList
+@onready var itemList:= $ItemList
 var prevSelectIndex:= 0
 
 func grabFirstFocus():

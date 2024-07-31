@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Overworld/CastList.gd" id="3_dg04a"]
 [ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_f5vhn"]
 [ext_resource type="Script" path="res://Overworld/OW_PlayerMenu.gd" id="3_mylkc"]
-[ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="4_83vjy"]
+[ext_resource type="Script" path="res://Menus/InitialMenu.gd" id="4_83vjy"]
 [ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/Info/TestPlayerResource.tres" id="4_of4yd"]
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_ti8qv"]
 [ext_resource type="Script" path="res://Overworld/OW_Enemy.gd" id="5_12g4i"]
@@ -3730,10 +3730,11 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
+[node name="InitialMenu" type="HBoxContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
 layout_mode = 2
+script = ExtResource("4_83vjy")
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/HBoxContainer"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -3746,18 +3747,18 @@ item_1/text = "Attacks"
 item_2/text = "Costumes"
 item_3/text = "Settings"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/HBoxContainer/VBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(50, 70)
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(36, 81)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -3765,19 +3766,15 @@ texture = ExtResource("2_561dd")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "HP: __/__"
 
-[node name="InventoryMenu" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
+[node name="InventoryMenu" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
 visible = false
-layout_mode = 2
-script = ExtResource("4_83vjy")
-
-[node name="ItemList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InventoryMenu"]
 layout_mode = 2
 
 [node name="TBContainer" type="MarginContainer" parent="CanvasLayer/OW_UI"]
