@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=38 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
 [ext_resource type="Script" path="res://Battle/UI/MiscMenu.gd" id="15_jhbnu"]
 [ext_resource type="Script" path="res://Battle/PlayerMenu.gd" id="16_mth5x"]
+[ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="16_qi47y"]
 [ext_resource type="Script" path="res://Battle/2D/PlayerActor.gd" id="16_uccub"]
 [ext_resource type="Script" path="res://Battle/States/BattleState.gd" id="17_6gfpt"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/StartPhase.gd" id="18_56cgw"]
@@ -337,14 +338,21 @@ offset_bottom = 40.0
 texture = SubResource("AtlasTexture_pbj4b")
 script = ExtResource("14_w6irq")
 
-[node name="PlayerMenu" type="Panel" parent="CanvasLayer/BattleUI/PlayerUI"]
-visible = false
+[node name="PlayerMenu" type="NinePatchRect" parent="CanvasLayer/BattleUI/PlayerUI"]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 offset_left = 456.0
 offset_top = 512.0
 offset_right = 744.0
 offset_bottom = 648.0
+texture = ExtResource("16_qi47y")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 script = ExtResource("16_mth5x")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu"]
@@ -352,19 +360,25 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/SubViewportContainer"]
+transparent_bg = true
 handle_input_locally = false
-size = Vector2i(288, 136)
-render_target_update_mode = 0
+size = Vector2i(272, 120)
+render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/SubViewportContainer/SubViewport"]
 anchor_mode = 0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/SubViewportContainer/SubViewport"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -383,9 +397,12 @@ offset_bottom = 0.0
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 288.0
-offset_bottom = 136.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 280.0
+offset_bottom = 128.0
 script = ExtResource("10_tcqst")
+metadata/_edit_group_ = true
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/AttackMenu"]
 layout_mode = 2
@@ -397,9 +414,12 @@ fixed_icon_size = Vector2i(16, 16)
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 288.0
-offset_bottom = 136.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 280.0
+offset_bottom = 128.0
 script = ExtResource("11_hgxlw")
+metadata/_edit_group_ = true
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/ItemMenu"]
 layout_mode = 2
@@ -411,9 +431,12 @@ fixed_icon_size = Vector2i(16, 16)
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 288.0
-offset_bottom = 136.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 280.0
+offset_bottom = 128.0
 script = ExtResource("15_jhbnu")
+metadata/_edit_group_ = true
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/PlayerMenu/MiscMenu"]
 layout_mode = 2

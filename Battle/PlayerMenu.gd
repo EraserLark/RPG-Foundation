@@ -10,7 +10,7 @@ func _ready():
 	firstFocus = actionMenu.attackButton
 
 func populateVars(pUI):
-	actionMenu.playerUI = pUI
-	attackMenu.playerUI = pUI
-	itemMenu.playerUI = pUI
-	miscMenu.playerUI = pUI
+	actionMenu.menuManager = pUI
+	attackMenu.menuManager = pUI
+	itemMenu.menuManager = pUI
+	miscMenu.menuManager = pUI

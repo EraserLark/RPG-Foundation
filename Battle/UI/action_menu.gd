@@ -10,10 +10,10 @@ func _ready():
 	pass
 
 func _on_attack_button_button_down():
-	playerUI.showSubMenu(attackMenu)
+	menuManager.showSubMenu(attackMenu)
 
 func _on_item_button_button_down():
-	playerUI.showSubMenu(itemMenu)
+	menuManager.showSubMenu(itemMenu)
 
 func _on_react_button_button_down():
-	playerUI.showSubMenu(miscMenu)
+	menuManager.showSubMenu(miscMenu)
