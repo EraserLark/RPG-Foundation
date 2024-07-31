@@ -1,5 +1,5 @@
-extends ItemList
-class_name ItemsList
+extends Menu
+class_name InitialMenu
 
 @onready var itemList:= $MenuList
 var prevSelectIndex:= 0
@@ -17,6 +17,3 @@ func grabPrevFocus():
 func itemActivated(index: int):
 	prevSelectIndex = index
 	setPrevFocus()
-	
-func itemSelected():
-	pass
