@@ -1,4 +1,5 @@
 extends Menu
+class_name AttackMenu_Battle
 
 @onready var itemList:= $ItemList
 var attackList: Array[Action]
@@ -14,4 +15,4 @@ func grabFirstFocus():
 	itemList.select(0)
 
 func _on_item_list_item_activated(index):
-	playerUI.attackSelected(index)
+	menuManager.attackSelected(index)

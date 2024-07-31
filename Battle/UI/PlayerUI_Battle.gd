@@ -37,6 +37,7 @@ func itemSelected(index: int):
 
 func setupSelection(selectedAction: Action):
 	get_viewport().set_input_as_handled() #prevents input from carrying thru
+	
 	#CloseActionMenu()
 	#showActionMenu(false)
 	

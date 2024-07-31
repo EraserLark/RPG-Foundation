@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dug86qva1iveg"]
 
-[ext_resource type="Script" path="res://Overworld/ItemsList.gd" id="1_1lhoc"]
+[ext_resource type="Script" path="res://Menus/MenuComponents/ItemsList.gd" id="1_1lhoc"]
 
 [node name="_ItemsList" type="ItemList"]
 custom_minimum_size = Vector2(170, 0)

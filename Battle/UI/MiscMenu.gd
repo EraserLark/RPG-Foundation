@@ -14,4 +14,4 @@ func grabFirstFocus():
 	itemList.select(0)
 
 func _on_item_list_item_activated(index):
-	playerUI.actionSelected(index)
+	menuManager.actionSelected(index)
