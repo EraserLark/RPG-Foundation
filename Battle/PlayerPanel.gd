@@ -12,11 +12,14 @@ class_name PlayerPanel
 @onready var minigameZone:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport/MinigameZone
 
 var player: PlayerEntity
-var battleManager
+@onready var battleManager:= $"../../../.."
 var currentSelectedAction
 
 func _ready():
 	playerMenu.populateVars(self)
+
+func initialize():
+	stats.setInitialHealth(battleManager.playerEntities[0].localInfo)
 
 func open():
 	baseMenu = playerMenu

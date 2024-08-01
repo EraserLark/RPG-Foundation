@@ -15,4 +15,4 @@ func grabFirstFocus():
 
 func _on_item_list_item_activated(index):
 	menuManager.itemSelected(index)
-	itemList.remove_item(index)
+	#itemList.remove_item(index)

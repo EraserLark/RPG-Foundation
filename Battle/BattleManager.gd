@@ -40,6 +40,8 @@ func _ready():
 	for enemy in enemyEntities:
 		enemy.initialize(self)
 	
+	playerPanel.initialize()
+	
 	camera.make_current()
 	
 	battleState = Battle_State.new(StateStack, self)

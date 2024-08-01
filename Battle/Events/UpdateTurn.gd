@@ -18,8 +18,8 @@ func runEvent():
 	for status in _statusRoster:
 		var readyToEnd = status.checkStatusCount(currentCount)
 		if(readyToEnd):
-			var message = str(status.status_name, " has ended!")
-			Textbox_State.createEvent(statusUpdateEQ, StateStack, battleManager.battleUI.textbox, message)
+			var message: Array[String] = [str(status.status_name, " has ended!")]
+			Textbox_State.createEvent(statusUpdateEQ, StateStack, message, battleManager.battleUI.tbContainer)
 			status.endStatus()
 	
 	statusUpdateEQ.popQueue()
