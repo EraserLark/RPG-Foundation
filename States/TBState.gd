@@ -2,16 +2,16 @@ extends State
 class_name Textbox_State
 
 var textbox: Textbox
-var ui: Control
+var container: Control
 var message: Array[String]
 
-func _init(sStack, m, userintf):
+func _init(sStack, m, cntnr):
 	super(sStack)
 	message = m
-	ui = userintf
+	container = cntnr
 
 func enter(_msg := {}):
-	textbox = Textbox.createInstance(ui, message)
+	textbox = Textbox.createInstance(container, message)
 	textbox.advanceLineQueue()
 
 func update(_delta : float):
@@ -26,25 +26,25 @@ func exit():
 	textbox.closeTextbox()
 	super()
 
-static func createEvent(eManager:EventQueue, ss:StateStack, m:Array[String], userintf: Control):
-	var tbEvent = EventClass.new(eManager, ss, m, userintf)
+static func createEvent(eManager:EventQueue, ss:StateStack, m:Array[String], cntnr: Control):
+	var tbEvent = EventClass.new(eManager, ss, m, cntnr)
 	eManager.addEvent(tbEvent)
 
 class EventClass:
 	extends Event
 	
-	var ui
+	var container
 	var stateStack
 	var message
 
-	func _init(eManager, ss, m, userintf):
+	func _init(eManager, ss, m, cntnr):
 		super(eManager)
 		stateStack = ss
 		message = m
-		ui = userintf
+		container = cntnr
 
 	func runEvent():
-		var tbState = Textbox_State.new(StateStack, message, ui)
+		var tbState = Textbox_State.new(StateStack, message, container)
 		StateStack.addState(tbState)
 
 	func resumeEvent():

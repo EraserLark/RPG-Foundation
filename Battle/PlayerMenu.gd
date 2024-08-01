@@ -9,8 +9,8 @@ class_name PlayerBattleMenu
 func _ready():
 	firstFocus = actionMenu.attackButton
 
-func populateVars(pUI):
-	actionMenu.menuManager = pUI
-	attackMenu.menuManager = pUI
-	itemMenu.menuManager = pUI
-	miscMenu.menuManager = pUI
+func populateVars(pp):
+	actionMenu.menuManager = pp
+	attackMenu.menuManager = pp
+	itemMenu.menuManager = pp
+	miscMenu.menuManager = pp

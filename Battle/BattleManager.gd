@@ -21,12 +21,14 @@ var actionPhase: Action_Phase = null
 #Player
 @onready var playerActor:= $BattleStage/PlayerActor
 @onready var playerUI:= $CanvasLayer/BattleUI/PlayerUI
+@onready var playerPanel:= $CanvasLayer/BattleUI/PlayerUI/PlayerPanel
 
 #Other
 @onready var camera:= $BattleStage/Camera2D
 
 func _ready():
 	playerUI.battleManager = self
+	playerPanel.battleManager = self
 	battleRoster.battleManager = self
 	
 	playerEntities = battleRoster.players

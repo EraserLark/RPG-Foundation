@@ -3,6 +3,7 @@ class_name BattleSelectionMenu
 
 @onready var playerPointer:= $PlayerPointer
 @onready var playerUI:= $".."
+@onready var playerPanel:= $"../PlayerPanel"
 var battleManager
 
 var selectedAction : Action
@@ -16,7 +17,7 @@ func _ready():
 
 func OpenMenu():
 	super()
-	selectedAction = playerUI.currentSelectedAction
+	selectedAction = playerPanel.currentSelectedAction
 	selectedAction.setupTargetOptions()
 	targetRoster = selectedAction.targetOptions
 	
@@ -39,7 +40,7 @@ func _on_gui_input(event: InputEvent):
 
 func confirmSelection():
 	selectedAction.target = currentTarget
-	playerUI.actionTargetSelected()
+	playerPanel.actionTargetSelected()
 
 func CloseMenu():
 	playerPointer.visible = false

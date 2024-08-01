@@ -16,7 +16,7 @@ func runEvent():
 	var message : Array[String] = [str("You win! Gained ", battleManager.xpBank, "xp!")]
 	#var textbox = battleManager.battleUI.textbox
 	
-	battleManager.playerUI.showPlayerMenu(true)	#gross, will be obsolete soon
+	battleManager.playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
 	Textbox_State.createEvent(victoryEQ, StateStack, message, battleManager.battleUI.tbContainer)
 	
 	if(playerInfo.xp >= playerInfo.nextLevelCost):

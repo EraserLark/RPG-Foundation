@@ -15,8 +15,8 @@ func runEvent():
 	
 	var message: Array[String] = ["[rainbow]LEVEL UP![/rainbow]", str("You are now Level ", battleManager.playerEntities[0].localInfo.level)]
 	
-	battleManager.playerUI.showPlayerMenu(true)	#gross, will be obsolete soon
-	Textbox_State.createEvent(levelUpEQ, StateStack, message, battleManager.playerUI.playerMenu)
+	battleManager.playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
+	Textbox_State.createEvent(levelUpEQ, StateStack, message, battleManager.playerPanel)
 	
 	levelUpEQ.popQueue()
 

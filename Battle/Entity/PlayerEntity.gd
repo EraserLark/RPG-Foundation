@@ -2,6 +2,7 @@ extends Entity
 class_name PlayerEntity
 
 var playerUI: Control
+var playerPanel: PlayerPanel
 
 signal playerDied
 
@@ -10,6 +11,7 @@ func initialize(bm: BattleManager):
 	
 	actor = bm.playerActor
 	playerUI = bm.playerUI
+	playerPanel = bm.playerPanel
 	
 	localInfo.playerEntity = self
 	actor.player = self
@@ -24,10 +26,10 @@ func initialize(bm: BattleManager):
 	if(localInfo.miscList.is_empty()):
 		localInfo.setupMisc(battleManager)
 	
-	playerUI.stats.changeHealth(localInfo.hp)
-	playerUI.attackMenu.initMenu(localInfo.actionList)
-	playerUI.itemMenu.initMenu(localInfo.itemList)
-	playerUI.miscMenu.initMenu(localInfo.miscList)
+	playerPanel.stats.changeHealth(localInfo.hp)
+	playerPanel.playerMenu.attackMenu.initMenu(localInfo.actionList)
+	playerPanel.playerMenu.itemMenu.initMenu(localInfo.itemList)
+	playerPanel.playerMenu.miscMenu.initMenu(localInfo.miscList)
 	
 func attackChosen(attackNum: int):
 	localInfo.selectedAction = localInfo.actionList[attackNum]
@@ -53,7 +55,7 @@ func gainHealth(amt: int):
 	super(amt)
 
 func updateUI(hp: int):
-	playerUI.changeStatsHealth(hp)
+	playerPanel.changeStatsHealth(hp)
 
 func checkRoster():
 	var result = battleManager.battleRoster.checkPlayersAlive()
