@@ -365,6 +365,7 @@ patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 script = ExtResource("18_si8qb")
+mandatory = true
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 

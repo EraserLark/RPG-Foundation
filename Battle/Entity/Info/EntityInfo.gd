@@ -25,16 +25,14 @@ signal damageTaken(dmg)
 signal healthRemaining(health)
 
 func setHP(value):
-	if(entityUI != null):
-		entityUI.setHP(value)
-	
 	hp = value
+	if(entityUI != null):
+		entityUI.setHP(hp)
 
 func setItems(value):
-	if(entityUI != null):
-		entityUI.setItems(value)
-	
 	itemList = value
+	if(entityUI != null):
+		entityUI.setItems(itemList)
 
 func calcDamage(dmg : int):
 	var trueDmg := dmg-def

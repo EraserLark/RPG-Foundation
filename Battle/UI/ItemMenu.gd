@@ -15,7 +15,7 @@ func _on_item_list_item_activated(index):
 	#itemList.remove_item(index)
 
 func populateMenu(items: Array[Item]):
-	itemInv.clear()
+	itemList.clear()
 	
 	itemInv = items
 	

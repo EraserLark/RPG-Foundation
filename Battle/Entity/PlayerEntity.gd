@@ -46,9 +46,12 @@ func itemChosen(itemNum: int):
 	return localInfo.selectedAction
 
 func itemDiscarded(itemNum: int):
-	localInfo.itemList.remove_at(itemNum)
-	playerPanel.playerMenu.itemMenu.populateMenu(localInfo.itemList)
-	print("Stall")
+	var arrayDup = localInfo.itemList.duplicate()
+	arrayDup.remove_at(itemNum)
+	localInfo.itemList = arrayDup
+	
+	#Same as below, but ensures setter in array is called
+	#localInfo.itemList.remove_at(itemNum)
 
 func attack():
 	pass
