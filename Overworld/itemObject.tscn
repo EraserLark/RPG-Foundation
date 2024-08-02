@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmfvr4lmswyiv"]
+
+[ext_resource type="Script" path="res://Overworld/OW_Item.gd" id="1_8jjee"]
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_olft3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_estis"]
+radius = 16.0
+height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpvpc"]
+atlas = ExtResource("2_olft3")
+region = Rect2(714, 170, 16, 16)
+
+[node name="Item" type="Node2D"]
+position = Vector2(100, 200)
+script = ExtResource("1_8jjee")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_estis")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_vpvpc")

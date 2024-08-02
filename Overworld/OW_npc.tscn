@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfbx5q7fqdq8h"]
+[gd_scene load_steps=3 format=3 uid="uid://bfbx5q7fqdq8h"]
 
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="1_qpxhp"]
-[ext_resource type="Script" path="res://Overworld/OW_NPC.gd" id="2_d8rk1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75weq"]
 size = Vector2(128, 128)
 
 [node name="OW_NPC" instance=ExtResource("1_qpxhp")]
-script = ExtResource("2_d8rk1")
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
 
