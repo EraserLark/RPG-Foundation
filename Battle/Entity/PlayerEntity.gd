@@ -46,9 +46,7 @@ func itemChosen(itemNum: int):
 	return localInfo.selectedAction
 
 func itemDiscarded(itemNum: int):
-	var arrayDup = localInfo.itemList.duplicate()
-	arrayDup.remove_at(itemNum)
-	localInfo.itemList = arrayDup
+	localInfo.itemList = Helper.removeIndex(localInfo.itemList, itemNum)
 	
 	#Same as below, but ensures setter in array is called
 	#localInfo.itemList.remove_at(itemNum)

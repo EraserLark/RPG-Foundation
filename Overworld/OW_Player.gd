@@ -26,4 +26,5 @@ func interact(interactee : Object):
 	interactee.interactAction(self)
 
 func addItemToInv(item : Item):
-	playerInfo.itemList.append(item)
+	playerInfo.itemList = Helper.append(playerInfo.itemList, item)
+	#playerInfo.itemList.append(item)
