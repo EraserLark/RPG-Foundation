@@ -32,6 +32,10 @@ func open():
 func _on_menu_list_item_activated(menuNum):
 	showSubMenu(menus[menuNum])
 
+func itemSelected(index: int):
+	pass
+	#Need to refactor items to get this to work
+
 func closeMenuSystem():
 	self.visible = false
 	super()
