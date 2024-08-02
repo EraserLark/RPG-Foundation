@@ -1,15 +1,15 @@
 extends Node
 class_name Entity
 
-var battleManager : BattleManager
+var battleManager: BattleManager
 var actor
-var statusEffects : Array[StatusEffect]
-@export var entityInfo : Resource
-var localInfo : EntityInfo
+var statusEffects: Array[StatusEffect]
+@export var entityInfo: Resource
+var localInfo: EntityInfo
 
 signal reactionComplete
 
-func initialize(bm : BattleManager):
+func initialize(bm: BattleManager):
 	battleManager = bm
 	localInfo = entityInfo.duplicate_deep_workaround()
 	print("Stall")
@@ -31,23 +31,23 @@ func applyStatus(statusEffect, statusRoster):
 	
 	battleManager.actionPhase.unresolvedStatuses.append(newStatus)
 
-func boostDefense(amt : int):
+func boostDefense(amt: int):
 	localInfo.def += amt
 
-func decreaseDefense(amt : int):
+func decreaseDefense(amt: int):
 	localInfo.def -= amt
 
 func revertStatus():
 	localInfo.def -= 1
 
-func gainHealth(amt : int):
+func gainHealth(amt: int):
 	localInfo.addHealth(amt)
 	
 	var remainingHealth = localInfo.hp
 	
 	emit_signal("reactionComplete")
 
-func takeDamage(dmg : int, pierce : bool):
+func takeDamage(dmg: int, pierce: bool):
 	var trueDmg = dmg
 	
 	if(!pierce):
@@ -57,7 +57,7 @@ func takeDamage(dmg : int, pierce : bool):
 	actor.damageFeedback(trueDmg)
 	
 	var remainingHealth = localInfo.hp
-	updateUI(remainingHealth)
+	#updateUI(remainingHealth)
 	
 	if(remainingHealth <= 0):
 		var deathEvent = Death_Event.new(battleManager.actionPhase.actionEQ, self, battleManager)
@@ -66,8 +66,8 @@ func takeDamage(dmg : int, pierce : bool):
 func checkRoster():
 	pass
 
-func updateUI(hp : int):
-	pass
+#func updateUI(hp: int):
+	#pass
 
 func entityDead():
 	#battleManager.battleRoster.enemies.erase(self)

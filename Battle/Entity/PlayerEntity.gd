@@ -1,8 +1,8 @@
 extends Entity
 class_name PlayerEntity
 
-var playerUI: Control
-var playerPanel: PlayerPanel
+var playerUI: PlayerUI_Battle
+var playerPanel: PlayerPanel_Battle
 
 signal playerDied
 
@@ -14,6 +14,7 @@ func initialize(bm: BattleManager):
 	playerPanel = bm.playerPanel
 	
 	localInfo.playerEntity = self
+	#localInfo.playerUI = self.playerUI
 	actor.player = self
 	playerUI.player = self
 	
@@ -42,8 +43,12 @@ func actionChosen(actionNum: int):
 func itemChosen(itemNum: int):
 	var item = localInfo.itemList[itemNum]
 	localInfo.selectedAction = item.itemAction
-	localInfo.itemList.remove_at(itemNum)
 	return localInfo.selectedAction
+
+func itemDiscarded(itemNum: int):
+	localInfo.itemList.remove_at(itemNum)
+	playerPanel.playerMenu.itemMenu.populateMenu(localInfo.itemList)
+	print("Stall")
 
 func attack():
 	pass

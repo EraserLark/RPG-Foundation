@@ -1,26 +1,40 @@
 extends Resource
 class_name EntityInfo
 
-@export var entityName : String
-@export var hp : int
-@export var hpMax : int
-@export var atk : int
-@export var def : int
-@export var sprite : Texture
+@export var entityName: String
+@export var hp: int : set = setHP
+@export var hpMax: int
+@export var atk: int
+@export var def: int
+@export var sprite: Texture
 
 #var owner
-var actionList : Array[Action]
-var itemList : Array[Item]
-var miscList : Array[Action]
-var selectedAction : Action
+var actionList: Array[Action]
+var itemList: Array[Item] : set = setItems
+var miscList: Array[Action]
+var selectedAction: Action
 
-var animPlayer : AnimationPlayer
-var audioPlayer : AudioStreamPlayer2D
-var animFinished : bool = false
-var audioFinished : bool = false
+var animPlayer: AnimationPlayer
+var audioPlayer: AudioStreamPlayer2D
+var animFinished: bool = false
+var audioFinished: bool = false
+
+var entityUI: EntityUI
 
 signal damageTaken(dmg)
 signal healthRemaining(health)
+
+func setHP(value):
+	if(entityUI != null):
+		entityUI.setHP(value)
+	
+	hp = value
+
+func setItems(value):
+	if(entityUI != null):
+		entityUI.setItems(value)
+	
+	itemList = value
 
 func calcDamage(dmg : int):
 	var trueDmg := dmg-def

@@ -1,5 +1,5 @@
 extends MenuSystem
-class_name PlayerPanel
+class_name PlayerPanel_Battle
 
 @onready var playerUI:= $".."
 @onready var stats:= $Stats
@@ -14,6 +14,8 @@ class_name PlayerPanel
 var player: PlayerEntity
 @onready var battleManager:= $"../../../.."
 var currentSelectedAction
+var isActionItem:= false
+var itemIndex
 
 func _ready():
 	playerMenu.populateVars(self)
@@ -28,14 +30,18 @@ func open():
 
 func attackSelected(index: int):
 	currentSelectedAction = player.attackChosen(index)
-	setupSelection(currentSelectedAction)
-
-func actionSelected(index: int):
-	currentSelectedAction = player.actionChosen(index)
+	isActionItem = false
 	setupSelection(currentSelectedAction)
 
 func itemSelected(index: int):
 	currentSelectedAction = player.itemChosen(index)
+	isActionItem = true
+	itemIndex = index
+	setupSelection(currentSelectedAction)
+
+func actionSelected(index: int):
+	currentSelectedAction = player.actionChosen(index)
+	isActionItem = false
 	setupSelection(currentSelectedAction)
 
 func setupSelection(selectedAction: Action):
@@ -43,6 +49,9 @@ func setupSelection(selectedAction: Action):
 	showSubMenu(selectionMenu)
 
 func actionTargetSelected():
+	if(isActionItem):
+		player.itemDiscarded(itemIndex)
+	
 	closeMenuSystem()
 
 func changeStatsHealth(remaningHP: int):

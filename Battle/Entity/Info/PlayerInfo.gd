@@ -10,7 +10,7 @@ class_name PlayerInfo
 var playerEntity
 
 func _ready():
-	pass
+	print("Stall")
 
 func takeDamage(dmg : int):
 	super(dmg)

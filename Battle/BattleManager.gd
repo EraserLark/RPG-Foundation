@@ -3,10 +3,10 @@ class_name BattleManager
 
 #BattleManager
 @onready var battleRoster:= $BattleRoster
-var playerEntities
-var enemyEntities
+var playerEntities: Array[PlayerEntity]
+var enemyEntities: Array[EnemyEntity]
 var turnCount:= 0
-var xpBank := 0
+var xpBank:= 0
 
 #Systems
 var battleState: Battle_State
@@ -36,6 +36,8 @@ func _ready():
 	
 	for player in playerEntities:
 		player.initialize(self)
+	
+	playerEntities[0].localInfo.entityUI = playerUI
 	
 	for enemy in enemyEntities:
 		enemy.initialize(self)

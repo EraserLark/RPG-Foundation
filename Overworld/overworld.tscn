@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=26 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="Script" path="res://Overworld/OW_UI.gd" id="1_4a7eq"]
 [ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Overworld/CastList.gd" id="3_dg04a"]
 [ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_f5vhn"]
 [ext_resource type="Script" path="res://Overworld/OW_PlayerMenu.gd" id="3_mylkc"]
+[ext_resource type="Script" path="res://Overworld/PlayerUI_World.gd" id="3_un7xr"]
 [ext_resource type="Script" path="res://Menus/InitialMenu.gd" id="4_83vjy"]
 [ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/Info/TestPlayerResource.tres" id="4_of4yd"]
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_ti8qv"]
@@ -3696,7 +3697,13 @@ offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("1_4a7eq")
 
-[node name="PlayerMenu" type="NinePatchRect" parent="CanvasLayer/OW_UI"]
+[node name="PlayerUI" type="Control" parent="CanvasLayer/OW_UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_un7xr")
+
+[node name="PlayerMenu" type="NinePatchRect" parent="CanvasLayer/OW_UI/PlayerUI"]
 visible = false
 custom_minimum_size = Vector2(288, 136)
 layout_mode = 1
@@ -3705,9 +3712,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -136.0
-offset_right = 144.0
+offset_left = 412.0
+offset_top = 472.0
+offset_right = 700.0
+offset_bottom = 608.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_8y7yg")
@@ -3720,7 +3728,7 @@ axis_stretch_vertical = 1
 script = ExtResource("3_mylkc")
 metadata/_edit_group_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3732,11 +3740,11 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="InitialMenu" type="HBoxContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
+[node name="InitialMenu" type="HBoxContainer" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer"]
 layout_mode = 2
 script = ExtResource("4_83vjy")
 
-[node name="MenuList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu"]
+[node name="MenuList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/InitialMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -3749,17 +3757,17 @@ item_1/text = "Attacks"
 item_2/text = "Costumes"
 item_3/text = "Settings"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/InitialMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(36, 81)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -3768,38 +3776,38 @@ texture = ExtResource("2_561dd")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/InitialMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "HP: __/__"
 
-[node name="Submenus" type="Control" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer"]
+[node name="Submenus" type="Control" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer"]
 layout_mode = 2
 
-[node name="InventoryMenu" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/Submenus"]
+[node name="InventoryMenu" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
 visible = false
 layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
 script = ExtResource("7_bhje2")
 
-[node name="InventoryMenu2" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/Submenus"]
+[node name="InventoryMenu2" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
 visible = false
 layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
 script = ExtResource("7_bhje2")
 
-[node name="InventoryMenu3" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/Submenus"]
+[node name="InventoryMenu3" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
 visible = false
 layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
 script = ExtResource("7_bhje2")
 
-[node name="InventoryMenu4" type="ItemList" parent="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/Submenus"]
+[node name="InventoryMenu4" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
 visible = false
 layout_mode = 2
 offset_right = 272.0
@@ -3887,7 +3895,7 @@ texture = SubResource("AtlasTexture_vpvpc")
 stream = ExtResource("12_exalw")
 autoplay = true
 
-[connection signal="item_activated" from="CanvasLayer/OW_UI/PlayerMenu/MarginContainer/InitialMenu/MenuList" to="CanvasLayer/OW_UI/PlayerMenu" method="_on_menu_list_item_activated"]
+[connection signal="item_activated" from="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/InitialMenu/MenuList" to="CanvasLayer/OW_UI/PlayerUI/PlayerMenu" method="_on_menu_list_item_activated"]
 
 [editable path="World/CastList/Godot Guy"]
 [editable path="World/CastList/Snowbro"]

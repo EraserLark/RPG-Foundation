@@ -9,5 +9,7 @@ class_name OverworldManager
 func _ready():
 	world.get_node("CastList").get_child(0).initialize(self)
 	
+	player.playerInfo.entityUI = ui.player
+	
 	ui.playerMenu.player = player
 	ui.playerMenu.playerInfo = player.playerInfo

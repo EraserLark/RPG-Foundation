@@ -1,5 +1,5 @@
 extends MenuSystem
-class_name PlayerUI_OW
+class_name PlayerPanel_World
 
 @onready var initialMenu:= $MarginContainer/InitialMenu
 @onready var menuList:= $MarginContainer/InitialMenu/ItemList

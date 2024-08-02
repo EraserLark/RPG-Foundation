@@ -1,6 +1,7 @@
 extends Control
 
-@onready var playerMenu:= $PlayerMenu
+@onready var playerUI:= $PlayerUI
+@onready var playerMenu:= $PlayerUI/PlayerMenu
 @onready var tbContainer:= $TBContainer
 
 func showPlayerMenu(condition: bool):

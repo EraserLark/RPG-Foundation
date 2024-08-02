@@ -4,10 +4,7 @@ extends Menu
 var itemInv: Array[Item]
 
 func initMenu(items: Array[Item]):
-	itemInv = items
-	
-	for item in itemInv:
-		itemList.add_item(item.itemAction.eventName)
+	populateMenu(items)
 
 func grabFirstFocus():
 	itemList.grab_focus()
@@ -16,3 +13,11 @@ func grabFirstFocus():
 func _on_item_list_item_activated(index):
 	menuManager.itemSelected(index)
 	#itemList.remove_item(index)
+
+func populateMenu(items: Array[Item]):
+	itemInv.clear()
+	
+	itemInv = items
+	
+	for item in itemInv:
+		itemList.add_item(item.itemAction.eventName)
