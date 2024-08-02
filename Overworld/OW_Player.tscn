@@ -235,19 +235,19 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-102, -5.12281)
 
 [node name="OW_Player" instance=ExtResource("1_tv04i")]
+y_sort_enabled = true
 script = ExtResource("2_hln25")
-speed = 500
+speed = 400
 playerInfo = null
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(3.8147e-06, -40)
+position = Vector2(3.8147e-06, -44)
 scale = Vector2(4, 4)
 texture = ExtResource("3_qsaav")
 hframes = 16
 frame = 8
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pbb7a")
 

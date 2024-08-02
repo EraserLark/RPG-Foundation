@@ -1,7 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=27 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="Script" path="res://Overworld/OW_UI.gd" id="1_4a7eq"]
-[ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
 [ext_resource type="Script" path="res://Overworld/OverworldManager.gd" id="1_flynd"]
 [ext_resource type="Texture2D" uid="uid://cmqkdesj030nd" path="res://Art/RobotFront.png" id="2_561dd"]
 [ext_resource type="Script" path="res://Overworld/World.gd" id="2_fscot"]
@@ -12,7 +11,6 @@
 [ext_resource type="Script" path="res://Overworld/OW_PlayerMenu.gd" id="3_mylkc"]
 [ext_resource type="Script" path="res://Overworld/PlayerUI_World.gd" id="3_un7xr"]
 [ext_resource type="Script" path="res://Menus/InitialMenu.gd" id="4_83vjy"]
-[ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Battle/Entity/Info/TestPlayerResource.tres" id="4_of4yd"]
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_ti8qv"]
 [ext_resource type="Script" path="res://Overworld/OW_Enemy.gd" id="5_12g4i"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_adroj"]
@@ -3837,6 +3835,7 @@ script = ExtResource("2_fscot")
 metadata/_edit_lock_ = true
 
 [node name="Room" type="Node2D" parent="World"]
+y_sort_enabled = true
 script = ExtResource("11_0070k")
 
 [node name="TileMap" type="TileMap" parent="World/Room"]
@@ -3860,11 +3859,6 @@ layer_3/tile_data = PackedInt32Array()
 y_sort_enabled = true
 script = ExtResource("3_dg04a")
 metadata/_edit_lock_ = true
-
-[node name="OW_Player" parent="World/Room/CastList" instance=ExtResource("1_ery32")]
-speed = 400
-playerInfo = ExtResource("4_of4yd")
-metadata/_edit_group_ = true
 
 [node name="Godot Guy" parent="World/Room/CastList" instance=ExtResource("4_ti8qv")]
 position = Vector2(768, 304)
