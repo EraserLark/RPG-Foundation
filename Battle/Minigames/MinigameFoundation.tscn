@@ -10,8 +10,8 @@ gradient = SubResource("Gradient_072uj")
 
 [node name="Minigame" type="Node2D"]
 script = ExtResource("1_noflq")
-metadata/_edit_vertical_guides_ = [288.0]
-metadata/_edit_horizontal_guides_ = [162.0]
+metadata/_edit_vertical_guides_ = [288.0, 272.0]
+metadata/_edit_horizontal_guides_ = [162.0, 120.0]
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -26,8 +26,8 @@ one_shot = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_direction = 3
-offset_left = -288.0
-offset_bottom = 162.0
+offset_left = -272.0
+offset_bottom = 120.0
 texture = SubResource("GradientTexture1D_jivej")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
