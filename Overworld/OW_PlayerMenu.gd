@@ -20,7 +20,7 @@ func _ready():
 	
 	initialMenu.menuManager = self
 	
-	playerInfo = player.playerInfo
+	playerInfo = PlayerRoster.roster[0]
 	subMenuNodes.get_child(0).initMenu(playerInfo.itemList)
 	
 	baseMenu = initialMenu

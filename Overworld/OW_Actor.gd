@@ -3,7 +3,7 @@ class_name OW_Actor
 
 var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 
-@onready var ui:= $"../../../CanvasLayer/OW_UI"
+@onready var ui:= $"../../../../CanvasLayer/OW_UI"
 @onready var speechSpot:= $SpeechSpot
 
 func interactAction(interacter : OW_Player):
