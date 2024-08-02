@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/Textbox.gd" id="1_dvjkt"]
 [ext_resource type="AudioStream" uid="uid://d8jienloa3u" path="res://Audio/TEST_glass_006.ogg" id="2_cb3e3"]
-[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="3_vsovq"]
+[ext_resource type="Texture2D" uid="uid://ve8dcxh2qh2p" path="res://Art/panelInset_beige.png" id="2_omcnm"]
 
 [node name="Textbox" type="Control"]
 self_modulate = Color(0, 0, 0, 1)
@@ -17,14 +17,17 @@ script = ExtResource("1_dvjkt")
 metadata/_edit_group_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_vsovq")
+texture = ExtResource("2_omcnm")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -41,6 +44,7 @@ theme_override_constants/margin_bottom = 20
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 scroll_active = false
 
