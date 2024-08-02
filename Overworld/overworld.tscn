@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=27 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="Script" path="res://Overworld/OW_UI.gd" id="1_4a7eq"]
 [ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ery32"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Overworld/OW_Enemy.gd" id="5_12g4i"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_adroj"]
 [ext_resource type="Script" path="res://Menus/PlaceholderMenu.gd" id="7_bhje2"]
+[ext_resource type="Script" path="res://Battle/UI/ItemMenu.gd" id="8_vv1d2"]
 [ext_resource type="Script" path="res://Overworld/OW_Item.gd" id="9_r1ypc"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="10_2cs4b"]
 [ext_resource type="AudioStream" uid="uid://d4gp1tjc4uixo" path="res://Audio/Tundra.mp3" id="12_exalw"]
@@ -3786,12 +3787,17 @@ text = "HP: __/__"
 [node name="Submenus" type="Control" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer"]
 layout_mode = 2
 
-[node name="InventoryMenu" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
+[node name="ItemMenu" type="Control" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
 visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_vv1d2")
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus/ItemMenu"]
 layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
-script = ExtResource("7_bhje2")
 
 [node name="InventoryMenu2" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
 visible = false

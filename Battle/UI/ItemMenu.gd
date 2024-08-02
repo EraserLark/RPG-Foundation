@@ -1,4 +1,5 @@
 extends Menu
+class_name ItemMenu
 
 @onready var itemList:= $ItemList
 var itemInv: Array[Item]
@@ -12,7 +13,6 @@ func grabFirstFocus():
 
 func _on_item_list_item_activated(index):
 	menuManager.itemSelected(index)
-	#itemList.remove_item(index)
 
 func populateMenu(items: Array[Item]):
 	itemList.clear()

@@ -5,8 +5,8 @@ class_name PlayerPanel_World
 @onready var menuList:= $MarginContainer/InitialMenu/ItemList
 @onready var subMenuNodes:= $MarginContainer/Submenus
 
-@onready var overworldManager:= $"../../.."
-var player
+@onready var overworldManager:= $"../../../.."
+@onready var player:= $"../../../../World/CastList/OW_Player"
 var playerInfo: PlayerInfo
 
 var menus: Array
@@ -19,6 +19,9 @@ func _ready():
 		menu.menuManager = self
 	
 	initialMenu.menuManager = self
+	
+	playerInfo = player.playerInfo
+	subMenuNodes.get_child(0).initMenu(playerInfo.itemList)
 	
 	baseMenu = initialMenu
 
