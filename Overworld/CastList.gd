@@ -8,9 +8,9 @@ signal actor_speaking(name, message)
 
 func _ready():
 	for playerInfo in PlayerRoster.roster:
-		addActor(playerInfo)
+		addActor(playerInfo, camera.get_screen_center_position())
 
-func addActor(playerInfo: PlayerInfo):
+func addActor(playerInfo: PlayerInfo, pos: Vector2):
 	var playerActor = actorScene.instantiate()
 	playerActor.initialize(owm)
 	self.add_child(playerActor)

@@ -17,3 +17,6 @@ func _ready():
 	
 	bgMusicPlayer = world.music
 	cutsceneManager = world.csManager
+
+func exitRoom(newRoomPath: String):
+	world.onRoomExit(newRoomPath)
