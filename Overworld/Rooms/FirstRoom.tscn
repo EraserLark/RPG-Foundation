@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dp5gtq4i4l507"]
+
+[ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_sgwbx"]
+[ext_resource type="TileSet" uid="uid://2cpjct5qw5oo" path="res://Overworld/SnowTileset.tres" id="2_4pfwj"]
+[ext_resource type="PackedScene" uid="uid://bfbx5q7fqdq8h" path="res://Overworld/OW_npc.tscn" id="3_1taik"]
+[ext_resource type="Script" path="res://Overworld/OW_Enemy.gd" id="4_ua3m4"]
+[ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_h78mw"]
+[ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/passage.tscn" id="6_x2mqx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wq5aw"]
+radius = 16.0
+height = 80.0
+
+[node name="FirstRoom" instance=ExtResource("1_sgwbx")]
+
+[node name="TileMap" parent="." index="0"]
+tile_set = ExtResource("2_4pfwj")
+
+[node name="OW_NPC" parent="CastList" index="0" instance=ExtResource("3_1taik")]
+position = Vector2(768, 272)
+
+[node name="OW_EnemyNPC" parent="CastList" index="1" instance=ExtResource("3_1taik")]
+position = Vector2(544, 336)
+script = ExtResource("4_ua3m4")
+
+[node name="Sprite2D" parent="CastList/OW_EnemyNPC" index="0"]
+position = Vector2(16, -72)
+scale = Vector2(3, 3)
+texture = ExtResource("5_h78mw")
+offset = Vector2(-5.33333, 5.33334)
+hframes = 3
+
+[node name="CollisionShape2D" parent="CastList/OW_EnemyNPC" index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wq5aw")
+
+[node name="Area2D" parent="CastList/OW_EnemyNPC" index="2"]
+position = Vector2(0, -56)
+
+[node name="Passage_0" parent="Passages" index="0" instance=ExtResource("6_x2mqx")]
+position = Vector2(32, -384)
+leadsToRoom = "res://Overworld/Rooms/SecondRoom.tscn"
+
+[editable path="CastList/OW_NPC"]
+[editable path="CastList/OW_EnemyNPC"]
+[editable path="Passages/Passage_0"]

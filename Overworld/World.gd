@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var music:= $AudioStreamPlayer
 @onready var csManager:= $CutsceneManager
-@onready var currentRoom:= $StartRoom
+@onready var currentRoom:= $FirstRoom
 
 func pauseWorld():
 	music.stream_paused = true
