@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="1_qpxhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75weq"]
-size = Vector2(128, 128)
+size = Vector2(160, 160)
 
 [node name="OW_NPC" instance=ExtResource("1_qpxhp")]
 

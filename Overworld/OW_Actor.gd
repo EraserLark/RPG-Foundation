@@ -6,8 +6,9 @@ var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 @onready var ui:= $"../../../../CanvasLayer/OW_UI"
 @onready var speechSpot:= $SpeechSpot
 
+@export_multiline var message: Array[String]
+
 func interactAction(interacter : OW_Player):
-	var message: Array[String] = ["Don't talk to that snowman next to me.", "That guy is [shake]PISSED[/shake]"]
 	speak(message)
 
 func speak(message : Array[String]):

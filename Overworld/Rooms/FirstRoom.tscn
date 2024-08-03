@@ -18,6 +18,7 @@ tile_set = ExtResource("2_4pfwj")
 
 [node name="OW_NPC" parent="CastList" index="0" instance=ExtResource("3_1taik")]
 position = Vector2(768, 272)
+message = Array[String](["Don't talk to that snowman next to me.", "That guy is [shake]PISSED[/shake]"])
 
 [node name="OW_EnemyNPC" parent="CastList" index="1" instance=ExtResource("3_1taik")]
 position = Vector2(544, 336)
