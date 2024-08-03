@@ -1,0 +1,30 @@
+Text file containing dialogue and cutscene directions
+
+Cutscene manager takes this text file, reads through it, and enqueues the proper cutscene and dialogue box events.
+
+
+CURRENTLY:
+TB_Event creates the textbox and TB_State
+
+TB_State sets the textbox message, opens it, and starts typing
+
+Each textbox should get a queue of lines to run through before it finishes
+Each DialogueBox should get a queue of lines along with a character name
+
+
+INSTEAD:
+TB_Event creates TB_State, passes it array of lines + other data
+
+TB_State enter() creates the Textbox and passes it the array of lines + other data
+
+Textbox on instantiation takes:
+- Spawn position, dimensions
+- The lines it is going to run through. Starts typing first line.
+
+TB_State watches for spacebar press. If so, lets Textbox know to continue.
+
+Textbox checks after each line if it is the last line in the queue.
+- If so, destroys itself and runs StateStack.resumeState()
+- If not, sets the next line and runs typeText()
+
+TB_State checks in resumeState() if the textbox is null. If so, exit state.

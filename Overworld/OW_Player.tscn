@@ -241,9 +241,9 @@ speed = 400
 playerInfo = null
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(3.8147e-06, -44)
 scale = Vector2(4, 4)
 texture = ExtResource("3_qsaav")
+offset = Vector2(0, -10)
 hframes = 16
 frame = 8
 
