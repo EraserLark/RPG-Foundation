@@ -10,6 +10,7 @@ var playerRoster
 
 func _ready():
 	#world.get_child(0).get_node("CastList").get_child(0).initialize(self)
+	await get_tree().root.ready
 	
 	for playerInfo in PlayerRoster.roster:
 		#var playerActor = castList.addActor(playerInfo)

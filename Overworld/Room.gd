@@ -11,6 +11,8 @@ var overworldManager
 var bgMusicPlayer
 var cutsceneManager
 
+var playerSpawnPort: int
+
 func _ready():
 	world = get_parent()
 	overworldManager = world.get_parent()
@@ -18,5 +20,5 @@ func _ready():
 	bgMusicPlayer = world.music
 	cutsceneManager = world.csManager
 
-func exitRoom(newRoomPath: String):
-	world.onRoomExit(newRoomPath)
+func exitRoom(newRoomPath: String, port: int):
+	world.onRoomExit(newRoomPath, port)

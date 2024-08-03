@@ -2,12 +2,14 @@ extends Area2D
 class_name Passage
 
 @onready var currentRoom:= $"../.."
-@export var leadsTo: String
+@onready var spawnPoint:= $SpawnPoint
+@export var leadsToRoom: String
+@export var leadsToPassage: int
 
 func _on_body_entered(body):
 	if body is OW_Player:
-		pass
+		goToNextRoom()
 
 func goToNextRoom():
 	#Add transition state, player walks out (follows Path2D?)
-	currentRoom.exitRoom(leadsTo)
+	currentRoom.exitRoom(leadsToRoom, leadsToPassage)
