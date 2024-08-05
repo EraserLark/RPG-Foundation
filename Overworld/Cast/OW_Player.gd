@@ -10,15 +10,19 @@ var owManager: OverworldManager
 @onready var animTree = $"AnimationTree"
 @onready var animState = animTree.get("parameters/playback")
 @onready var interactRay = $"RayCast2D"
-var playerState
 
 var rayLength := 32;
 
 func initialize(owm):
 	owManager = owm
 	
-	playerState = Player_Active.new(StateStack, self, owManager)
-	StateStack.addState(playerState)
+	var pState = Player_Active.new(StateStack, self, owManager)
+	StateStack.addState(pState)
+
+func faceDirection(dir: Vector2):
+	interactRay.target_position = dir * rayLength;
+	animTree.set("parameters/Idle/blend_position", dir)
+	animTree.set("parameters/Walk/blend_position", dir)
 
 func interact(interactee : Object):
 	if(interactee == null):
@@ -31,5 +35,4 @@ func addItemToInv(item : Item):
 	player.itemList = Helper.append(player.itemList, item)
 
 func endPlayer():
-	playerState = null
 	StateStack.removeState()

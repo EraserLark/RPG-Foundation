@@ -23,7 +23,7 @@ func addActor(playerInfo: PlayerInfo, pos: Vector2):
 		var port = room.playerSpawnPort
 		await passages.ready
 		playerActor.position = passages.getSpawnPoint(port)
-		playerActor.playerState.faceDirection(passages.getSpawnDir(port))
+		playerActor.faceDirection(passages.getSpawnDir(port))
 	
 	camera.setTarget(playerActor)
 	return playerActor

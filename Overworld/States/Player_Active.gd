@@ -24,7 +24,7 @@ func update(delta : float):
 	player.move_and_slide()
 	
 	if input != Vector2.ZERO:
-		faceDirection(input)
+		player.faceDirection(input)
 		player.animState.travel("Walk")
 	else:
 		player.animState.travel("Idle")
@@ -39,11 +39,6 @@ func update(delta : float):
 	if Input.is_action_just_pressed("ui_cancel"):
 		var menuState = MenuState.new(StateStack, owManager.ui.playerMenu)
 		StateStack.addState(menuState)
-
-func faceDirection(dir: Vector2):
-	player.interactRay.target_position = dir * player.rayLength;
-	player.animTree.set("parameters/Idle/blend_position", dir)
-	player.animTree.set("parameters/Walk/blend_position", dir)
 
 func exit():
 	pass
