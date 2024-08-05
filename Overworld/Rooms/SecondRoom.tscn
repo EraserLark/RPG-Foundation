@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_qxik6"]
 [ext_resource type="Texture2D" uid="uid://cx5njjx60mlfq" path="res://Art/Tileset_SnowPath_UPSC.png" id="2_sxd3l"]
-[ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/passage.tscn" id="3_3m1ka"]
-[ext_resource type="PackedScene" uid="uid://bfbx5q7fqdq8h" path="res://Overworld/OW_npc.tscn" id="3_f1wdg"]
+[ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/Passages/passage.tscn" id="3_3m1ka"]
+[ext_resource type="PackedScene" uid="uid://bfbx5q7fqdq8h" path="res://Overworld/Cast/OW_npc.tscn" id="3_f1wdg"]
 [ext_resource type="Texture2D" uid="uid://do350wanlb14x" path="res://Art/Frolic_Square.jpg" id="4_gkr06"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xwbj"]

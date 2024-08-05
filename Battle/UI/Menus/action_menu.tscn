@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://djbkplk44r1sh"]
 
-[ext_resource type="PackedScene" uid="uid://bcr5iut1amphg" path="res://Battle/UI/action_button.tscn" id="1_6k8ay"]
-[ext_resource type="Script" path="res://Battle/UI/action_menu.gd" id="1_481s6"]
+[ext_resource type="PackedScene" uid="uid://bcr5iut1amphg" path="res://Battle/UI/Menus/action_button.tscn" id="1_6k8ay"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/action_menu.gd" id="1_481s6"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_rtd54"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vggtq"]

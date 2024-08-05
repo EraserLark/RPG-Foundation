@@ -3,7 +3,7 @@ class_name MenuState
 
 var menu: MenuSystem
 
-func _init(sStack: StateStack, m):
+func _init(sStack: StateStack, m: MenuSystem):
 	super(sStack)
 	menu = m
 

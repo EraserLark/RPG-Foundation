@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kbweqbjxrnod"]
 
-[ext_resource type="Script" path="res://Overworld/OW_Actor.gd" id="1_4a8gj"]
+[ext_resource type="Script" path="res://Overworld/Cast/OW_Actor.gd" id="1_4a8gj"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="1_guc0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6vju"]

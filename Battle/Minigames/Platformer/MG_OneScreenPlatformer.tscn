@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://tlwsd57qjv2q"]
 
 [ext_resource type="PackedScene" uid="uid://cf4rw4sjniddv" path="res://Battle/Minigames/MinigameFoundation.tscn" id="1_ls5sl"]
-[ext_resource type="Script" path="res://Battle/Minigames/MG_OneScreenPlatformer.gd" id="2_m7bd3"]
+[ext_resource type="Script" path="res://Battle/Minigames/Platformer/MG_OneScreenPlatformer.gd" id="2_m7bd3"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_nm00c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67cab"]

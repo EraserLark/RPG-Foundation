@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cdltp7n0xbq1a"]
 
 [ext_resource type="PackedScene" uid="uid://cf4rw4sjniddv" path="res://Battle/Minigames/MinigameFoundation.tscn" id="1_tf1xv"]
-[ext_resource type="Script" path="res://Battle/Minigames/MG_MashMeter.gd" id="2_bif4f"]
+[ext_resource type="Script" path="res://Battle/Minigames/MashMeter/MG_MashMeter.gd" id="2_bif4f"]
 
 [node name="Minigame" instance=ExtResource("1_tf1xv")]
 script = ExtResource("2_bif4f")

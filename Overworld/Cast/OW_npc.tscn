@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfbx5q7fqdq8h"]
 
-[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="1_qpxhp"]
+[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="1_qpxhp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75weq"]
 size = Vector2(160, 112)

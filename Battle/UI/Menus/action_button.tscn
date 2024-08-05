@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bcr5iut1amphg"]
 
-[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="1_2ffvx"]
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="1_p6y0b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t5wff"]
-atlas = ExtResource("1_2ffvx")
+atlas = ExtResource("1_p6y0b")
 region = Rect2(595, 221, 16, 16)
 
 [node name="ActionButton" type="Button"]

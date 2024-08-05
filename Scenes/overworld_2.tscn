@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://w1p0mgl7mkqt"]
 
-[ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/OW_Player.tscn" id="1_ccdf3"]
+[ext_resource type="PackedScene" uid="uid://b7utuwwqeb7na" path="res://Overworld/Cast/OW_Player.tscn" id="1_ccdf3"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_04uqc"]
-[ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="3_mluv6"]
-[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="4_lgkiv"]
+[ext_resource type="Script" path="res://Overworld/World/OW_Camera.gd" id="3_mluv6"]
+[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="4_lgkiv"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_8n4nm"]
 [ext_resource type="PackedScene" uid="uid://x3l42a81rsvf" path="res://UI/DialogueBox.tscn" id="6_h8dcw"]
 

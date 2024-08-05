@@ -1,6 +1,6 @@
 extends Node2D
 
-var actorScene:= preload("res://Overworld/OW_Player.tscn")
+var actorScene:= preload("res://Overworld/Cast/OW_Player.tscn")
 @onready var owm:= $"../../.."
 @onready var room:= $".."
 @onready var passages:= $"../Passages"

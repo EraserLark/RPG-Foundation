@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bayxt5ttehhv8"]
 
-[ext_resource type="Script" path="res://Overworld/Room.gd" id="1_d5pv6"]
-[ext_resource type="Script" path="res://Overworld/CastList.gd" id="3_7qaje"]
-[ext_resource type="Script" path="res://Overworld/Rooms/Passages.gd" id="3_hbvgs"]
-[ext_resource type="Script" path="res://Overworld/OW_Camera.gd" id="8_sakrb"]
+[ext_resource type="Script" path="res://Overworld/World/Room.gd" id="1_8hapy"]
+[ext_resource type="Script" path="res://Overworld/Cast/CastList.gd" id="2_uxnsk"]
+[ext_resource type="Script" path="res://Overworld/Rooms/Passages/Passages.gd" id="3_hbvgs"]
+[ext_resource type="Script" path="res://Overworld/World/OW_Camera.gd" id="4_673pq"]
 
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_d5pv6")
+script = ExtResource("1_8hapy")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -27,11 +27,11 @@ layer_3/tile_data = PackedInt32Array()
 
 [node name="CastList" type="Node2D" parent="."]
 y_sort_enabled = true
-script = ExtResource("3_7qaje")
+script = ExtResource("2_uxnsk")
 metadata/_edit_lock_ = true
 
 [node name="Passages" type="Node2D" parent="."]
 script = ExtResource("3_hbvgs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("8_sakrb")
+script = ExtResource("4_673pq")

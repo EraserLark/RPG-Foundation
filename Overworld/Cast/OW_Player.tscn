@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://b7utuwwqeb7na"]
 
-[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/OW_Actor.tscn" id="1_tv04i"]
-[ext_resource type="Script" path="res://Overworld/OW_Player.gd" id="2_hln25"]
+[ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="1_tv04i"]
+[ext_resource type="Script" path="res://Overworld/Cast/OW_Player.gd" id="2_nnavp"]
 [ext_resource type="Texture2D" uid="uid://bb2l2340x8n2c" path="res://Art/Robot_SpriteSheet_1.0.png" id="3_qsaav"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbb7a"]
@@ -236,7 +236,7 @@ graph_offset = Vector2(-102, -5.12281)
 
 [node name="OW_Player" instance=ExtResource("1_tv04i")]
 y_sort_enabled = true
-script = ExtResource("2_hln25")
+script = ExtResource("2_nnavp")
 speed = 400
 playerInfo = null
 
