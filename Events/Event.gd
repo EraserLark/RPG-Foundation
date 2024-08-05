@@ -6,7 +6,7 @@ var eventManager : EventQueue = null
 
 signal eventFinished
 
-func _init(eManager):
+func _init(eManager: EventQueue):
 	eventManager = eManager
 
 func runEvent():

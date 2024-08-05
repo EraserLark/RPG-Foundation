@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Overworld/World/Room.gd" id="1_8hapy"]
 [ext_resource type="Script" path="res://Overworld/Cast/CastList.gd" id="2_uxnsk"]
-[ext_resource type="Script" path="res://Overworld/Rooms/Passages/Passages.gd" id="3_hbvgs"]
+[ext_resource type="Script" path="res://Overworld/Rooms/Passages/PassagesManager.gd" id="3_hbvgs"]
 [ext_resource type="Script" path="res://Overworld/World/OW_Camera.gd" id="4_673pq"]
 
 [node name="Room" type="Node2D"]

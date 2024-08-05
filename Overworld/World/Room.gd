@@ -21,4 +21,6 @@ func _ready():
 	cutsceneManager = world.csManager
 
 func exitRoom(newRoomPath: String, port: int):
-	world.onRoomExit(newRoomPath, port)
+	#world.onRoomExit(newRoomPath, port)
+	var transition = TransitionState.new(StateStack, overworldManager.cutsceneManager, world, newRoomPath, port)
+	StateStack.addState(transition)

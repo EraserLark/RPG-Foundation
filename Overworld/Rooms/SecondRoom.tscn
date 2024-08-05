@@ -534,6 +534,7 @@ position = Vector2(0, 24)
 [node name="Passage_0" parent="Passages" index="0" instance=ExtResource("3_3m1ka")]
 position = Vector2(0, 352)
 leadsToRoom = "res://Overworld/Rooms/FirstRoom.tscn"
+spawnFacing = 2
 
 [node name="SpawnPoint" parent="Passages/Passage_0" index="1"]
 position = Vector2(0, -32)

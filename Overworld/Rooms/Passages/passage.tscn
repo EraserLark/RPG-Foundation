@@ -7,6 +7,7 @@ size = Vector2(128, 20)
 
 [node name="Passage_num" type="Area2D"]
 script = ExtResource("1_j8jdn")
+spawnFacing = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1r1db")

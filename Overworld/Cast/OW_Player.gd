@@ -10,14 +10,15 @@ var owManager: OverworldManager
 @onready var animTree = $"AnimationTree"
 @onready var animState = animTree.get("parameters/playback")
 @onready var interactRay = $"RayCast2D"
+var playerState
 
 var rayLength := 32;
 
 func initialize(owm):
 	owManager = owm
 	
-	var currentState = Player_Active.new(StateStack, self, owManager)
-	StateStack.addState(currentState)
+	playerState = Player_Active.new(StateStack, self, owManager)
+	StateStack.addState(playerState)
 
 func interact(interactee : Object):
 	if(interactee == null):
@@ -30,4 +31,5 @@ func addItemToInv(item : Item):
 	player.itemList = Helper.append(player.itemList, item)
 
 func endPlayer():
+	playerState = null
 	StateStack.removeState()
