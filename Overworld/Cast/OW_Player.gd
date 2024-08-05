@@ -28,3 +28,6 @@ func interact(interactee : Object):
 func addItemToInv(item : Item):
 	var player = PlayerRoster.roster[0]
 	player.itemList = Helper.append(player.itemList, item)
+
+func endPlayer():
+	StateStack.removeState()

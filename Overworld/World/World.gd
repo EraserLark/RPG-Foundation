@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var owManager:= $".."
 @onready var music:= $AudioStreamPlayer
 @onready var csManager:= $CutsceneManager
 @onready var currentRoom:= $FirstRoom
@@ -12,6 +13,10 @@ func resumeWorld():
 
 func onRoomExit(newRoomPath: String, port: int):
 	#Deload current room
+	var actors = currentRoom.castList.get_children()
+	for actor in actors:
+		if actor is OW_Player:
+			actor.endPlayer()
 	currentRoom.queue_free()
 	#Load new room
 	var newRoom = load(newRoomPath)

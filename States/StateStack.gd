@@ -4,7 +4,8 @@ var stateStack: Array[State]
 var currentState: State = null
 
 func _ready():
-	pass
+	var baseState = State.new(self)
+	addState(baseState)
 
 func addState(s: State):
 	stateStack.push_front(s)
