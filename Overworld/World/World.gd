@@ -16,7 +16,7 @@ func onRoomExit(newRoomPath: String, port: int):
 	var actors = currentRoom.castList.get_children()
 	for actor in actors:
 		if actor is OW_Player:
-			actor.endPlayer()
+			actor.endPlayerActor()
 	currentRoom.queue_free()
 	#Load new room
 	var newRoom = load(newRoomPath)

@@ -2,12 +2,10 @@ extends State
 class_name Player_Active
 
 var player = null
-var owManager
 
-func _init(sStack, plyr, om):
+func _init(sStack, plyr):
 	super(sStack)
 	player = plyr
-	owManager = om
 
 func handleInput(event : InputEvent):
 	pass
@@ -16,6 +14,9 @@ func enter(msg := {}):
 	pass
 
 func update(delta : float):
+	if(player == null):
+		return
+	
 	var input = Vector2.ZERO;
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left");
 	input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up");
@@ -31,8 +32,7 @@ func update(delta : float):
 		player.castInteractRay()
 	
 	if Input.is_action_just_pressed("ui_cancel"):
-		var menuState = MenuState.new(StateStack, owManager.ui.playerMenu)
-		StateStack.addState(menuState)
+		player.openMenu()
 
 func exit():
 	pass

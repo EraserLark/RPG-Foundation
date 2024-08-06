@@ -26,6 +26,9 @@ func addActor(playerInfo: PlayerInfo, pos: Vector2):
 		playerActor.faceDirection(passages.getSpawnDir(port))
 	
 	camera.setTarget(playerActor)
+	
+	playerInfo.setActor(playerActor)
+	
 	return playerActor
 
 func actorSpeak(actorName, actorMessage):
