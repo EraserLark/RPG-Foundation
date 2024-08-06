@@ -265,6 +265,4 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[node name="StateManager" type="Node" parent="." index="6"]
-
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

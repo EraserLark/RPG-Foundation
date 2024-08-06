@@ -14,8 +14,5 @@ func _ready():
 	await get_tree().root.ready
 	
 	for playerInfo in PlayerRoster.roster:
-		#var playerActor = castList.addActor(playerInfo)
 		playerInfo.entityUI = ui.playerUI
-		
-		ui.playerMenu.player = playerActor
 		ui.playerMenu.playerInfo = playerInfo
