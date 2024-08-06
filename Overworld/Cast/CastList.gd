@@ -28,8 +28,6 @@ func addActor(playerInfo: PlayerInfo, pos: Vector2):
 	camera.setTarget(playerActor)
 	
 	playerInfo.setActor(playerActor)
-	
-	return playerActor
 
 func actorSpeak(actorName, actorMessage):
 	emit_signal("actor_speaking", actorName, actorMessage)

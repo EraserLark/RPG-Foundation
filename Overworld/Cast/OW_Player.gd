@@ -24,6 +24,7 @@ func faceDirection(dir: Vector2):
 	interactRay.target_position = dir * rayLength;
 	animTree.set("parameters/Idle/blend_position", dir)
 	animTree.set("parameters/Walk/blend_position", dir)
+	animState.travel("Idle")
 
 func openMenu():
 	var menuState = MenuState.new(StateStack, owManager.ui.playerMenu)
