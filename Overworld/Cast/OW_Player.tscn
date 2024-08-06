@@ -1,66 +1,10 @@
 [gd_scene load_steps=29 format=3 uid="uid://b7utuwwqeb7na"]
 
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="1_tv04i"]
+[ext_resource type="Script" path="res://Overworld/Cast/OW_Player.gd" id="2_nnavp"]
+[ext_resource type="Texture2D" uid="uid://bb2l2340x8n2c" path="res://Art/Robot_SpriteSheet_1.0.png" id="3_qsaav"]
 
-[sub_resource type="GDScript" id="GDScript_tialk"]
-script/source = "#extends OW_Actor
-extends CharacterBody2D
-class_name OW_Player
-
-var owManager: OverworldManager
-
-@export var speed := 500
-@export var playerInfo : PlayerInfo
-
-@onready var animTree = $\"AnimationTree\"
-@onready var animState = animTree.get(\"parameters/playback\")
-@onready var interactRay = $\"RayCast2D\"
-
-var rayLength := 32;
-
-func initialize(owm):
-	owManager = owm
-
-func moveDirection(dir: Vector2):
-	self.velocity = dir.normalized() * speed;
-	move_and_slide()
-
-func faceDirection(dir: Vector2):
-	interactRay.target_position = dir * rayLength;
-	animTree.set(\"parameters/Idle/blend_position\", dir)
-	animTree.set(\"parameters/Walk/blend_position\", dir)
-	animState.travel(\"Idle\")
-
-func openMenu():
-	var menuState = MenuState.new(StateStack, owManager.ui.playerMenu)
-	StateStack.addState(menuState)
-
-func castInteractRay():
-	var interactee = interactRay.get_collider()
-	if(interactee is StaticBody2D):
-		interactee = interactee.get_parent()
-	interact(interactee)
-
-func interact(interactee : Object):
-	if(interactee == null):
-		return
-	
-	interactee.interactAction(self)
-
-func addItemToInv(item : Item):
-	var player = PlayerRoster.roster[0]
-	player.itemList = Helper.append(player.itemList, item)
-
-func endPlayerActor():
-	pass
-	#StateStack.removeState()
-"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kgfnl"]
-load_path = "res://.godot/imported/Robot_SpriteSheet_1.0.png-c540e828a80d0ab06718dcc772f5eddc.ctex"
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bk3ns"]
-resource_local_to_scene = true
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbb7a"]
 radius = 14.0
 height = 48.0
 
@@ -280,7 +224,7 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w26xb"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a6o1j"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w1fng"]
 states/End/position = Vector2(779, 95)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_1he51")
 states/Idle/position = Vector2(358, 100)
@@ -292,18 +236,20 @@ graph_offset = Vector2(-102, -5.12281)
 
 [node name="OW_Player" instance=ExtResource("1_tv04i")]
 y_sort_enabled = true
-script = SubResource("GDScript_tialk")
+script = ExtResource("2_nnavp")
+speed = 400
+playerInfo = null
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(4, 4)
-texture = SubResource("CompressedTexture2D_kgfnl")
+texture = ExtResource("3_qsaav")
 offset = Vector2(0, -10)
 hframes = 16
 frame = 8
 
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_bk3ns")
+shape = SubResource("CapsuleShape2D_pbb7a")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="2"]
 target_position = Vector2(0, 24)
@@ -314,7 +260,7 @@ libraries = {
 }
 
 [node name="AnimationTree" parent="." index="4"]
-tree_root = SubResource("AnimationNodeStateMachine_a6o1j")
+tree_root = SubResource("AnimationNodeStateMachine_w1fng")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
