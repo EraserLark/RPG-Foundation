@@ -1,19 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://kbweqbjxrnod"]
 
 [ext_resource type="Script" path="res://Overworld/Cast/OW_Actor.gd" id="1_4a8gj"]
-[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="1_guc0u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6vju"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_earmp"]
+load_path = "res://.godot/imported/icon.svg-750f30f6912a3e29e1f50a8e1a7e4a3e.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqx04"]
+resource_local_to_scene = true
 size = Vector2(128, 128)
 
 [node name="OW_Actor" type="CharacterBody2D"]
 script = ExtResource("1_4a8gj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_guc0u")
+texture = SubResource("CompressedTexture2D_earmp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_a6vju")
+shape = SubResource("RectangleShape2D_dqx04")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
