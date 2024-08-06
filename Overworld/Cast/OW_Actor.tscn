@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="1_guc0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6vju"]
+resource_local_to_scene = true
 size = Vector2(128, 128)
 
 [node name="OW_Actor" type="CharacterBody2D"]

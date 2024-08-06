@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Overworld/World/Passage.gd" id="1_j8jdn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r1db"]
+resource_local_to_scene = true
 size = Vector2(128, 20)
 
 [node name="Passage_num" type="Area2D"]
