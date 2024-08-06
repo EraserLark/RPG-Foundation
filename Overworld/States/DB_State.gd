@@ -26,6 +26,7 @@ func resumeState():
 
 func exit():
 	dialogueBox.closeTextbox()
+	parent.queue_free()
 	super()
 
 static func createEvent(eManager:EventQueue, ss:StateStack, m:Array[String], sp:String, p: Control):

@@ -29,10 +29,9 @@ static func createInstance(parent: Node, lines: Array[String]) -> Textbox:
 	var inst = scene.instantiate()
 	parent.add_child(inst)
 	
-	inst.lineQueue = lines
+	inst.lineQueue = lines.duplicate()
 	inst.target = parent
-	#inst.customSize = dimensions
-	#inst.customPosition = screenPos
+	
 	inst.positionBox()
 	
 	return inst
@@ -40,21 +39,6 @@ static func createInstance(parent: Node, lines: Array[String]) -> Textbox:
 func _ready():
 	regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
-
-func positionBox():
-	pass
-	#if(target):
-		##target.add_child(self)
-		#self.set_anchors_preset(Control.PRESET_FULL_RECT)
-		#target.visible = true
-	#else:
-		#var viewportSize = get_viewport_rect().size
-		#var gSize = Vector2(viewportSize.x, viewportSize.y * 0.5)
-		#self.size = gSize
-		#
-		#self.set_anchors_preset(Control.PRESET_CENTER_TOP)
-		#
-		#self.position = Vector2.ZERO
 
 func advance():
 	#Skip to end of line

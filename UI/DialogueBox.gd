@@ -19,7 +19,7 @@ static func createDBInstance(parent: Node, lines: Array[String], sp: String) -> 
 	var inst = scene.instantiate()
 	parent.add_child(inst)
 	
-	inst.lineQueue = lines
+	inst.lineQueue = lines.duplicate()
 	inst.target = parent
 	inst.speakerName = sp
 	#inst.customSize = dimensions
