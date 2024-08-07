@@ -1,4 +1,4 @@
-extends NinePatchRect
+extends PanelContainer
 
 @onready var cursor:= $Cursor
 @onready var optionsList:= $MarginContainer/OptionsList
@@ -6,8 +6,10 @@ extends NinePatchRect
 var optionsArray: Array[String]
 var selectedOption: int
 
-func openMenu():
+func _ready():
 	selectedOption = 0
+	moveCursor(selectedOption)
+	grab_focus()
 
 func _on_gui_input(event):
 	if(event.is_action_pressed("ui_accept")):
@@ -20,9 +22,12 @@ func _on_gui_input(event):
 		selectedOption -= 1
 		selectedOption %= optionsArray.size()
 		moveCursor(selectedOption)
+	
+	print(event)
 
 func moveCursor(optionNum: int):
-	cursor.global_position = optionsList.get_child(optionNum).position
+	cursor.reparent(optionsList.get_child(optionNum).cursorZone)
+	#cursor.global_position = optionsList.get_child(optionNum).position
 
 func confirmSelection():
 	pass

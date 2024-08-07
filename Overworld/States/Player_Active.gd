@@ -23,7 +23,10 @@ func update(delta : float):
 	player.moveDirection(input)
 	
 	if input != Vector2.ZERO:
-		player.faceDirection(input)
+		var dancing = player.faceDirection(input)
+		if(dancing):
+			return
+		
 		player.animState.travel("Walk")
 	else:
 		player.animState.travel("Idle")
