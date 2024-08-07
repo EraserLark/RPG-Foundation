@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/Textbox.gd" id="1_dvjkt"]
 [ext_resource type="AudioStream" uid="uid://d8jienloa3u" path="res://Audio/TEST_glass_006.ogg" id="2_cb3e3"]
 [ext_resource type="Texture2D" uid="uid://ve8dcxh2qh2p" path="res://Art/panelInset_beige.png" id="2_omcnm"]
-[ext_resource type="Texture2D" uid="uid://cf68a6v3pv0a" path="res://Art/panel_beigeLight.png" id="4_5r53d"]
+[ext_resource type="PackedScene" uid="uid://baabk6tkwrmvw" path="res://Menus/ResponseBox.tscn" id="3_47ght"]
 
 [node name="Textbox" type="Control"]
 self_modulate = Color(0, 0, 0, 1)
@@ -17,16 +17,13 @@ grow_vertical = 2
 script = ExtResource("1_dvjkt")
 metadata/_edit_group_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer"]
-layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 20.0
 texture = ExtResource("2_omcnm")
@@ -35,7 +32,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,43 +44,41 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/NinePatchRect/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 scroll_active = false
 
-[node name="ResponseBox" type="NinePatchRect" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 5.0
-texture = ExtResource("4_5r53d")
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+[node name="ResponsePanel" parent="NinePatchRect" instance=ExtResource("3_47ght")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1.0
+offset_right = 263.0
+offset_bottom = 92.0
+grow_horizontal = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ResponseBox"]
+[node name="Label" parent="NinePatchRect/ResponsePanel/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+text = "Wowee-Zowee"
+
+[node name="Label" parent="NinePatchRect/ResponsePanel/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
+text = "Hm this is quite
+The conundrum of a desicion"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="ItemList" type="ItemList" parent="HBoxContainer/ResponseBox/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-item_count = 2
-item_0/text = "Yes"
-item_1/text = "Nah"
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_cb3e3")
+
+[editable path="NinePatchRect/ResponsePanel"]

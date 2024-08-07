@@ -3,10 +3,10 @@ class_name Textbox
 
 static var scenePath = "res://UI/textbox.tscn"
 
-@onready var textField:= $HBoxContainer/NinePatchRect/MarginContainer/RichTextLabel
+@onready var textField:= $NinePatchRect/MarginContainer/RichTextLabel
 @onready var typeTimer:= $Timer
 @onready var typeAudio:= $AudioStreamPlayer
-@onready var boxBG:= $HBoxContainer/NinePatchRect
+@onready var boxBG:= $NinePatchRect
 
 var lineQueue: Array[String]
 @export var currentLine:= "";
