@@ -3,10 +3,10 @@ class_name Textbox
 
 static var scenePath = "res://UI/textbox.tscn"
 
-@onready var textField:= $MarginContainer/RichTextLabel
+@onready var textField:= $HBoxContainer/NinePatchRect/MarginContainer/RichTextLabel
 @onready var typeTimer:= $Timer
 @onready var typeAudio:= $AudioStreamPlayer
-@onready var boxBG:= $NinePatchRect
+@onready var boxBG:= $HBoxContainer/NinePatchRect
 
 var lineQueue: Array[String]
 @export var currentLine:= "";
@@ -31,8 +31,6 @@ static func createInstance(parent: Node, lines: Array[String]) -> Textbox:
 	
 	inst.lineQueue = lines.duplicate()
 	inst.target = parent
-	
-	inst.positionBox()
 	
 	return inst
 
