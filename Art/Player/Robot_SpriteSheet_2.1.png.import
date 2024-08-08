@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb2l2340x8n2c"
-path="res://.godot/imported/Robot_SpriteSheet_1.0.png-c540e828a80d0ab06718dcc772f5eddc.ctex"
+uid="uid://ttrrdjb6up0h"
+path="res://.godot/imported/Robot_SpriteSheet_2.1.png-be766d53b53309a71591a8dafe1868c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Robot_SpriteSheet_1.0.png"
-dest_files=["res://.godot/imported/Robot_SpriteSheet_1.0.png-c540e828a80d0ab06718dcc772f5eddc.ctex"]
+source_file="res://Art/Player/Robot_SpriteSheet_2.1.png"
+dest_files=["res://.godot/imported/Robot_SpriteSheet_2.1.png-be766d53b53309a71591a8dafe1868c0.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

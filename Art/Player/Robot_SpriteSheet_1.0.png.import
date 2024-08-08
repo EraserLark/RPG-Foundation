@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nlxlbd17rled"
-path="res://.godot/imported/Dance_Down.png-f154306f5d281d277833a40d9d4b63d6.ctex"
+uid="uid://bb2l2340x8n2c"
+path="res://.godot/imported/Robot_SpriteSheet_1.0.png-b00ee838eb22d35a0e0592a7bfb881f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Dancing/Dance_Down.png"
-dest_files=["res://.godot/imported/Dance_Down.png-f154306f5d281d277833a40d9d4b63d6.ctex"]
+source_file="res://Art/Player/Robot_SpriteSheet_1.0.png"
+dest_files=["res://.godot/imported/Robot_SpriteSheet_1.0.png-b00ee838eb22d35a0e0592a7bfb881f6.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

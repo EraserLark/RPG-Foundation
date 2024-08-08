@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bu3gxlgqr4w"
-path="res://.godot/imported/Dance_Up.png-a17b0b6c7648cad199457cd2d9216627.ctex"
+uid="uid://bisowv0jbtiau"
+path="res://.godot/imported/Robot_SpriteSheet_2.0.png-50e27121d9a66ab1e3157d2cb262f19c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Dancing/Dance_Up.png"
-dest_files=["res://.godot/imported/Dance_Up.png-a17b0b6c7648cad199457cd2d9216627.ctex"]
+source_file="res://Art/Player/Robot_SpriteSheet_2.0.png"
+dest_files=["res://.godot/imported/Robot_SpriteSheet_2.0.png-50e27121d9a66ab1e3157d2cb262f19c.ctex"]
 
 [params]
 

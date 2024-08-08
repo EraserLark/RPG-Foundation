@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="1_tv04i"]
 [ext_resource type="Script" path="res://Overworld/Cast/OW_Player.gd" id="2_nnavp"]
-[ext_resource type="Texture2D" uid="uid://bisowv0jbtiau" path="res://Art/Robot_SpriteSheet_2.0.png" id="3_0blag"]
+[ext_resource type="Texture2D" uid="uid://ttrrdjb6up0h" path="res://Art/Player/Robot_SpriteSheet_2.1.png" id="3_u2e80"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skch1"]
 resource_local_to_scene = true
@@ -78,6 +78,18 @@ tracks/1/keys = {
 "method": &"danceFinish"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -10)]
+}
 
 [sub_resource type="Animation" id="Animation_3lfnu"]
 resource_name = "Dance_Right"
@@ -106,6 +118,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"danceFinish"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -10)]
 }
 
 [sub_resource type="Animation" id="Animation_jccm1"]
@@ -430,7 +454,7 @@ playerInfo = null
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(4, 4)
-texture = ExtResource("3_0blag")
+texture = ExtResource("3_u2e80")
 offset = Vector2(0, -10)
 hframes = 16
 vframes = 2
