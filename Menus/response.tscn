@@ -6,6 +6,8 @@
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource("1_4e5or")
+responseText = ""
+metadata/_edit_pinned_properties_ = [&"responseText"]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 custom_minimum_size = Vector2(25, 25)
@@ -16,4 +18,3 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
-text = "1"

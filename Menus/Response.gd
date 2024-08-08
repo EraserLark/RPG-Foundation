@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends HBoxContainer
 class_name ResponseListing
 
@@ -8,4 +8,6 @@ class_name ResponseListing
 @export var responseText: String: set = setLabel
 
 func setLabel(text):
-	$Label.text = text
+	responseText = text
+	if is_inside_tree():
+		$Label.text = text

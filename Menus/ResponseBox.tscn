@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://baabk6tkwrmvw"]
+[gd_scene load_steps=5 format=3 uid="uid://baabk6tkwrmvw"]
 
 [ext_resource type="Texture2D" uid="uid://cf68a6v3pv0a" path="res://Art/panel_beigeLight.png" id="1_xwibk"]
 [ext_resource type="Script" path="res://Menus/ResponseBox.gd" id="2_q4ytd"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_rcb7h"]
-[ext_resource type="PackedScene" uid="uid://cpmau5jelns3v" path="res://Menus/response.tscn" id="4_fxn5t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x04ap"]
 atlas = ExtResource("2_rcb7h")
@@ -15,6 +14,7 @@ offset_right = 62.0
 offset_bottom = 70.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_mode = 2
 script = ExtResource("2_q4ytd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -39,12 +39,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Response" parent="MarginContainer/OptionsList" instance=ExtResource("4_fxn5t")]
-layout_mode = 2
-
-[node name="Response2" parent="MarginContainer/OptionsList" instance=ExtResource("4_fxn5t")]
-layout_mode = 2
-
 [node name="Cursor" type="TextureRect" parent="."]
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(25, 25)
@@ -54,3 +48,4 @@ size_flags_vertical = 0
 texture = SubResource("AtlasTexture_x04ap")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="tree_exiting" from="Cursor" to="Cursor" method="_on_tree_exiting"]
