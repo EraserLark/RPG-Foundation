@@ -21,10 +21,10 @@ func update(delta : float):
 	if(input != Vector2.ZERO):
 		player.animTree.set("parameters/Dance/blend_position", input)
 
+#Called if Player enters passage while in Dance State.
 func resumeState():
 	exit()
 
 ##NOT CALLED INTRINSICALLY. STATE IS USUALLY ENDED IN OW_PLAYER :P
 func exit():
-	#player.animState.travel("Idle")
 	super()
