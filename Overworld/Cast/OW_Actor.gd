@@ -16,13 +16,17 @@ func interactAction(interacter : OW_Player):
 func runNPCTimeline(playerNum: int):
 	DialogueSystem.startTimeline(cutsceneResource, playerNum)
 
-func speak(message : Array[String]):
+func createDBC():
 	#Create dialogueBubbleContainer
 	var dbc = load(dbcPath)
 	var inst = dbc.instantiate()
 	ui.add_child(inst)
 	#Assign its transform to the SpeechSpot
 	inst.refSpot = speechSpot
+	return inst
+
+#func speak(message : Array[String]):
+	#var bubbleSpot = createDBC()
 	#Create a Dialoguebox state. Pass in the dbc as the parent
-	var dbState = DialogueBox_State.new(StateStack, message, self.name, inst)
-	StateStack.addState(dbState)
+	#var dbState = DialogueBox_State.new(StateStack, message, self.name, inst)
+	#StateStack.addState(dbState)

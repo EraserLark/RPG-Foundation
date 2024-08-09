@@ -1,8 +1,11 @@
 extends State
 class_name DialogueState
 
-func _init(sStack : StateStack):
+var dialogueManager: DialogueManager
+
+func _init(sStack : StateStack, dm: DialogueManager):
 	super(sStack)
+	dialogueManager = dm
 
 func handleInput(_event : InputEvent):
 	pass
@@ -17,7 +20,7 @@ func physicsUpdate(_delta : float):
 	pass
 
 func resumeState():
-	pass
+	exit()
 
 func exit():
 	super()

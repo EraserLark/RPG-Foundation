@@ -1,5 +1,8 @@
 extends Node
 
+var ui
+var world
+
 var player1Node: Node
 
 ##Will need to refactor for multiplayer
@@ -15,3 +18,7 @@ func startTimeline(timeline: PackedScene, playerNum: int):
 	
 	#Have the proper player's DialogueManager start the timeline
 	PlayerRoster.roster[0].dialogueManager.startDialogue(tl)
+
+func updateOWVars(newUI, newWorld):
+	ui = newUI
+	world = newWorld

@@ -7,7 +7,7 @@ var focusStep: Step
 
 func startDialogue(startStep: DLG_Start):
 	#Create DialogueState
-	dialogueState = DialogueState.new(StateStack)
+	dialogueState = DialogueState.new(StateStack, self)
 	StateStack.addState(dialogueState)
 	
 	var timeline = Helper.getAllChildren(startStep)

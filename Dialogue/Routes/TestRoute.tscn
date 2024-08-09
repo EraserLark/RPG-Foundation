@@ -8,3 +8,4 @@ script = ExtResource("1_gccpn")
 
 [node name="TEXT" type="Node" parent="."]
 script = ExtResource("2_0goe0")
+message = Array[String](["Wassup my bot"])

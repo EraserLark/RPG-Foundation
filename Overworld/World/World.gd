@@ -24,3 +24,5 @@ func onRoomExit(newRoomPath: String, port: int):
 	inst.playerSpawnPort = port
 	add_child(inst)
 	currentRoom = inst
+	
+	DialogueSystem.updateOWVars(owManager.ui, self)
