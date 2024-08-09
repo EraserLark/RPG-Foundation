@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cklgf4gtlaxs4"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_gccpn"]
+[ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="2_0goe0"]
+
+[node name="START" type="Node"]
+script = ExtResource("1_gccpn")
+
+[node name="TEXT" type="Node" parent="."]
+script = ExtResource("2_0goe0")
