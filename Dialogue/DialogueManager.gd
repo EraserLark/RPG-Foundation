@@ -1,6 +1,7 @@
 extends Node
 class_name DialogueManager
 
+var firstStep: Step
 var focusStep: Step
 
 func startDialogue(startStep: DLG_Start):
@@ -9,11 +10,13 @@ func startDialogue(startStep: DLG_Start):
 	for step in timeline:
 		step.dialogueManager = self
 	
+	firstStep = startStep
 	focusStep = startStep
 	runFocusStep()
 
 func endDialogue():
 	focusStep = null
+	firstStep.queue_free()
 
 func jumpTo(step: Step):
 	focusStep = step
