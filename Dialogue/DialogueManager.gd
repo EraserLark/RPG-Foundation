@@ -1,10 +1,15 @@
 extends Node
 class_name DialogueManager
 
+var dialogueState: DialogueState
 var firstStep: Step
 var focusStep: Step
 
 func startDialogue(startStep: DLG_Start):
+	#Create DialogueState
+	dialogueState = DialogueState.new(StateStack)
+	StateStack.addState(dialogueState)
+	
 	var timeline = Helper.getAllChildren(startStep)
 	startStep.dialogueManager = self
 	for step in timeline:
@@ -15,6 +20,7 @@ func startDialogue(startStep: DLG_Start):
 	runFocusStep()
 
 func endDialogue():
+	dialogueState.exit()
 	focusStep = null
 	firstStep.queue_free()
 

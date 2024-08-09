@@ -15,7 +15,3 @@ func startTimeline(timeline: PackedScene, playerNum: int):
 	
 	#Have the proper player's DialogueManager start the timeline
 	PlayerRoster.roster[0].dialogueManager.startDialogue(tl)
-
-#func endTimeline(playerNum: int):
-	#PlayerRoster.roster[0].dialogueManager.endDiaglogue()
-	#player1Node.get_child(0).queue_free()

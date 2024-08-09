@@ -19,7 +19,7 @@ config/icon="res://Art/icon.svg"
 
 StateStack="*res://States/StateStack.gd"
 PlayerRoster="*res://PlayerRoster.tscn"
-DialogueScene="*res://Dialogue/DialogueScene.tscn"
+DialogueSystem="*res://Dialogue/DialogueSystem.tscn"
 
 [display]
 

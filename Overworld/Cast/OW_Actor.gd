@@ -14,7 +14,7 @@ func interactAction(interacter : OW_Player):
 	runNPCTimeline(interacter.getPlayerNum())
 
 func runNPCTimeline(playerNum: int):
-	DialogueScene.startTimeline(cutsceneResource, playerNum)
+	DialogueSystem.startTimeline(cutsceneResource, playerNum)
 
 func speak(message : Array[String]):
 	#Create dialogueBubbleContainer
