@@ -480,7 +480,7 @@ parameters/Idle/blend_position = Vector2(-0.000925064, -0.00484574)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="DanceTimer" type="Timer" parent="." index="7"]
-wait_time = 0.2
+wait_time = 0.05
 one_shot = true
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
