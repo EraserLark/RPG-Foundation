@@ -4,8 +4,8 @@ class_name Step
 var dialogueManager: DialogueManager
 
 #Set to null while testing in isolated scene. Change when implemeting
-func _init(dm: DialogueManager = null):
-	dialogueManager = dm
+#func _init(dm: DialogueManager):
+	#dialogueManager = dm
 
 func runStep():
 	pass

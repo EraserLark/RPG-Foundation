@@ -3,11 +3,17 @@ class_name DialogueManager
 
 var focusStep: Step
 
-func startDialogue():
-	pass
+func startDialogue(startStep: DLG_Start):
+	var timeline = Helper.getAllChildren(startStep)
+	startStep.dialogueManager = self
+	for step in timeline:
+		step.dialogueManager = self
+	
+	focusStep = startStep
+	runFocusStep()
 
-func endDiaglogue():
-	pass
+func endDialogue():
+	focusStep = null
 
 func jumpTo(step: Step):
 	focusStep = step

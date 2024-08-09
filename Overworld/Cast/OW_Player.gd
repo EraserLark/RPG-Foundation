@@ -17,8 +17,12 @@ var currentDir: Vector2
 var dirChangeCount:= 0
 var rayLength := 32
 
-func initialize(owm):
+func getPlayerNum():
+	return playerInfo.playerNumber
+
+func initialize(owm, pi):
 	owManager = owm
+	playerInfo = pi
 
 func moveDirection(dir: Vector2):
 	self.velocity = dir.normalized() * speed;

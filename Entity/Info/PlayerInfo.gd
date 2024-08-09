@@ -7,9 +7,11 @@ class_name PlayerInfo
 @export var money : int
 @export var items : Array[String]
 
+var playerNumber
 var playerEntity
 var playerActor: OW_Player
 var owPlayerState: Player_Active
+var dialogueManager:= DialogueManager.new()
 
 func _ready():
 	print("Stall")

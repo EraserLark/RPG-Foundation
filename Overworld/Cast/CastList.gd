@@ -14,7 +14,7 @@ func _ready():
 
 func addActor(playerInfo: PlayerInfo, pos: Vector2):
 	var playerActor = actorScene.instantiate()
-	playerActor.initialize(owm)
+	playerActor.initialize(owm, playerInfo)
 	self.add_child(playerActor)
 	
 	if(room.playerSpawnPort == null):

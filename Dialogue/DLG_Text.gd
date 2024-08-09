@@ -1,8 +1,8 @@
 extends Step
 class_name DLG_Text
 
-func _init(dm: DialogueManager = null):
-	super(dm)
+#func _init(dm: DialogueManager = null):
+	#super(dm)
 
 func runStep():
 	print("This is a text step")

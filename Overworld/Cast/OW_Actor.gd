@@ -6,10 +6,15 @@ var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 @onready var ui:= $"../../../../CanvasLayer/OW_UI"
 @onready var speechSpot:= $SpeechSpot
 
-@export_multiline var message: Array[String]
+#@export_multiline var message: Array[String]
+@export var cutsceneResource: PackedScene
 
 func interactAction(interacter : OW_Player):
-	speak(message)
+	#speak(message)
+	runNPCTimeline(interacter.getPlayerNum())
+
+func runNPCTimeline(playerNum: int):
+	DialogueScene.startTimeline(cutsceneResource, playerNum)
 
 func speak(message : Array[String]):
 	#Create dialogueBubbleContainer
