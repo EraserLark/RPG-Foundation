@@ -25,6 +25,12 @@ func createDBC():
 	inst.refSpot = speechSpot
 	return inst
 
+func walkTo(pos: Vector2):
+	pass
+
+func faceDir(dir: Vector2):
+	pass
+
 #func speak(message : Array[String]):
 	#var bubbleSpot = createDBC()
 	#Create a Dialoguebox state. Pass in the dbc as the parent

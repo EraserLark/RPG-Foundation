@@ -5,6 +5,8 @@ var dialogueState: DialogueState
 var firstStep: Step
 var focusStep: Step
 
+var performingCast: Array[OW_Actor]
+
 func startDialogue(startStep: DLG_Start):
 	#Create DialogueState
 	dialogueState = DialogueState.new(StateStack, self)

@@ -25,6 +25,7 @@ func initialize(owm, pi):
 	playerInfo = pi
 
 func moveDirection(dir: Vector2):
+	##Play walk animation?
 	self.velocity = dir.normalized() * speed;
 	move_and_slide()
 

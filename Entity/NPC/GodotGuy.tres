@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NPC_Info" load_steps=2 format=3 uid="uid://cr4uqvtxg1e4o"]
+
+[ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="1_15ecv"]
+
+[resource]
+script = ExtResource("1_15ecv")
+npcName = ""
+characterPortraits = Array[Texture]([])
+hFrames = 0
+vFrames = 0
