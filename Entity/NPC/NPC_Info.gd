@@ -9,8 +9,8 @@ var ow_npc: OW_Actor
 @export_group("Sprite Properties")
 @export var spriteSheet: Texture: set = setSpriteTexture
 @export var spriteOffset: Vector2: set = setSpriteOffset
-@export var hFrames: int: set = setHFrames
-@export var vFrames: int: set = setVFrames
+@export var hFrames: int= 1: set = setHFrames
+@export var vFrames: int= 1: set = setVFrames
 @export var currentFrame: int: set = setCurrentFrame
 
 @export_group("UI Properties")
