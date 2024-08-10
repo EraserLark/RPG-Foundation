@@ -8,7 +8,11 @@ func _init(sStack, plyr):
 	player = plyr
 
 func handleInput(event : InputEvent):
-	pass
+	if(event.is_action_pressed("ui_accept")):
+		player.castInteractRay()
+	
+	#if(event.is_action_pressed("ui_cancel")):
+		#player.openMenu()
 
 func enter(msg := {}):
 	pass
@@ -31,8 +35,8 @@ func update(delta : float):
 	else:
 		player.animState.travel("Idle")
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		player.castInteractRay()
+	#if Input.is_action_just_pressed("ui_accept"):
+		#player.castInteractRay()
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		player.openMenu()

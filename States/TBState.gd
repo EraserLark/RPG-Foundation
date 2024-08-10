@@ -15,8 +15,9 @@ func enter(_msg := {}):
 	textbox.advanceLineQueue()
 
 func update(_delta : float):
-	if Input.is_action_just_pressed("ui_accept"):
-		textbox.advance()
+	#if Input.is_action_just_pressed("ui_accept"):
+		#textbox.advance()
+		pass
 
 func resumeState():
 	if(textbox.tbFinished):

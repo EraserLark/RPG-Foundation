@@ -14,7 +14,8 @@ func enter(_msg := {}):
 	pass
 
 func update(_delta : float):
-	pass
+	if Input.is_action_just_pressed("ui_accept"):
+		pass
 
 func physicsUpdate(_delta : float):
 	pass

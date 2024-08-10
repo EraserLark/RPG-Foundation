@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_dvjkt")
 metadata/_edit_group_ = true
 
@@ -61,13 +62,6 @@ offset_right = 263.0
 offset_bottom = 92.0
 grow_horizontal = 0
 
-[node name="Label" parent="NinePatchRect/ResponsePanel/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-text = "Wowee-Zowee"
-
-[node name="Label" parent="NinePatchRect/ResponsePanel/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
-text = "Hm this is quite
-The conundrum of a desicion"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -80,5 +74,7 @@ grow_vertical = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_cb3e3")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 
 [editable path="NinePatchRect/ResponsePanel"]

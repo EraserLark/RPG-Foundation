@@ -11,8 +11,6 @@ static var scenePath = "res://UI/textbox.tscn"
 var lineQueue: Array[String]
 @export var currentLine:= "";
 
-#var customSize: Vector2
-#var customPosition: Vector2
 var target
 
 var defaultTypeSpeed:= 0.05
@@ -37,6 +35,13 @@ static func createInstance(parent: Node, lines: Array[String]) -> Textbox:
 func _ready():
 	regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
+	
+	grab_focus()
+
+func _on_gui_input(event):
+	if(event.is_action_pressed("ui_accept")):
+		accept_event()
+		advance()
 
 func advance():
 	#Skip to end of line
@@ -107,9 +112,6 @@ func checkTag(fullText, characterIndex):
 				inTag = false
 
 func closeTextbox():
-	#if(target):
-		#target.visible = false
-	
 	tbFinished = true
 	self.queue_free()
 
