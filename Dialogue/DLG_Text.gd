@@ -9,14 +9,6 @@ var dialogueBox: DialogueBox
 	#super(dm)
 
 func runStep():
-	#print("This is a text step")
-	#nextStep(self)
-	#Create Textbox state with all the info you need
-	#May need to tweak this so that you don't have to create a textbox state for
-	#the textboxes...
-
-	#var dbState = DialogueBox_State.new(StateStack, message, speaker.name, bubbleSpot)
-	#StateStack.addState(dbState)
 	if(dialogueBox == null):
 		var speaker = DialogueSystem.world.currentRoom.castList.get_node("OW_NPC")
 		var bubbleSpot = speaker.createDBC()
