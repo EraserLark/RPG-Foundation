@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="NPC_Info" load_steps=3 format=3 uid="uid://cr4uqvtxg1e4o"]
+[gd_resource type="Resource" script_class="NPC_Info" load_steps=4 format=3 uid="uid://cr4uqvtxg1e4o"]
 
 [ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="1_15ecv"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_oig8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmo6j"]
+size = Vector2(128, 128)
 
 [resource]
 script = ExtResource("1_15ecv")
@@ -12,4 +15,5 @@ hFrames = 1
 vFrames = 1
 currentFrame = 0
 characterPortraits = Array[Texture]([])
+collisionShape = SubResource("RectangleShape2D_nmo6j")
 speechSpotPos = Vector2(0, 0)

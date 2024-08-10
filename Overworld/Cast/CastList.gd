@@ -1,4 +1,5 @@
 extends Node2D
+class_name CastList
 
 var actorScene:= preload("res://Overworld/Cast/OW_Player.tscn")
 @onready var owm:= $"../../.."
