@@ -16,10 +16,10 @@ func setName(name: String):
 static func createDBInstance(parent: Node, lines: Array[String], sp: String) -> DialogueBox:
 	var scene = load(DBscenePath)
 	var inst = scene.instantiate()
-	parent.add_child(inst)
-	
 	inst.lineQueue = lines.duplicate()
 	inst.target = parent
 	inst.speakerName = sp
+	parent.add_child(inst)
+	
 	
 	return inst

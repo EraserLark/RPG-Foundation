@@ -14,7 +14,7 @@ func runStep():
 		#var speaker = DialogueSystem.world.currentRoom.castList.get_node("OW_NPC")
 		var speaker = dialogueManager.performingCast["Godot Guy"]
 		var bubbleSpot = speaker.createDBC()
-		dialogueBox = DialogueBox.createDBInstance(bubbleSpot, message, speaker.name)
+		dialogueBox = DialogueBox.createDBInstance(bubbleSpot, message, speaker.npcResource.npcName)
 	else:
 		dialogueBox.lineQueue = message
 	dialogueBox.advanceLineQueue()
