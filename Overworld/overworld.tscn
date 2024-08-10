@@ -245,6 +245,7 @@ offset_bottom = 120.0
 script = ExtResource("7_bhje2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu"]
+volume_db = -5.0
 
 [node name="TBContainer" type="MarginContainer" parent="CanvasLayer/OW_UI"]
 layout_mode = 1

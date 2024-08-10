@@ -9,3 +9,11 @@ script = ExtResource("1_gccpn")
 [node name="TEXT" type="Node" parent="."]
 script = ExtResource("2_0goe0")
 message = Array[String](["Wassup my bot"])
+
+[node name="TEXT2" type="Node" parent="."]
+script = ExtResource("2_0goe0")
+message = Array[String](["How're you doing today?"])
+
+[node name="TEXT3" type="Node" parent="."]
+script = ExtResource("2_0goe0")
+message = Array[String](["I'm doing pretty good myself"])

@@ -18,6 +18,3 @@ func runStep():
 		focusDestination = get_child(0)
 	
 	dialogueManager.jumpTo(focusDestination)
-
-func nextStep(currentStep: Node):
-	pass

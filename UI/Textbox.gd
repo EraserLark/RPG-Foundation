@@ -36,12 +36,13 @@ func _ready():
 	regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
 	
-	grab_focus()
+	#grab_focus()
 
 func _on_gui_input(event):
-	if(event.is_action_pressed("ui_accept")):
-		accept_event()
-		advance()
+	#if(event.is_action_pressed("ui_accept")):
+		#accept_event()
+		#advance()
+	pass
 
 func advance():
 	#Skip to end of line
@@ -58,7 +59,7 @@ func advanceLineQueue():
 		currentLine = lineQueue.pop_front()
 		typeText(currentLine)
 	else:
-		closeTextbox()
+		#closeTextbox()
 		StateStack.resumeCurrentState()
 
 func typeText(textToType: String):
