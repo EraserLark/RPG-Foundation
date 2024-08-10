@@ -10,6 +10,9 @@ func _ready():
 	super()
 	setName(speakerName)
 
+func setName(name: String):
+	nameLabel.text = name
+
 static func createDBInstance(parent: Node, lines: Array[String], sp: String) -> DialogueBox:
 	var scene = load(DBscenePath)
 	var inst = scene.instantiate()
@@ -20,6 +23,3 @@ static func createDBInstance(parent: Node, lines: Array[String], sp: String) -> 
 	inst.speakerName = sp
 	
 	return inst
-
-func setName(name: String):
-	nameLabel.text = name

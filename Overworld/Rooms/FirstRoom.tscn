@@ -43,9 +43,6 @@ shape = SubResource("RectangleShape2D_nmo6j")
 [node name="CollisionShape2D" parent="CastList/Godot Guy/Area2D" index="0"]
 shape = SubResource("RectangleShape2D_mr4mh")
 
-[node name="SpeechSpot" parent="CastList/Godot Guy" index="6"]
-position = Vector2(0, 0)
-
 [node name="OW_EnemyNPC" parent="CastList" index="1" instance=ExtResource("3_1taik")]
 position = Vector2(544, 336)
 script = ExtResource("4_ua3m4")

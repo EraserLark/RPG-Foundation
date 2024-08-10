@@ -16,4 +16,4 @@ vFrames = 1
 currentFrame = 0
 characterPortraits = Array[Texture]([])
 collisionShape = SubResource("RectangleShape2D_nmo6j")
-speechSpotPos = Vector2(0, 0)
+speechSpotPos = Vector2(100, -100)
