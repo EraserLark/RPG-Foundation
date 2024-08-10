@@ -20,6 +20,8 @@ func _ready():
 	
 	initialMenu.menuManager = self
 	
+	audioPlayer = $AudioStreamPlayer
+	
 	playerInfo = PlayerRoster.roster[0]
 	subMenuNodes.get_child(0).initMenu(playerInfo.itemList)
 	

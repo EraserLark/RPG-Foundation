@@ -5,6 +5,9 @@ var baseMenu: Menu
 var subMenus: Array[Menu]
 var menuStack: MenuStack = MenuStack.new()
 
+var audioPlayer: AudioStreamPlayer
+@export var sounds: Array[AudioStreamMP3]
+
 var isFinished:= false
 @export var mandatory:= false
 
@@ -13,9 +16,15 @@ func open():
 
 func showSubMenu(menu: Menu):
 	menuStack.pushMenu(menu)
+	if(sounds.size() > 0):
+		audioPlayer.stream = sounds[0]
+		audioPlayer.play()
 
 func closeSubMenu():
 	menuStack.popMenu()
+	if(sounds.size() > 1):
+		audioPlayer.stream = sounds[1]
+		audioPlayer.play()
 	
 	if(menuStack.currentMenu == null):
 		closeMenuSystem()

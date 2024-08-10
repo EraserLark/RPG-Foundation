@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=21 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="Script" path="res://Overworld/UI/OW_UI.gd" id="1_4a7eq"]
 [ext_resource type="Script" path="res://Overworld/OverworldManager.gd" id="1_flynd"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Overworld/UI/OW_PlayerMenu.gd" id="3_mylkc"]
 [ext_resource type="Script" path="res://Overworld/UI/PlayerUI_World.gd" id="3_un7xr"]
 [ext_resource type="Script" path="res://Overworld/UI/Menus/InitialMenu.gd" id="4_83vjy"]
+[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="6_g4lpx"]
+[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="7_57y5j"]
 [ext_resource type="Script" path="res://Menus/PlaceholderMenu.gd" id="7_bhje2"]
 [ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="8_vv1d2"]
 [ext_resource type="Script" path="res://Overworld/AGH.gd" id="10_aj4ln"]
@@ -148,6 +150,7 @@ patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 script = ExtResource("3_mylkc")
+sounds = Array[AudioStreamMP3]([ExtResource("6_g4lpx"), ExtResource("7_57y5j")])
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu"]
@@ -240,6 +243,8 @@ layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
 script = ExtResource("7_bhje2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu"]
 
 [node name="TBContainer" type="MarginContainer" parent="CanvasLayer/OW_UI"]
 layout_mode = 1

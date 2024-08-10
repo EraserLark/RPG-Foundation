@@ -18,6 +18,7 @@ var isActionItem:= false
 var itemIndex
 
 func _ready():
+	audioPlayer = $AudioStreamPlayer
 	playerMenu.populateVars(self)
 
 func initialize():
