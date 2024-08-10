@@ -1,10 +1,15 @@
-[gd_resource type="Resource" script_class="NPC_Info" load_steps=2 format=3 uid="uid://cr4uqvtxg1e4o"]
+[gd_resource type="Resource" script_class="NPC_Info" load_steps=3 format=3 uid="uid://cr4uqvtxg1e4o"]
 
 [ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="1_15ecv"]
+[ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="2_oig8x"]
 
 [resource]
 script = ExtResource("1_15ecv")
-npcName = ""
+npcName = "Godot Guy"
+spriteSheet = ExtResource("2_oig8x")
+spriteOffset = Vector2(0, 0)
+hFrames = 1
+vFrames = 1
+currentFrame = 0
 characterPortraits = Array[Texture]([])
-hFrames = 0
-vFrames = 0
+speechSpotPos = Vector2(0, 0)

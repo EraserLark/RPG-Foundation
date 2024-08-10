@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="NPC_Info" load_steps=3 format=3 uid="uid://qlhdaj52bv8e"]
+
+[ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="1_m0e06"]
+[ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="2_t6xnp"]
+
+[resource]
+script = ExtResource("1_m0e06")
+npcName = "Godot Guy"
+spriteSheet = ExtResource("2_t6xnp")
+spriteOffset = Vector2(0, 0)
+hFrames = 3
+vFrames = 0
+currentFrame = 0
+characterPortraits = Array[Texture]([])
+speechSpotPos = Vector2(0, 0)
