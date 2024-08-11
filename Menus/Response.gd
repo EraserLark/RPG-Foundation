@@ -20,3 +20,5 @@ func resizeLabel():
 	var strPixelLength = label.get_theme_font("font").get_string_size(label.text).x
 	if(strPixelLength < labelMaxSize):
 		label.set_custom_minimum_size(Vector2(strPixelLength, 0))
+	else:
+		label.set_custom_minimum_size(Vector2(labelMaxSize, 0))

@@ -12,6 +12,10 @@ var selectedOption: int
 
 signal responseSelected(responseNum)
 
+#Testing local scene
+#func _ready():
+	#initMenu(["Yes", "No", "This Disney DVD is enhanced with Disney Fast Play"])
+
 func initMenu(responseOptions: Array[String]):
 	setResponses(responseOptions)
 	

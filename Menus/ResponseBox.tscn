@@ -16,7 +16,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 focus_mode = 2
 script = ExtResource("2_q4ytd")
-maxPanelWidth = 150
+maxPanelWidth = 200
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
