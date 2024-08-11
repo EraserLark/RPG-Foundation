@@ -1,6 +1,7 @@
 extends MenuSystem
 class_name PlayerPanel_World
 
+@onready var marginContainer:= $MarginContainer
 @onready var initialMenu:= $MarginContainer/InitialMenu
 @onready var menuList:= $MarginContainer/InitialMenu/ItemList
 @onready var subMenuNodes:= $MarginContainer/Submenus

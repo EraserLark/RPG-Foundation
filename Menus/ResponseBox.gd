@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name ResponsePanel
 
 var responseScenePath = "res://Menus/response.tscn"
 
@@ -28,6 +29,7 @@ func setResponses(responses: Array[String]):
 		var response = load(responseScenePath)
 		var inst = response.instantiate()
 		optionsList.add_child(inst)
+		inst.labelMaxSize = maxPanelWidth
 		inst.setLabel(option)
 
 func _on_gui_input(event):

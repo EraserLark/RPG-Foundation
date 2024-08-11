@@ -2,6 +2,8 @@ extends Node
 
 var ui
 var world
+var tbContainer_Stage
+var tbContainer_PlayerPanel
 
 var player1Node: Node
 
@@ -22,3 +24,5 @@ func startTimeline(timeline: PackedScene, playerNum: int):
 func updateOWVars(newUI, newWorld):
 	ui = newUI
 	world = newWorld
+	tbContainer_Stage = ui.tbContainer
+	tbContainer_PlayerPanel = ui.playerMenu
