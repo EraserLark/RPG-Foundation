@@ -36,6 +36,9 @@ func setResponses(responses: Array[String]):
 		inst.labelMaxSize = maxPanelWidth
 		inst.setLabel(option)
 
+func getPanelWidth():
+	return self.size.x
+
 func _on_gui_input(event):
 	if(event.is_action_pressed("ui_accept")):
 		confirmSelection(selectedOption)

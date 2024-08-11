@@ -3,6 +3,7 @@ class_name Textbox
 
 static var scenePath = "res://UI/textbox.tscn"
 
+@onready var responsePanel:= $ResponsePanel
 @onready var textField:= $NinePatchRect/MarginContainer/RichTextLabel
 @onready var typeTimer:= $Timer
 @onready var typeAudio:= $AudioStreamPlayer
@@ -10,6 +11,7 @@ static var scenePath = "res://UI/textbox.tscn"
 
 var lineQueue: Array[String]
 @export var currentLine:= "";
+@export var responseOptions: Array[String]
 
 var target
 
@@ -22,7 +24,7 @@ var tbFinished:= false
 #https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html#:~:text=(message)%5D)-,Stripping%20BBCode%20tags,another%20Control%20that%20does%20not%20support%20BBCode%20(such%20as%20a%20tooltip)%3A,-extends%20RichTextLabel%0A%0Afunc
 var regex
 
-static func createInstance(parent: Node, lines: Array[String]) -> Textbox:
+static func createInstance(parent: Node, lines: Array[String], responseOptions: Array[String] = []) -> Textbox:
 	var scene = load(scenePath)
 	var inst = scene.instantiate()
 	parent.add_child(inst)
@@ -36,7 +38,7 @@ func _ready():
 	regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
 	
-	#grab_focus()
+	#showResponsePanel()
 
 func _on_gui_input(event):
 	#if(event.is_action_pressed("ui_accept")):
@@ -127,3 +129,21 @@ func setText(newText : String):
 
 func showTextbox(condition : bool):
 	boxBG.visible = condition
+
+func showResponsePanel():
+	if(responseOptions.is_empty()):
+		printerr("Response Options is empty!")
+	else:
+		responsePanel.initMenu(responseOptions)
+		await responsePanel.resized		#A single physics frame :P
+		var panelWidth = responsePanel.getPanelWidth()
+		var textboxWidth = boxBG.size.x
+		var textboxHeight = boxBG.size.y
+		var newTBWidth = textboxWidth - panelWidth
+		boxBG.set_size(Vector2(newTBWidth, textboxHeight))
+
+func responsePanelResult():
+	pass
+
+func hideResponsePanel():
+	pass

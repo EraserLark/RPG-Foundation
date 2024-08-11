@@ -16,7 +16,18 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_dvjkt")
+responseOptions = Array[String](["Yep", "Nop", "This is a complicated"])
 metadata/_edit_group_ = true
+
+[node name="ResponsePanel" parent="." instance=ExtResource("3_47ght")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_right = 0.0
+grow_horizontal = 0
+size_flags_horizontal = 8
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -52,16 +63,6 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 scroll_active = false
 
-[node name="ResponsePanel" parent="NinePatchRect" instance=ExtResource("3_47ght")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1.0
-offset_right = 263.0
-offset_bottom = 92.0
-grow_horizontal = 0
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -76,5 +77,4 @@ grow_vertical = 2
 stream = ExtResource("2_cb3e3")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-
-[editable path="NinePatchRect/ResponsePanel"]
+[connection signal="resized" from="ResponsePanel" to="." method="_on_response_panel_resized"]

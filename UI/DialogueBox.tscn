@@ -16,7 +16,5 @@ offset_top = -23.0
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="NinePatchRect" parent="." index="1"]
+[node name="NinePatchRect" parent="." index="2"]
 texture = ExtResource("3_gqljg")
-
-[editable path="NinePatchRect/ResponsePanel"]
