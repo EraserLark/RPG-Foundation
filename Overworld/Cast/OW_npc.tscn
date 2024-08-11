@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfbx5q7fqdq8h"]
+[gd_scene load_steps=5 format=3 uid="uid://bfbx5q7fqdq8h"]
 
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="1_qpxhp"]
-[ext_resource type="PackedScene" uid="uid://cklgf4gtlaxs4" path="res://Dialogue/Routes/TestRoute.tscn" id="2_sxb6u"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8xf83"]
 load_path = "res://.godot/imported/icon.svg-750f30f6912a3e29e1f50a8e1a7e4a3e.ctex"
@@ -16,7 +15,6 @@ size = Vector2(128, 128)
 
 [node name="OW_NPC" instance=ExtResource("1_qpxhp")]
 y_sort_enabled = true
-cutsceneResource = ExtResource("2_sxb6u")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("CompressedTexture2D_8xf83")

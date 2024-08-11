@@ -9,12 +9,15 @@ requiredActors = Array[String](["Godot Guy"])
 
 [node name="TEXT" type="Node" parent="."]
 script = ExtResource("2_0goe0")
+speakerName = "Godot Guy"
 message = Array[String](["Wassup my bot"])
 
 [node name="TEXT2" type="Node" parent="."]
 script = ExtResource("2_0goe0")
+speakerName = "Godot Guy"
 message = Array[String](["How're you doing today?"])
 
 [node name="TEXT3" type="Node" parent="."]
 script = ExtResource("2_0goe0")
+speakerName = "Godot Guy"
 message = Array[String](["I'm doing pretty good myself"])

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="NPC_Info" load_steps=4 format=3 uid="uid://5cobp8f1mc3x"]
+
+[ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="1_ki72x"]
+[ext_resource type="Texture2D" uid="uid://cmqkdesj030nd" path="res://Art/RobotFront.png" id="2_60dxu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1lv2"]
+
+[resource]
+script = ExtResource("1_ki72x")
+npcName = "Tiny Robo"
+spriteSheet = ExtResource("2_60dxu")
+spriteOffset = Vector2(0, 0)
+spriteScale = Vector2(2, 2)
+hFrames = 1
+vFrames = 1
+currentFrame = 0
+characterPortraits = Array[Texture]([])
+interactAreaOffset = Vector2(0, 0)
+collisionShape = SubResource("CircleShape2D_j1lv2")
+collisionOffset = Vector2(0, 20)
+speechSpotPos = Vector2(100, -100)

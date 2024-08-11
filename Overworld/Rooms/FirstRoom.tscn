@@ -1,19 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://dp5gtq4i4l507"]
+[gd_scene load_steps=14 format=3 uid="uid://dp5gtq4i4l507"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_sgwbx"]
 [ext_resource type="TileSet" uid="uid://2cpjct5qw5oo" path="res://Overworld/Art/SnowTileset.tres" id="2_t2xpc"]
 [ext_resource type="PackedScene" uid="uid://bfbx5q7fqdq8h" path="res://Overworld/Cast/OW_npc.tscn" id="3_1taik"]
 [ext_resource type="Resource" uid="uid://cr4uqvtxg1e4o" path="res://Entity/NPC/GodotGuy.tres" id="4_qg7gy"]
 [ext_resource type="Script" path="res://Overworld/Cast/OW_Enemy.gd" id="4_ua3m4"]
+[ext_resource type="PackedScene" uid="uid://cklgf4gtlaxs4" path="res://Dialogue/Routes/TestRoute.tscn" id="5_6gfu2"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_h78mw"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="5_nptwd"]
 [ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/Passages/passage.tscn" id="6_x2mqx"]
+[ext_resource type="Resource" uid="uid://5cobp8f1mc3x" path="res://Entity/NPC/RedRobot.tres" id="8_p2dmw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmo6j"]
-size = Vector2(128, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr4mh"]
-resource_local_to_scene = true
 size = Vector2(128, 128)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wq5aw"]
@@ -33,6 +31,7 @@ layer_2/tile_data = PackedInt32Array(-65542, 720896, 6, -262136, 720896, 6, 1966
 [node name="Godot Guy" parent="CastList" index="0" instance=ExtResource("3_1taik")]
 position = Vector2(768, 272)
 npcResource = ExtResource("4_qg7gy")
+cutsceneResource = ExtResource("5_6gfu2")
 
 [node name="Sprite2D" parent="CastList/Godot Guy" index="0"]
 texture = ExtResource("5_nptwd")
@@ -41,7 +40,7 @@ texture = ExtResource("5_nptwd")
 shape = SubResource("RectangleShape2D_nmo6j")
 
 [node name="CollisionShape2D" parent="CastList/Godot Guy/Area2D" index="0"]
-shape = SubResource("RectangleShape2D_mr4mh")
+shape = null
 
 [node name="OW_EnemyNPC" parent="CastList" index="1" instance=ExtResource("3_1taik")]
 position = Vector2(544, 336)
@@ -63,6 +62,11 @@ position = Vector2(0, -56)
 [node name="CollisionShape2D" parent="CastList/OW_EnemyNPC/Area2D" index="0"]
 position = Vector2(0, 56)
 shape = SubResource("RectangleShape2D_6dx2a")
+
+[node name="Tiny Robo" parent="CastList" index="2" instance=ExtResource("3_1taik")]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(-352, -280)
+npcResource = ExtResource("8_p2dmw")
 
 [node name="Passage_0" parent="Passages" index="0" instance=ExtResource("6_x2mqx")]
 position = Vector2(32, -384)

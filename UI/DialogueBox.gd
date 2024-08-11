@@ -21,5 +21,4 @@ static func createDBInstance(parent: Node, lines: Array[String], sp: String) -> 
 	inst.speakerName = sp
 	parent.add_child(inst)
 	
-	
 	return inst

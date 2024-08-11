@@ -15,12 +15,18 @@ func setNPCInfo(info: NPC_Info):
 	info.ow_npc = self
 	
 	self.name = info.npcName
+	
 	$Sprite2D.texture = info.spriteSheet
 	$Sprite2D.offset = info.spriteOffset
+	$Sprite2D.scale = info.spriteScale
 	$Sprite2D.hframes = info.hFrames
 	$Sprite2D.vframes = info.vFrames
 	$Sprite2D.frame = info.currentFrame
+	
+	$Area2D/CollisionShape2D.shape = info.interactAreaShape
+	$Area2D/CollisionShape2D.position = info.interactAreaOffset
 	$CollisionShape2D.shape = info.collisionShape
+	$CollisionShape2D.position = info.collisionOffset
 	$SpeechSpot.position = info.speechSpotPos
 
 func interactAction(interacter : OW_Player):
@@ -44,9 +50,3 @@ func walkTo(pos: Vector2):
 
 func faceDir(dir: Vector2):
 	pass
-
-#func speak(message : Array[String]):
-	#var bubbleSpot = createDBC()
-	#Create a Dialoguebox state. Pass in the dbc as the parent
-	#var dbState = DialogueBox_State.new(StateStack, message, self.name, inst)
-	#StateStack.addState(dbState)
