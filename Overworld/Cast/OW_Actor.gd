@@ -31,7 +31,8 @@ func setNPCInfo(info: NPC_Info):
 
 func interactAction(interacter : OW_Player):
 	#speak(message)
-	runNPCTimeline(interacter.getPlayerNum())
+	if(cutsceneResource):
+		runNPCTimeline(interacter.getPlayerNum())
 
 func runNPCTimeline(playerNum: int):
 	DialogueSystem.startTimeline(cutsceneResource, playerNum)

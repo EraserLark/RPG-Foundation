@@ -5,6 +5,10 @@ extends Node2D
 @onready var csManager:= $CutsceneManager
 @onready var currentRoom:= $FirstRoom
 
+func _ready():
+	await owManager.ready
+	DialogueSystem.updateOWVars(owManager.ui, self)
+
 func pauseWorld():
 	music.stream_paused = true
 
