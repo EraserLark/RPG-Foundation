@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cklgf4gtlaxs4"]
+[gd_scene load_steps=4 format=3 uid="uid://cklgf4gtlaxs4"]
 
 [ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_gccpn"]
 [ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="2_0goe0"]
+[ext_resource type="Script" path="res://Dialogue/DLG_CHOICE.gd" id="3_jpws5"]
 
 [node name="START" type="Node"]
 script = ExtResource("1_gccpn")
@@ -10,17 +11,35 @@ requiredActors = Array[String](["Godot Guy"])
 [node name="TEXT" type="Node" parent="."]
 script = ExtResource("2_0goe0")
 speakerName = "Godot Guy"
-boxLocation = 3
-message = Array[String](["Wassup my bot"])
+message = Array[String](["[wave]Howdy howdy![/wave]"])
 
 [node name="TEXT2" type="Node" parent="."]
 script = ExtResource("2_0goe0")
 speakerName = "Godot Guy"
-boxLocation = 1
-message = Array[String](["How're you doing today?"])
+message = Array[String](["Yo I got a question for you"])
 
 [node name="TEXT3" type="Node" parent="."]
 script = ExtResource("2_0goe0")
 speakerName = "Godot Guy"
+message = Array[String](["Do you like me?"])
+
+[node name="CHOICE1" type="Node" parent="."]
+script = ExtResource("3_jpws5")
+choiceOptions = Array[String](["Yeah he's Godoated", "No he's lame"])
+speakerName = "Godot Guy"
 boxLocation = 3
-message = Array[String](["I'm doing pretty good myself"])
+message = Array[String](["Do you like the Godot Guy?"])
+
+[node name="RESPONSE1" type="Node" parent="CHOICE1"]
+
+[node name="DLG_Text" type="Node" parent="CHOICE1/RESPONSE1"]
+script = ExtResource("2_0goe0")
+speakerName = "Godot Guy"
+message = Array[String](["Good, because I don't lmao"])
+
+[node name="RESPONSE2" type="Node" parent="CHOICE1"]
+
+[node name="DLG_Text2" type="Node" parent="CHOICE1/RESPONSE2"]
+script = ExtResource("2_0goe0")
+speakerName = "Godot Guy"
+message = Array[String](["Big sigh"])

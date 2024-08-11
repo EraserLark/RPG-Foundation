@@ -21,10 +21,14 @@ func getNextStep(currentStep: Step) -> Step:
 
 func advanceNextStep(currentStep: Step):
 	var nextStep = getNextStep(currentStep)
-	if(nextStep == null):
-		dialogueManager.endDialogue()
-	else:
+	if(nextStep != null):
 		dialogueManager.jumpTo(nextStep)
+	else:
+		if(dialogueManager.stepStack.size() > 0):
+			var prevStep = dialogueManager.stepStack.pop_front()
+			dialogueManager.jumpTo(prevStep)
+		else:
+			dialogueManager.endDialogue()
 
 #Recieved input with intention of confirming
 func confirmInput():

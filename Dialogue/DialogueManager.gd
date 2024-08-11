@@ -4,6 +4,7 @@ class_name DialogueManager
 var dialogueState: DialogueState
 var firstStep: Step
 var focusStep: Step
+var stepStack: Array[Step]
 
 var performingCast:= {}
 
@@ -15,7 +16,8 @@ func startDialogue(startStep: DLG_Start):
 	var timeline = Helper.getAllChildren(startStep)
 	startStep.dialogueManager = self
 	for step in timeline:
-		step.dialogueManager = self
+		if(step is Step):
+			step.dialogueManager = self
 	
 	firstStep = startStep
 	focusStep = startStep

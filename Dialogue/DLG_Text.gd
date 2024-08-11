@@ -8,7 +8,7 @@ enum BOX_LOCATION {SmallBubble, BigBubble, PlayerPanel, BigBox}
 @export var boxLocation: BOX_LOCATION = BOX_LOCATION.SmallBubble
 @export var message: Array[String]
 
-@export() var speakerOptions: Array[String]
+#@export() var speakerOptions: Array[String]
 var dialogueBox: Textbox
 
 #func _init(dm: DialogueManager = null):

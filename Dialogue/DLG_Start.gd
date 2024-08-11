@@ -16,11 +16,11 @@ func _ready():
 
 func setRequiredActors(ra: Array[String]):
 	requiredActors = ra
-	var timeline = Helper.getAllChildren(self)
-	for step in timeline:
-		if step is DLG_Text:
-			step.speakerOptions = requiredActors
-			step.notify_property_list_changed()
+	#var timeline = Helper.getAllChildren(self)
+	#for step in timeline:
+		#if step is DLG_Text:
+			#step.speakerOptions = requiredActors
+			#step.notify_property_list_changed()
 
 func runStep():
 	##Assert that:

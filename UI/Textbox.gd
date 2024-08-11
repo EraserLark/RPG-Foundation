@@ -36,6 +36,7 @@ static func createInstance(parent: Node, lines: Array[String], responseOptions: 
 	
 	inst.lineQueue = lines.duplicate()
 	inst.target = parent
+	inst.responseOptions = responseOptions
 	
 	return inst
 
