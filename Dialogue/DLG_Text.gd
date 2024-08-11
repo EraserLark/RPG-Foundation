@@ -50,4 +50,7 @@ func resumeStep():
 	advanceNextStep(self)
 
 func confirmInput():
-	dialogueBox.advance()
+	dialogueBox.confirmInput()
+
+func moveInput(input: Vector2):
+	dialogueBox.moveInput(input)

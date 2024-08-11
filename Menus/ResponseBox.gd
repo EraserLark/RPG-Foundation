@@ -21,7 +21,7 @@ func initMenu(responseOptions: Array[String]):
 	
 	selectedOption = 0
 	moveCursor(selectedOption)
-	self.grab_focus()
+	#self.grab_focus()
 
 func setResponses(responses: Array[String]):
 	optionsArray = responses
@@ -47,6 +47,19 @@ func _on_gui_input(event):
 		selectedOption %= optionsArray.size()
 		moveCursor(selectedOption)
 	elif(event.is_action_pressed("ui_down")):
+		selectedOption += 1
+		selectedOption %= optionsArray.size()
+		moveCursor(selectedOption)
+
+func confirmInput():
+	confirmSelection(selectedOption)
+
+func moveInput(input: Vector2):
+	if(input.y > 0):
+		selectedOption -= 1
+		selectedOption %= optionsArray.size()
+		moveCursor(selectedOption)
+	elif(input.y < 0):
 		selectedOption += 1
 		selectedOption %= optionsArray.size()
 		moveCursor(selectedOption)

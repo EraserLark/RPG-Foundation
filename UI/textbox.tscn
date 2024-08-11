@@ -16,7 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_dvjkt")
-responseOptions = Array[String](["Yep", "Nop", "This is a complicated"])
 metadata/_edit_group_ = true
 
 [node name="ResponsePanel" parent="." instance=ExtResource("3_47ght")]

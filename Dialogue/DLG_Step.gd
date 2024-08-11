@@ -34,5 +34,8 @@ func confirmInput():
 func denyInput():
 	pass
 
+func moveInput(input: Vector2):
+	pass
+
 func getClassInstance():
 	return self

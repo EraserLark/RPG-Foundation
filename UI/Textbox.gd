@@ -24,6 +24,11 @@ var tbFinished:= false
 #https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html#:~:text=(message)%5D)-,Stripping%20BBCode%20tags,another%20Control%20that%20does%20not%20support%20BBCode%20(such%20as%20a%20tooltip)%3A,-extends%20RichTextLabel%0A%0Afunc
 var regex
 
+enum MODE {DIALOGUE, CHOICE}
+var currentMode: MODE = MODE.DIALOGUE
+
+signal responseChosen(responseIndex: int)
+
 static func createInstance(parent: Node, lines: Array[String], responseOptions: Array[String] = []) -> Textbox:
 	var scene = load(scenePath)
 	var inst = scene.instantiate()
@@ -38,13 +43,25 @@ func _ready():
 	regex = RegEx.new()
 	regex.compile("\\[.*?\\]")
 	
-	#showResponsePanel()
+	responsePanel.responseSelected.connect(submitResponse)
+	currentMode = MODE.DIALOGUE
 
 func _on_gui_input(event):
 	#if(event.is_action_pressed("ui_accept")):
 		#accept_event()
 		#advance()
 	pass
+
+func confirmInput():
+	match currentMode:
+		MODE.DIALOGUE:
+			advance()
+		MODE.CHOICE:
+			responsePanel.confirmInput()
+
+func moveInput(input: Vector2):
+	if currentMode == MODE.CHOICE:
+		responsePanel.moveInput(input)
 
 func advance():
 	#Skip to end of line
@@ -90,8 +107,11 @@ func typeText(textToType: String):
 		
 		charIndex += 1
 	
-	finished = true
-	emit_signal("phraseFin")
+	if(responseOptions.is_empty()):
+		finishTextbox()
+	else:
+		currentMode = MODE.CHOICE
+		showResponsePanel()
 
 #https://youtu.be/jhwfA-QF54M?t=403
 func checkTag(fullText, characterIndex):
@@ -113,6 +133,10 @@ func checkTag(fullText, characterIndex):
 		elif inTag:
 			if fullText[characterIndex - 1] == ">":
 				inTag = false
+
+func finishTextbox():
+	finished = true
+	emit_signal("phraseFin")
 
 func closeTextbox():
 	tbFinished = true
@@ -142,8 +166,12 @@ func showResponsePanel():
 		var newTBWidth = textboxWidth - panelWidth
 		boxBG.set_size(Vector2(newTBWidth, textboxHeight))
 
-func responsePanelResult():
-	pass
+func submitResponse(responseNum: int):
+	print(str("Selected ", responseOptions[responseNum]))
+	emit_signal("responseChosen", responseNum)
+	#hideResponsePanel()
+	finishTextbox()
+	advanceLineQueue()
 
 func hideResponsePanel():
 	pass

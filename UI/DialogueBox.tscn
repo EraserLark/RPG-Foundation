@@ -7,6 +7,7 @@
 [node name="Dialoguebox" instance=ExtResource("1_vsgrr")]
 script = ExtResource("2_raitk")
 speakerName = "Henry"
+responseOptions = Array[String](["Yessir", "Nossir"])
 
 [node name="NameLabel" type="Label" parent="." index="0"]
 layout_mode = 1
