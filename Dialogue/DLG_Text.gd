@@ -1,9 +1,12 @@
+@tool
 extends Step
 class_name DLG_Text
 
 var messageSpeaker	#Want to choose from list of requiredActors in START
+@export var speakerName: String
 @export var message: Array[String]
 
+@export() var speakerOptions: Array[String]
 var dialogueBox: DialogueBox
 
 #func _init(dm: DialogueManager = null):
@@ -12,7 +15,7 @@ var dialogueBox: DialogueBox
 func runStep():
 	if(dialogueBox == null):
 		#var speaker = DialogueSystem.world.currentRoom.castList.get_node("OW_NPC")
-		var speaker = dialogueManager.performingCast["Godot Guy"]
+		var speaker = dialogueManager.performingCast[speakerName]
 		var bubbleSpot = speaker.createDBC()
 		dialogueBox = DialogueBox.createDBInstance(bubbleSpot, message, speaker.npcResource.npcName)
 	else:

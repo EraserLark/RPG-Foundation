@@ -1,8 +1,9 @@
+@tool
 extends Step
 class_name DLG_Start
 
 #List of actors that will be performing in this scene
-@export var requiredActors: Array[String]
+@export var requiredActors: Array[String]: set = setRequiredActors
 @export var focusDestination: Step
 @export var camStartPosition: Vector2
 
@@ -12,6 +13,14 @@ class_name DLG_Start
 
 func _ready():
 	pass
+
+func setRequiredActors(ra: Array[String]):
+	requiredActors = ra
+	var timeline = Helper.getAllChildren(self)
+	for step in timeline:
+		if step is DLG_Text:
+			step.speakerOptions = requiredActors
+			step.notify_property_list_changed()
 
 func runStep():
 	##Assert that:
