@@ -25,5 +25,7 @@ shape = null
 [node name="NavigationAgent2D" parent="Godot Guy" index="7"]
 path_desired_distance = 20.0
 target_desired_distance = 10.0
+avoidance_enabled = false
+radius = 10.0
 
 [editable path="Godot Guy"]

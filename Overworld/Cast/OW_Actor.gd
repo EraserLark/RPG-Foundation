@@ -72,8 +72,13 @@ func _physics_process(delta):
 	var currentPos = global_position
 	var nextPathPos = navigation_agent_2d.get_next_path_position()
 	
-	velocity = currentPos.direction_to(nextPathPos)
-	velocity *= walkSpeed
+	var newVelocity = currentPos.direction_to(nextPathPos)
+	newVelocity *= walkSpeed
+	
+	if navigation_agent_2d.avoidance_enabled:
+		navigation_agent_2d.set_velocity(newVelocity)
+	else:
+		velocity = newVelocity
 	
 	move_and_slide()
 
@@ -82,6 +87,9 @@ func walkTo(pos: Vector2):
 
 func faceDir(dir: Vector2):
 	pass
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	velocity = safe_velocity
 
 func _on_navigation_agent_2d_target_reached():
 	emit_signal("walkFinished")

@@ -56,6 +56,8 @@ shape = SubResource("RectangleShape2D_6dx2a")
 path_desired_distance = 20.0
 target_desired_distance = 10.0
 path_postprocessing = 0
+avoidance_enabled = false
+radius = 10.0
 
 [node name="Tiny Robo" parent="CastList" index="2" instance=ExtResource("3_1taik")]
 self_modulate = Color(1, 0, 0, 1)

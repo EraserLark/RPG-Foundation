@@ -47,4 +47,4 @@ message = Array[String](["Big sigh"])
 
 [node name="DLG_Walk" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-targetPosition = Vector2(300, 0)
+targetPosition = Vector2(-448, 0)
