@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cklgf4gtlaxs4"]
+[gd_scene load_steps=5 format=3 uid="uid://cklgf4gtlaxs4"]
 
 [ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_gccpn"]
 [ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="2_0goe0"]
 [ext_resource type="Script" path="res://Dialogue/DLG_CHOICE.gd" id="3_jpws5"]
+[ext_resource type="Script" path="res://Dialogue/DLG_WALK.gd" id="4_x4yx6"]
 
 [node name="START" type="Node"]
 script = ExtResource("1_gccpn")
@@ -43,3 +44,7 @@ message = Array[String](["Good, because I don't lmao"])
 script = ExtResource("2_0goe0")
 speakerName = "Godot Guy"
 message = Array[String](["Big sigh"])
+
+[node name="DLG_Walk" type="Node" parent="CHOICE1/RESPONSE2"]
+script = ExtResource("4_x4yx6")
+targetPosition = Vector2(300, 0)

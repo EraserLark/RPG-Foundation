@@ -26,3 +26,9 @@ shape = SubResource("RectangleShape2D_dqx04")
 
 [node name="SpeechSpot" type="Node2D" parent="."]
 position = Vector2(100, -100)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 8.0
+target_desired_distance = 8.0
+path_postprocessing = 1
+debug_enabled = true

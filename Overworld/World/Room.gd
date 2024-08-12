@@ -5,6 +5,7 @@ class_name Room
 @onready var castList:= $CastList
 @onready var passages:= $Passages
 @onready var camera:= $Camera2D
+@onready var cutsceneMarks:= $CutsceneMarks
 
 var world
 var overworldManager

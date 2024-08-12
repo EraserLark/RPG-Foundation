@@ -4,6 +4,7 @@ var ui
 var world
 var tbContainer_Stage
 var tbContainer_PlayerPanel
+var cutsceneMarkers
 
 var player1Node: Node
 
@@ -26,3 +27,4 @@ func updateOWVars(newUI, newWorld):
 	world = newWorld
 	tbContainer_Stage = ui.tbContainer
 	tbContainer_PlayerPanel = ui.playerMenu
+	cutsceneMarkers = world.currentRoom.cutsceneMarks

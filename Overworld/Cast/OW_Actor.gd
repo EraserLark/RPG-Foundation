@@ -6,9 +6,18 @@ var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 
 @onready var ui:= $"../../../../CanvasLayer/OW_UI"
 @onready var speechSpot:= $SpeechSpot
+@onready var navigation_agent_2d:= $NavigationAgent2D
 
 @export var npcResource: NPC_Info: set = setNPCInfo
 @export var cutsceneResource: PackedScene
+var navTarget: Vector2#: set = setNavTarget
+@export var walkSpeed: float = 10
+
+signal walkFinished()
+
+func _ready():
+	#setNavTarget(Vector2(0,0))
+	pass
 
 func setNPCInfo(info: NPC_Info):
 	npcResource = info
@@ -46,8 +55,33 @@ func createDBC():
 	inst.refSpot = speechSpot
 	return inst
 
+func setNavTarget(target: Vector2):
+	navTarget = target
+	#await self.ready
+	await get_tree().physics_frame
+	if Engine.is_editor_hint():
+		print("In Editor")
+		return
+	else:
+		navigation_agent_2d.target_position = navTarget
+
+func _physics_process(delta):
+	if navigation_agent_2d.is_navigation_finished() or Engine.is_editor_hint():
+		return
+	
+	var currentPos = global_position
+	var nextPathPos = navigation_agent_2d.get_next_path_position()
+	
+	velocity = currentPos.direction_to(nextPathPos)
+	velocity *= walkSpeed
+	
+	move_and_slide()
+
 func walkTo(pos: Vector2):
 	pass
 
 func faceDir(dir: Vector2):
 	pass
+
+func _on_navigation_agent_2d_target_reached():
+	emit_signal("walkFinished")

@@ -15,6 +15,9 @@ size = Vector2(128, 128)
 
 [node name="OW_NPC" instance=ExtResource("1_qpxhp")]
 y_sort_enabled = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" parent="." index="0"]
 texture = SubResource("CompressedTexture2D_8xf83")
@@ -27,3 +30,5 @@ shape = SubResource("RectangleShape2D_58lsb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("RectangleShape2D_x054w")
 debug_color = Color(1, 1, 0, 0.419608)
+
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
