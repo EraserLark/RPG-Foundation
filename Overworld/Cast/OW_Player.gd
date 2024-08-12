@@ -12,6 +12,7 @@ var owManager: OverworldManager
 @onready var animPlayer:= $AnimationPlayer
 @onready var interactRay:= $"RayCast2D"
 @onready var danceTimer:= $DanceTimer
+@onready var collisionShape:= $CollisionShape2D
 
 var currentDir: Vector2
 var dirChangeCount:= 0

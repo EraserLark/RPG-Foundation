@@ -17,11 +17,11 @@ func handleInput(_event : InputEvent):
 	var input = Vector2.ZERO;
 	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left");
 	input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up");
-	if(input != Vector2.ZERO):
+	if(input != Vector2.ZERO && dialogueManager.focusStep):	#breaks if focusStep is null
 		dialogueManager.focusStep.moveInput(input)
 
 func enter(_msg := {}):
-	pass
+	PlayerRoster.roster[0].playerActor.collisionShape.set_deferred("disabled", true)
 
 func update(_delta : float):
 	#if Input.is_action_just_pressed("ui_accept"):
@@ -34,4 +34,5 @@ func resumeState():
 	dialogueManager.resumeFocusStep()
 
 func exit():
+	PlayerRoster.roster[0].playerActor.collisionShape.set_deferred("disabled", false)
 	super()
