@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 class_name Room
 
@@ -14,6 +15,11 @@ var cutsceneManager
 
 var playerSpawnPort: int
 
+@export var roomData: RoomData
+
+@export_category("Debug")
+@export var SaveRoomData: bool: set = _my_button_pressed
+
 func _ready():
 	world = get_parent()
 	overworldManager = world.get_parent()
@@ -25,3 +31,6 @@ func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)
 	var transition = TransitionState.new(StateStack, overworldManager.cutsceneManager, world, newRoomPath, port)
 	StateStack.addState(transition)
+
+func _my_button_pressed(value):
+	print(value)

@@ -2,6 +2,7 @@ extends Node
 class_name Step
 
 var dialogueManager: DialogueManager
+var availableActors: Array[String]
 
 #Set to null while testing in isolated scene. Change when implemeting
 #func _init(dm: DialogueManager):

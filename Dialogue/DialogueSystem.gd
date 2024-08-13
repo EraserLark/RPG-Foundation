@@ -8,6 +8,8 @@ var cutsceneMarkers
 
 var player1Node: Node
 
+@export var roomsList = {}
+
 ##Will need to refactor for multiplayer
 func _ready():
 	player1Node = Node.new()
