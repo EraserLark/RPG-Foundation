@@ -35,16 +35,30 @@ messageSpeaker = ""
 
 [node name="DLG_Text" type="Node" parent="CHOICE1/RESPONSE1"]
 script = ExtResource("2_0goe0")
-message = Array[String](["Good, because I don't lmao"])
+message = Array[String](["Yippee!!!!"])
 messageSpeaker = "Godot Guy"
 
 [node name="RESPONSE2" type="Node" parent="CHOICE1"]
 
 [node name="DLG_Text2" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("2_0goe0")
-message = Array[String](["Big sigh"])
+message = Array[String](["Oh...Gotcha"])
+messageSpeaker = "Godot Guy"
+
+[node name="DLG_Text3" type="Node" parent="CHOICE1/RESPONSE2"]
+script = ExtResource("2_0goe0")
+message = Array[String](["Guess I'll leave then"])
+messageSpeaker = "Godot Guy"
+
+[node name="DLG_Walk2" type="Node" parent="CHOICE1/RESPONSE2"]
+script = ExtResource("4_x4yx6")
+targetPosition = Vector2(200, 0)
+
+[node name="DLG_Text4" type="Node" parent="CHOICE1/RESPONSE2"]
+script = ExtResource("2_0goe0")
+message = Array[String](["Dad was right..."])
 messageSpeaker = "Godot Guy"
 
 [node name="DLG_Walk" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-targetPosition = Vector2(-448, 0)
+targetPosition = Vector2(768, -128)

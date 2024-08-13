@@ -33,6 +33,5 @@ target_desired_distance = 8.0
 path_postprocessing = 1
 avoidance_enabled = true
 radius = 32.0
-debug_enabled = true
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

@@ -72,8 +72,8 @@ func _physics_process(delta):
 	var currentPos = global_position
 	var nextPathPos = navigation_agent_2d.get_next_path_position()
 	
-	var newVelocity = currentPos.direction_to(nextPathPos)
-	newVelocity *= walkSpeed
+	var newVelocity = currentPos.direction_to(nextPathPos) * walkSpeed
+	#newVelocity *= walkSpeed
 	
 	if navigation_agent_2d.avoidance_enabled:
 		navigation_agent_2d.set_velocity(newVelocity)
