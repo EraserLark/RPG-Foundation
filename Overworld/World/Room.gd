@@ -15,12 +15,10 @@ var cutsceneManager
 
 var playerSpawnPort: int
 
-#Modifying Container nodes (CastList, etc) so they appear in PackedScene 
-##Need to make sure you change Room Node name to something other than "Room"
-func _enter_tree():
-	var children = get_children()
-	for child in children:
-		child.editor_description = str(name, " ", child.name)
+@export var roomData: RoomData
+
+@export_category("Debug")
+@export var SaveRoomData: bool: set = _my_button_pressed
 
 func _ready():
 	world = get_parent()
@@ -33,3 +31,6 @@ func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)
 	var transition = TransitionState.new(StateStack, overworldManager.cutsceneManager, world, newRoomPath, port)
 	StateStack.addState(transition)
+
+func _my_button_pressed(value):
+	print(value)
