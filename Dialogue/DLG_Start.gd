@@ -1,25 +1,32 @@
-@tool
 extends Step
 class_name DLG_Start
 
+@export var roomScene: PackedScene: set = recieveRoomScene
 #List of actors that will be performing in this scene
 @export var requiredActors: Array[String]#: set = setRequiredActors
 @export var focusDestination: Step
-@export var camStartPosition: Vector2
+
 var timeline: Array
 
 func _enter_tree():
+	examineSceneContents(roomScene)
+	
 	if(requiredActors.size() > 0):
 		timeline = Helper.getAllChildren(self)
 		self.availableActors = requiredActors
-		for step in timeline:
-			if(step is Step):
-				step.availableActors = requiredActors
-	else:
-		printerr("Set required actors")
 
-#func setRequiredActors(ra: Array[String]):
-	#requiredActors = ra
+func examineSceneContents(scene: PackedScene):
+	if(scene == null):
+		return
+	
+	var sceneState = scene.get_state()
+	var nodeCount = sceneState.get_node_count()
+	for node in nodeCount:
+		print_rich(sceneState.get_node_name(node))
+
+func recieveRoomScene(scene: PackedScene):
+	roomScene = scene
+	examineSceneContents(roomScene)
 
 func runStep():
 	for actorName in requiredActors:

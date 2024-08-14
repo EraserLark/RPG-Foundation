@@ -15,6 +15,7 @@ script = ExtResource("1_8hapy")
 metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+editor_description = "Room NavigationRegion2D"
 navigation_polygon = SubResource("NavigationPolygon_yoxo2")
 
 [node name="TileMap" type="TileMap" parent="NavigationRegion2D"]
@@ -36,16 +37,20 @@ script = ExtResource("2_g6he2")
 metadata/_edit_lock_ = true
 
 [node name="CastList" type="Node2D" parent="."]
+editor_description = "Room CastList"
 y_sort_enabled = true
 script = ExtResource("2_uxnsk")
 metadata/_edit_lock_ = true
 
 [node name="Passages" type="Node2D" parent="."]
+editor_description = "Room Passages"
 script = ExtResource("3_hbvgs")
 metadata/_edit_lock_ = true
 
 [node name="CutsceneMarks" type="Node2D" parent="."]
+editor_description = "Room CutsceneMarks"
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+editor_description = "Room Camera2D"
 script = ExtResource("4_673pq")

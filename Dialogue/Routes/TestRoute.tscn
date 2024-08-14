@@ -8,6 +8,7 @@
 [node name="START" type="Node"]
 script = ExtResource("1_gccpn")
 requiredActors = Array[String](["Godot Guy"])
+camStartPosition = Vector2(0, 0)
 
 [node name="TEXT" type="Node" parent="."]
 script = ExtResource("2_0goe0")
