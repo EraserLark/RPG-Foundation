@@ -64,7 +64,7 @@ func moveInput(input: Vector2):
 	if currentMode == MODE.CHOICE:
 		responsePanel.moveInput(input)
 
-func advance():
+func advance(): 
 	#Skip to end of line
 	if finished == false:
 		skip = true
@@ -79,7 +79,7 @@ func advanceLineQueue():
 		currentLine = lineQueue.pop_front()
 		typeText(currentLine)
 	else:
-		#closeTextbox()
+		finishTextbox()
 		StateStack.resumeCurrentState()
 
 func typeText(textToType: String):
