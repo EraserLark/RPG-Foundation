@@ -276,7 +276,6 @@ metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
 stream = ExtResource("12_exalw")
-autoplay = true
 
 [node name="CutsceneManager" type="AnimationPlayer" parent="."]
 root_node = NodePath("../World")

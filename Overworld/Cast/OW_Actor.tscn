@@ -10,6 +10,8 @@ resource_local_to_scene = true
 size = Vector2(128, 128)
 
 [node name="OW_Actor" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_4a8gj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -30,7 +32,7 @@ position = Vector2(100, -100)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
 target_desired_distance = 8.0
-path_postprocessing = 1
+simplify_path = true
 avoidance_enabled = true
 radius = 8.0
 max_speed = 500.0

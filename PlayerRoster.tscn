@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://wqeswgcscpna"]
+[gd_scene load_steps=4 format=3 uid="uid://wqeswgcscpna"]
 
 [ext_resource type="Script" path="res://PlayerRoster.gd" id="1_dkwkj"]
+[ext_resource type="Script" path="res://Entity/Info/PlayerInfo.gd" id="2_7o2q5"]
 [ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Entity/Info/TestPlayerResource.tres" id="2_elawe"]
 
 [node name="PlayerRoster" type="Node"]
 script = ExtResource("1_dkwkj")
-roster = Array[Resource("res://Entity/Info/PlayerInfo.gd")]([ExtResource("2_elawe")])
+roster = Array[ExtResource("2_7o2q5")]([ExtResource("2_elawe")])
