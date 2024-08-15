@@ -7,6 +7,7 @@ var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 @onready var ui:= $"../../../../CanvasLayer/OW_UI"
 @onready var speechSpot:= $SpeechSpot
 @onready var navigation_agent_2d:= $NavigationAgent2D
+@onready var collider:= $CollisionShape2D
 
 @export var npcResource: NPC_Info: set = setNPCInfo
 @export var cutsceneResource: PackedScene
@@ -87,6 +88,9 @@ func walkTo(pos: Vector2):
 
 func faceDir(dir: Vector2):
 	pass
+
+func disableCollider(condition: bool):
+	collider.disabled = condition
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity

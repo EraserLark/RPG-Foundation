@@ -26,7 +26,6 @@ shape = null
 path_desired_distance = 20.0
 target_desired_distance = 10.0
 path_postprocessing = 1
-simplify_path = false
 avoidance_enabled = false
 radius = 10.0
 

@@ -81,7 +81,6 @@ shape = SubResource("RectangleShape2D_6dx2a")
 [node name="NavigationAgent2D" parent="CastList/OW_EnemyNPC" index="7"]
 path_desired_distance = 20.0
 target_desired_distance = 10.0
-simplify_path = false
 avoidance_enabled = false
 radius = 10.0
 max_speed = 100.0

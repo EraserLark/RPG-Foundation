@@ -32,7 +32,6 @@ position = Vector2(100, -100)
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 8.0
 target_desired_distance = 8.0
-simplify_path = true
 avoidance_enabled = true
 radius = 8.0
 max_speed = 500.0

@@ -46,7 +46,7 @@ func runStep():
 			BOX_LOCATION.BigBox:
 				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_Stage, message)
 	else:
-		dialogueBox.lineQueue = message
+		dialogueBox.lineQueue = message.duplicate()
 	dialogueBox.advanceLineQueue()
 
 func resumeStep():

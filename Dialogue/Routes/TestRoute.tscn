@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cklgf4gtlaxs4"]
+[gd_scene load_steps=6 format=3 uid="uid://cklgf4gtlaxs4"]
 
 [ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_gccpn"]
 [ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="2_0goe0"]
 [ext_resource type="Resource" uid="uid://blaqiivbjo858" path="res://Overworld/Rooms/FirstRoom_Rsrc.tres" id="2_nf8ne"]
 [ext_resource type="Script" path="res://Dialogue/DLG_CHOICE.gd" id="3_jpws5"]
 [ext_resource type="Script" path="res://Dialogue/DLG_WALK.gd" id="4_x4yx6"]
-[ext_resource type="Script" path="res://Dialogue/DLG_SetVar.gd" id="5_4lben"]
 
 [node name="START" type="Node"]
 script = ExtResource("1_gccpn")
@@ -40,12 +39,6 @@ messageSpeaker = ""
 script = ExtResource("2_0goe0")
 message = Array[String](["Yippee!!!!"])
 messageSpeaker = "Godot Guy"
-
-[node name="DLG_SetVar" type="Node" parent="CHOICE1/RESPONSE1"]
-script = ExtResource("5_4lben")
-value = {
-0: 12.32
-}
 
 [node name="RESPONSE2" type="Node" parent="CHOICE1"]
 
