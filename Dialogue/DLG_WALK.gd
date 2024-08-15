@@ -2,14 +2,77 @@
 extends Step
 class_name DLG_Walk
 
-@export var targetPosition: Vector2
+@export var cutsceneMarkOptions: Array[String]:
+	#get:
+		#return cutsceneMarks
+	set(value):
+		cutsceneMarkOptions.clear()
+		cutsceneMarkOptions = value
+@export var cutscenePathOptions: Array[String]:
+	#get:
+		#return cutscenePaths
+	set(value):
+		cutscenePathOptions.clear()
+		cutscenePathOptions = value
+
+var cutsceneMark: String
+var cutscenePath: String
+var actor: String
+var walker
+
+enum WALK_MODE {PATH_FOLLOW, PATH_FIND}
+var walkMode: WALK_MODE = WALK_MODE.PATH_FOLLOW:
+	get:
+		return walkMode
+	set(value):
+		walkMode = value
+		notify_property_list_changed()
+#@export var targetPosition: Vector2
+
+func _get_property_list() -> Array:
+	var properties = []
+	
+	properties.append({
+		"name": "actor",
+		"type": TYPE_STRING,
+		"hint": PROPERTY_HINT_ENUM,
+		"hint_string": Helper.arrayToString(availableActors)
+	})
+	
+	properties.append({
+		"name": "walkMode",
+		"type": TYPE_INT,
+		"usage": PROPERTY_USAGE_DEFAULT,
+		"hint": PROPERTY_HINT_ENUM,
+		"hint_string": ",".join(WALK_MODE.keys())
+	})
+	
+	if(walkMode == WALK_MODE.PATH_FIND):
+		properties.append({
+			"name": "cutsceneMark",
+			"type": TYPE_STRING,
+			"hint": PROPERTY_HINT_ENUM,
+			"hint_string": Helper.arrayToString(cutsceneMarkOptions)
+		})
+	elif(walkMode == WALK_MODE.PATH_FOLLOW):
+		properties.append({
+			"name": "cutscenePath",
+			"type": TYPE_STRING,
+			"hint": PROPERTY_HINT_ENUM,
+			"hint_string": Helper.arrayToString(cutscenePathOptions)
+		})
+	
+	return properties
 
 func runStep():
-	dialogueManager.performingCast["Godot Guy"].walkFinished.connect(walkFinished)
-	dialogueManager.performingCast["Godot Guy"].setNavTarget(targetPosition)
-	dialogueManager.performingCast["Godot Guy"].disableCollider(true)
+	walker = dialogueManager.performingCast[actor]
+	if(walkMode == WALK_MODE.PATH_FIND):
+		walker.walkFinished.connect(walkFinished)
+		var destination = dialogueManager.cutsceneMarks[cutsceneMark].position
+		walker.setNavTarget(destination)
+		walker.disableCollider(true)
 
 func walkFinished():
-	dialogueManager.performingCast["Godot Guy"].disableCollider(false)
-	dialogueManager.performingCast["Godot Guy"].walkFinished.disconnect(walkFinished)
+	walker.disableCollider(false)
+	walker.walkFinished.disconnect(walkFinished)
 	advanceNextStep(self)

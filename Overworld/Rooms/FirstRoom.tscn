@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dp5gtq4i4l507"]
+[gd_scene load_steps=15 format=4 uid="uid://dp5gtq4i4l507"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_sgwbx"]
 [ext_resource type="TileSet" uid="uid://2cpjct5qw5oo" path="res://Overworld/Art/SnowTileset.tres" id="2_t2xpc"]
@@ -18,6 +18,13 @@ height = 80.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dx2a"]
 resource_local_to_scene = true
 size = Vector2(96, 48)
+
+[sub_resource type="Curve2D" id="Curve2D_cmj37"]
+bake_interval = 32.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 256, -64, 0, 0, 0, 0, 832, -64)
+}
+point_count = 4
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6212w"]
 vertices = PackedVector2Array(-171.008, 34.75, 352.477, 19.25, 403.523, 19.25, 468.992, 162.75, 415.008, 162.75, -172.477, 83.25, 659.523, 211.25, 1072, 464, 272, 464, 240, 432, 240, 336, 608.477, 211.25, -299.008, -93.25, 544.477, -172.75, 595.523, -172.75, 404.992, -29.25, 351.008, -29.25, 944, -208, 1300.99, 226.75, 1247.01, 226.75, 660.992, 162.75, 607.008, 162.75, 912, 624, 912, 784, 880, 752, 880, 656, 752, 624, 784, 656, 752, 752, 784, 752, 368, 784, 464, 752, -112, 528, -112, 656, -144, 624, -144, 528, -336, 656, -304, 624, -336, 592, -304, 560, -368, 560, -400, 592, -400, 432, -368, 464, -240, 432, -272, 464, -240, 496, -272, 528, -144, 496, 1632.15, -720, 1643.76, 528, 1299.52, 275.25, 944, -432, 1171.62, 528, 1172.99, 482.75, 1248.48, 275.25, 464, 688, 368, 720, 400, 688, 1119.01, 482.75, 1120.38, 528, 1072, 528, -224.992, 34.75, -300.477, -44.75, 48, 496, 48, 432, 272, 560, 240, 592, 336, 560, 336, 624, 304, 656, 240, 656, 400, 624, 304, 720, 48, 592, 48, 528, -112, 496, -144, 208, -400, 208, -400, 144, -223.523, 83.25, -351.523, -44.75, -464, 144, -464, -336, -352.992, -93.25, -16, -560, -464, -560, -464, -720, 432, -432, 432, -496, 368, -496, 368, -560, 80, -336, 336, -336, 336, -272, 400, -272, 400, -208, 467.523, 211.25, 543.406, -208, 596.594, -208, 416.477, 211.25, -112, 336, -16, -336, 80, -560)
@@ -96,6 +103,13 @@ leadsToRoom = "res://Overworld/Rooms/SecondRoom.tscn"
 
 [node name="GodotGuy_Dejected" type="Node2D" parent="CutsceneMarks" index="0"]
 position = Vector2(696, 0)
+
+[node name="Path2D" type="Path2D" parent="CutsceneMarks" index="1"]
+curve = SubResource("Curve2D_cmj37")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CutsceneMarks/Path2D" index="0"]
+rotates = false
+loop = false
 
 [node name="NavigationRegion2D" parent="." index="5"]
 y_sort_enabled = true

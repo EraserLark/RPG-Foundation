@@ -7,6 +7,7 @@ var focusStep: Step
 var stepStack: Array[Step]
 
 var performingCast:= {}
+var cutsceneMarks:= {}
 
 func startDialogue(startStep: DLG_Start):
 	#Create DialogueState

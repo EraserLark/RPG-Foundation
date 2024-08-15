@@ -7,7 +7,6 @@ var messageSpeaker: String:
 		return messageSpeaker
 	set(value):
 		messageSpeaker = value
-		print(messageSpeaker)
 var speakerName: String
 enum BOX_LOCATION {SmallBubble, BigBubble, PlayerPanel, BigBox}
 @export var boxLocation: BOX_LOCATION = BOX_LOCATION.SmallBubble

@@ -54,7 +54,11 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_Walk2" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-targetPosition = Vector2(200, 0)
+cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
+cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D"])
+actor = "Godot Guy"
+walkMode = 1
+cutsceneMark = "GodotGuy_Dejected"
 
 [node name="DLG_Text4" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("2_0goe0")
@@ -63,4 +67,8 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_Walk" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-targetPosition = Vector2(768, -128)
+cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
+cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D"])
+actor = "Godot Guy"
+walkMode = 1
+cutsceneMark = "GodotGuy_Dejected"
