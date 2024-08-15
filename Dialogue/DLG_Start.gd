@@ -2,6 +2,7 @@
 extends Step
 class_name DLG_Start
 
+@export var roomResource: RoomData: set = parseRoomResource
 #List of actors that will be performing in this scene
 @export var requiredActors: Array[String]#: set = setRequiredActors
 @export var focusDestination: Step
@@ -9,6 +10,18 @@ class_name DLG_Start
 var timeline: Array
 
 func _enter_tree():
+	setRoomVars()
+
+func parseRoomResource(resource: RoomData):
+	roomResource = resource
+	setRoomVars()
+
+func setRoomVars():
+	if roomResource == null:
+		return
+	
+	requiredActors = roomResource.castList
+	
 	if(requiredActors.size() > 0):
 		timeline = Helper.getAllChildren(self)
 		self.availableActors = requiredActors
@@ -17,9 +30,6 @@ func _enter_tree():
 				step.availableActors = requiredActors
 	else:
 		printerr("Set required actors")
-
-#func setRequiredActors(ra: Array[String]):
-	#requiredActors = ra
 
 func runStep():
 	for actorName in requiredActors:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dp5gtq4i4l507"]
+[gd_scene load_steps=13 format=3 uid="uid://dp5gtq4i4l507"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_sgwbx"]
 [ext_resource type="TileSet" uid="uid://2cpjct5qw5oo" path="res://Overworld/Art/SnowTileset.tres" id="2_t2xpc"]
+[ext_resource type="Resource" uid="uid://blaqiivbjo858" path="res://Overworld/Rooms/FirstRoom_Rsrc.tres" id="2_wi5o4"]
 [ext_resource type="PackedScene" uid="uid://bfbx5q7fqdq8h" path="res://Overworld/Cast/OW_npc.tscn" id="3_1taik"]
 [ext_resource type="Resource" uid="uid://cr4uqvtxg1e4o" path="res://Entity/NPC/GodotGuy.tres" id="4_qg7gy"]
 [ext_resource type="Script" path="res://Overworld/Cast/OW_Enemy.gd" id="4_ua3m4"]
@@ -19,6 +20,7 @@ resource_local_to_scene = true
 size = Vector2(96, 48)
 
 [node name="FirstRoom" instance=ExtResource("1_sgwbx")]
+roomData = ExtResource("2_wi5o4")
 
 [node name="NavigationRegion2D" parent="." index="0"]
 y_sort_enabled = true

@@ -17,8 +17,20 @@ var playerSpawnPort: int
 
 @export var roomData: RoomData
 
-@export_category("Debug")
-@export var SaveRoomData: bool: set = _my_button_pressed
+func _exit_tree():
+	if roomData != null:
+		roomData.clearData()
+		roomData.room = self
+		#roomData.castList = $CastList.get_children() as Array[OW_Actor]
+		#for child in $CastList.get_children():
+			#roomData.castList.append(child.name)
+		for child in $CastList.get_children():
+			roomData.castList.append(child.name)
+		for child in $Passages.get_children():
+			roomData.passageList.append(child.name)
+		for child in $CutsceneMarks.get_children():
+			roomData.cutsceneMarks.append(child.name)
+		print("Tree exited")
 
 func _ready():
 	world = get_parent()
@@ -31,6 +43,3 @@ func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)
 	var transition = TransitionState.new(StateStack, overworldManager.cutsceneManager, world, newRoomPath, port)
 	StateStack.addState(transition)
-
-func _my_button_pressed(value):
-	print(value)
