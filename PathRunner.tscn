@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b10l58xsu2tgc"]
+
+[ext_resource type="Script" path="res://path_follower.gd" id="1_gl4md"]
+
+[node name="PathFollow2D" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_gl4md")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]

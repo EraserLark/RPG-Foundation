@@ -10,6 +10,9 @@ y_sort_enabled = true
 script = ExtResource("1_8hapy")
 metadata/_edit_lock_ = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_673pq")
+
 [node name="TileLayers" type="Node2D" parent="." groups=["navObstacles"]]
 y_sort_enabled = true
 position = Vector2(32, 32)
@@ -29,8 +32,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="NavigationMaps" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("4_673pq")
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NavigationMaps"]

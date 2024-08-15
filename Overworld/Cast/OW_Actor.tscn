@@ -30,11 +30,12 @@ shape = SubResource("RectangleShape2D_dqx04")
 position = Vector2(100, -100)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 8.0
+path_desired_distance = 16.0
 target_desired_distance = 8.0
 avoidance_enabled = true
 radius = 8.0
 max_speed = 500.0
 debug_enabled = true
 
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

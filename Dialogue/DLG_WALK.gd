@@ -2,6 +2,8 @@
 extends Step
 class_name DLG_Walk
 
+var pathRunner:= preload("res://PathRunner.tscn")
+
 @export var cutsceneMarkOptions: Array[String]:
 	#get:
 		#return cutsceneMarks
@@ -71,8 +73,16 @@ func runStep():
 		var destination = dialogueManager.cutsceneMarks[cutsceneMark].position
 		walker.setNavTarget(destination)
 		walker.disableCollider(true)
+	elif(walkMode == WALK_MODE.PATH_FOLLOW):
+		var pathToRun = dialogueManager.cutsceneMarks[cutscenePath]
+		var newPathRunner = PathRunner.newPathRunner(250, walker, pathToRun)
+		newPathRunner.pathComplete.connect(walkFinished)
 
-func walkFinished():
+func walkFinished(path):
 	walker.disableCollider(false)
-	walker.walkFinished.disconnect(walkFinished)
+	
+	if(walkMode == WALK_MODE.PATH_FIND):
+		walker.walkFinished.disconnect(walkFinished)
+	elif(walkMode == WALK_MODE.PATH_FOLLOW):
+		path.pathComplete.disconnect(walkFinished)
 	advanceNextStep(self)

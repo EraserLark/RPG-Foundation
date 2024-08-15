@@ -12,9 +12,10 @@ var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 @export var npcResource: NPC_Info: set = setNPCInfo
 @export var cutsceneResource: PackedScene
 var navTarget: Vector2#: set = setNavTarget
+@export var pathToFollow: PathFollow2D
 @export var walkSpeed: float = 10
 
-signal walkFinished()
+signal walkFinished(path)
 
 #func _ready():
 	##setNavTarget(Vector2(0,0))
@@ -67,21 +68,17 @@ func setNavTarget(target: Vector2):
 		navigation_agent_2d.target_position = navTarget
 
 func _physics_process(delta):
-	if navigation_agent_2d.is_navigation_finished() or Engine.is_editor_hint():
-		return
-	
-	var currentPos = global_position
-	var nextPathPos = navigation_agent_2d.get_next_path_position()
-	
-	var newVelocity = currentPos.direction_to(nextPathPos) * walkSpeed
-	#newVelocity *= walkSpeed
-	
-	if navigation_agent_2d.avoidance_enabled:
-		navigation_agent_2d.set_velocity(newVelocity)
-	else:
-		velocity = newVelocity
-	
-	move_and_slide()
+	if !navigation_agent_2d.is_navigation_finished():
+		var currentPos = global_position
+		var nextPathPos = navigation_agent_2d.get_next_path_position()
+		
+		var newVelocity = currentPos.direction_to(nextPathPos) * walkSpeed
+		
+		if navigation_agent_2d.avoidance_enabled:
+			navigation_agent_2d.set_velocity(newVelocity)
+		else:
+			velocity = newVelocity
+		move_and_slide()
 
 func walkTo(pos: Vector2):
 	pass
@@ -96,4 +93,4 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 
 func _on_navigation_agent_2d_target_reached():
-	emit_signal("walkFinished")
+	emit_signal("walkFinished", self)

@@ -46,22 +46,25 @@ func setRoomVars():
 		printerr("No actors in Room Data")
 
 func runStep():
-	var castList: Array = DialogueSystem.world.currentRoom.castList.get_children()
+	var currentRoom = DialogueSystem.world.currentRoom
+	var castList: Array = currentRoom.castList.get_children()
 	var castNames: Array[String]
 	for member in castList:
 		castNames.append(member.name)
 	
+	##CAST LIST
 	for actorName in requiredActors:
 		if castNames.has(actorName):
 			var index = castNames.find(actorName)
 			dialogueManager.performingCast[actorName] = castList[index]	#Add actor to dictionary
 			break
 		else:
-			var npc = NPC_Database.createNPC(actorName, DialogueSystem.world.currentRoom.castList)
+			var npc = NPC_Database.createNPC(actorName, currentRoom.castList)
 			npc.position = Vector2(800,300)
 			dialogueManager.performingCast[actorName] = npc		#Add actor to dictionary
 	
-	var cutsceneMarkers: Array = DialogueSystem.world.currentRoom.cutsceneMarks.get_children()
+	##CUTSCENE MARKERS
+	var cutsceneMarkers: Array = currentRoom.cutsceneMarks.get_children()
 	for marker in cutsceneMarkers:
 		dialogueManager.cutsceneMarks[marker.name] = marker
 	

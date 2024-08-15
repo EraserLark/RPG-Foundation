@@ -8,6 +8,7 @@ var stepStack: Array[Step]
 
 var performingCast:= {}
 var cutsceneMarks:= {}
+var roomOther: Node2D
 
 func startDialogue(startStep: DLG_Start):
 	#Create DialogueState

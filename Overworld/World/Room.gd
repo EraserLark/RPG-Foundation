@@ -7,6 +7,7 @@ class_name Room
 @onready var passages:= $Passages
 @onready var camera:= $Camera2D
 @onready var cutsceneMarks:= $CutsceneMarks
+@onready var navigationMaps:= $NavigationMaps
 
 var world
 var overworldManager
