@@ -29,19 +29,24 @@ func setRoomVars():
 			if(step is Step):
 				step.availableActors = requiredActors
 	else:
-		printerr("Set required actors")
+		printerr("No actors in Room Data")
 
 func runStep():
+	var castList: Array = DialogueSystem.world.currentRoom.castList.get_children()
+	var castNames: Array[String]
+	for member in castList:
+		castNames.append(member.name)
+	print(castNames)
+	
 	for actorName in requiredActors:
-		for actor in DialogueSystem.world.currentRoom.castList.get_children():
-			if actor.name == actorName:
-				dialogueManager.performingCast[actorName] = actor	#Add actor to dictionary
-				break
-			else:	#(If cannot find actor)
-				var npc = NPC_Database.createNPC(actorName, DialogueSystem.world.currentRoom.castList)
-				npc.position = Vector2(800,300)
-				dialogueManager.performingCast[actorName] = npc		#Add actor to dictionary
-				break
+		if castNames.has(actorName):
+			var index = castNames.find(actorName)
+			dialogueManager.performingCast[actorName] = castList[index]	#Add actor to dictionary
+			break
+		else:
+			var npc = NPC_Database.createNPC(actorName, DialogueSystem.world.currentRoom.castList)
+			npc.position = Vector2(800,300)
+			dialogueManager.performingCast[actorName] = npc		#Add actor to dictionary
 	
 	if(focusDestination == null):
 		focusDestination = get_child(0)
