@@ -6,7 +6,11 @@
 
 [sub_resource type="Resource" id="Resource_pi8lr"]
 script = ExtResource("1_k8het")
-flags = {}
+flags = {
+"1st Interaction": true,
+"Disliked": false,
+"Liked": false
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmo6j"]
 size = Vector2(128, 128)
@@ -16,8 +20,8 @@ script = ExtResource("1_15ecv")
 npcName = "Godot Guy"
 characterFlags = SubResource("Resource_pi8lr")
 timelines = {
+"1st_Interaction": "res://Dialogue/Routes/TestRoute.tscn",
 "DislikedInteraction": "tbd",
-"FirstInteraction": "res://Dialogue/Routes/TestRoute.tscn",
 "LikedInteraction": "tbd"
 }
 spriteSheet = ExtResource("2_oig8x")

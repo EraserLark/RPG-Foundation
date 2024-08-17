@@ -42,14 +42,18 @@ func setNPCInfo(info: NPC_Info):
 
 func interactAction(interacter : OW_Player):
 	#speak(message)
-	if(cutsceneResource):
-		runNPCTimeline(interacter.getPlayerNum())
+	#if(cutsceneResource):
+		#runNPCTimeline(interacter.getPlayerNum())
+	var timelinePath = getCorrectTimeline()
+	if(timelinePath != ""):
+		runNPCTimeline(timelinePath, interacter.getPlayerNum())
 
 func getCorrectTimeline() -> String:
 	var npcFlags = npcResource.characterFlags.flags
 	var timelines = npcResource.timelines
-	
-	if(npcFlags["Liked"]):
+	if(npcFlags["1st Interaction"]):
+		return timelines["1st_Interaction"]
+	elif(npcFlags["Liked"]):
 		return timelines["LikedInteraction"]
 	elif(npcFlags["Disliked"]):
 		return timelines["DislikedInteraction"]
@@ -57,8 +61,8 @@ func getCorrectTimeline() -> String:
 		printerr("No correct timeline available")
 		return ""
 
-func runNPCTimeline(playerNum: int):
-	DialogueSystem.startTimeline(cutsceneResource, playerNum)
+func runNPCTimeline(tlPath: String, playerNum: int):
+	DialogueSystem.startTimeline(tlPath, playerNum)
 
 func createDBC():
 	#Create dialogueBubbleContainer
