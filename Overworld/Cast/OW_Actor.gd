@@ -18,8 +18,7 @@ var navTarget: Vector2#: set = setNavTarget
 signal walkFinished(path)
 
 #func _ready():
-	##setNavTarget(Vector2(0,0))
-	#pass
+	#checkSpawnFlags()
 
 func setNPCInfo(info: NPC_Info):
 	npcResource = info

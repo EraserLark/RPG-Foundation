@@ -1,15 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cklgf4gtlaxs4"]
+[gd_scene load_steps=7 format=3 uid="uid://cklgf4gtlaxs4"]
 
 [ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_gccpn"]
 [ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="2_0goe0"]
 [ext_resource type="Resource" uid="uid://blaqiivbjo858" path="res://Overworld/Rooms/FirstRoom_Rsrc.tres" id="2_nf8ne"]
 [ext_resource type="Script" path="res://Dialogue/DLG_CHOICE.gd" id="3_jpws5"]
 [ext_resource type="Script" path="res://Dialogue/DLG_WALK.gd" id="4_x4yx6"]
+[ext_resource type="Script" path="res://Dialogue/DLG_SetFlags.gd" id="5_jxgwg"]
 
 [node name="START" type="Node"]
 script = ExtResource("1_gccpn")
 roomResource = ExtResource("2_nf8ne")
-requiredActors = Array[String](["Godot Guy", "OW_EnemyNPC", "Tiny Robo"])
 
 [node name="TEXT" type="Node" parent="."]
 script = ExtResource("2_0goe0")
@@ -35,12 +35,46 @@ messageSpeaker = ""
 
 [node name="RESPONSE1" type="Node" parent="CHOICE1"]
 
+[node name="DLG_SetFlags2" type="Node" parent="CHOICE1/RESPONSE1"]
+script = ExtResource("5_jxgwg")
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
+flagName = "1st Interaction"
+
+[node name="DLG_SetFlags1" type="Node" parent="CHOICE1/RESPONSE1"]
+script = ExtResource("5_jxgwg")
+setTo = true
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
+flagName = "Liked"
+
 [node name="DLG_Text" type="Node" parent="CHOICE1/RESPONSE1"]
 script = ExtResource("2_0goe0")
 message = Array[String](["Yippee!!!!"])
 messageSpeaker = "Godot Guy"
 
 [node name="RESPONSE2" type="Node" parent="CHOICE1"]
+
+[node name="DLG_SetFlags3" type="Node" parent="CHOICE1/RESPONSE2"]
+script = ExtResource("5_jxgwg")
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
+flagName = "1st Interaction"
+
+[node name="DLG_SetFlags2" type="Node" parent="CHOICE1/RESPONSE2"]
+script = ExtResource("5_jxgwg")
+setTo = true
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
+flagName = "Disliked"
 
 [node name="DLG_Text2" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("2_0goe0")
@@ -54,8 +88,8 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_Walk2" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
-cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D"])
+cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
+cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D"])
 actor = "Godot Guy"
 walkMode = 0
 cutscenePath = "Path2D"
@@ -67,8 +101,8 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_Walk" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
-cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D"])
+cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
+cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D"])
 actor = "Godot Guy"
 walkMode = 1
 cutsceneMark = "GodotGuy_Dejected"

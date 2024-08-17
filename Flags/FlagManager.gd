@@ -1,14 +1,16 @@
-extends Resource
-class_name FlagManager
+@tool
+extends Node
 
-@export var flags: Dictionary = {
+var flags: Dictionary = {
 	"World": {
-		"Zone 1": {
-			"FirstRoom":{
-				
+		"Zone1": {
+			"FirstRoom": {
+				"CastList": {},
+				"Interactables": {}
 			},
 			"SecondRoom":{
-				
+				"CastList": {},
+				"Interactables": {}
 			}
 		}
 	}

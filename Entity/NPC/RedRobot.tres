@@ -1,13 +1,22 @@
-[gd_resource type="Resource" script_class="NPC_Info" load_steps=4 format=3 uid="uid://5cobp8f1mc3x"]
+[gd_resource type="Resource" script_class="NPC_Info" load_steps=6 format=3 uid="uid://5cobp8f1mc3x"]
 
 [ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="1_ki72x"]
+[ext_resource type="Script" path="res://Flags/FlagList.gd" id="1_knxgn"]
 [ext_resource type="Texture2D" uid="uid://cmqkdesj030nd" path="res://Art/RobotFront.png" id="2_60dxu"]
+
+[sub_resource type="Resource" id="Resource_44kiw"]
+script = ExtResource("1_knxgn")
+flags = {
+"IsBig": false,
+"IsSmall": true
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j1lv2"]
 
 [resource]
 script = ExtResource("1_ki72x")
 npcName = "Tiny Robo"
+characterFlags = SubResource("Resource_44kiw")
 timelines = {}
 spriteSheet = ExtResource("2_60dxu")
 spriteOffset = Vector2(0, 0)

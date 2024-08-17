@@ -19,19 +19,7 @@ var playerSpawnPort: int
 @export var roomData: RoomData
 
 func _exit_tree():
-	if roomData != null:
-		roomData.clearData()
-		roomData.room = self
-		#roomData.castList = $CastList.get_children() as Array[OW_Actor]
-		#for child in $CastList.get_children():
-			#roomData.castList.append(child.name)
-		for child in $CastList.get_children():
-			roomData.castList.append(child.name)
-		for child in $Passages.get_children():
-			roomData.passageList.append(child.name)
-		for child in $CutsceneMarks.get_children():
-			roomData.cutsceneMarks.append(child.name)
-		print("Tree exited")
+	populateGlobalVars() 
 
 func _ready():
 	world = get_parent()
@@ -39,6 +27,26 @@ func _ready():
 	
 	bgMusicPlayer = world.music
 	cutsceneManager = world.csManager
+	
+	populateGlobalVars()
+
+func populateGlobalVars():
+	if roomData != null:
+		roomData.clearData()
+		roomData.room = self
+		
+		var roomFlagList = FlagManager.flags["World"]["Zone1"]["FirstRoom"]
+		
+		for child in $CastList.get_children():
+			roomData.castList.append(child.name)
+			if(child is OW_Actor):
+				roomFlagList["CastList"][child.name] = child.npcResource.characterFlags
+		for child in $Passages.get_children():
+			roomData.passageList.append(child.name)
+		for child in $CutsceneMarks.get_children():
+			roomData.cutsceneMarks.append(child.name)
+		
+		print(roomFlagList)
 
 func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)

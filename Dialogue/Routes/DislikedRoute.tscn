@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhdy2snssk4rb"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_kp75u"]
+[ext_resource type="Resource" uid="uid://blaqiivbjo858" path="res://Overworld/Rooms/FirstRoom_Rsrc.tres" id="2_y6chp"]
+[ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="3_nn7ni"]
+
+[node name="DislikedRoute" type="Node"]
+script = ExtResource("1_kp75u")
+roomResource = ExtResource("2_y6chp")
+
+[node name="DLG_Text" type="Node" parent="."]
+script = ExtResource("3_nn7ni")
+message = Array[String](["Please leave me alone..."])
+messageSpeaker = "Godot Guy"

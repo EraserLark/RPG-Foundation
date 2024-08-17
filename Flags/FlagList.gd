@@ -10,6 +10,8 @@ func organizeFlags(dict: Dictionary):
 	#Do not reorganize dict if not adding a new entry to dict
 	if dict.size() == flags.size():
 		flags = dict
+		if !Engine.is_editor_hint():
+			notify_property_list_changed()
 	else:
 		var keys = dict.keys()
 		keys.sort()
@@ -22,3 +24,7 @@ func organizeFlags(dict: Dictionary):
 		
 		flags = newDict
 		notify_property_list_changed()
+
+func setFlag(flagName: String, condition: bool):
+	flags[flagName] = condition
+	print("Stall")

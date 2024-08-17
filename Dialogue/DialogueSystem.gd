@@ -18,11 +18,9 @@ func _ready():
 
 func startTimeline(timelinePath: String, playerNum: int):
 	#Instantiate timeline, parent it under proper player node here
-	#var tl = timeline.instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 	var tl = load(timelinePath)
-	var inst = tl.instantiate()
+	var inst = tl.instantiate()	##If crashing here: Timeline path is not valid
 	player1Node.add_child(inst)
-	
 	#Have the proper player's DialogueManager start the timeline
 	PlayerRoster.roster[0].dialogueManager.startDialogue(inst)
 

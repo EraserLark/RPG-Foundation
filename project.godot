@@ -21,6 +21,7 @@ StateStack="*res://States/StateStack.gd"
 PlayerRoster="*res://PlayerRoster.tscn"
 DialogueSystem="*res://Dialogue/DialogueSystem.tscn"
 NPC_Database="*res://NPC_Database.gd"
+FlagManager="*res://Flags/FlagManager.gd"
 
 [display]
 

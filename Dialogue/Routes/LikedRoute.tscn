@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://hl8nq6i8eloh"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_muekv"]
+[ext_resource type="Resource" uid="uid://blaqiivbjo858" path="res://Overworld/Rooms/FirstRoom_Rsrc.tres" id="2_tcj3y"]
+[ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="3_xv4v0"]
+
+[node name="LikedRoute" type="Node"]
+script = ExtResource("1_muekv")
+roomResource = ExtResource("2_tcj3y")
+
+[node name="DLG_Text" type="Node" parent="."]
+script = ExtResource("3_xv4v0")
+message = Array[String](["I'm so glad you like me :)"])
+messageSpeaker = "Godot Guy"

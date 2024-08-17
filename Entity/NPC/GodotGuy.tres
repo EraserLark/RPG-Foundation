@@ -21,8 +21,8 @@ npcName = "Godot Guy"
 characterFlags = SubResource("Resource_pi8lr")
 timelines = {
 "1st_Interaction": "res://Dialogue/Routes/TestRoute.tscn",
-"DislikedInteraction": "tbd",
-"LikedInteraction": "tbd"
+"DislikedInteraction": "res://Dialogue/Routes/DislikedRoute.tscn",
+"LikedInteraction": "res://Dialogue/Routes/LikedRoute.tscn"
 }
 spriteSheet = ExtResource("2_oig8x")
 spriteOffset = Vector2(0, 0)

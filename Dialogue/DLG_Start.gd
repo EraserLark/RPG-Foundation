@@ -4,7 +4,7 @@ class_name DLG_Start
 
 @export var roomResource: RoomData: set = parseRoomResource
 #List of actors that will be performing in this scene
-@export var requiredActors: Array[String]#: set = setRequiredActors
+var requiredActors: Array[String]#: set = setRequiredActors
 @export var focusDestination: Step
 @export var camStartPosition: Vector2
 var timeline: Array
