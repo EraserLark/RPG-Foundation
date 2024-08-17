@@ -137,7 +137,6 @@ func checkTag(fullText, characterIndex):
 
 func finishTextbox():
 	finished = true
-	emit_signal("phraseFin")
 
 func closeTextbox():
 	tbFinished = true

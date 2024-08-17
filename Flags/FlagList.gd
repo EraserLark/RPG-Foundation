@@ -22,5 +22,3 @@ func organizeFlags(dict: Dictionary):
 		
 		flags = newDict
 		notify_property_list_changed()
-		print(newDict)
-	print(get_property_list())
