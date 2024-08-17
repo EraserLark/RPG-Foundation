@@ -45,6 +45,18 @@ func interactAction(interacter : OW_Player):
 	if(cutsceneResource):
 		runNPCTimeline(interacter.getPlayerNum())
 
+func getCorrectTimeline() -> String:
+	var npcFlags = npcResource.characterFlags.flags
+	var timelines = npcResource.timelines
+	
+	if(npcFlags["Liked"]):
+		return timelines["LikedInteraction"]
+	elif(npcFlags["Disliked"]):
+		return timelines["DislikedInteraction"]
+	else:
+		printerr("No correct timeline available")
+		return ""
+
 func runNPCTimeline(playerNum: int):
 	DialogueSystem.startTimeline(cutsceneResource, playerNum)
 

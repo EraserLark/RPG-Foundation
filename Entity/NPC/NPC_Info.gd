@@ -6,6 +6,10 @@ var ow_npc: OW_Actor
 
 @export var npcName: String: set = setName
 
+@export_group("Interaction")
+@export var characterFlags: FlagList
+@export var timelines: Dictionary = {}
+
 @export_group("Sprite Properties")
 @export var spriteSheet: Texture: set = setSpriteTexture
 @export var spriteOffset: Vector2: set = setSpriteOffset

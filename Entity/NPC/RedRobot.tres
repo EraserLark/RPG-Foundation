@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("1_ki72x")
 npcName = "Tiny Robo"
+timelines = {}
 spriteSheet = ExtResource("2_60dxu")
 spriteOffset = Vector2(0, 0)
 spriteScale = Vector2(2, 2)
