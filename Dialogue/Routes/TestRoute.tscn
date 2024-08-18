@@ -40,10 +40,12 @@ script = ExtResource("5_jxgwg")
 zone = "Zone1"
 room = "FirstRoom"
 section = "CastList"
+member = "Godot Guy"
 flagName = "1st Interaction"
 zone = "Zone1"
 room = "FirstRoom"
 section = "CastList"
+member = "Godot Guy"
 flagName = "1st Interaction"
 
 [node name="DLG_SetFlags1" type="Node" parent="CHOICE1/RESPONSE1"]
@@ -69,13 +71,29 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_SetFlags3" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("5_jxgwg")
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
 flagName = "1st Interaction"
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
 flagName = "1st Interaction"
 
 [node name="DLG_SetFlags2" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("5_jxgwg")
 setTo = true
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
 flagName = "Disliked"
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
 flagName = "Disliked"
 
 [node name="DLG_Text2" type="Node" parent="CHOICE1/RESPONSE2"]

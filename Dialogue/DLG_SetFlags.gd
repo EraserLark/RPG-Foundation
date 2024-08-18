@@ -56,8 +56,11 @@ func refreshScope():
 				print("Room keys empty")
 				room = ""
 				section = ""
+				sectionKeyArray.clear()
 				member = ""
+				memberKeyArray.clear()
 				flagName = ""
+				flagKeyArray.clear()
 				return
 			elif(room == ""):
 				print("Room not set")
@@ -68,8 +71,11 @@ func refreshScope():
 				if(sectionKeyArray.is_empty()):
 					print("Section keys empty")
 					section = ""
+					sectionKeyArray.clear()
 					member = ""
+					memberKeyArray.clear()
 					flagName = ""
+					flagKeyArray.clear()
 					return
 				elif(section == ""):
 					print("Section not set")
@@ -80,7 +86,9 @@ func refreshScope():
 					if(memberKeyArray.is_empty()):
 						print("Member keys empty")
 						member = ""
+						memberKeyArray.clear()
 						flagName = ""
+						flagKeyArray.clear()
 						return
 					elif(member == ""):
 						print("Member not set")
@@ -91,6 +99,7 @@ func refreshScope():
 						if(flagKeyArray.is_empty()):
 							print("Flag keys empty")
 							flagName = ""
+							flagKeyArray.clear()
 							return
 						elif(flagName == ""):
 							print("Flag not set")
