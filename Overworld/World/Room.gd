@@ -22,6 +22,8 @@ func _exit_tree():
 	populateGlobalVars() 
 
 func _ready():
+	await get_tree().root.ready
+	
 	world = get_parent()
 	overworldManager = world.get_parent()
 	
