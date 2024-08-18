@@ -17,9 +17,6 @@ var navTarget: Vector2#: set = setNavTarget
 
 signal walkFinished(path)
 
-#func _ready():
-	#checkSpawnFlags()
-
 func setNPCInfo(info: NPC_Info):
 	npcResource = info
 	info.ow_npc = self
@@ -38,6 +35,14 @@ func setNPCInfo(info: NPC_Info):
 	$CollisionShape2D.shape = info.collisionShape
 	$CollisionShape2D.position = info.collisionOffset
 	$SpeechSpot.position = info.speechSpotPos
+
+func checkSpawnFlags():
+	if(npcResource.characterFlags.flags.has("Disliked")):
+		if(npcResource.characterFlags.flags["Disliked"]):
+			var markers = DialogueSystem.cutsceneMarkers
+			await markers.ready
+			var mark = DialogueSystem.cutsceneMarkers.get_child(1).position
+			position = mark.position
 
 func interactAction(interacter : OW_Player):
 	#speak(message)

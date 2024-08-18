@@ -1,7 +1,7 @@
 @tool
 extends Node
 
-var flags: Dictionary = {
+@export var flags: Dictionary = {
 	"World": {
 		"Zone1": {
 			"FirstRoom": {
@@ -12,6 +12,9 @@ var flags: Dictionary = {
 				"CastList": {},
 				"Interactables": {}
 			}
+		},
+		"Zone2": {
+			
 		}
 	}
 }

@@ -29,6 +29,10 @@ func _ready():
 	cutsceneManager = world.csManager
 	
 	populateGlobalVars()
+	
+	for actor in castList.get_children():
+		if actor is OW_Actor:
+			actor.checkSpawnFlags()
 
 func populateGlobalVars():
 	if roomData != null:
@@ -46,7 +50,7 @@ func populateGlobalVars():
 		for child in $CutsceneMarks.get_children():
 			roomData.cutsceneMarks.append(child.name)
 		
-		print(roomFlagList)
+		print(str("Room flag list: ", roomFlagList))
 
 func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)

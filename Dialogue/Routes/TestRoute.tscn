@@ -40,12 +40,20 @@ script = ExtResource("5_jxgwg")
 zone = "Zone1"
 room = "FirstRoom"
 section = "CastList"
-member = "Godot Guy"
+flagName = "1st Interaction"
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
 flagName = "1st Interaction"
 
 [node name="DLG_SetFlags1" type="Node" parent="CHOICE1/RESPONSE1"]
 script = ExtResource("5_jxgwg")
 setTo = true
+zone = "Zone1"
+room = "FirstRoom"
+section = "CastList"
+member = "Godot Guy"
+flagName = "Liked"
 zone = "Zone1"
 room = "FirstRoom"
 section = "CastList"
@@ -61,19 +69,13 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_SetFlags3" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("5_jxgwg")
-zone = "Zone1"
-room = "FirstRoom"
-section = "CastList"
-member = "Godot Guy"
+flagName = "1st Interaction"
 flagName = "1st Interaction"
 
 [node name="DLG_SetFlags2" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("5_jxgwg")
 setTo = true
-zone = "Zone1"
-room = "FirstRoom"
-section = "CastList"
-member = "Godot Guy"
+flagName = "Disliked"
 flagName = "Disliked"
 
 [node name="DLG_Text2" type="Node" parent="CHOICE1/RESPONSE2"]
@@ -88,8 +90,8 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_Walk2" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
-cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D"])
+cutsceneMarkOptions = Array[String](["GodotGuy_Dejected"])
+cutscenePathOptions = Array[String](["Path2D"])
 actor = "Godot Guy"
 walkMode = 0
 cutscenePath = "Path2D"
@@ -101,8 +103,8 @@ messageSpeaker = "Godot Guy"
 
 [node name="DLG_Walk" type="Node" parent="CHOICE1/RESPONSE2"]
 script = ExtResource("4_x4yx6")
-cutsceneMarkOptions = Array[String](["GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected", "GodotGuy_Dejected"])
-cutscenePathOptions = Array[String](["Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D", "Path2D"])
+cutsceneMarkOptions = Array[String](["GodotGuy_Dejected"])
+cutscenePathOptions = Array[String](["Path2D"])
 actor = "Godot Guy"
 walkMode = 1
 cutsceneMark = "GodotGuy_Dejected"

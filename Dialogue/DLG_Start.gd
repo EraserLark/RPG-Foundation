@@ -30,16 +30,14 @@ func setRoomVars():
 				step.availableActors = requiredActors
 	
 	if(roomResource.cutsceneMarks.size() > 0):
-		print("1")
 		for step in timeline:
 			if(step is DLG_Walk):
-				print("2")
+				step.cutscenePathOptions.clear()
+				step.cutsceneMarkOptions.clear()
 				for mark in roomResource.cutsceneMarks:
 					if mark[0] == 'P':	#If mark name starts with P
-						print("P")
 						step.cutscenePathOptions.append(mark)
 					else:
-						print("No P")
 						step.cutsceneMarkOptions.append(mark)
 	
 	else:

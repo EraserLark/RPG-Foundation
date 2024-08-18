@@ -7,3 +7,5 @@ script = ExtResource("1_gp3wh")
 castList = Array[String](["Godot Guy", "OW_EnemyNPC", "Tiny Robo"])
 passageList = Array[String](["Passage_0"])
 cutsceneMarks = Array[String](["GodotGuy_Dejected", "Path2D"])
+zone = "Zone1"
+roomName = "FirstRoom"
