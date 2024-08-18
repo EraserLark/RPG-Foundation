@@ -2,11 +2,8 @@
 extends CharacterBody2D
 class_name OW_Player
 
-var owManager: OverworldManager
 
-@export var speed:= 500
-@export var playerInfo: PlayerInfo
-
+##Child references
 @onready var animTree:= $"AnimationTree"
 @onready var animState = animTree.get("parameters/playback")
 @onready var animPlayer:= $AnimationPlayer
@@ -14,15 +11,29 @@ var owManager: OverworldManager
 @onready var danceTimer:= $DanceTimer
 @onready var collisionShape:= $CollisionShape2D
 
+##Parent references
+var owManager: OverworldManager
+
+##Export vars
+@export var speed:= 500
+@export var playerInfo: PlayerInfo
+
+##Non export vars
 var currentDir: Vector2
 var dirChangeCount:= 0
 var rayLength := 32
 
+func _ready():
+	print("Player Ready Start")
+	print("Player Ready Finish")
+
+func initialize(om: OverworldManager, rm: Room):
+	owManager = om
+
 func getPlayerNum():
 	return playerInfo.playerNumber
 
-func initialize(owm, pi):
-	owManager = owm
+func setPlayerInfo(pi: PlayerInfo):
 	playerInfo = pi
 
 func moveDirection(dir: Vector2):

@@ -1,16 +1,17 @@
 extends Camera2D
 
-@onready var overworld = $".."
-@onready var castList = $"../CastList"
-#@onready var player = $"../CastList/OW_Player"
+##Children references
+#None
+
+##Parent references
+#var world	#unused?
+var castList: CastList
+
+##Non export vars
 var target = null;
 
-func _ready():
-	#target = player;
-	#get_parent().remove_child.call_deferred(self)
-	#target.add_child.call_deferred(self);
-	pass
-	#This works, but I don't like it
+func initialize(om: OverworldManager, rm: Room):
+	castList = rm.castList
 
 func setTarget(newTarget: Node2D):
 	target = newTarget

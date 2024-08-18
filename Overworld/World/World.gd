@@ -1,12 +1,26 @@
 extends Node2D
 
-@onready var owManager:= $".."
+##Children References
 @onready var music:= $AudioStreamPlayer
-@onready var csManager:= $CutsceneManager
-@onready var currentRoom:= $FirstRoom
+
+##Parent references
+var owManager: OverworldManager
+
+##Non export vars
+var currentRoom
 
 func _ready():
-	await owManager.ready
+	print("World Ready Start")
+	for child in get_children():
+		if child is Room:
+			currentRoom = child
+		else:
+			printerr("No room scene")
+	print("World Ready Finish")
+
+func initialize(om: OverworldManager):
+	owManager = om
+	currentRoom.initialize(om)
 	DialogueSystem.updateOWVars(owManager.ui, self)
 
 func pauseWorld():
@@ -28,5 +42,7 @@ func onRoomExit(newRoomPath: String, port: int):
 	inst.playerSpawnPort = port
 	add_child(inst)
 	currentRoom = inst
+	#Initialize new room
+	currentRoom.initialize(owManager)
 	
 	DialogueSystem.updateOWVars(owManager.ui, self)

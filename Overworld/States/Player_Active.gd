@@ -1,9 +1,9 @@
 extends State
 class_name Player_Active
 
-var player = null
+var player: OW_Player
 
-func _init(sStack, plyr):
+func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
 	player = plyr
 

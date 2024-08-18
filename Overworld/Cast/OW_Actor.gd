@@ -4,11 +4,15 @@ class_name OW_Actor
 
 var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 
-@onready var ui:= $"../../../../CanvasLayer/OW_UI"
+##Children references
 @onready var speechSpot:= $SpeechSpot
 @onready var navigation_agent_2d:= $NavigationAgent2D
 @onready var collider:= $CollisionShape2D
 
+##Parent references
+var ui: Control
+
+##Export vars
 @export var npcResource: NPC_Info: set = setNPCInfo
 @export var cutsceneResource: PackedScene
 var navTarget: Vector2#: set = setNavTarget
@@ -16,6 +20,13 @@ var navTarget: Vector2#: set = setNavTarget
 @export var walkSpeed: float = 10
 
 signal walkFinished(path)
+
+func _ready():
+	print("Actor Ready Start")
+	print("Actor Ready Finish")
+
+func initialize(om: OverworldManager, rm: Room):
+	ui = om.ui
 
 func setNPCInfo(info: NPC_Info):
 	npcResource = info

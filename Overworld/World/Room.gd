@@ -2,33 +2,43 @@
 extends Node2D
 class_name Room
 
-@onready var tileMap:= $TileMap
+##Children references
+@onready var tileLayers:= $TileLayers
 @onready var castList:= $CastList
 @onready var passages:= $Passages
 @onready var camera:= $Camera2D
 @onready var cutsceneMarks:= $CutsceneMarks
 @onready var navigationMaps:= $NavigationMaps
 
+##Parent references
 var world
-var overworldManager
+var owManager: OverworldManager
 var bgMusicPlayer
 var cutsceneManager
 
-var playerSpawnPort: int
-
+##Export vars
 @export var roomData: RoomData
+
+##Non export vars
+var playerSpawnPort: int
 
 func _exit_tree():
 	populateGlobalVars() 
 
 func _ready():
-	await get_tree().root.ready
-	
-	world = get_parent()
-	overworldManager = world.get_parent()
+	print("Room Ready Start")
+	print("Room Ready Finish")
+
+func initialize(om: OverworldManager):
+	owManager = om
+	world = owManager.world
 	
 	bgMusicPlayer = world.music
-	cutsceneManager = world.csManager
+	cutsceneManager = owManager.cutsceneManager
+	
+	camera.initialize(om, self)
+	castList.initialize(om, self)
+	passages.initialize(om, self)
 	
 	populateGlobalVars()
 	
@@ -56,5 +66,5 @@ func populateGlobalVars():
 
 func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)
-	var transition = TransitionState.new(StateStack, overworldManager.cutsceneManager, world, newRoomPath, port)
+	var transition = TransitionState.new(StateStack, owManager.cutsceneManager, world, newRoomPath, port)
 	StateStack.addState(transition)

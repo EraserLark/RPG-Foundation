@@ -1,15 +1,18 @@
 extends MenuSystem
 class_name PlayerPanel_World
 
+##Children References
 @onready var marginContainer:= $MarginContainer
 @onready var initialMenu:= $MarginContainer/InitialMenu
 @onready var menuList:= $MarginContainer/InitialMenu/ItemList
 @onready var subMenuNodes:= $MarginContainer/Submenus
 
-@onready var overworldManager:= $"../../../.."
-@onready var player:= $"../../../../World/CastList/OW_Player"
-var playerInfo: PlayerInfo
+##Parent References
+var owManager: OverworldManager
+#var player: OW_Player	#unused?
 
+##Non export vars
+var playerInfo: PlayerInfo
 var menus: Array
 var openMenu: Control
 var prevFocused: Control
@@ -27,6 +30,9 @@ func _ready():
 	subMenuNodes.get_child(0).initMenu(playerInfo.itemList)
 	
 	baseMenu = initialMenu
+
+func initialize(om: OverworldManager):
+	owManager = om
 
 func open():
 	self.visible = true

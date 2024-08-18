@@ -1,6 +1,11 @@
 extends Node2D
 class_name PassagesManager
 
+func initialize(om: OverworldManager, rm: Room):
+	for child in get_children():
+		if child is Passage:
+			child.initialize(om, rm)
+
 func getSpawnPoint(spawnPort: int) -> Vector2:
 	var spawn = get_child(spawnPort).spawnPoint.global_position
 	return spawn
