@@ -31,16 +31,15 @@ func _ready():
 	playerPanel.battleManager = self
 	battleRoster.battleManager = self
 	
-	playerEntities = battleRoster.players
+	battleRoster.initialize(self)
+	
+	#playerEntities = battleRoster.players
 	enemyEntities = battleRoster.enemies
+	#for player in playerEntities:
+		#player.initialize(self)
 	
-	for player in playerEntities:
-		player.initialize(self)
-	
-	playerEntities[0].localInfo.entityUI = playerUI
-	
-	for enemy in enemyEntities:
-		enemy.initialize(self)
+	#for enemy in enemyEntities:
+		#enemy.initialize(self)
 	
 	playerPanel.initialize()
 	

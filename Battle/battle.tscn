@@ -1,9 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=40 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
-[ext_resource type="Script" path="res://Battle/Entity/PlayerEntity.gd" id="2_1wv47"]
 [ext_resource type="Script" path="res://Battle/BattleRoster.gd" id="2_l87y1"]
-[ext_resource type="Resource" uid="uid://8xfjp3xl51ya" path="res://Entity/Info/TestPlayerResource.tres" id="3_c76yb"]
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
 [ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/TestEnemyResource2.tres" id="4_gehmf"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
@@ -287,10 +285,6 @@ entityInfo = ExtResource("4_gehmf")
 
 [node name="Players" type="Node" parent="BattleRoster"]
 
-[node name="PlayerEntity" type="Node" parent="BattleRoster/Players"]
-script = ExtResource("2_1wv47")
-entityInfo = ExtResource("3_c76yb")
-
 [node name="BattleState" type="Node" parent="."]
 script = ExtResource("17_6gfpt")
 
@@ -423,7 +417,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(272, 120)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
@@ -547,7 +541,6 @@ script = ExtResource("26_8cjoh")
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/ItemMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/MiscMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" method="_on_item_list_item_activated"]
 [connection signal="button_down" from="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/ActionMenu/ReactButton" to="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/ActionMenu" method="_on_react_button_button_down"]
-[connection signal="animation_finished" from="BattleStage/PlayerActor/AnimationPlayer" to="BattleRoster/Players/PlayerEntity" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="CutsceneManager" to="CutsceneManager" method="_on_animation_finished"]
 
 [editable path="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/ActionMenu"]

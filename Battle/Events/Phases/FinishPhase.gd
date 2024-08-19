@@ -30,4 +30,7 @@ func resumePhase():
 		finishEQ.currentEvent.resumeEvent()
 
 func finishPhase():
+	for player in battleManager.battleRoster.players:
+		PlayerRoster.roster[0] = player.localInfo.duplicate_deep_workaround()
+	print("Stall")
 	super()

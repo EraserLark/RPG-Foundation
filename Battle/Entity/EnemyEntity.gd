@@ -1,8 +1,10 @@
 extends Entity
 class_name EnemyEntity
 
+##Preload vars
 var enemyActorScene = preload("res://Battle/2D/EnemyActor.tscn")
 
+##Non export var
 var enemyActor: Node2D
 
 func initialize(bm: BattleManager):

@@ -1,10 +1,13 @@
 extends Node
 class_name Entity
 
+##Outside references
 var battleManager: BattleManager
 var actor
-var statusEffects: Array[StatusEffect]
 @export var entityInfo: Resource
+
+##Inside references
+var statusEffects: Array[StatusEffect]
 var localInfo: EntityInfo
 
 signal reactionComplete
@@ -65,9 +68,6 @@ func takeDamage(dmg: int, pierce: bool):
 
 func checkRoster():
 	pass
-
-#func updateUI(hp: int):
-	#pass
 
 func entityDead():
 	#battleManager.battleRoster.enemies.erase(self)
