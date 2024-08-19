@@ -22,10 +22,10 @@ func initialize(bm: BattleManager):
 	if(enemyActor == null):
 		enemyActor = enemyActorScene.instantiate()
 		actor = enemyActor
-		battleManager.battleStage.enemies.add_child(enemyActor)
-		enemyActor.position = Vector2(randi_range(100,1000), randi_range(200,300))
-		enemyActor.animPlayer.animation_finished.connect(_on_animation_player_animation_finished)
-		enemyActor.sprite.visible = false
+	battleManager.battleStage.enemies.add_child(enemyActor)
+	enemyActor.position = Vector2(randi_range(100,1000), randi_range(200,300))
+	enemyActor.animPlayer.animation_finished.connect(_on_animation_player_animation_finished)
+	enemyActor.sprite.visible = false
 
 func chooseAttack():
 	var chosenAction = localInfo.actionList.pick_random()

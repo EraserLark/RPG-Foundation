@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dp5gtq4i4l507"]
+[gd_scene load_steps=16 format=4 uid="uid://dp5gtq4i4l507"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_sgwbx"]
 [ext_resource type="TileSet" uid="uid://2cpjct5qw5oo" path="res://Overworld/Art/SnowTileset.tres" id="2_t2xpc"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://Overworld/Cast/OW_Enemy.gd" id="4_ua3m4"]
 [ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="5_h78mw"]
 [ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/Passages/passage.tscn" id="6_x2mqx"]
+[ext_resource type="Script" path="res://Entity/Info/EnemyInfo.gd" id="7_8xbgv"]
 [ext_resource type="Resource" uid="uid://5cobp8f1mc3x" path="res://Entity/NPC/RedRobot.tres" id="8_p2dmw"]
+[ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/Snowbro_EnemyData.tres" id="8_u5pc7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wq5aw"]
 radius = 16.0
@@ -67,6 +69,7 @@ walkSpeed = 200.0
 [node name="OW_EnemyNPC" parent="CastList" index="1" instance=ExtResource("3_1taik")]
 position = Vector2(544, 336)
 script = ExtResource("4_ua3m4")
+battleData = Array[ExtResource("7_8xbgv")]([ExtResource("8_u5pc7")])
 
 [node name="Sprite2D" parent="CastList/OW_EnemyNPC" index="0"]
 scale = Vector2(3, 3)

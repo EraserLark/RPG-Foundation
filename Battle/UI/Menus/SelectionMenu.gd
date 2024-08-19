@@ -1,11 +1,15 @@
 extends Menu
 class_name BattleSelectionMenu
 
+##Children References
 @onready var playerPointer:= $PlayerPointer
-@onready var playerUI:= $".."
-@onready var playerPanel:= $"../PlayerPanel"
-var battleManager
 
+##Parent references
+var battleManager: BattleManager
+var playerUI: PlayerUI_Battle
+var playerPanel: PlayerPanel_Battle
+
+##Inside vars
 var selectedAction : Action
 var targetRoster : Array
 var currentTarget : Entity
@@ -13,7 +17,11 @@ var currentSelection : int
 
 func _ready():
 	firstFocus = self
-	battleManager = playerUI.battleManager
+
+func initialize(bm: BattleManager, pui: PlayerUI_Battle):
+	battleManager = bm
+	playerUI = pui
+	playerPanel = playerUI.playerPanel
 
 func OpenMenu():
 	super()

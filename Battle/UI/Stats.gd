@@ -1,11 +1,18 @@
 extends PanelContainer
 
+##Children references
 @onready var healthBar:= $ProgressBar
 @onready var label:= $RichTextLabel
 
+##Outisde references
+var playerInfo: PlayerInfo
 var maxHealth: int
 
-func setInitialHealth(playerInfo: PlayerInfo):
+func initialize(pi: PlayerInfo):
+	playerInfo = pi
+	setInitialHealth()
+
+func setInitialHealth():
 	maxHealth = playerInfo.hpMax
 	healthBar.max_value = maxHealth
 	healthBar.value = playerInfo.hp

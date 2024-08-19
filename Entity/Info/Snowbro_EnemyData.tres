@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://bl44thjmt52c7"]
+
+[ext_resource type="Script" path="res://Entity/Info/EnemyInfo.gd" id="1_hms77"]
+[ext_resource type="Texture2D" uid="uid://b1ws63031tlue" path="res://Art/Enemy_Snowbro.png" id="2_1vxhf"]
+
+[resource]
+script = ExtResource("1_hms77")
+xpReward = 5
+entityName = "Snowbro"
+hp = 1
+hpMax = 0
+atk = 2
+def = 0
+sprite = ExtResource("2_1vxhf")

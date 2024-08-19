@@ -1,6 +1,9 @@
 extends Menu
 
+##Children references
 @onready var attackButton:= $"AttackButton"
+
+##Parent references
 @onready var attackMenu:= $"../MarginContainer/AttackMenu"
 @onready var itemMenu:= $"../MarginContainer/ItemMenu"
 @onready var miscMenu:= $"../MarginContainer/MiscMenu"

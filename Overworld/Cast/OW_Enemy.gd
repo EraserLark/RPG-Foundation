@@ -11,12 +11,14 @@ var battleScenePath = "res://Battle/battle.tscn"
 var player: OW_Player
 var world
 
+##Export vars
+@export var battleData: Array[EnemyInfo]
+
 func initialize(om: OverworldManager, rm: Room):
 	world = om.world
 	player = rm.castList.find_child("OW_Player")
 
 func interactAction(interacter : OW_Player):
 	world.pauseWorld()
-	var bs = load(battleScenePath)
-	var inst = bs.instantiate()
+	var inst = BattleManager.initBattle(battleData)
 	get_node("/root").add_child(inst)

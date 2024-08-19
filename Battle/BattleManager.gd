@@ -1,7 +1,11 @@
 extends Node
 class_name BattleManager
 
+##Scene Path
+const battleScene: PackedScene = preload("res://Battle/battle.tscn")
+
 #BattleManager
+@export var enemyData: Array[EnemyInfo]
 @onready var battleRoster:= $BattleRoster
 var playerEntities: Array[PlayerEntity]
 var enemyEntities: Array[EnemyEntity]
@@ -19,29 +23,40 @@ var promptPhase: Prompt_Phase = null
 var actionPhase: Action_Phase = null
 
 #Player
-@onready var playerActor:= $BattleStage/PlayerActor
-@onready var playerUI:= $CanvasLayer/BattleUI/PlayerUI
-@onready var playerPanel:= $CanvasLayer/BattleUI/PlayerUI/PlayerPanel
+@onready var playerActors:= $BattleStage/PlayerActors
+#@onready var playerUI:= $CanvasLayer/BattleUI/PlayerUI
+#@onready var playerPanel:= $CanvasLayer/BattleUI/PlayerUI/PlayerPanel
 
 #Other
 @onready var camera:= $BattleStage/Camera2D
 
+#Workaround for _init() not getting called when instancing scene :P
+static func initBattle(_enemyData):
+	var newBattle = battleScene.instantiate()
+	if(!_enemyData):
+		printerr("No Enemy Data supplied!")
+	else:
+		newBattle.enemyData = _enemyData
+	return newBattle
+
 func _ready():
-	playerUI.battleManager = self
-	playerPanel.battleManager = self
-	battleRoster.battleManager = self
+	#playerUI.battleManager = self
+	#playerPanel.battleManager = self
+	#battleRoster.battleManager = self
+	playerEntities = battleRoster.players
 	
 	battleRoster.initialize(self)
-	
-	#playerEntities = battleRoster.players
 	enemyEntities = battleRoster.enemies
+	battleUI.initialize(self)
+	battleStage.initialize(self)
+	
 	#for player in playerEntities:
 		#player.initialize(self)
 	
 	#for enemy in enemyEntities:
 		#enemy.initialize(self)
 	
-	playerPanel.initialize()
+	#playerPanel.initialize()
 	
 	camera.make_current()
 	

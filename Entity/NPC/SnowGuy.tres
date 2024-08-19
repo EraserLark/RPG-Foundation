@@ -6,10 +6,14 @@
 [resource]
 script = ExtResource("1_m0e06")
 npcName = "Godot Guy"
+timelines = {}
 spriteSheet = ExtResource("2_t6xnp")
 spriteOffset = Vector2(0, 0)
+spriteScale = Vector2(1, 1)
 hFrames = 3
 vFrames = 1
 currentFrame = 0
 characterPortraits = Array[Texture]([])
+interactAreaOffset = Vector2(0, 0)
+collisionOffset = Vector2(0, 0)
 speechSpotPos = Vector2(0, 0)

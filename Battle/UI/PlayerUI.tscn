@@ -1,0 +1,192 @@
+[gd_scene load_steps=16 format=3 uid="uid://c7fouswjqgykh"]
+
+[ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_7o4ws"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_y242p"]
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="3_f02tf"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPointer.gd" id="4_m43u4"]
+[ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="5_jwq00"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPanel.gd" id="6_fvxfw"]
+[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="7_pgpgq"]
+[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="8_46lyl"]
+[ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="9_0jd7y"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerMenu.gd" id="10_6rcbb"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="11_yy40d"]
+[ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="12_72tap"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/MiscMenu.gd" id="13_1b3j0"]
+[ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/Menus/action_menu.tscn" id="14_taiwu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbj4b"]
+atlas = ExtResource("3_f02tf")
+region = Rect2(595, 170, 16, 16)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7o4ws")
+
+[node name="SelectionMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("2_y242p")
+
+[node name="PlayerPointer" type="TextureRect" parent="SelectionMenu"]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("AtlasTexture_pbj4b")
+script = ExtResource("4_m43u4")
+
+[node name="PlayerPanel" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+offset_left = 456.0
+offset_top = 512.0
+offset_right = 744.0
+offset_bottom = 648.0
+texture = ExtResource("5_jwq00")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("6_fvxfw")
+sounds = Array[AudioStreamMP3]([ExtResource("7_pgpgq"), ExtResource("8_46lyl")])
+mandatory = true
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Stats" type="PanelContainer" parent="PlayerPanel"]
+layout_mode = 0
+offset_left = -16.0
+offset_bottom = 136.0
+script = ExtResource("9_0jd7y")
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/Stats"]
+self_modulate = Color(0, 1, 0, 1)
+custom_minimum_size = Vector2(16, 112)
+layout_mode = 2
+max_value = 10.0
+value = 10.0
+fill_mode = 3
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/Stats"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/normal_font_size = 10
+text = "10/10"
+scroll_active = false
+
+[node name="PlayerMenu" type="Control" parent="PlayerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_6rcbb")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerPanel/PlayerMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(272, 120)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
+anchor_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176471, 0, 0.701961, 1)
+
+[node name="MinigameZone" type="Node2D" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
+
+[node name="AttackMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("11_yy40d")
+metadata/_edit_group_ = true
+
+[node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+fixed_icon_size = Vector2i(16, 16)
+
+[node name="ItemMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("12_72tap")
+metadata/_edit_group_ = true
+
+[node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+fixed_icon_size = Vector2i(16, 16)
+
+[node name="MiscMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+script = ExtResource("13_1b3j0")
+metadata/_edit_group_ = true
+
+[node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+fixed_icon_size = Vector2i(16, 16)
+
+[node name="ActionMenu" parent="PlayerPanel/PlayerMenu" instance=ExtResource("14_taiwu")]
+layout_mode = 0
+offset_top = -40.0
+offset_bottom = 0.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerPanel"]
+volume_db = -5.0
+
+[connection signal="gui_input" from="SelectionMenu" to="SelectionMenu" method="_on_gui_input"]
+[connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" method="_on_item_list_item_activated"]
+[connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" method="_on_item_list_item_activated"]
+[connection signal="button_down" from="PlayerPanel/PlayerMenu/ActionMenu/ReactButton" to="PlayerPanel/PlayerMenu/ActionMenu" method="_on_react_button_button_down"]
+
+[editable path="PlayerPanel/PlayerMenu/ActionMenu"]

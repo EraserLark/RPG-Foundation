@@ -1,28 +1,40 @@
 extends MenuSystem
 class_name PlayerPanel_Battle
 
-@onready var playerUI:= $".."
+##Children references
 @onready var stats:= $Stats
 @onready var playerMenu:= $PlayerMenu
-@onready var selectionMenu:= $"../SelectionMenu"
-@onready var playerPointer:= $"../SelectionMenu/PlayerPointer"
-
 @onready var minigameContainer:= $PlayerMenu/MarginContainer/SubViewportContainer
 @onready var minigameView:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport
 @onready var minigameZone:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport/MinigameZone
 
+##Parent/Outside references
+var battleManager: BattleManager
+var playerUI: PlayerUI_Battle
+var selectionMenu: BattleSelectionMenu
+var playerPointer: Cursor
 var player: PlayerEntity
-@onready var battleManager:= $"../../../.."
+
+##Inside vars
 var currentSelectedAction
 var isActionItem:= false
 var itemIndex
 
 func _ready():
 	audioPlayer = $AudioStreamPlayer
-	playerMenu.populateVars(self)
+	#playerMenu.populateVars(self)
 
-func initialize():
-	stats.setInitialHealth(battleManager.playerEntities[0].localInfo)
+func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
+	battleManager = bm
+	playerUI = pui
+	selectionMenu = playerUI.selectionMenu
+	playerPointer = selectionMenu.playerPointer
+	player = pe
+	
+	stats.initialize(player.localInfo)
+	playerMenu.initialize(self)
+	
+	#stats.setInitialHealth()
 
 func open():
 	baseMenu = playerMenu

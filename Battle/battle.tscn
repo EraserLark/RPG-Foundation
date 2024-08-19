@@ -1,103 +1,20 @@
-[gd_scene load_steps=40 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=21 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/BattleRoster.gd" id="2_l87y1"]
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
-[ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/TestEnemyResource2.tres" id="4_gehmf"]
+[ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/Snowbro_EnemyData.tres" id="4_gehmf"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
-[ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/Menus/action_menu.tscn" id="9_vhn0o"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="10_tcqst"]
-[ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="11_hgxlw"]
-[ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="13_3de6x"]
-[ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="13_vxg26"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPointer.gd" id="14_w6irq"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="14_yfsgd"]
+[ext_resource type="PackedScene" uid="uid://c7fouswjqgykh" path="res://Battle/UI/PlayerUI.tscn" id="11_xepya"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/MiscMenu.gd" id="15_jhbnu"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerMenu.gd" id="16_mth5x"]
-[ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="16_qi47y"]
-[ext_resource type="Script" path="res://Battle/2D/PlayerActor.gd" id="16_uccub"]
 [ext_resource type="Script" path="res://Battle/States/BattleState.gd" id="17_6gfpt"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/StartPhase.gd" id="18_56cgw"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPanel.gd" id="18_si8qb"]
-[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="18_v6xlx"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/PromptPhase.gd" id="19_1ilki"]
-[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="19_2tiij"]
-[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="20_6vuxn"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/ActionPhase.gd" id="20_a8p5w"]
 [ext_resource type="Texture2D" uid="uid://18dlppb0l7c6" path="res://Art/BattleBG_Snow1.png" id="20_pstye"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/FinishPhase.gd" id="21_jxd88"]
 [ext_resource type="AudioStream" uid="uid://do7y1ptnptcub" path="res://Battle/Audio/Project3_VGBattle.wav" id="22_dbrhh"]
 [ext_resource type="Script" path="res://Cutscenes/CutsceneManager.gd" id="26_8cjoh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbj4b"]
-atlas = ExtResource("18_v6xlx")
-region = Rect2(595, 170, 16, 16)
-
-[sub_resource type="Animation" id="Animation_c4kdh"]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Camera2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.261799]
-}
-
-[sub_resource type="Animation" id="Animation_84obq"]
-resource_name = "PlayerDamaged"
-length = 0.75
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../BattleStage/Camera2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(10, 0), Vector2(-8, 0), Vector2(6, 0), Vector2(-4, 0), Vector2(2, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_t1tul"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../BattleStage/Camera2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Camera2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_72d87"]
-_data = {
-"Death": SubResource("Animation_c4kdh"),
-"PlayerDamaged": SubResource("Animation_84obq"),
-"RESET": SubResource("Animation_t1tul")
-}
 
 [sub_resource type="Animation" id="Animation_i7cmg"]
 resource_name = "FadeIn"
@@ -285,19 +202,19 @@ entityInfo = ExtResource("4_gehmf")
 
 [node name="Players" type="Node" parent="BattleRoster"]
 
-[node name="BattleState" type="Node" parent="."]
+[node name="Delete this?" type="Node" parent="."]
 script = ExtResource("17_6gfpt")
 
-[node name="Start" type="Node" parent="BattleState"]
+[node name="Start" type="Node" parent="Delete this?"]
 script = ExtResource("18_56cgw")
 
-[node name="Prompt" type="Node" parent="BattleState"]
+[node name="Prompt" type="Node" parent="Delete this?"]
 script = ExtResource("19_1ilki")
 
-[node name="Action" type="Node" parent="BattleState"]
+[node name="Action" type="Node" parent="Delete this?"]
 script = ExtResource("20_a8p5w")
 
-[node name="Finish" type="Node" parent="BattleState"]
+[node name="Finish" type="Node" parent="Delete this?"]
 script = ExtResource("21_jxd88")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -317,169 +234,8 @@ grow_vertical = 2
 script = ExtResource("6_jkbya")
 metadata/_edit_lock_ = true
 
-[node name="PlayerUI" type="Control" parent="CanvasLayer/BattleUI"]
+[node name="PlayerUI" parent="CanvasLayer/BattleUI" instance=ExtResource("11_xepya")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("13_vxg26")
-
-[node name="SelectionMenu" type="Control" parent="CanvasLayer/BattleUI/PlayerUI"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 2
-script = ExtResource("14_yfsgd")
-
-[node name="PlayerPointer" type="TextureRect" parent="CanvasLayer/BattleUI/PlayerUI/SelectionMenu"]
-self_modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("AtlasTexture_pbj4b")
-script = ExtResource("14_w6irq")
-
-[node name="PlayerPanel" type="NinePatchRect" parent="CanvasLayer/BattleUI/PlayerUI"]
-self_modulate = Color(1, 0, 0, 1)
-layout_mode = 2
-offset_left = 456.0
-offset_top = 512.0
-offset_right = 744.0
-offset_bottom = 648.0
-texture = ExtResource("16_qi47y")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-script = ExtResource("18_si8qb")
-sounds = Array[AudioStreamMP3]([ExtResource("19_2tiij"), ExtResource("20_6vuxn")])
-mandatory = true
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="Stats" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel"]
-layout_mode = 0
-offset_left = -16.0
-offset_bottom = 136.0
-script = ExtResource("13_3de6x")
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/Stats"]
-self_modulate = Color(0, 1, 0, 1)
-custom_minimum_size = Vector2(16, 112)
-layout_mode = 2
-max_value = 10.0
-value = 10.0
-fill_mode = 3
-show_percentage = false
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/Stats"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-size_flags_vertical = 8
-theme_override_font_sizes/normal_font_size = 10
-text = "10/10"
-scroll_active = false
-
-[node name="PlayerMenu" type="Control" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("16_mth5x")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer"]
-layout_mode = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(272, 120)
-render_target_update_mode = 4
-
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
-anchor_mode = 0
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.176471, 0, 0.701961, 1)
-
-[node name="MinigameZone" type="Node2D" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
-
-[node name="AttackMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("10_tcqst")
-metadata/_edit_group_ = true
-
-[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/AttackMenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-fixed_icon_size = Vector2i(16, 16)
-
-[node name="ItemMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("11_hgxlw")
-metadata/_edit_group_ = true
-
-[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/ItemMenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-fixed_icon_size = Vector2i(16, 16)
-
-[node name="MiscMenu" type="PanelContainer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-script = ExtResource("15_jhbnu")
-metadata/_edit_group_ = true
-
-[node name="ItemList" type="ItemList" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/MiscMenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-fixed_icon_size = Vector2i(16, 16)
-
-[node name="ActionMenu" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu" instance=ExtResource("9_vhn0o")]
-layout_mode = 0
-offset_top = -40.0
-offset_bottom = 0.0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/BattleUI/PlayerUI/PlayerPanel"]
-volume_db = -5.0
 
 [node name="TBContainer" type="MarginContainer" parent="CanvasLayer/BattleUI"]
 layout_mode = 1
@@ -505,16 +261,7 @@ position = Vector2(576, 328)
 scale = Vector2(8, 8)
 texture = ExtResource("20_pstye")
 
-[node name="PlayerActor" type="Node2D" parent="BattleStage"]
-script = ExtResource("16_uccub")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BattleStage/PlayerActor"]
-libraries = {
-"": SubResource("AnimationLibrary_72d87")
-}
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage/PlayerActor"]
-autoplay = true
+[node name="PlayerActors" type="Node2D" parent="BattleStage"]
 
 [node name="EnemyActors" type="Node2D" parent="BattleStage"]
 
@@ -525,7 +272,6 @@ ignore_rotation = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage"]
 stream = ExtResource("22_dbrhh")
-autoplay = true
 
 [node name="MinigameZone" type="Node2D" parent="BattleStage"]
 position = Vector2(2000, 0)
@@ -536,11 +282,4 @@ libraries = {
 }
 script = ExtResource("26_8cjoh")
 
-[connection signal="gui_input" from="CanvasLayer/BattleUI/PlayerUI/SelectionMenu" to="CanvasLayer/BattleUI/PlayerUI/SelectionMenu" method="_on_gui_input"]
-[connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/AttackMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/AttackMenu" method="_on_item_list_item_activated"]
-[connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/ItemMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" method="_on_item_list_item_activated"]
-[connection signal="item_activated" from="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/MiscMenu/ItemList" to="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" method="_on_item_list_item_activated"]
-[connection signal="button_down" from="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/ActionMenu/ReactButton" to="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/ActionMenu" method="_on_react_button_button_down"]
 [connection signal="animation_finished" from="CutsceneManager" to="CutsceneManager" method="_on_animation_finished"]
-
-[editable path="CanvasLayer/BattleUI/PlayerUI/PlayerPanel/PlayerMenu/ActionMenu"]

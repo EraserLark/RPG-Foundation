@@ -3,7 +3,7 @@ class_name Entity
 
 ##Outside references
 var battleManager: BattleManager
-var actor
+var actor: BattleActor
 @export var entityInfo: Resource
 
 ##Inside references
@@ -15,7 +15,6 @@ signal reactionComplete
 func initialize(bm: BattleManager):
 	battleManager = bm
 	localInfo = entityInfo.duplicate_deep_workaround()
-	print("Stall")
 
 func getClassInstance():
 	return self

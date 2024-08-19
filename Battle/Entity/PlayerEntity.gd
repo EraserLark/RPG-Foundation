@@ -1,19 +1,23 @@
 extends Entity
 class_name PlayerEntity
 
+##Outside references
 var playerUI: PlayerUI_Battle
 var playerPanel: PlayerPanel_Battle
+var playerNumber: int
 
+##Signals
 signal playerDied
 
 func initialize(bm: BattleManager):
 	super(bm)
 	
-	actor = bm.playerActor
-	playerUI = bm.playerUI
-	playerPanel = bm.playerPanel
+	actor = bm.battleStage.playerActors[playerNumber]
+	playerUI = bm.battleUI.playerUIRoster[playerNumber]
+	playerPanel = playerUI.playerPanel
 	
 	localInfo.playerEntity = self
+	localInfo.entityUI = playerUI
 	#localInfo.playerUI = self.playerUI
 	actor.player = self
 	playerUI.player = self

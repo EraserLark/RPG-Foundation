@@ -1,15 +1,19 @@
-extends Node2D
+extends BattleActor
+class_name BattleActor_Enemy
 
+##Preload vars
+var damageNum := preload("res://Battle/2D/PopUpNumber.tscn")
+
+##Children references
 @onready var sprite := $Sprite2D
 @onready var animPlayer := $AnimationPlayer
 
-var damageNum := preload("res://Battle/2D/PopUpNumber.tscn")
-
+##Signals
 signal entered
 signal enemyDied
 
-func _ready():
-	pass
+func initialize(enemyData: EnemyInfo):
+	sprite.texture = enemyData.sprite
 
 func damageFeedback(dmgAmt : int):
 	animPlayer.play("SnowbroDamaged")

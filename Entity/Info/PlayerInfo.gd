@@ -7,7 +7,7 @@ class_name PlayerInfo
 @export var money : int
 @export var items : Array[String]
 
-var playerNumber
+var playerNumber: int
 var playerEntity
 var playerActor: OW_Player
 var owPlayerState: Player_Active
