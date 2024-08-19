@@ -10,8 +10,8 @@ func _init(eManager, e):
 
 func runEvent():
 	for enemy in enemies:
-		enemy.enemyActor.entered.connect(enemyEntered)
-		enemy.enemyActor.enterBattle()
+		enemy.actor.entered.connect(enemyEntered)
+		enemy.actor.enterBattle()
 
 func enemyEntered():
 	entered += 1

@@ -5,10 +5,14 @@ class_name EnemyEntity
 var enemyActorScene = preload("res://Battle/2D/EnemyActor.tscn")
 
 ##Non export var
-var enemyActor: Node2D
+var enemyActor: BattleActor_Enemy
+
+signal entered
 
 func initialize(bm: BattleManager):
 	super(bm)
+	
+	enemyActor = actor
 	
 	var enemyAtk = localInfo.atk
 	var enemyAction1 = Attack.new(null, bm, "Punch", self, null, Action.TargetTypes.PLAYER, enemyAtk, 0, "")
@@ -21,8 +25,8 @@ func initialize(bm: BattleManager):
 	
 	if(enemyActor == null):
 		enemyActor = enemyActorScene.instantiate()
-		actor = enemyActor
-	battleManager.battleStage.enemies.add_child(enemyActor)
+		enemyActor = enemyActor
+		battleManager.battleStage.enemies.add_child(enemyActor)
 	enemyActor.position = Vector2(randi_range(100,1000), randi_range(200,300))
 	enemyActor.animPlayer.animation_finished.connect(_on_animation_player_animation_finished)
 	enemyActor.sprite.visible = false

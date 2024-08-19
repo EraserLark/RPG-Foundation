@@ -41,7 +41,7 @@ func initialize(bm: BattleManager):
 
 func createEnemyActor(enemyData: EnemyInfo) -> BattleActor_Enemy:
 	var enemyActorInst = enemyActor.instantiate()
-	enemyActorInst.initialize(enemyData)
 	enemySection.add_child(enemyActorInst)
+	enemyActorInst.initialize(enemyData)
 	enemyActors.append(enemyActorInst)
 	return enemyActorInst

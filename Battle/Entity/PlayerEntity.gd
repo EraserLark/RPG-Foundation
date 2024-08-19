@@ -6,6 +6,9 @@ var playerUI: PlayerUI_Battle
 var playerPanel: PlayerPanel_Battle
 var playerNumber: int
 
+##Inside vars
+var playerActor: BattleActor_Player
+
 ##Signals
 signal playerDied
 
@@ -13,13 +16,14 @@ func initialize(bm: BattleManager):
 	super(bm)
 	
 	actor = bm.battleStage.playerActors[playerNumber]
+	playerActor = actor
 	playerUI = bm.battleUI.playerUIRoster[playerNumber]
 	playerPanel = playerUI.playerPanel
 	
 	localInfo.playerEntity = self
 	localInfo.entityUI = playerUI
 	#localInfo.playerUI = self.playerUI
-	actor.player = self
+	playerActor.player = self
 	playerUI.player = self
 	
 	if(localInfo.actionList.is_empty()):

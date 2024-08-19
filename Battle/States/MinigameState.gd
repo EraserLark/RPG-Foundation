@@ -3,12 +3,14 @@ class_name MinigameState
 
 var minigameManager
 var atkBoost:= 0
-var battleManager : BattleManager
+var battleManager: BattleManager
+var playerPanel: PlayerPanel_Battle
 
-func _init(sStack : StateStack, mg, bm):
+func _init(sStack: StateStack, mg, bm):
 	super(sStack)
 	minigameManager = mg
 	battleManager = bm
+	playerPanel = battleManager.battleUI.playerUIRoster[0].playerPanel
 	
 	sStack.addState(self)
 
@@ -17,7 +19,7 @@ func handleInput(_event : InputEvent):
 
 func enter(_msg := {}):
 	if(battleManager != null):
-		battleManager.playerPanel.showMinigame(true)
+		playerPanel.showMinigame(true)
  
 func update(_delta : float):
 	minigameManager.update(_delta)	
@@ -32,6 +34,5 @@ func resumeState():
 
 func exit():
 	minigameManager.endMinigame()
-	battleManager.playerPanel.showMinigame(false)
+	playerPanel.showMinigame(false)
 	super()
-

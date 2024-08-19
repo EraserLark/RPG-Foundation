@@ -14,7 +14,7 @@ func _init(battlePM, bm):
 func runPhase():
 	#var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
 	#StateStack.addState(battleMenuState)
-	var battleMenuState = MenuState.new(StateStack, battleManager.playerPanel)
+	var battleMenuState = MenuState.new(StateStack, battleManager.battleUI.playerUIRoster[0].playerPanel)
 	StateStack.addState(battleMenuState)
 
 func resumePhase():
