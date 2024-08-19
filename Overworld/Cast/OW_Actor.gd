@@ -51,14 +51,10 @@ func checkSpawnFlags():
 	if(npcResource.characterFlags.flags.has("Disliked")):
 		if(npcResource.characterFlags.flags["Disliked"]):
 			var markers = DialogueSystem.cutsceneMarkers
-			await markers.ready
-			var mark = DialogueSystem.cutsceneMarkers.get_child(1).position
+			var mark = DialogueSystem.cutsceneMarkers.marksArray[0]
 			position = mark.position
 
 func interactAction(interacter : OW_Player):
-	#speak(message)
-	#if(cutsceneResource):
-		#runNPCTimeline(interacter.getPlayerNum())
 	var timelinePath = getCorrectTimeline()
 	if(timelinePath != ""):
 		runNPCTimeline(timelinePath, interacter.getPlayerNum())

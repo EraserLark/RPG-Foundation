@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bayxt5ttehhv8"]
+[gd_scene load_steps=6 format=3 uid="uid://bayxt5ttehhv8"]
 
 [ext_resource type="Script" path="res://Overworld/World/Room.gd" id="1_8hapy"]
 [ext_resource type="Script" path="res://Overworld/Cast/CastList.gd" id="2_uxnsk"]
 [ext_resource type="Script" path="res://Overworld/Rooms/Passages/PassagesManager.gd" id="3_hbvgs"]
 [ext_resource type="Script" path="res://Overworld/World/OW_Camera.gd" id="4_673pq"]
+[ext_resource type="Script" path="res://Overworld/Rooms/CutsceneMarks.gd" id="5_3njwv"]
 
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
@@ -31,6 +32,7 @@ script = ExtResource("3_hbvgs")
 metadata/_edit_lock_ = true
 
 [node name="CutsceneMarks" type="Node2D" parent="."]
+script = ExtResource("5_3njwv")
 metadata/_edit_lock_ = true
 
 [node name="NavigationMaps" type="Node2D" parent="."]

@@ -20,8 +20,8 @@ func _ready():
 
 func initialize(om: OverworldManager):
 	owManager = om
+	DialogueSystem.updateOWVars(owManager.ui, self)	#Update before room. Actors use for spawn flags
 	currentRoom.initialize(om)
-	DialogueSystem.updateOWVars(owManager.ui, self)
 
 func pauseWorld():
 	music.stream_paused = true
@@ -36,13 +36,14 @@ func onRoomExit(newRoomPath: String, port: int):
 		if actor is OW_Player:
 			actor.endPlayerActor()
 	currentRoom.queue_free()
+	await currentRoom.tree_exited
 	#Load new room
 	var newRoom = load(newRoomPath)
 	var inst = newRoom.instantiate()
 	inst.playerSpawnPort = port
 	add_child(inst)
 	currentRoom = inst
+	#Update vars (actors use this for spawn flags)
+	DialogueSystem.updateOWVars(owManager.ui, self)
 	#Initialize new room
 	currentRoom.initialize(owManager)
-	
-	DialogueSystem.updateOWVars(owManager.ui, self)
