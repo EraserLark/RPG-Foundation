@@ -18,7 +18,7 @@ var cam: Camera2D
 
 func initialize(bm: BattleManager, bs: BattleStage, num:int):
 	battleManager = bm
-	playerUI = battleManager.playerActors[num].playerUI
+	playerUI = bs.playerActors[num].playerUI
 	cam = bs.camera
 
 func damageFeedback(dmgAmt: int):

@@ -3,7 +3,7 @@ class_name PlayerAnchors
 
 var currentAnchorLayout: Array
 
-func ready():
+func _ready():
 	determineAnchorLayout()
 
 func determineAnchorLayout():

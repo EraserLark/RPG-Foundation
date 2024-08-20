@@ -11,27 +11,35 @@ class_name PlayerUI_Battle
 var battleManager: BattleManager
 var battleUI: Control
 var player: PlayerEntity	#Unused?
-var focusAnchor: Control
+var currentStageAnchor: Control
 
 ##Inside vars
-#var currentSelectedAction	#Also unused??
+var currentPanelAnchor: Control
 
 func initialize(bm: BattleManager, playerNumber: int, currentAnchors: Array):
 	battleManager = bm
 	player = battleManager.playerEntities[playerNumber]
-	focusAnchor = currentAnchors[playerNumber]
+	currentStageAnchor = currentAnchors[playerNumber]
 	
 	selectionMenu.initialize(battleManager, self)
 	playerPanel.initialize(battleManager, self, player)
 	
+	#Bottom center panel anchor
+	currentPanelAnchor = playerPanel.panelAnchors[4]
 	centerPlayerPanel()
 
 func centerPlayerPanel():
-	if(focusAnchor == null):
-		printerr("focusAnchor not set")
-	var dimensions = getUIDimensions()
-	var offset = Vector2(dimensions.x / 2, dimensions.y)
-	position = (focusAnchor.position + offset)
+	#Only set up for 1 Player atm
+	if(currentStageAnchor == null):
+		printerr("currentStageAnchor not set")
+		return
+	
+	var panelAnchorDiff:Vector2 = abs(self.position - currentPanelAnchor.position)
+	self.position = currentStageAnchor.position - panelAnchorDiff
+	
+	#var dimensions = getUIDimensions()
+	#var offset = Vector2(dimensions.x / 2, dimensions.y)
+	#position = (currentStageAnchor.position + offset)
 
 func getUIDimensions() -> Vector2:
 	return Vector2(playerPanel.size.x, playerPanel.size.y)

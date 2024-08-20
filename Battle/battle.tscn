@@ -243,7 +243,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_errmb")
 
-[node name="Player1" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors"]
+[node name="1Players" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P1" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/1Players"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

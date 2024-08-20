@@ -7,6 +7,7 @@ class_name PlayerPanel_Battle
 @onready var minigameContainer:= $PlayerMenu/MarginContainer/SubViewportContainer
 @onready var minigameView:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport
 @onready var minigameZone:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport/MinigameZone
+@onready var panelAnchorNodes:= $PanelAnchors
 
 ##Parent/Outside references
 var battleManager: BattleManager
@@ -19,10 +20,11 @@ var player: PlayerEntity
 var currentSelectedAction
 var isActionItem:= false
 var itemIndex
+var panelAnchors: Array
 
 func _ready():
 	audioPlayer = $AudioStreamPlayer
-	#playerMenu.populateVars(self)
+	panelAnchors = $PanelAnchors.get_children()
 
 func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
 	battleManager = bm
