@@ -4,8 +4,9 @@ extends Control
 var playerUIScene:= preload("res://Battle/UI/PlayerUI.tscn")
 
 ##Children references
-@onready var playerUI:= $PlayerUI
+#@onready var playerUI:= $PlayerUI
 @onready var tbContainer:= $TBContainer
+@onready var playerAnchors:= $PlayerAnchors
 
 ##Parent references
 var battleManager: BattleManager
@@ -28,7 +29,5 @@ func initialize(bm: BattleManager):
 	
 	var i:= 0
 	for playerUserIntf in playerUIRoster:
-		playerUserIntf.initialize(battleManager, i)
+		playerUserIntf.initialize(battleManager, i, playerAnchors.currentAnchorLayout)
 		i+=1
-	
-	playerUI = playerUIRoster[0]	##Delete once multiplayer

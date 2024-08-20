@@ -13,13 +13,6 @@ func popQueue():
 	super()
 
 func checkForStatus():
-	##Check counts in statuses to remove overdue statuses
-	#var dup = actionPhase.unresolvedStatuses.duplicate()
-	#
-	#for status in dup:
-		#status.checkStatusCount()
-	
-	#Grab remaining statuses, then executed them
 	var statuses = actionPhase.unresolvedStatuses
 	
 	for status in statuses:

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
 [ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/Snowbro_EnemyData.tres" id="4_gehmf"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
-[ext_resource type="PackedScene" uid="uid://c7fouswjqgykh" path="res://Battle/UI/PlayerUI.tscn" id="11_xepya"]
+[ext_resource type="Script" path="res://Battle/UI/PlayerAnchors.gd" id="11_errmb"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
 [ext_resource type="Script" path="res://Battle/States/BattleState.gd" id="17_6gfpt"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/StartPhase.gd" id="18_56cgw"]
@@ -234,8 +234,24 @@ grow_vertical = 2
 script = ExtResource("6_jkbya")
 metadata/_edit_lock_ = true
 
-[node name="PlayerUI" parent="CanvasLayer/BattleUI" instance=ExtResource("11_xepya")]
+[node name="PlayerAnchors" type="Control" parent="CanvasLayer/BattleUI"]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_errmb")
+
+[node name="Player1" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="TBContainer" type="MarginContainer" parent="CanvasLayer/BattleUI"]
 layout_mode = 1

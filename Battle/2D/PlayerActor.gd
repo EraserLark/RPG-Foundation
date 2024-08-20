@@ -11,16 +11,19 @@ var damageNum:= preload("res://Battle/2D/PopUpNumber.tscn")
 ##Parent references
 var battleManager	#Unused
 var player			#Unused
+var playerUI: PlayerUI_Battle
 var cam: Camera2D
 
 #Create func so that player actor origin is aligned with player menu
 
-func initialize(bm: BattleManager, bs: BattleStage):
+func initialize(bm: BattleManager, bs: BattleStage, num:int):
 	battleManager = bm
+	playerUI = battleManager.playerActors[num].playerUI
 	cam = bs.camera
 
 func damageFeedback(dmgAmt: int):
-	animPlayer.play("PlayerDamaged")
+	#animPlayer.play("PlayerDamaged")
+	
 	var damageNumber:= damageNum.instantiate()
 	damageNumber.setLabel(dmgAmt)
 	add_child(damageNumber)

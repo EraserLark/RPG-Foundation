@@ -36,8 +36,10 @@ func initialize(bm: BattleManager):
 	battleManager = bm
 	
 	#Set up actor information
+	var i:=0
 	for playerActor in playerActors:
-		playerActor.initialize(battleManager, self)
+		playerActor.initialize(battleManager, self, i)
+		i+=1
 
 func createEnemyActor(enemyData: EnemyInfo) -> BattleActor_Enemy:
 	var enemyActorInst = enemyActor.instantiate()
