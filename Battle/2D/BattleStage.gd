@@ -27,10 +27,10 @@ func _ready():
 		playerSection.add_child(playerActorInst)
 		playerActors.append(playerActorInst)
 	
-	for enemyEntity in PlayerRoster.roster:
-		var playerActorInst = playerActor.instantiate()
-		playerSection.add_child(playerActorInst)
-		playerActors.append(playerActorInst)
+	#for enemyEntity in PlayerRoster.roster:
+		#var playerActorInst = playerActor.instantiate()
+		#playerSection.add_child(playerActorInst)
+		#playerActors.append(playerActorInst)
 
 func initialize(bm: BattleManager):
 	battleManager = bm

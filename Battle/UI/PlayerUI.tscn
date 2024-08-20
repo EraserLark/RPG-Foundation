@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7fouswjqgykh"]
+[gd_scene load_steps=19 format=3 uid="uid://c7fouswjqgykh"]
 
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_7o4ws"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_y242p"]
@@ -18,6 +18,44 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbj4b"]
 atlas = ExtResource("3_f02tf")
 region = Rect2(595, 170, 16, 16)
+
+[sub_resource type="Animation" id="Animation_gqoo2"]
+resource_name = "Player_Damaged"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, -10), Vector2(8, 0), Vector2(-6, 6), Vector2(4, 0), Vector2(-2, -2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sving"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kukrl"]
+_data = {
+"Player_Damaged": SubResource("Animation_gqoo2"),
+"RESET": SubResource("Animation_sving")
+}
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -46,8 +84,10 @@ script = ExtResource("4_m43u4")
 [node name="PlayerPanel" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
-offset_right = 288.0
-offset_bottom = 136.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 278.0
+offset_bottom = 126.0
 texture = ExtResource("5_jwq00")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 8
@@ -229,11 +269,15 @@ grow_vertical = 0
 volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kukrl")
+}
 
 [connection signal="gui_input" from="SelectionMenu" to="SelectionMenu" method="_on_gui_input"]
 [connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" method="_on_item_list_item_activated"]
 [connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" method="_on_item_list_item_activated"]
 [connection signal="button_down" from="PlayerPanel/PlayerMenu/ActionMenu/ReactButton" to="PlayerPanel/PlayerMenu/ActionMenu" method="_on_react_button_button_down"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="PlayerPanel/PlayerMenu/ActionMenu"]

@@ -18,12 +18,12 @@ var cam: Camera2D
 
 func initialize(bm: BattleManager, bs: BattleStage, num:int):
 	battleManager = bm
-	playerUI = bs.playerActors[num].playerUI
+	playerUI = bm.playerEntities[num].playerUI
 	cam = bs.camera
 
 func damageFeedback(dmgAmt: int):
 	#animPlayer.play("PlayerDamaged")
-	
+	playerUI.animPlayer.play("Player_Damaged")
 	var damageNumber:= damageNum.instantiate()
 	damageNumber.setLabel(dmgAmt)
 	add_child(damageNumber)
