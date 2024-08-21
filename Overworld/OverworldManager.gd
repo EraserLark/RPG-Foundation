@@ -2,8 +2,8 @@ extends Node
 class_name OverworldManager
 
 ##Children references
-@onready var world:= $World
-@onready var ui:= $CanvasLayer/OW_UI
+@onready var overworldWorld:= $World
+@onready var overworldUI:= $CanvasLayer/OW_UI
 @onready var musicPlayer:= $World/AudioStreamPlayer
 @onready var cutsceneManager:= $CutsceneManager
 #@onready var playerActor:= $World/CastList/OW_Player
@@ -20,10 +20,10 @@ func _ready():
 	#await get_tree().root.ready
 	
 	for playerInfo in PlayerRoster.roster:
-		playerInfo.entityUI = ui.playerUI
-		ui.playerMenu.playerInfo = playerInfo
+		playerInfo.entityUI = overworldUI.playerUI
+		overworldUI.playerMenu.playerInfo = playerInfo
 	
-	world.initialize(self)
-	ui.initialize(self)
+	overworldWorld.initialize(self)
+	overworldUI.initialize(self)
 	
 	print("Overworld Ready Finish")

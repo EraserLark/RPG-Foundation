@@ -41,5 +41,9 @@ func update(delta : float):
 	if Input.is_action_just_pressed("ui_cancel"):
 		player.openMenu()
 
+func resumeState():
+	#player.owManager.overworldUI.playerMenu.refreshMenu()
+	pass
+
 func exit():
 	pass

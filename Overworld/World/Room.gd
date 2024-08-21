@@ -31,7 +31,7 @@ func _ready():
 
 func initialize(om: OverworldManager):
 	owManager = om
-	world = owManager.world
+	world = owManager.overworldWorld
 	
 	bgMusicPlayer = world.music
 	cutsceneManager = owManager.cutsceneManager

@@ -20,7 +20,7 @@ func _ready():
 
 func initialize(om: OverworldManager):
 	owManager = om
-	DialogueSystem.updateOWVars(owManager.ui, self)	#Update before room. Actors use for spawn flags
+	DialogueSystem.updateOWVars(owManager.overworldUI, self)	#Update before room. Actors use for spawn flags
 	currentRoom.initialize(om)
 
 func pauseWorld():

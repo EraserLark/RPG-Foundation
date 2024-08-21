@@ -8,10 +8,14 @@ class_name PlayerInfo
 @export var items : Array[String]
 
 var playerNumber: int
+var dialogueManager:= DialogueManager.new()
+
+##BATTLE
 var playerEntity
+
+##OVERWORLD
 var playerActor: OW_Player
 var owPlayerState: Player_Active
-var dialogueManager:= DialogueManager.new()
 
 func _ready():
 	print("Stall")

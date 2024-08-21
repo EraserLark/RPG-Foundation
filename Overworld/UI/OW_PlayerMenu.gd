@@ -10,6 +10,7 @@ class_name PlayerPanel_World
 ##Parent References
 var owManager: OverworldManager
 #var player: OW_Player	#unused?
+var player: PlayerInfo
 
 ##Non export vars
 var playerInfo: PlayerInfo
@@ -33,8 +34,13 @@ func _ready():
 
 func initialize(om: OverworldManager):
 	owManager = om
+	player = PlayerRoster.roster[0]		#Change when multiplayer
+
+func refreshMenu():
+	initialMenu.setHP()
 
 func open():
+	refreshMenu()
 	self.visible = true
 	super()
 

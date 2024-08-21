@@ -15,7 +15,7 @@ var world
 @export var battleData: Array[EnemyInfo]
 
 func initialize(om: OverworldManager, rm: Room):
-	world = om.world
+	world = om.overworldWorld
 	player = rm.castList.find_child("OW_Player")
 
 func interactAction(interacter : OW_Player):

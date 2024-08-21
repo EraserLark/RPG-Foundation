@@ -66,7 +66,7 @@ func danceFinish():
 	faceDirection(Vector2(0,1))
 
 func openMenu():
-	var menuState = MenuState.new(StateStack, owManager.ui.playerMenu)
+	var menuState = MenuState.new(StateStack, owManager.overworldUI.playerMenu)
 	StateStack.addState(menuState)
 
 func castInteractRay():
