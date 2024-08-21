@@ -17,11 +17,19 @@ var currentSelection : int
 
 func _ready():
 	firstFocus = self
+	
+	get_viewport().connect("gui_focus_changed", onFocusChanged)
+
+func onFocusChanged(control):
+	if control != null:
+		print(str("Focus: ", control.name))
 
 func initialize(bm: BattleManager, pui: PlayerUI_Battle):
 	battleManager = bm
 	playerUI = pui
 	playerPanel = playerUI.playerPanel
+	
+	menuManager = playerPanel
 
 func OpenMenu():
 	super()

@@ -27,6 +27,10 @@ FlagManager="*res://Flags/FlagManager.gd"
 
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/arrin/GameDev/Godot/Recordings/RPG Foundation/Movie1.avi"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
