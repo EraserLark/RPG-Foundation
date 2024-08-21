@@ -22,7 +22,6 @@ func initialize(bm: BattleManager):
 	
 	localInfo.playerEntity = self
 	localInfo.entityUI = playerUI
-	#localInfo.playerUI = self.playerUI
 	playerActor.player = self
 	playerUI.player = self
 	
@@ -80,8 +79,8 @@ func entityDead():
 	battleManager.battleRoster.checkPlayersAlive()
 	super()
 
-func _on_animation_player_animation_finished(anim_name):
-	if(anim_name == "PlayerDamaged"):
-		emit_signal("reactionComplete")
-	elif(anim_name == "Death"):
-		entityDead()
+#func _on_animation_player_animation_finished(anim_name):
+	#if(anim_name == "PlayerDamaged"):
+		#emit_signal("reactionComplete")
+	#elif(anim_name == "Death"):
+		#entityDead()

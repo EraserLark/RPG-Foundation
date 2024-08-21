@@ -52,4 +52,7 @@ func setItems(value):
 	playerMenu.itemMenu.populateMenu(value)
 
 func _on_animation_player_animation_finished(anim_name):
-	player.emit_signal("reactionComplete")
+	if(anim_name == "PlayerDeath"):
+		player.entityDead()
+	else:
+		player.emit_signal("reactionComplete")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7fouswjqgykh"]
+[gd_scene load_steps=20 format=3 uid="uid://c7fouswjqgykh"]
 
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_7o4ws"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_y242p"]
@@ -50,9 +50,38 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerPanel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vndq1"]
+resource_name = "Death"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerPanel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(0.114897, 0.114897, 0.114897, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kukrl"]
 _data = {
+"Death": SubResource("Animation_vndq1"),
 "Player_Damaged": SubResource("Animation_gqoo2"),
 "RESET": SubResource("Animation_sving")
 }
@@ -86,8 +115,10 @@ script = ExtResource("4_m43u4")
 [node name="PlayerPanel" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
-offset_right = 288.0
-offset_bottom = 136.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 278.0
+offset_bottom = 126.0
 texture = ExtResource("5_jwq00")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 8
