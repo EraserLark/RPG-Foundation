@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://chlomctt2mqiy"]
+
+[ext_resource type="Script" path="res://Entity/Info/EnemyInfo.gd" id="1_xxcif"]
+[ext_resource type="Texture2D" uid="uid://pnpgc2hl2usw" path="res://Art/Enemy_CoalSprite.png" id="2_iilwx"]
+
+[resource]
+script = ExtResource("1_xxcif")
+xpReward = 3
+entityName = "Coal Sprite"
+hp = 3
+hpMax = 0
+atk = 3
+def = 1
+sprite = ExtResource("2_iilwx")
