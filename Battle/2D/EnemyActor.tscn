@@ -50,6 +50,34 @@ tracks/1/keys = {
 "values": [Vector2(5, 5), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_s0le0"]
+resource_name = "EnemyDamaged"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, -5), Vector2(4, 4), Vector2(-3, -3), Vector2(2, 2), Vector2(-1, -1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 0]
+}
+
 [sub_resource type="Animation" id="Animation_mx6p3"]
 resource_name = "EnterBattle"
 length = 0.5
@@ -130,41 +158,13 @@ tracks/3/keys = {
 "values": [Vector2(5, 5)]
 }
 
-[sub_resource type="Animation" id="Animation_s0le0"]
-resource_name = "SnowbroDamaged"
-length = 0.75
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-5, -5), Vector2(4, 4), Vector2(-3, -3), Vector2(2, 2), Vector2(-1, -1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86w5x"]
 _data = {
 "AttackPlayer": SubResource("Animation_yehte"),
 "Death": SubResource("Animation_gvntu"),
+"EnemyDamaged": SubResource("Animation_s0le0"),
 "EnterBattle": SubResource("Animation_mx6p3"),
-"RESET": SubResource("Animation_d5x3w"),
-"SnowbroDamaged": SubResource("Animation_s0le0")
+"RESET": SubResource("Animation_d5x3w")
 }
 
 [node name="EnemyActor" type="Node2D"]

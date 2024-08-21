@@ -16,7 +16,7 @@ func initialize(enemyData: EnemyInfo):
 	sprite.texture = enemyData.sprite
 
 func damageFeedback(dmgAmt : int):
-	animPlayer.play("SnowbroDamaged")
+	animPlayer.play("EnemyDamaged")
 	var damageNumber := damageNum.instantiate()
 	damageNumber.setLabel(dmgAmt)
 	add_child(damageNumber)

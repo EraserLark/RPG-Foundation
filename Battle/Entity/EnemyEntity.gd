@@ -50,7 +50,7 @@ func entityDead():
 	super()
 
 func _on_animation_player_animation_finished(anim_name):
-	if(anim_name == "SnowbroDamaged"):
+	if(anim_name == "EnemyDamaged"):
 		emit_signal("reactionComplete")
 	#elif(anim_name == "Death"):
 		#entityDead()
