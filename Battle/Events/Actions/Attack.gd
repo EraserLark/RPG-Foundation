@@ -5,8 +5,8 @@ class_name Attack
 var bonusDamage:= 0
 @export var specialCost:= 0
 
-func _init(eManager, battleManager, attackName:String, send:Entity, targ:Entity, targType, dmg:int, cost:int, mg:String):
-	super(eManager, send, targ, targType, battleManager)
+func _init(eManager, stageManager: StageManager, attackName:String, send:Entity, targ:Entity, targType, dmg:int, cost:int, mg:String):
+	super(eManager, send, targ, targType, stageManager)
 	eventName = attackName
 	self.sender = send
 	self.target = targ

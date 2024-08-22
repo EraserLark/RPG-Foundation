@@ -1,4 +1,4 @@
-extends Node
+extends StageManager
 class_name OverworldManager
 
 ##Children references

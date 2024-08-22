@@ -4,28 +4,50 @@ class_name Action
 var sender# : Entity
 var target# : Entity
 var targetOptions: Array
-var battleManager: BattleManager
-var actionMinigame
-
+var entityTargetLists: Array	#An array of entity arrays. 0 = Players, 1 = Enemies
+#var battleManager: BattleManager
+var stageManager: StageManager
+var actionMinigame	#Used in Attack class
 enum TargetTypes {PLAYER, ENEMY, ALL}
 var targetType: TargetTypes
 
-func _init(eManager, send, targ, targType, bm):
+func _init(eManager, send, targ, targType, stgmn: StageManager):
 	super(eManager)
 	sender = send
 	target = targ
 	targetType = targType
-	battleManager = bm
+	stageManager = stgmn
 
-func setBattleManager(bm: BattleManager):
-	battleManager = bm
+func setManager(manager: StageManager):
+	stageManager = manager
 
 func setupTargetOptions():
 	match targetType:
 		TargetTypes.PLAYER:
-			targetOptions = battleManager.playerEntities
+			if stageManager.playerEntities.is_empty():
+				printerr("No players to target")
+				return
+			else:
+				targetOptions = stageManager.playerEntities
 		TargetTypes.ENEMY:
-			targetOptions = battleManager.enemyEntities
+			if stageManager.enemyEntities.is_empty():
+				printerr("No enemies to target")
+				return
+			else:
+				targetOptions = stageManager.enemyEntities
 		TargetTypes.ALL:
-			targetOptions += battleManager.playerEntities
-			targetOptions += battleManager.enemyEntities
+			if stageManager.playerEntities.is_empty():
+				printerr("No players to target")
+				return
+			else:
+				targetOptions = stageManager.playerEntities
+		TargetTypes.ENEMY:
+			if stageManager.playerEntities.is_empty():
+				printerr("No players to target")
+				return
+			elif stageManager.enemyEntities.is_empty():
+				printerr("No enemies to target")
+				return
+			else:
+				targetOptions += stageManager.playerEntities
+				targetOptions += stageManager.enemyEntities

@@ -30,7 +30,7 @@ func initialize(bm: BattleManager):
 	var i:=0
 	for playerEntity in players:
 		playerEntity.actor = battleManager.battleStage.playerActors[i]
-		playerEntity.initialize(battleManager)
+		playerEntity.initialize(null, battleManager)
 		i+=1
 	
 	for enemyData in battleManager.enemyData:
@@ -42,7 +42,7 @@ func initialize(bm: BattleManager):
 		var enemyInstActor = battleManager.battleStage.createEnemyActor(enemyData)
 		enemyEntity.actor = enemyInstActor
 		#Initialize
-		enemyEntity.initialize(battleManager)
+		enemyEntity.initialize(null, battleManager)
 		#Add to lists
 		enemies.append(enemyEntity)
 

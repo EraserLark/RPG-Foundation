@@ -1,16 +1,16 @@
 extends Item
 class_name Item_Poison
 
-func _init(bm : BattleManager):
-	super(bm, "Poison Pudding")
-	var targets = bm.enemyEntities
-	targets += bm.playerEntities
-	itemAction = PoisoningAction.new(null, bm.playerEntities[0], null, Action.TargetTypes.ALL, bm)
+func _init():
+	super("Poison Pudding")
+	#var targets = bm.enemyEntities
+	#targets += bm.playerEntities
+	itemAction = PoisoningAction.new(null, null, null, Action.TargetTypes.ALL, null)
 
 class PoisoningAction:
 	extends Action
-	func _init(eManager, send, targ, targType, bm):
-		super(eManager, send, targ, targType, bm)
+	func _init(eManager, send, targ, targType, stgmn: StageManager):
+		super(eManager, send, targ, targType, stgmn)
 		eventName = "Poison Pudding"
 	func runEvent():
 		target.reactionComplete.connect(resumeEvent)

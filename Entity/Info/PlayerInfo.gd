@@ -26,8 +26,8 @@ func initialize():
 	attackList += [attack1, attack2, attack3]
 	
 	##Create items
-	var healItem = Item_Heal.new(null)
-	var poisonItem = Item_Poison.new(null)
+	var healItem = Item_Heal.new()
+	var poisonItem = Item_Poison.new()
 	itemList.append_array([healItem, poisonItem])
 	
 	##Create Misc
@@ -49,7 +49,7 @@ func levelUp():
 
 func setupAttacks(bm: BattleManager):
 	for attack in attackList:
-		attack.setBattleManager(bm)
+		attack.setManager(bm)
 	
 	#var attack1 = Attack.new(null, bm, "Basic Attack", null, null, Action.TargetTypes.ENEMY, 1, 0, "res://Battle/Minigames/_Other/TestMinigame.tscn")
 	#var attack2 = Attack.new(null, bm, "Fireball", null, null, Action.TargetTypes.ENEMY, 3, 0, "res://Battle/Minigames/MashMeter/MG_MashMeter.tscn")
@@ -59,14 +59,14 @@ func setupAttacks(bm: BattleManager):
 
 func setupItems(bm: BattleManager):
 	for item in itemList:
-		item.setBattleManager(bm)
+		item.itemAction.setManager(bm)
 	#var healItem = Item_Heal.new(bm)
 	#var poisonItem = Item_Poison.new(bm)
 	#itemList.append_array([healItem, poisonItem])
 
 func setupMisc(bm: BattleManager):
 	for action in miscList:
-		action.setBattleManager(bm)
+		action.setManager(bm)
 	#var defend = Defend.new(null, null, playerEntity, Action.TargetTypes.PLAYER, bm)
 	#miscList.append(defend)
 
