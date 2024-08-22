@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_l7cv6")
 xp = 0
-nextLevelCost = 10
+nextLevelCost = 1
 level = 1
 money = 0
 items = Array[String]([])

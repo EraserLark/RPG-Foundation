@@ -9,14 +9,14 @@ func _init(eManager, bm):
 	battleManager = bm
 
 func runEvent():
-	battleManager.playerEntities[0].localInfo.levelUp()
+	battleManager.playerEntities[0].entityInfo.levelUp()
 	
 	battleManager.cutsceneManager.play("LevelUp")
 	
-	var message: Array[String] = ["[rainbow]LEVEL UP![/rainbow]", str("You are now Level ", battleManager.playerEntities[0].localInfo.level)]
+	var message: Array[String] = ["[rainbow]LEVEL UP![/rainbow]", str("You are now Level ", battleManager.playerEntities[0].entityInfo.level)]
 	
-	battleManager.playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
-	Textbox_State.createEvent(levelUpEQ, StateStack, message, battleManager.playerPanel)
+	battleManager.playerEntities[0].playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
+	Textbox_State.createEvent(levelUpEQ, StateStack, message, battleManager.playerEntities[0].playerPanel)
 	
 	levelUpEQ.popQueue()
 
