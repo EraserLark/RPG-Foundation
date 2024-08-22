@@ -17,12 +17,15 @@ var owManager: OverworldManager
 ##Export vars
 @export var speed:= 500
 @export var playerInfo: PlayerInfo
+@export var stepCount: int
+@export var encounterThreshold: int
 
 ##Non export vars
 var currentDir: Vector2
 var dirChangeCount:= 0
 var rayLength := 32
 
+##Initialization
 func _ready():
 	print("Player Ready Start")
 	print("Player Ready Finish")
@@ -36,10 +39,17 @@ func getPlayerNum():
 func setPlayerInfo(pi: PlayerInfo):
 	playerInfo = pi
 
+##Movement
 func moveDirection(dir: Vector2):
 	##Play walk animation?
 	self.velocity = dir.normalized() * speed;
 	move_and_slide()
+	stepCounter()
+
+func stepCounter():
+	stepCount += 1
+	if(stepCount >= encounterThreshold):
+		pass
 
 func faceDirection(dir: Vector2) -> bool:
 	interactRay.target_position = dir * rayLength;
@@ -65,6 +75,7 @@ func danceFinish():
 	StateStack.removeState()
 	faceDirection(Vector2(0,1))
 
+##Interaction
 func openMenu():
 	var menuState = MenuState.new(StateStack, owManager.overworldUI.playerMenu)
 	StateStack.addState(menuState)

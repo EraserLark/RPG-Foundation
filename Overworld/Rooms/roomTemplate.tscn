@@ -9,6 +9,7 @@
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_8hapy")
+enemyRoster = null
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -26,6 +27,7 @@ script = ExtResource("2_uxnsk")
 metadata/_edit_lock_ = true
 
 [node name="Interactables" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Passages" type="Node2D" parent="."]
 script = ExtResource("3_hbvgs")

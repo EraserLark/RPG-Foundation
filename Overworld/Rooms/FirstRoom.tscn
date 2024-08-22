@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dp5gtq4i4l507"]
+[gd_scene load_steps=18 format=4 uid="uid://dp5gtq4i4l507"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_sgwbx"]
 [ext_resource type="TileSet" uid="uid://2cpjct5qw5oo" path="res://Overworld/Art/SnowTileset.tres" id="2_t2xpc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://5cobp8f1mc3x" path="res://Entity/NPC/RedRobot.tres" id="8_p2dmw"]
 [ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/Snowbro_EnemyData.tres" id="8_u5pc7"]
 [ext_resource type="Resource" uid="uid://chlomctt2mqiy" path="res://Entity/Info/CoalSprite_EnemyData.tres" id="9_22w46"]
+[ext_resource type="PackedScene" uid="uid://b5b2rcrnu7ck5" path="res://Overworld/Interactibles/SavePoint.tscn" id="12_domw0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wq5aw"]
 radius = 16.0
@@ -37,6 +38,7 @@ source_geometry_group_name = &"navObstacles"
 
 [node name="FirstRoom" instance=ExtResource("1_sgwbx")]
 roomData = ExtResource("2_wi5o4")
+enemyRoster = Array[ExtResource("7_8xbgv")]([ExtResource("8_u5pc7"), ExtResource("9_22w46")])
 
 [node name="Camera2D" parent="." index="0"]
 metadata/_edit_lock_ = true
@@ -100,6 +102,9 @@ max_speed = 100.0
 self_modulate = Color(1, 0, 0, 1)
 position = Vector2(-352, -280)
 npcResource = ExtResource("8_p2dmw")
+
+[node name="SavePoint" parent="Interactables" index="0" instance=ExtResource("12_domw0")]
+position = Vector2(960, 88)
 
 [node name="Passage_0" parent="Passages" index="0" instance=ExtResource("6_x2mqx")]
 position = Vector2(32, -384)

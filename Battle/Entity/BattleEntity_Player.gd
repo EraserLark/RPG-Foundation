@@ -36,7 +36,7 @@ func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	
 	playerPanel.stats.changeHealth(entityInfo.hp)
 	playerPanel.playerMenu.attackMenu.initMenu(entityInfo.attackList)
-	playerPanel.playerMenu.itemMenu.initMenu(entityInfo.itemList)
+	playerPanel.playerMenu.itemMenu.initMenu(entityInfo)
 	playerPanel.playerMenu.miscMenu.initMenu(entityInfo.miscList)
 	
 func attackChosen(attackNum: int):

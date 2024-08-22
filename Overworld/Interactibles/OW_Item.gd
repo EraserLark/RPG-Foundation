@@ -2,7 +2,7 @@ extends Node2D
 class_name OW_Item
 
 @onready var owManager:= $"../../.."
-var item:= Item_Heal.new(null)
+var item:= Item_Heal.new()
 
 func interactAction(interacter : OW_Player):
 	interacter.addItemToInv(item)

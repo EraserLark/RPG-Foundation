@@ -2,6 +2,9 @@
 extends Node2D
 class_name Room
 
+##Scene path
+var battleScenePath = "res://Battle/battle.tscn"
+
 ##Children references
 @onready var tileLayers:= $TileLayers
 @onready var castList:= $CastList
@@ -18,6 +21,7 @@ var cutsceneManager
 
 ##Export vars
 @export var roomData: RoomData
+@export var enemyRoster: Array[EnemyInfo]
 
 ##Non export vars
 var playerSpawnPort: int
@@ -63,6 +67,18 @@ func populateGlobalVars():
 			roomData.cutsceneMarks.append(child.name)
 		
 		print(str("Room flag list: ", roomFlagList))
+
+func startBattle(battleData: Array[EnemyInfo] = []):
+	world.pauseWorld()
+	
+	##If no preset enemies, choose randomly from catalog
+	if(battleData.is_empty()):
+		var randInt = randi_range(1, 3)
+		for i in randInt:
+			battleData.append(enemyRoster.pick_random())
+	
+	var inst = BattleManager.initBattle(battleData)
+	get_node("/root").add_child(inst)
 
 func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)
