@@ -71,11 +71,12 @@ func checkRoster():
 	pass
 
 func entityDead():
-	#battleManager.battleRoster.enemies.erase(self)
-	battleManager.actionPhase.actionEQ.queue.erase(entityInfo.selectedAction)
+	eraseSelectedAction()
 	actor.queue_free()
 	for effect in statusEffects:
 		effect.endStatus()
-	#battleManager.battleRoster.checkEnemiesAlive()
 	emit_signal("reactionComplete")
 	queue_free()
+
+func eraseSelectedAction():
+	battleManager.actionPhase.actionEQ.queue.erase(entityInfo.selectedAction)

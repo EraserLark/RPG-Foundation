@@ -52,6 +52,9 @@ func entityDead():
 	battleManager.xpBank += localInfo.xpReward
 	super()
 
+func eraseSelectedAction():
+	battleManager.actionPhase.actionEQ.queue.erase(localInfo.selectedAction)
+
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "EnemyDamaged"):
 		emit_signal("reactionComplete")
