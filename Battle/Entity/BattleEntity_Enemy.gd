@@ -13,18 +13,22 @@ signal entered
 func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	super(om, bm)
 	
+	#:P This is gross
 	localInfo = entityInfo.duplicate_deep_workaround()
+	entityInfo = localInfo
+	###### EntityInfo is the same as LocalInfo (a duplicate of og EntityInfo resource)
+	##This is done to facilitate formatting in parent classes
 	
 	enemyActor = actor
 	
-	var enemyAtk = localInfo.atk
+	var enemyAtk = entityInfo.atk
 	var enemyAction1 = Attack.new(null, null, "Punch", self, null, Action.TargetTypes.PLAYER, enemyAtk, 0, "")
 	var enemyAction2 = Attack.new(null, null, "Bingo", self, null, Action.TargetTypes.PLAYER, enemyAtk + 2, 0, "")
 	
 	enemyAction1.targetType = Action.TargetTypes.PLAYER
 	enemyAction2.targetType = Action.TargetTypes.PLAYER
 	
-	localInfo.attackList.append_array([enemyAction1, enemyAction2])
+	entityInfo.attackList.append_array([enemyAction1, enemyAction2])
 	
 	if(enemyActor == null):
 		enemyActor = enemyActorScene.instantiate()
@@ -35,8 +39,8 @@ func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	enemyActor.sprite.visible = false
 
 func chooseAttack():
-	var chosenAction = localInfo.attackList.pick_random()
-	localInfo.selectedAction = chosenAction
+	var chosenAction = entityInfo.attackList.pick_random()
+	entityInfo.selectedAction = chosenAction
 	return chosenAction
 
 func attack():
@@ -49,11 +53,11 @@ func checkRoster():
 func entityDead():
 	battleManager.battleRoster.enemies.erase(self)
 	battleManager.battleRoster.checkEnemiesAlive()
-	battleManager.xpBank += localInfo.xpReward
+	battleManager.xpBank += entityInfo.xpReward
 	super()
 
 func eraseSelectedAction():
-	battleManager.actionPhase.actionEQ.queue.erase(localInfo.selectedAction)
+	battleManager.actionPhase.actionEQ.queue.erase(entityInfo.selectedAction)
 
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "EnemyDamaged"):
