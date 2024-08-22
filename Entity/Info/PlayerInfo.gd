@@ -47,28 +47,17 @@ func levelUp():
 	xp -= nextLevelCost
 	nextLevelCost += 5
 
-func setupAttacks(bm: BattleManager):
+func setupAttacks(stgmn: StageManager):
 	for attack in attackList:
-		attack.setManager(bm)
-	
-	#var attack1 = Attack.new(null, bm, "Basic Attack", null, null, Action.TargetTypes.ENEMY, 1, 0, "res://Battle/Minigames/_Other/TestMinigame.tscn")
-	#var attack2 = Attack.new(null, bm, "Fireball", null, null, Action.TargetTypes.ENEMY, 3, 0, "res://Battle/Minigames/MashMeter/MG_MashMeter.tscn")
-	#var attack3 = Attack.new(null, bm, "Jump Kick", null, null, Action.TargetTypes.ENEMY, 2, 0, "res://Battle/Minigames/Platformer/MG_OneScreenPlatformer.tscn")
-	#
-	#actionList += [attack1, attack2, attack3]
+		attack.setManager(stgmn)
 
-func setupItems(bm: BattleManager):
+func setupItems(stgmn: StageManager):
 	for item in itemList:
-		item.itemAction.setManager(bm)
-	#var healItem = Item_Heal.new(bm)
-	#var poisonItem = Item_Poison.new(bm)
-	#itemList.append_array([healItem, poisonItem])
+		item.itemAction.setManager(stgmn)
 
-func setupMisc(bm: BattleManager):
+func setupMisc(stgmn: StageManager):
 	for action in miscList:
-		action.setManager(bm)
-	#var defend = Defend.new(null, null, playerEntity, Action.TargetTypes.PLAYER, bm)
-	#miscList.append(defend)
+		action.setManager(stgmn)
 
 ##OVERWORLD
 func setActor(newActor: OW_Player):

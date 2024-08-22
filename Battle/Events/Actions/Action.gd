@@ -39,12 +39,6 @@ func setupTargetOptions():
 			if stageManager.playerEntities.is_empty():
 				printerr("No players to target")
 				return
-			else:
-				targetOptions = stageManager.playerEntities
-		TargetTypes.ENEMY:
-			if stageManager.playerEntities.is_empty():
-				printerr("No players to target")
-				return
 			elif stageManager.enemyEntities.is_empty():
 				printerr("No enemies to target")
 				return
