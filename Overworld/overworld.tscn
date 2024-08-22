@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=21 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="Script" path="res://Overworld/UI/OW_UI.gd" id="1_4a7eq"]
 [ext_resource type="Script" path="res://Overworld/OverworldManager.gd" id="1_flynd"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dp5gtq4i4l507" path="res://Overworld/Rooms/FirstRoom.tscn" id="11_64vjf"]
 [ext_resource type="AudioStream" uid="uid://d4gp1tjc4uixo" path="res://Audio/Tundra.mp3" id="12_exalw"]
 [ext_resource type="Script" path="res://Cutscenes/CutsceneManager.gd" id="23_dssid"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7uio"]
+bg_color = Color(0.328096, 0.329865, 0.398776, 1)
 
 [sub_resource type="Animation" id="Animation_cj8yp"]
 resource_name = "FadeIn"
@@ -221,6 +224,7 @@ script = ExtResource("8_vv1d2")
 layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v7uio")
 
 [node name="InventoryMenu2" type="ItemList" parent="CanvasLayer/OW_UI/PlayerUI/PlayerMenu/MarginContainer/Submenus"]
 visible = false

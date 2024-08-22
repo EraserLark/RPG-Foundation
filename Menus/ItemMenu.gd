@@ -2,10 +2,16 @@ extends Menu
 class_name ItemMenu
 
 @onready var itemList:= $ItemList
-var itemInv: Array[Item]
+#var itemInv: Array[Item]
+var playerInfo: PlayerInfo
 
-func initMenu(items: Array[Item]):
-	populateMenu(items)
+func initMenu(pi: PlayerInfo):
+	playerInfo = pi
+	populateMenu(playerInfo.itemList)
+
+func OpenMenu():
+	populateMenu(playerInfo.itemList)
+	super()
 
 func grabFirstFocus():
 	itemList.grab_focus()
@@ -17,7 +23,7 @@ func _on_item_list_item_activated(index):
 func populateMenu(items: Array[Item]):
 	itemList.clear()
 	
-	itemInv = items
+	#itemInv = items
 	
-	for item in itemInv:
+	for item in items:
 		itemList.add_item(item.itemAction.eventName)
