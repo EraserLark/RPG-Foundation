@@ -9,7 +9,7 @@ class_name EntityInfo
 @export var sprite: Texture
 
 #var owner
-var actionList: Array[Action]
+var attackList: Array[Action]
 var itemList: Array[Item] : set = setItems
 var miscList: Array[Action]
 var selectedAction: Action
@@ -23,6 +23,9 @@ var entityUI: EntityUI
 
 signal damageTaken(dmg)
 signal healthRemaining(health)
+
+func initialize():
+	pass
 
 func setHP(value):
 	hp = value
@@ -53,8 +56,8 @@ func addHealth(amt : int):
 
 func duplicate_deep_workaround() -> EntityInfo:
 	var dup: EntityInfo = duplicate(true) as EntityInfo
-	for i: int in dup.actionList.size():
-		dup.actionList[i] = dup.actionList[i].duplicate(true)
+	for i: int in dup.attackList.size():
+		dup.attackList[i] = dup.attackList[i].duplicate(true)
 	for i: int in dup.itemList.size():
 		dup.itemList[i] = dup.itemList[i].duplicate(true)
 	for i: int in dup.miscList.size():

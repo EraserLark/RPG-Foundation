@@ -5,14 +5,14 @@ class_name BattleRoster
 var battleManager
 
 ##Non export vars
-@onready var enemies: Array[EnemyEntity]
-@onready var players: Array[PlayerEntity]
+@onready var enemies: Array[BattleEntity_Enemy]
+@onready var players: Array[BattleEntity_Player]
 
 func _ready():
 	#Set up empty entity nodes for each player (Battle Stage needs this to set up actors before coming back here and initializing roster)
 	var playersNode = get_node("Players")
 	for player in PlayerRoster.roster:
-		var playerEntity = PlayerEntity.new()
+		var playerEntity = BattleEntity_Player.new()
 		playerEntity.entityInfo = player
 		playerEntity.playerNumber = player.playerNumber
 		playersNode.add_child(playerEntity)
@@ -35,7 +35,7 @@ func initialize(bm: BattleManager):
 	
 	for enemyData in battleManager.enemyData:
 		#Create entity node, add to tree
-		var enemyEntity = EnemyEntity.new()
+		var enemyEntity = BattleEntity_Enemy.new()
 		enemiesNode.add_child(enemyEntity)
 		enemyEntity.entityInfo = enemyData
 		#Create and assign enemy actor

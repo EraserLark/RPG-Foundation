@@ -1,20 +1,22 @@
-extends Node
-class_name Entity
+extends Entity
+class_name BattleEntity
+
+var entityActor: BattleActor
+var entityUI: EntityUI
 
 ##Outside references
 var battleManager: BattleManager
 var actor: BattleActor
-@export var entityInfo: Resource
 
 ##Inside references
 var statusEffects: Array[StatusEffect]
-var localInfo: EntityInfo
+#var localInfo: EntityInfo
 
-signal reactionComplete
-
-func initialize(bm: BattleManager):
+func initialize(om: OverworldManager = null, bm: BattleManager = null):
+	if(bm == null):
+		printerr("battleManager not passed")
+		return
 	battleManager = bm
-	localInfo = entityInfo.duplicate_deep_workaround()
 
 func getClassInstance():
 	return self
@@ -34,18 +36,18 @@ func applyStatus(statusEffect, statusRoster):
 	battleManager.actionPhase.unresolvedStatuses.append(newStatus)
 
 func boostDefense(amt: int):
-	localInfo.def += amt
+	super(amt)
 
 func decreaseDefense(amt: int):
-	localInfo.def -= amt
+	super(amt)
 
 func revertStatus():
-	localInfo.def -= 1
+	super()
 
 func gainHealth(amt: int):
-	localInfo.addHealth(amt)
+	entityInfo.addHealth(amt)
 	
-	var remainingHealth = localInfo.hp
+	var remainingHealth = entityInfo.hp
 	
 	emit_signal("reactionComplete")
 
@@ -53,12 +55,12 @@ func takeDamage(dmg: int, pierce: bool):
 	var trueDmg = dmg
 	
 	if(!pierce):
-		trueDmg = localInfo.calcDamage(dmg)
+		trueDmg = entityInfo.calcDamage(dmg)
 	
-	localInfo.takeDamage(trueDmg)
+	entityInfo.takeDamage(trueDmg)
 	actor.damageFeedback(trueDmg)
 	
-	var remainingHealth = localInfo.hp
+	var remainingHealth = entityInfo.hp
 	#updateUI(remainingHealth)
 	
 	if(remainingHealth <= 0):
@@ -70,7 +72,7 @@ func checkRoster():
 
 func entityDead():
 	#battleManager.battleRoster.enemies.erase(self)
-	battleManager.actionPhase.actionEQ.queue.erase(localInfo.selectedAction)
+	battleManager.actionPhase.actionEQ.queue.erase(entityInfo.selectedAction)
 	actor.queue_free()
 	for effect in statusEffects:
 		effect.endStatus()

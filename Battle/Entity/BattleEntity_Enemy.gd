@@ -1,16 +1,19 @@
-extends Entity
-class_name EnemyEntity
+extends BattleEntity
+class_name BattleEntity_Enemy
 
 ##Preload vars
 var enemyActorScene = preload("res://Battle/2D/EnemyActor.tscn")
 
 ##Non export var
+var localInfo: EnemyInfo
 var enemyActor: BattleActor_Enemy
 
 signal entered
 
-func initialize(bm: BattleManager):
-	super(bm)
+func initialize(om: OverworldManager = null, bm: BattleManager = null):
+	super(om, bm)
+	
+	localInfo = entityInfo.duplicate_deep_workaround()
 	
 	enemyActor = actor
 	
@@ -21,7 +24,7 @@ func initialize(bm: BattleManager):
 	enemyAction1.targetType = Action.TargetTypes.PLAYER
 	enemyAction2.targetType = Action.TargetTypes.PLAYER
 	
-	localInfo.actionList.append_array([enemyAction1, enemyAction2])
+	localInfo.attackList.append_array([enemyAction1, enemyAction2])
 	
 	if(enemyActor == null):
 		enemyActor = enemyActorScene.instantiate()
@@ -32,7 +35,7 @@ func initialize(bm: BattleManager):
 	enemyActor.sprite.visible = false
 
 func chooseAttack():
-	var chosenAction = localInfo.actionList.pick_random()
+	var chosenAction = localInfo.attackList.pick_random()
 	localInfo.selectedAction = chosenAction
 	return chosenAction
 

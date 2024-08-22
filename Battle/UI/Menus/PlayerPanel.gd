@@ -14,7 +14,7 @@ var battleManager: BattleManager
 var playerUI: PlayerUI_Battle
 var selectionMenu: BattleSelectionMenu
 var playerPointer: Cursor
-var player: PlayerEntity
+var player: BattleEntity_Player
 
 ##Inside vars
 var currentSelectedAction
@@ -26,14 +26,14 @@ func _ready():
 	audioPlayer = $AudioStreamPlayer
 	panelAnchors = $PanelAnchors.get_children()
 
-func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
+func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: BattleEntity_Player):
 	battleManager = bm
 	playerUI = pui
 	selectionMenu = playerUI.selectionMenu
 	playerPointer = selectionMenu.playerPointer
 	player = pe
 	
-	stats.initialize(player.localInfo)
+	stats.initialize(player.entityInfo)
 	playerMenu.initialize(self)
 	
 	#stats.setInitialHealth()

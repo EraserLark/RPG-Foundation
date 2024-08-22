@@ -23,7 +23,7 @@ func _init(battlePM, bm):
 	actionEQ = BattleActionQueue.new(battleManager, self)
 
 func runPhase():
-	var playerAction = player.localInfo.selectedAction
+	var playerAction = player.entityInfo.selectedAction
 	if(playerAction.actionMinigame != null):
 		var minigameEvent = CreateMinigameEvent.new(actionEQ, battleManager, playerAction.actionMinigame)
 		actionEQ.addEvent(minigameEvent)

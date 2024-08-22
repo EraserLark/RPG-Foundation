@@ -29,7 +29,7 @@ func physicsUpdate(_delta : float):
 
 func resumeState():
 	#Give attack boost to the attack the player selected
-	battleManager.playerEntities[0].localInfo.selectedAction.bonusDamage = atkBoost
+	battleManager.playerEntities[0].entityInfo.selectedAction.bonusDamage = atkBoost
 	exit()
 
 func exit():

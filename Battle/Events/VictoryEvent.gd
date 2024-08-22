@@ -10,7 +10,7 @@ func _init(eManager, bm):
 	battleManager = bm
 
 func runEvent():
-	var playerInfo = battleManager.playerEntities[0].localInfo
+	var playerInfo = battleManager.playerEntities[0].entityInfo
 	playerInfo.xp += battleManager.xpBank
 	
 	var message : Array[String] = [str("You win! Gained ", battleManager.xpBank, "xp!")]

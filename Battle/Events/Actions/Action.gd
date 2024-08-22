@@ -3,18 +3,21 @@ class_name Action
 
 var sender# : Entity
 var target# : Entity
-var targetOptions : Array
-var battleManager : BattleManager
+var targetOptions: Array
+var battleManager: BattleManager
 var actionMinigame
 
 enum TargetTypes {PLAYER, ENEMY, ALL}
-var targetType : TargetTypes
+var targetType: TargetTypes
 
 func _init(eManager, send, targ, targType, bm):
 	super(eManager)
 	sender = send
 	target = targ
 	targetType = targType
+	battleManager = bm
+
+func setBattleManager(bm: BattleManager):
 	battleManager = bm
 
 func setupTargetOptions():

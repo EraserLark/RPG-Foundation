@@ -1,9 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=19 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/BattleRoster.gd" id="2_l87y1"]
-[ext_resource type="Script" path="res://Battle/Entity/EnemyEntity.gd" id="4_6xbfu"]
-[ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/Snowbro_EnemyData.tres" id="4_gehmf"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerAnchors.gd" id="11_errmb"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
@@ -191,14 +189,6 @@ script = ExtResource("1_70l2y")
 script = ExtResource("2_l87y1")
 
 [node name="Enemies" type="Node" parent="BattleRoster"]
-
-[node name="EnemyEntity" type="Node" parent="BattleRoster/Enemies"]
-script = ExtResource("4_6xbfu")
-entityInfo = ExtResource("4_gehmf")
-
-[node name="EnemyEntity2" type="Node" parent="BattleRoster/Enemies"]
-script = ExtResource("4_6xbfu")
-entityInfo = ExtResource("4_gehmf")
 
 [node name="Players" type="Node" parent="BattleRoster"]
 

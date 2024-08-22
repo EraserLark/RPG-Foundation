@@ -1,7 +1,7 @@
 extends Event
 class_name EnemyEnter
 
-var enemies : Array[EnemyEntity]
+var enemies : Array[BattleEntity_Enemy]
 var entered : int
 
 func _init(eManager, e):

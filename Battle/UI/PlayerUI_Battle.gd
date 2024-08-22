@@ -11,7 +11,7 @@ class_name PlayerUI_Battle
 ##Outside references
 var battleManager: BattleManager
 var battleUI: Control
-var player: PlayerEntity	#Unused?
+var player: BattleEntity_Player
 var currentStageAnchor: Control
 
 ##Inside vars

@@ -1,5 +1,5 @@
-extends Entity
-class_name PlayerEntity
+extends BattleEntity
+class_name BattleEntity_Player
 
 ##Outside references
 var playerUI: PlayerUI_Battle
@@ -12,51 +12,51 @@ var playerActor: BattleActor_Player
 ##Signals
 signal playerDied
 
-func initialize(bm: BattleManager):
-	super(bm)
+func initialize(om: OverworldManager = null, bm: BattleManager = null):
+	super(om, bm)
 	
 	actor = bm.battleStage.playerActors[playerNumber]
 	playerActor = actor
 	playerUI = bm.battleUI.playerUIRoster[playerNumber]
 	playerPanel = playerUI.playerPanel
 	
-	localInfo.playerEntity = self
-	localInfo.entityUI = playerUI
+	entityInfo.playerEntity = self
+	entityInfo.entityUI = playerUI
 	playerActor.player = self
 	playerUI.player = self
 	
-	if(localInfo.actionList.is_empty()):
-		localInfo.setupAttacks(battleManager)
+	#if(entityInfo.attackList.is_empty()):
+	entityInfo.setupAttacks(battleManager)
 	
-	if(localInfo.itemList.is_empty()):
-		localInfo.setupItems(battleManager)
+	#if(entityInfo.itemList.is_empty()):
+	entityInfo.setupItems(battleManager)
 	
-	if(localInfo.miscList.is_empty()):
-		localInfo.setupMisc(battleManager)
+	#if(entityInfo.miscList.is_empty()):
+	entityInfo.setupMisc(battleManager)
 	
-	playerPanel.stats.changeHealth(localInfo.hp)
-	playerPanel.playerMenu.attackMenu.initMenu(localInfo.actionList)
-	playerPanel.playerMenu.itemMenu.initMenu(localInfo.itemList)
-	playerPanel.playerMenu.miscMenu.initMenu(localInfo.miscList)
+	playerPanel.stats.changeHealth(entityInfo.hp)
+	playerPanel.playerMenu.attackMenu.initMenu(entityInfo.attackList)
+	playerPanel.playerMenu.itemMenu.initMenu(entityInfo.itemList)
+	playerPanel.playerMenu.miscMenu.initMenu(entityInfo.miscList)
 	
 func attackChosen(attackNum: int):
-	localInfo.selectedAction = localInfo.actionList[attackNum]
-	return localInfo.selectedAction
+	entityInfo.selectedAction = entityInfo.attackList[attackNum]
+	return entityInfo.selectedAction
 
 func actionChosen(actionNum: int):
-	localInfo.selectedAction = localInfo.miscList[actionNum]
-	return localInfo.selectedAction
+	entityInfo.selectedAction = entityInfo.miscList[actionNum]
+	return entityInfo.selectedAction
 
 func itemChosen(itemNum: int):
-	var item = localInfo.itemList[itemNum]
-	localInfo.selectedAction = item.itemAction
-	return localInfo.selectedAction
+	var item = entityInfo.itemList[itemNum]
+	entityInfo.selectedAction = item.itemAction
+	return entityInfo.selectedAction
 
 func itemDiscarded(itemNum: int):
-	localInfo.itemList = Helper.removeIndex(localInfo.itemList, itemNum)
+	entityInfo.itemList = Helper.removeIndex(entityInfo.itemList, itemNum)
 	
 	#Same as below, but ensures setter in array is called
-	#localInfo.itemList.remove_at(itemNum)
+	#entityInfo.itemList.remove_at(itemNum)
 
 func attack():
 	pass

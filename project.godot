@@ -23,6 +23,10 @@ DialogueSystem="*res://Dialogue/DialogueSystem.tscn"
 NPC_Database="*res://NPC_Database.gd"
 FlagManager="*res://Flags/FlagManager.gd"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [display]
 
 window/stretch/mode="viewport"
