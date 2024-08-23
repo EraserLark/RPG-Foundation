@@ -34,6 +34,8 @@ func _ready():
 func initialize(om: OverworldManager, rm: Room):
 	owManager = om
 	currentRoom = rm
+	
+	resetEncounterThreshold()
 
 func getPlayerNum():
 	return playerInfo.playerNumber
@@ -53,9 +55,16 @@ func stepCounter():
 	stepCount += 1
 	print(str("Steps: ", stepCount))
 	if(stepCount >= encounterThreshold):
+		stepCount = 0
+		resetEncounterThreshold()
+		
 		var enterBattleState = Player_EnterBattle.new(StateStack)
 		StateStack.addState(enterBattleState, {"Room": currentRoom})
 		#currentRoom.startBattle()
+
+func resetEncounterThreshold():
+	encounterThreshold = randi_range(1500, 3000)
+	print(str("Encounter Threshold: ", encounterThreshold))
 
 func faceDirection(dir: Vector2) -> bool:
 	interactRay.target_position = dir * rayLength;
