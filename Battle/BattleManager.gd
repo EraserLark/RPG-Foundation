@@ -7,7 +7,7 @@ const battleScene: PackedScene = preload("res://Battle/battle.tscn")
 #BattleManager
 @export var enemyData: Array[EnemyInfo]
 @onready var battleRoster:= $BattleRoster
-#var playerEntities: Array[BattleEntity_Player]
+#var playerEntities: Array[Batt leEntity_Player]
 #var enemyEntities: Array[BattleEntity_Enemy]
 var turnCount:= 0
 var xpBank:= 0

@@ -1,4 +1,4 @@
-extends Node
+extends EntityRoster
 class_name BattleRoster
 
 ##Parent references
@@ -6,32 +6,25 @@ var battleManager
 
 ##Non export vars
 @onready var enemies: Array[BattleEntity_Enemy]
-@onready var players: Array[BattleEntity_Player]
 
 func _ready():
-	#Set up empty entity nodes for each player (Battle Stage needs this to set up actors before coming back here and initializing roster)
-	var playersNode = get_node("Players")
-	for player in PlayerRoster.roster:
-		var playerEntity = BattleEntity_Player.new()
-		playerEntity.entityInfo = player
-		playerEntity.playerNumber = player.playerNumber
-		playersNode.add_child(playerEntity)
-		players.append(playerEntity)
+	super()
 
-func initialize(bm: BattleManager):
-	battleManager = bm
+func createEntity(playerInfo: PlayerInfo, playersNode):
+	var playerEntity = BattleEntity_Player.new()
+	playerEntity.entityInfo = playerInfo
+	playerEntity.playerNumber = playerInfo.playerNumber
+	playersNode.add_child(playerEntity)
+	players.append(playerEntity)
+
+func initialize(stgmn: StageManager):
+	battleManager = stgmn
 	
-	var enemiesNode = get_node("Enemies")
-	#
-	#for enemyNode in enemyNodes:
-		#enemies.append(enemyNode.getClassInstance())
+	var enemiesNode = Node.new()
+	enemiesNode.name = "Enemies"
+	self.add_child(enemiesNode)
 	
-	#Set up info within each player from other systems
-	var i:=0
-	for playerEntity in players:
-		playerEntity.actor = battleManager.battleStage.playerActors[i]
-		playerEntity.initialize(null, battleManager)
-		i+=1
+	super(battleManager)	#assign actors, initialize entities
 	
 	for enemyData in battleManager.enemyData:
 		#Create entity node, add to tree
@@ -45,6 +38,10 @@ func initialize(bm: BattleManager):
 		enemyEntity.initialize(null, battleManager)
 		#Add to lists
 		enemies.append(enemyEntity)
+
+func initializeEntity(playerEntity: Entity, number: int):
+	playerEntity.actor = battleManager.battleStage.playerActors[number]
+	playerEntity.initialize(null, battleManager)
 
 func checkEnemiesAlive():
 	if(enemies.size() <= 0):
