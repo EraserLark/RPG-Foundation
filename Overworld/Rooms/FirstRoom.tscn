@@ -119,5 +119,8 @@ curve = SubResource("Curve2D_cmj37")
 [node name="NavigationRegion2D" parent="NavigationMaps" index="0"]
 navigation_polygon = SubResource("NavigationPolygon_w8lc8")
 
+[node name="ColorRect" parent="CanvasLayer" index="0"]
+visible = false
+
 [editable path="CastList/OW_EnemyNPC"]
 [editable path="Passages/Passage_0"]

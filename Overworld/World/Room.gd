@@ -12,6 +12,7 @@ var battleScenePath = "res://Battle/battle.tscn"
 @onready var camera:= $Camera2D
 @onready var cutsceneMarks:= $CutsceneMarks
 @onready var navigationMaps:= $NavigationMaps
+@onready var animPlayer:= $AnimationPlayer
 
 ##Parent references
 var world

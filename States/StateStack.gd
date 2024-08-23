@@ -7,14 +7,14 @@ func _ready():
 	var baseState = State.new(self)
 	addState(baseState)
 
-func addState(s: State):
+func addState(s: State, _msg:={}):
 	stateStack.push_front(s)
 	currentState = stateStack.front()
 	currentState.stateStack = self
 	for state in stateStack:
 		print(state.get_script().resource_path.get_file())
 	print("\n")
-	currentState.enter()
+	currentState.enter(_msg)
 
 func resumeCurrentState():
 	currentState.resumeState()

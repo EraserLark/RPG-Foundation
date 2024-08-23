@@ -13,6 +13,7 @@ class_name OW_Player
 
 ##Parent references
 var owManager: OverworldManager
+var currentRoom: Room
 
 ##Export vars
 @export var speed:= 500
@@ -32,6 +33,7 @@ func _ready():
 
 func initialize(om: OverworldManager, rm: Room):
 	owManager = om
+	currentRoom = rm
 
 func getPlayerNum():
 	return playerInfo.playerNumber
@@ -44,12 +46,16 @@ func moveDirection(dir: Vector2):
 	##Play walk animation?
 	self.velocity = dir.normalized() * speed;
 	move_and_slide()
-	stepCounter()
+	if(dir != Vector2.ZERO):
+		stepCounter()
 
 func stepCounter():
 	stepCount += 1
+	print(str("Steps: ", stepCount))
 	if(stepCount >= encounterThreshold):
-		pass
+		var enterBattleState = Player_EnterBattle.new(StateStack)
+		StateStack.addState(enterBattleState, {"Room": currentRoom})
+		#currentRoom.startBattle()
 
 func faceDirection(dir: Vector2) -> bool:
 	interactRay.target_position = dir * rayLength;
