@@ -282,6 +282,7 @@ ignore_rotation = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage"]
 stream = ExtResource("22_dbrhh")
+autoplay = true
 
 [node name="MinigameZone" type="Node2D" parent="BattleStage"]
 position = Vector2(2000, 0)

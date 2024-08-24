@@ -37,6 +37,7 @@ func onRoomExit(newRoomPath: String, port: int):
 			actor.endPlayerActor()
 	currentRoom.queue_free()
 	await currentRoom.tree_exited
+	
 	#Load new room
 	var newRoom = load(newRoomPath)
 	var inst = newRoom.instantiate()
