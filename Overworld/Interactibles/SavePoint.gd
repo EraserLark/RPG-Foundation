@@ -4,3 +4,5 @@ extends Node2D
 
 func interactAction(interacter : OW_Player):
 	animPlayer.play("Saved")
+	
+	interacter.playerEntity.fullHeal()

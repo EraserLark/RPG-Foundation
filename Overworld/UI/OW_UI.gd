@@ -4,8 +4,8 @@ extends Control
 var playerUIScene = preload("res://Overworld/UI/PlayerUI_World.tscn")
 
 ##Children References
-@onready var playerUI:= $PlayerUI
-@onready var playerMenu:= $PlayerUI/PlayerMenu
+#@onready var playerUI:= $PlayerUI
+#@onready var playerMenu:= $PlayerUI/PlayerMenu
 @onready var tbContainer:= $TBContainer
 @onready var fadeScreen:= $Fade
 @onready var playerAnchors:= $PlayerAnchors
@@ -43,4 +43,5 @@ func initialize(om: OverworldManager):
 		i+=1
 
 func showPlayerMenu(condition: bool):
-	playerMenu.visible = condition
+	for playerUI in playerUIRoster:
+		playerUI.playerPanel.visible = condition

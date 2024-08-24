@@ -29,6 +29,9 @@ func revertStatus():
 func gainHealth(amt: int):
 	pass
 
+func fullHeal():
+	pass
+
 func takeDamage(dmg: int, pierce: bool):
 	pass
 

@@ -28,5 +28,5 @@ func updateOWVars(newUI, newWorld):
 	ui = newUI
 	world = newWorld
 	tbContainer_Stage = ui.tbContainer
-	tbContainer_PlayerPanel = ui.playerMenu
+	tbContainer_PlayerPanel = ui.playerUIRoster[0].playerPanel
 	cutsceneMarkers = world.currentRoom.cutsceneMarks

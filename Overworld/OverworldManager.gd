@@ -26,8 +26,8 @@ func _ready():
 	overworldWorld.initialize(self)
 	worldRoster.initialize(self)
 	
-	for playerInfo in PlayerRoster.roster:
-		playerInfo.entityUI = overworldUI.playerUI
-		overworldUI.playerUIRoster[0].playerPanel.playerInfo = playerInfo
+	#for playerInfo in PlayerRoster.roster:
+		#playerInfo.entityUI = overworldUI.playerUI
+		#overworldUI.playerUIRoster[0].playerPanel.playerInfo = playerInfo
 	
 	print("Overworld Ready Finish")

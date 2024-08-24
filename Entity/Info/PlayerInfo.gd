@@ -11,8 +11,8 @@ var playerNumber: int
 var dialogueManager:= DialogueManager.new()
 
 ##ENTITY
-var playerBattleEntity: BattleEntity_Player
-var playerWorldEntity: OWEntity_Player
+var playerBattleEntity: BattleEntity_Player: set = setPlayerBattleEntity
+var playerWorldEntity: OWEntity_Player: set = setPlayerWorldEntity
 
 ###OVERWORLD
 #var playerActor: OW_Player
@@ -60,7 +60,10 @@ func setupMisc(stgmn: StageManager):
 	for action in miscList:
 		action.setManager(stgmn)
 
-##OVERWORLD
-#func setActor(newActor: OW_Player):
-	#playerActor = newActor
-	#owPlayerState.player = playerActor
+func setPlayerWorldEntity(value):
+	playerWorldEntity = value
+	entityUI = playerWorldEntity.entityUI
+
+func setPlayerBattleEntity(value):
+	playerBattleEntity = value
+	entityUI = playerBattleEntity.entityUI

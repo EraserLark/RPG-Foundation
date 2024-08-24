@@ -4,7 +4,7 @@ class_name OWEntity_Player
 var overworldManager: OverworldManager
 
 var entityActor: OW_Player
-var entityUI: Control #Not sure OW equivalent for entityUI
+var entityUI: PlayerUI_World #Not sure OW equivalent for entityUI
 var playerNumber: int
 var playerState: State
 
@@ -35,7 +35,12 @@ func revertStatus():
 	super()
 
 func gainHealth(amt: int):
-	pass
+	entityInfo.addHealth(amt)
+
+func fullHeal():
+	var maxHP = entityInfo.hpMax
+	var currentHP = entityInfo.hp
+	entityInfo.addHealth(maxHP - currentHP)
 
 func takeDamage(dmg: int, pierce: bool):
 	pass
