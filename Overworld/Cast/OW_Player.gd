@@ -12,7 +12,8 @@ class_name OW_Player
 @onready var collisionShape:= $CollisionShape2D
 
 ##Parent references
-var owManager: OverworldManager
+#var owManager: OverworldManager
+var playerEntity: OWEntity_Player
 var currentRoom: Room
 
 ##Export vars
@@ -31,8 +32,9 @@ func _ready():
 	print("Player Ready Start")
 	print("Player Ready Finish")
 
-func initialize(om: OverworldManager, rm: Room):
-	owManager = om
+func initialize(pe: OWEntity_Player, rm: Room):
+	#owManager = om
+	playerEntity = pe
 	currentRoom = rm
 	
 	resetEncounterThreshold()
@@ -92,7 +94,7 @@ func danceFinish():
 
 ##Interaction
 func openMenu():
-	var menuState = MenuState.new(StateStack, owManager.playerEntities[0].entityUI.playerPanel)
+	var menuState = MenuState.new(StateStack, playerEntity.entityUI.playerPanel)
 	StateStack.addState(menuState)
 
 func castInteractRay():

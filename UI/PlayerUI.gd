@@ -13,7 +13,7 @@ func initialize(stgmn: StageManager, playerPanel, playerNumber: int, currentAnch
 	currentStageAnchor = currentAnchors[playerNumber]
 	
 	if(stageManager is OverworldManager):
-		playerPanel.initialize(stageManager)
+		playerPanel.initialize(stageManager, player)
 	elif(stageManager is BattleManager):
 		playerPanel.initialize(stageManager, self, player)
 	currentPanelAnchor = playerPanel.panelAnchors[4]

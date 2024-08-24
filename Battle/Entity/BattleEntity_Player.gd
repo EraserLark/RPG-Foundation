@@ -20,7 +20,7 @@ func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	playerUI = bm.battleUI.playerUIRoster[playerNumber]
 	playerPanel = playerUI.playerPanel
 	
-	entityInfo.playerEntity = self
+	entityInfo.playerBattleEntity = self
 	entityInfo.entityUI = playerUI
 	playerActor.player = self
 	playerUI.player = self

@@ -6,6 +6,7 @@ var overworldManager: OverworldManager
 var entityActor: OW_Player
 var entityUI: Control #Not sure OW equivalent for entityUI
 var playerNumber: int
+var playerState: State
 
 func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	if(om == null):

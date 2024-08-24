@@ -10,6 +10,7 @@ func initialize(stgmn: StageManager):
 func createEntity(playerInfo: PlayerInfo, playersNode):
 	var playerEntity = OWEntity_Player.new()
 	playerEntity.entityInfo = playerInfo
+	playerInfo.playerWorldEntity = playerEntity
 	playerEntity.playerNumber = playerInfo.playerNumber
 	playersNode.add_child(playerEntity)
 	players.append(playerEntity)

@@ -11,7 +11,8 @@ class_name PlayerPanel_World
 ##Parent References
 var owManager: OverworldManager
 #var player: OW_Player	#unused?
-var player: PlayerInfo
+#var player: PlayerInfo
+var playerEntity: OWEntity_Player
 
 ##Non export vars
 var playerInfo: PlayerInfo
@@ -35,9 +36,10 @@ func _ready():
 	
 	baseMenu = initialMenu
 
-func initialize(om: OverworldManager):
+func initialize(om: OverworldManager, pe: OWEntity_Player):
 	owManager = om
-	player = PlayerRoster.roster[0]		#Change when multiplayer
+	#player = PlayerRoster.roster[0]		#Change when multiplayer
+	playerEntity = pe
 
 func refreshMenu():
 	initialMenu.setHP()

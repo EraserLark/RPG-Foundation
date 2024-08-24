@@ -10,12 +10,13 @@ class_name PlayerInfo
 var playerNumber: int
 var dialogueManager:= DialogueManager.new()
 
-##BATTLE
-var playerEntity: BattleEntity_Player
+##ENTITY
+var playerBattleEntity: BattleEntity_Player
+var playerWorldEntity: OWEntity_Player
 
-##OVERWORLD
-var playerActor: OW_Player
-var owPlayerState: Player_Active
+###OVERWORLD
+#var playerActor: OW_Player
+#var owPlayerState: Player_Active
 
 func initialize():
 	##Create attacks
@@ -31,7 +32,7 @@ func initialize():
 	itemList.append_array([healItem, poisonItem])
 	
 	##Create Misc
-	var defend = Defend.new(null, null, playerEntity, Action.TargetTypes.PLAYER, null)
+	var defend = Defend.new(null, null, playerBattleEntity, Action.TargetTypes.PLAYER, null)
 	miscList.append(defend)
 
 
@@ -60,6 +61,6 @@ func setupMisc(stgmn: StageManager):
 		action.setManager(stgmn)
 
 ##OVERWORLD
-func setActor(newActor: OW_Player):
-	playerActor = newActor
-	owPlayerState.player = playerActor
+#func setActor(newActor: OW_Player):
+	#playerActor = newActor
+	#owPlayerState.player = playerActor

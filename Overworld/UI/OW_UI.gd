@@ -31,15 +31,15 @@ func initialize(om: OverworldManager):
 	#playerMenu.initialize(om)
 	
 	#Instance a player menu for each player in the PlayerRoster. Child of self.
+	var i:= 0
 	for entity in owManager.playerEntities:
+		#Instance ui
 		var pUI = playerUIScene.instantiate()
 		add_child(pUI)
+		#Initialize
+		pUI.initialize(owManager, pUI.playerPanel, i, playerAnchors.currentAnchorLayout)
 		#Add it to playerUIRoster
 		playerUIRoster.append(pUI)
-	
-	var i:= 0
-	for playerUserIntf in playerUIRoster:
-		playerUserIntf.initialize(owManager, playerUserIntf.playerPanel, i, playerAnchors.currentAnchorLayout)
 		i+=1
 
 func showPlayerMenu(condition: bool):

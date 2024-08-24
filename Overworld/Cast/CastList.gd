@@ -25,27 +25,31 @@ func initialize(om: OverworldManager, rm: Room):
 	passages = room.passages
 	camera = room.camera
 	
-	for playerInfo in PlayerRoster.roster:
-		addActor(playerInfo, camera.get_screen_center_position())
+	#for playerInfo in PlayerRoster.roster:
+		#addActor(playerInfo, camera.get_screen_center_position())
+	
+	for entity in owManager.playerEntities:
+		addActor(entity, camera.get_screen_center_position())
 	
 	for child in get_children():
-		child.initialize(owManager, room)
+		if child is not OW_Player:
+			child.initialize(owManager, room)
 
-func addActor(playerInfo: PlayerInfo, pos: Vector2):
+func addActor(playerEntity: OWEntity_Player, pos: Vector2):
 	#Instance actor, set up data
 	var playerActor = actorScene.instantiate()
-	playerActor.setPlayerInfo(playerInfo)
+	playerActor.setPlayerInfo(playerEntity.entityInfo)
 	self.add_child(playerActor)
-	playerActor.initialize(owManager, room)
+	playerActor.initialize(playerEntity, room)
 	
 	#Create Player Active state to start actor off with
 	var pState = Player_Active.new(StateStack, playerActor)
-	PlayerRoster.roster[0].owPlayerState = pState
+	playerEntity.playerState = pState
 	StateStack.addState(pState)
 	
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list
-	playerInfo.setActor(playerActor)	#playerInfo gets a reference
+	#playerEntity.entityInfo.setActor(playerActor)	#playerInfo gets a reference
 	
 	#Determine where to spawn the player
 	if(room.playerSpawnPort == null):
