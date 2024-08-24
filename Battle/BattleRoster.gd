@@ -50,7 +50,11 @@ func checkEnemiesAlive():
 		return true
 
 func checkPlayersAlive():
-	if(players.size() <= 0):
-		return false
-	else:
-		return true
+	for player in battleManager.playerEntities:
+		if !player.isDead:
+			return true
+	return false
+	#if(players.size() <= 0):
+		#return false
+	#else:
+		#return true

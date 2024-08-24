@@ -7,7 +7,7 @@ var enemies
 var battleManager
 
 var turnUpdated:= false
-var isOver:= false
+#var isOver:= false
 
 var actionEQ: BattleActionQueue
 var statusRoster: Array[StatusEffect]
@@ -59,12 +59,9 @@ func resumePhase():
 
 func battleOver():
 	actionEQ.queue.clear()
-	isOver = true
+	battleManager.battleIsOver = true
 
 func finishPhase():
-	#if(!isOver):
-		#battleManager.updateTurnCount()
-	
 	super()
 
 func cleanPhase():

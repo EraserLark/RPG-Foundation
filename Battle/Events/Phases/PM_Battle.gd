@@ -29,7 +29,8 @@ func determineNextPhase():
 			currentEnumPhase = bPhases.ACTION
 			
 		bPhases.ACTION:
-			if(battleManager.playerEntities.size() <= 0 || battleManager.enemyEntities.size() <= 0):
+			#if(!battleManager.battleRoster.checkPlayersAlive() || battleManager.enemyEntities.size() <= 0):
+			if(battleManager.battleIsOver):
 				currentEnumPhase = bPhases.FINISH
 			else:
 				currentEnumPhase = bPhases.PROMPT

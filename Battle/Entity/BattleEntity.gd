@@ -10,7 +10,7 @@ var actor: BattleActor
 
 ##Inside references
 var statusEffects: Array[StatusEffect]
-#var localInfo: EntityInfo
+var isDead:= false
 
 func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	if(bm == null):
@@ -71,6 +71,7 @@ func checkRoster():
 	pass
 
 func entityDead():
+	isDead = true
 	eraseSelectedAction()
 	actor.queue_free()
 	for effect in statusEffects:

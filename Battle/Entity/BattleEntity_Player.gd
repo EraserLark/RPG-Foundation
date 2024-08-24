@@ -75,8 +75,8 @@ func checkRoster():
 	return result
 
 func entityDead():
-	battleManager.battleRoster.players.erase(self)
-	battleManager.battleRoster.checkPlayersAlive()
+	#battleManager.battleRoster.players.erase(self)
+	#battleManager.battleRoster.checkPlayersAlive()
 	super()
 
 #func _on_animation_player_animation_finished(anim_name):

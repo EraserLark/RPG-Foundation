@@ -14,9 +14,9 @@ func _init(battlePM, bm):
 func runPhase():
 	var resultEvent : Event
 	
-	if(battleManager.playerEntities.size() <= 0):
+	if(!battleManager.battleRoster.checkPlayersAlive()):
 		resultEvent = DefeatEvent.new(finishEQ, battleManager)
-	elif(battleManager.enemyEntities.size() <= 0):
+	elif(!battleManager.battleRoster.checkEnemiesAlive()):
 		resultEvent = VictoryEvent.new(finishEQ, battleManager)
 	
 	finishEQ.addEvent(resultEvent)

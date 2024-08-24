@@ -11,6 +11,7 @@ var playerEntities: Array[BattleEntity_Player]
 var enemyEntities: Array[BattleEntity_Enemy]
 var turnCount:= 0
 var xpBank:= 0
+var battleIsOver:= false
 
 #Systems
 var battleState: Battle_State

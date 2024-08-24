@@ -21,7 +21,7 @@ func handleInput(_event : InputEvent):
 		dialogueManager.focusStep.moveInput(input)
 
 func enter(_msg := {}):
-	PlayerRoster.roster[0].playerActor.collisionShape.set_deferred("disabled", true)
+	PlayerRoster.roster[0].playerWorldEntity.entityActor.collisionShape.set_deferred("disabled", true)
 
 func update(_delta : float):
 	#if Input.is_action_just_pressed("ui_accept"):
@@ -34,5 +34,5 @@ func resumeState():
 	dialogueManager.resumeFocusStep()
 
 func exit():
-	PlayerRoster.roster[0].playerActor.collisionShape.set_deferred("disabled", false)
+	PlayerRoster.roster[0].playerWorldEntity.entityActor.collisionShape.set_deferred("disabled", false)
 	super()
