@@ -40,6 +40,8 @@ func initialize(om: OverworldManager):
 		pUI.initialize(owManager, pUI.playerPanel, i, playerAnchors.currentAnchorLayout)
 		#Add it to playerUIRoster
 		playerUIRoster.append(pUI)
+		#Hide menu when first starting game
+		pUI.playerPanel.visible = false
 		i+=1
 
 func showPlayerMenu(condition: bool):

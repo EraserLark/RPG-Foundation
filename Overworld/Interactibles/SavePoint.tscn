@@ -43,9 +43,8 @@ _data = {
 "SaveIdle1": SubResource("Animation_vb4bg")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n5t88"]
-radius = 12.0
-height = 36.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl7ex"]
+size = Vector2(45, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2v7p"]
 size = Vector2(45, 30)
@@ -208,8 +207,7 @@ texture = ExtResource("2_lljqs")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_n5t88")
+shape = SubResource("RectangleShape2D_hl7ex")
 
 [node name="Area2D" type="Area2D" parent="."]
 
