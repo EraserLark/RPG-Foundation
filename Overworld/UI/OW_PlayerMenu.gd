@@ -6,6 +6,7 @@ class_name PlayerPanel_World
 @onready var initialMenu:= $MarginContainer/InitialMenu
 @onready var menuList:= $MarginContainer/InitialMenu/ItemList
 @onready var subMenuNodes:= $MarginContainer/Submenus
+@onready var panelAnchorNodes:= $PanelAnchors
 
 ##Parent References
 var owManager: OverworldManager
@@ -14,6 +15,7 @@ var player: PlayerInfo
 
 ##Non export vars
 var playerInfo: PlayerInfo
+var panelAnchors: Array
 var menus: Array
 var openMenu: Control
 var prevFocused: Control
@@ -26,6 +28,7 @@ func _ready():
 	initialMenu.menuManager = self
 	
 	audioPlayer = $AudioStreamPlayer
+	panelAnchors = panelAnchorNodes.get_children()
 	
 	playerInfo = PlayerRoster.roster[0]
 	subMenuNodes.get_child(0).initMenu(playerInfo)

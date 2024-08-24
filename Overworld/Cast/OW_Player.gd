@@ -92,7 +92,7 @@ func danceFinish():
 
 ##Interaction
 func openMenu():
-	var menuState = MenuState.new(StateStack, owManager.overworldUI.playerMenu)
+	var menuState = MenuState.new(StateStack, owManager.playerEntities[0].entityUI.playerPanel)
 	StateStack.addState(menuState)
 
 func castInteractRay():

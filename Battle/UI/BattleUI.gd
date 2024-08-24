@@ -1,7 +1,7 @@
 extends Control
 
 ##Preload vars
-var playerUIScene:= preload("res://Battle/UI/PlayerUI.tscn")
+var playerUIScene:= preload("res://Battle/UI/PlayerUI_Battle.tscn")
 
 ##Children references
 #@onready var playerUI:= $PlayerUI
@@ -29,5 +29,5 @@ func initialize(bm: BattleManager):
 	
 	var i:= 0
 	for playerUserIntf in playerUIRoster:
-		playerUserIntf.initialize(battleManager, i, playerAnchors.currentAnchorLayout)
+		playerUserIntf.initialize(battleManager, playerUserIntf.playerPanel, i, playerAnchors.currentAnchorLayout)
 		i+=1

@@ -3,6 +3,7 @@ class_name OverworldManager
 
 ##Children references
 @onready var overworldWorld:= $World
+@onready var worldRoster:= $WorldRoster
 @onready var overworldUI:= $CanvasLayer/OW_UI
 @onready var musicPlayer:= $World/AudioStreamPlayer
 @onready var cutsceneManager:= $CutsceneManager
@@ -13,17 +14,20 @@ class_name OverworldManager
 #None
 
 ##Non export vars
-var playerRoster
+var playerEntities: Array[OWEntity_Player]
 
 func _ready():
 	print("Overworld Ready Start")
 	#await get_tree().root.ready
 	
+	playerEntities.assign(worldRoster.players)
+	
+	overworldUI.initialize(self)
+	overworldWorld.initialize(self)
+	worldRoster.initialize(self)
+	
 	for playerInfo in PlayerRoster.roster:
 		playerInfo.entityUI = overworldUI.playerUI
-		overworldUI.playerMenu.playerInfo = playerInfo
-	
-	overworldWorld.initialize(self)
-	overworldUI.initialize(self)
+		overworldUI.playerUIRoster[0].playerPanel.playerInfo = playerInfo
 	
 	print("Overworld Ready Finish")

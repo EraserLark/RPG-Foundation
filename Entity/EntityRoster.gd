@@ -1,7 +1,8 @@
 extends Node
 class_name EntityRoster
 
-@onready var players: Array[BattleEntity_Player]
+@onready var players: Array[Entity]
+var stageManager: StageManager
 
 func _ready():
 	#Set up empty entity nodes for each player (Battle Stage needs this to set up actors before coming back here and initializing roster)
@@ -12,6 +13,7 @@ func _ready():
 		createEntity(player, playersNode)
 
 func initialize(stgmn: StageManager):
+	stageManager = stgmn
 	#Set up info within each player from other systems
 	var i:=0
 	for playerEntity in players:

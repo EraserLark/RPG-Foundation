@@ -1,22 +1,22 @@
 [gd_scene load_steps=20 format=3 uid="uid://c7fouswjqgykh"]
 
-[ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_7o4ws"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_y242p"]
-[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="3_f02tf"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPointer.gd" id="4_m43u4"]
-[ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="5_jwq00"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPanel.gd" id="6_fvxfw"]
-[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="7_pgpgq"]
-[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="8_46lyl"]
-[ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="9_0jd7y"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerMenu.gd" id="10_6rcbb"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="11_yy40d"]
-[ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="12_72tap"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/MiscMenu.gd" id="13_1b3j0"]
-[ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/Menus/action_menu.tscn" id="14_taiwu"]
+[ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_qvh2h"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_h70pe"]
+[ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="3_rgjmw"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPointer.gd" id="4_tfohc"]
+[ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="5_73jwi"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPanel.gd" id="6_44y4s"]
+[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="7_3lb8t"]
+[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="8_c5y4w"]
+[ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="9_cyk76"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerMenu.gd" id="10_yjjpt"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="11_jwv4u"]
+[ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="12_fcsqg"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/MiscMenu.gd" id="13_clnyn"]
+[ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/Menus/action_menu.tscn" id="14_1tgmc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbj4b"]
-atlas = ExtResource("3_f02tf")
+atlas = ExtResource("3_rgjmw")
 region = Rect2(595, 170, 16, 16)
 
 [sub_resource type="Animation" id="Animation_vndq1"]
@@ -89,7 +89,7 @@ _data = {
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_7o4ws")
+script = ExtResource("1_qvh2h")
 
 [node name="SelectionMenu" type="Control" parent="."]
 visible = false
@@ -102,7 +102,7 @@ grow_vertical = 2
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_mode = 2
-script = ExtResource("2_y242p")
+script = ExtResource("2_h70pe")
 
 [node name="PlayerPointer" type="TextureRect" parent="SelectionMenu"]
 self_modulate = Color(0, 0, 1, 1)
@@ -110,14 +110,14 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("AtlasTexture_pbj4b")
-script = ExtResource("4_m43u4")
+script = ExtResource("4_tfohc")
 
 [node name="PlayerPanel" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 offset_right = 288.0
 offset_bottom = 136.0
-texture = ExtResource("5_jwq00")
+texture = ExtResource("5_73jwi")
 region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 8
 patch_margin_top = 8
@@ -125,15 +125,15 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-script = ExtResource("6_fvxfw")
-sounds = Array[AudioStreamMP3]([ExtResource("7_pgpgq"), ExtResource("8_46lyl")])
+script = ExtResource("6_44y4s")
+sounds = Array[AudioStreamMP3]([ExtResource("7_3lb8t"), ExtResource("8_c5y4w")])
 mandatory = true
 
 [node name="Stats" type="PanelContainer" parent="PlayerPanel"]
 layout_mode = 0
 offset_left = -16.0
 offset_bottom = 136.0
-script = ExtResource("9_0jd7y")
+script = ExtResource("9_cyk76")
 
 [node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/Stats"]
 self_modulate = Color(0, 1, 0, 1)
@@ -159,7 +159,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("10_6rcbb")
+script = ExtResource("10_yjjpt")
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayerPanel/PlayerMenu"]
 layout_mode = 1
@@ -201,7 +201,7 @@ color = Color(0.176471, 0, 0.701961, 1)
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-script = ExtResource("11_yy40d")
+script = ExtResource("11_jwv4u")
 metadata/_edit_group_ = true
 
 [node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu"]
@@ -214,7 +214,7 @@ fixed_icon_size = Vector2i(16, 16)
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-script = ExtResource("12_72tap")
+script = ExtResource("12_fcsqg")
 metadata/_edit_group_ = true
 
 [node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu"]
@@ -227,7 +227,7 @@ fixed_icon_size = Vector2i(16, 16)
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-script = ExtResource("13_1b3j0")
+script = ExtResource("13_clnyn")
 metadata/_edit_group_ = true
 
 [node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu"]
@@ -236,7 +236,7 @@ focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 fixed_icon_size = Vector2i(16, 16)
 
-[node name="ActionMenu" parent="PlayerPanel/PlayerMenu" instance=ExtResource("14_taiwu")]
+[node name="ActionMenu" parent="PlayerPanel/PlayerMenu" instance=ExtResource("14_1tgmc")]
 layout_mode = 0
 offset_top = -40.0
 offset_bottom = 0.0

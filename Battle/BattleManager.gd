@@ -7,8 +7,8 @@ const battleScene: PackedScene = preload("res://Battle/battle.tscn")
 #BattleManager
 @export var enemyData: Array[EnemyInfo]
 @onready var battleRoster:= $BattleRoster
-#var playerEntities: Array[Batt leEntity_Player]
-#var enemyEntities: Array[BattleEntity_Enemy]
+var playerEntities: Array[BattleEntity_Player]
+var enemyEntities: Array[BattleEntity_Enemy]
 var turnCount:= 0
 var xpBank:= 0
 
@@ -43,7 +43,7 @@ func _ready():
 	#playerUI.battleManager = self
 	#playerPanel.battleManager = self
 	#battleRoster.battleManager = self
-	playerEntities = battleRoster.players
+	playerEntities.assign(battleRoster.players)
 	
 	battleRoster.initialize(self)
 	enemyEntities = battleRoster.enemies

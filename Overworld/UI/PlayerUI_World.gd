@@ -1,18 +1,19 @@
-extends EntityUI
+extends PlayerUI
 class_name PlayerUI_World
 
 ##Children references
-@onready var hpLabel:= $PlayerMenu/MarginContainer/InitialMenu/VBoxContainer/RichTextLabel
-@onready var itemsList:= $PlayerMenu/MarginContainer/Submenus/ItemMenu
+@onready var hpLabel:= $PlayerPanel/MarginContainer/InitialMenu/VBoxContainer/RichTextLabel
+@onready var itemsList:= $PlayerPanel/MarginContainer/Submenus/ItemMenu
+@onready var playerPanel:= $PlayerPanel
 
 ##Parent references
-var owManager: OverworldManager
+#var owManager: OverworldManager
 
-func initialize(om: OverworldManager):
-	owManager = om
+#func initialize(om: OverworldManager):
+	#owManager = om
 
 func setHP(value):
-	hpLabel.text = str("HP: ", value, "/", owManager.player.playerInfo.hp)
+	hpLabel.text = str("HP: ", value, "/", stageManager.player.playerInfo.hp)
 
 func setItems(value):
 	itemsList.populateMenu(value)

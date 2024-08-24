@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkgsrieys8sap"]
+
+[ext_resource type="Script" path="res://Overworld/UI/PlayerUI_World.gd" id="1_j2cxj"]
+[ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="2_8kc05"]
+[ext_resource type="Script" path="res://Overworld/UI/OW_PlayerMenu.gd" id="3_hgk43"]
+[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="4_tfpuu"]
+[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="5_xvd8l"]
+[ext_resource type="Script" path="res://Overworld/UI/Menus/InitialMenu.gd" id="6_ob35p"]
+[ext_resource type="Texture2D" uid="uid://cmqkdesj030nd" path="res://Art/RobotFront.png" id="7_s4on4"]
+[ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="8_1ktt8"]
+[ext_resource type="Script" path="res://Menus/PlaceholderMenu.gd" id="9_3x4y6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7uio"]
+bg_color = Color(0.328096, 0.329865, 0.398776, 1)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j2cxj")
+
+[node name="PlayerPanel" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(288, 136)
+layout_mode = 1
+anchors_preset = -1
+texture = ExtResource("2_8kc05")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("3_hgk43")
+sounds = Array[AudioStreamMP3]([ExtResource("4_tfpuu"), ExtResource("5_xvd8l")])
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InitialMenu" type="HBoxContainer" parent="PlayerPanel/MarginContainer"]
+layout_mode = 2
+script = ExtResource("6_ob35p")
+
+[node name="MenuList" type="ItemList" parent="PlayerPanel/MarginContainer/InitialMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+item_count = 4
+max_columns = 2
+item_0/text = "Inventory"
+item_1/text = "Attacks"
+item_2/text = "Costumes"
+item_3/text = "Settings"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel/MarginContainer/InitialMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/MarginContainer/InitialMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/MarginContainer/InitialMenu/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(36, 81)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("7_s4on4")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/MarginContainer/InitialMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "HP: __/__"
+
+[node name="Submenus" type="Control" parent="PlayerPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="ItemMenu" type="Control" parent="PlayerPanel/MarginContainer/Submenus"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_1ktt8")
+
+[node name="ItemList" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu"]
+layout_mode = 2
+offset_right = 272.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v7uio")
+
+[node name="InventoryMenu2" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus"]
+visible = false
+layout_mode = 2
+offset_right = 272.0
+offset_bottom = 120.0
+script = ExtResource("9_3x4y6")
+
+[node name="InventoryMenu3" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus"]
+visible = false
+layout_mode = 2
+offset_right = 272.0
+offset_bottom = 120.0
+script = ExtResource("9_3x4y6")
+
+[node name="InventoryMenu4" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus"]
+visible = false
+layout_mode = 2
+offset_right = 272.0
+offset_bottom = 120.0
+script = ExtResource("9_3x4y6")
+
+[node name="PanelAnchors" type="Control" parent="PlayerPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="PlayerPanel/PanelAnchors"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="Control2" type="Control" parent="PlayerPanel/PanelAnchors"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="Control3" type="Control" parent="PlayerPanel/PanelAnchors"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="Control4" type="Control" parent="PlayerPanel/PanelAnchors"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="Control5" type="Control" parent="PlayerPanel/PanelAnchors"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control6" type="Control" parent="PlayerPanel/PanelAnchors"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerPanel"]
+volume_db = -5.0
+
+[connection signal="item_activated" from="PlayerPanel/MarginContainer/InitialMenu/MenuList" to="PlayerPanel" method="_on_menu_list_item_activated"]
