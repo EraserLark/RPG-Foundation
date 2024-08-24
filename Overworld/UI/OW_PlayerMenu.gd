@@ -4,7 +4,7 @@ class_name PlayerPanel_World
 ##Children References
 @onready var marginContainer:= $MarginContainer
 @onready var initialMenu:= $MarginContainer/InitialMenu
-@onready var menuList:= $MarginContainer/InitialMenu/ItemList
+#@onready var menuList:= $MarginContainer/InitialMenu/ItemList
 @onready var subMenuNodes:= $MarginContainer/Submenus
 @onready var panelAnchorNodes:= $PanelAnchors
 

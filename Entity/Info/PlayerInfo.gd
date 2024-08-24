@@ -8,7 +8,6 @@ class_name PlayerInfo
 @export var items : Array[String]
 
 var playerNumber: int
-var dialogueManager:= DialogueManager.new()
 
 ##ENTITY
 var playerBattleEntity: BattleEntity_Player: set = setPlayerBattleEntity

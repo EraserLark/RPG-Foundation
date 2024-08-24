@@ -2,6 +2,7 @@ extends Entity
 class_name OWEntity_Player
 
 var overworldManager: OverworldManager
+var dialogueManager:= DialogueManager.new(self)
 
 var entityActor: OW_Player
 var entityUI: PlayerUI_World #Not sure OW equivalent for entityUI

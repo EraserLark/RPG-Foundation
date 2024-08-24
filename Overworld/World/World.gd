@@ -45,6 +45,6 @@ func onRoomExit(newRoomPath: String, port: int):
 	add_child(inst)
 	currentRoom = inst
 	#Update vars (actors use this for spawn flags)
-	DialogueSystem.updateOWVars(owManager.ui, self)
+	DialogueSystem.updateOWVars(owManager.overworldUI, self)
 	#Initialize new room
 	currentRoom.initialize(owManager)

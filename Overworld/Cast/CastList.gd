@@ -49,6 +49,7 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2):
 	
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list
+	playerEntity.entityActor = playerActor
 	#playerEntity.entityInfo.setActor(playerActor)	#playerInfo gets a reference
 	
 	#Determine where to spawn the player

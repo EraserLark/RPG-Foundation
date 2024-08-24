@@ -6,14 +6,18 @@ var firstStep: Step
 var focusStep: Step
 var stepStack: Array[Step]
 
+var ownerEntity: Entity
 var performingCast:= {}
 var cutsceneMarks:= {}
 var roomOther: Node2D
 
+func _init(entity: Entity):
+	ownerEntity = entity
+
 func startDialogue(startStep: DLG_Start):
 	#Create DialogueState
 	dialogueState = DialogueState.new(StateStack, self)
-	StateStack.addState(dialogueState)
+	StateStack.addState(dialogueState, {"OwnerEntity": ownerEntity})
 	
 	var timeline = Helper.getAllChildren(startStep)
 	startStep.dialogueManager = self
