@@ -1,4 +1,4 @@
-extends MenuSystem
+extends PlayerPanel
 class_name PlayerPanel_Battle
 
 ##Children references
@@ -7,7 +7,7 @@ class_name PlayerPanel_Battle
 @onready var minigameContainer:= $PlayerMenu/MarginContainer/SubViewportContainer
 @onready var minigameView:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport
 @onready var minigameZone:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport/MinigameZone
-@onready var panelAnchorNodes:= $PanelAnchors
+#@onready var panelAnchorNodes:= $PanelAnchors
 
 ##Parent/Outside references
 var battleManager: BattleManager

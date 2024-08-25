@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkgsrieys8sap"]
+[gd_scene load_steps=12 format=3 uid="uid://bkgsrieys8sap"]
 
 [ext_resource type="Script" path="res://Overworld/UI/PlayerUI_World.gd" id="1_j2cxj"]
 [ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="2_8kc05"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cmqkdesj030nd" path="res://Art/RobotFront.png" id="7_s4on4"]
 [ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="8_1ktt8"]
 [ext_resource type="Script" path="res://Menus/PlaceholderMenu.gd" id="9_3x4y6"]
+[ext_resource type="PackedScene" uid="uid://xy1fadjc5rwx" path="res://UI/PlayerPanel.tscn" id="10_rkdgd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7uio"]
 bg_color = Color(0.328096, 0.329865, 0.398776, 1)
@@ -181,5 +182,9 @@ grow_vertical = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerPanel"]
 volume_db = -5.0
+
+[node name="PlayerPanel2" parent="." instance=ExtResource("10_rkdgd")]
+layout_mode = 0
+anchors_preset = 0
 
 [connection signal="item_activated" from="PlayerPanel/MarginContainer/InitialMenu/MenuList" to="PlayerPanel" method="_on_menu_list_item_activated"]
