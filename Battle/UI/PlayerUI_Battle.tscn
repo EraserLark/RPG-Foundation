@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="3_rgjmw"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPointer.gd" id="4_tfohc"]
 [ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="5_73jwi"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPanel.gd" id="6_44y4s"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/BA_PlayerPanel.gd" id="6_44y4s"]
 [ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="7_3lb8t"]
 [ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="8_c5y4w"]
 [ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="9_cyk76"]

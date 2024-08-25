@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Overworld/UI/PlayerUI_World.gd" id="1_j2cxj"]
 [ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="2_8kc05"]
-[ext_resource type="Script" path="res://Overworld/UI/OW_PlayerMenu.gd" id="3_hgk43"]
+[ext_resource type="Script" path="res://Overworld/UI/OW_PlayerPanel.gd" id="3_hgk43"]
 [ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="4_tfpuu"]
 [ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="5_xvd8l"]
 [ext_resource type="Script" path="res://Overworld/UI/Menus/InitialMenu.gd" id="6_ob35p"]
