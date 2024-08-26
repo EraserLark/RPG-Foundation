@@ -58,7 +58,9 @@ func adjustMenusLayout():
 	playerAnchors.determineAnchorLayout()
 	var i=0
 	for ui in playerUIRoster:
-		#ui.currentPanelAnchor = 
+		var rosterIndex = PlayerRoster.roster.size()-1	#Grabs most recent addition to playerRoster
+		var panelAnchorIndex = owManager.overworldUI.playerAnchors.panelAnchorPositions[i]
+		ui.currentPanelAnchor = ui.playerPanel.panelAnchors[panelAnchorIndex]
 		ui.currentStageAnchor = playerAnchors.currentAnchorLayout[i]
 		ui.centerPlayerPanel()
 		i+=1

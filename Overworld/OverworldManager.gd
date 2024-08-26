@@ -38,7 +38,6 @@ func newControllerJoined(joypadNum: int):
 	PlayerRoster.addEmptySlot()
 	#overworldUI.playerAnchors.determineAnchorLayout()
 	var emptyUI = overworldUI.createPlayerUI()
-	emptyUI.currentPanelAnchor = emptyUI.playerPanel.panelAnchors[4]
 	overworldUI.adjustMenusLayout()
 	#emptyUI.currentStageAnchor = overworldUI.playerAnchors.currentAnchorLayout[PlayerRoster.roster.size()-1]
 	#emptyUI.centerPlayerPanel()
