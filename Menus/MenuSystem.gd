@@ -29,6 +29,11 @@ func closeSubMenu():
 	if(menuStack.currentMenu == null):
 		closeMenuSystem()
 
+#Closes current submenu before swapping to a different one
+func swapSubMenu(swapToMenu: Menu):
+	menuStack.popMenu()
+	showSubMenu(swapToMenu)
+
 func backOut():
 	if(menuStack.currentMenu == baseMenu && mandatory):
 		return

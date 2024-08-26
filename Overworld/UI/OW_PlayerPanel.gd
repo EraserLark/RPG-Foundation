@@ -12,7 +12,7 @@ class_name PlayerPanel_World
 var owManager: OverworldManager
 #var player: OW_Player	#unused?
 #var player: PlayerInfo
-var playerEntity: OWEntity_Player
+#var playerEntity: OWEntity_Player
 
 ##Non export vars
 var playerInfo: PlayerInfo
@@ -22,11 +22,12 @@ var openMenu: Control
 var prevFocused: Control
 
 func _ready():
+	profileMenu.menuManager = self
+	initialMenu.menuManager = self
+	
 	menus = subMenuNodes.get_children()
 	for menu in menus:
 		menu.menuManager = self
-	
-	initialMenu.menuManager = self
 	
 	audioPlayer = $AudioStreamPlayer
 	panelAnchors = panelAnchorNodes.get_children()
@@ -39,7 +40,7 @@ func _ready():
 func initialize(om: OverworldManager, pe: OWEntity_Player):
 	owManager = om
 	#player = PlayerRoster.roster[0]		#Change when multiplayer
-	playerEntity = pe
+	#playerEntity = pe	#Should get set after player chooses profile
 
 func refreshMenu():
 	initialMenu.setHP()

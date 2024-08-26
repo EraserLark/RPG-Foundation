@@ -15,7 +15,7 @@ func grabFirstFocus():
 	menuList.select(0)
 
 func setPrevFocus():
-	prevFocused = get_viewport().gui_get_focus_owner()
+	super()
 
 func grabPrevFocus():
 	pass
