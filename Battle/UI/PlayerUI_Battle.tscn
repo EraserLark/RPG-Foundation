@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7fouswjqgykh"]
+[gd_scene load_steps=18 format=3 uid="uid://c7fouswjqgykh"]
 
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_qvh2h"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_h70pe"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPointer.gd" id="4_tfohc"]
 [ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="5_73jwi"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/BA_PlayerPanel.gd" id="6_44y4s"]
-[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="7_3lb8t"]
-[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="8_c5y4w"]
 [ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="9_cyk76"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/PlayerMenu.gd" id="10_yjjpt"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="11_jwv4u"]
@@ -126,7 +124,6 @@ patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 script = ExtResource("6_44y4s")
-sounds = Array[AudioStreamMP3]([ExtResource("7_3lb8t"), ExtResource("8_c5y4w")])
 mandatory = true
 
 [node name="Stats" type="PanelContainer" parent="PlayerPanel"]

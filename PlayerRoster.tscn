@@ -6,4 +6,4 @@
 
 [node name="PlayerRoster" type="Node"]
 script = ExtResource("1_dkwkj")
-roster = Array[ExtResource("2_7o2q5")]([ExtResource("2_elawe")])
+profileBank = Array[ExtResource("2_7o2q5")]([ExtResource("2_elawe")])

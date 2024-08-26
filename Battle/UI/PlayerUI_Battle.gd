@@ -17,12 +17,12 @@ var battleUI: Control
 ###Inside vars
 #var currentPanelAnchor: Control
 
-func initialize(stgmn: StageManager, playerPanel, playerNumber: int, currentAnchors: Array):
+func initialize(stgmn: StageManager, playerPanel, playerEntity: Entity, currentAnchors: Array):
 	#battleManager = bm
 	#player = battleManager.playerEntities[playerNumber]
 	#currentStageAnchor = currentAnchors[playerNumber]
 	
-	super(stgmn, playerPanel, playerNumber, currentAnchors)
+	super(stgmn, playerPanel, playerEntity, currentAnchors)
 	
 	selectionMenu.initialize(stageManager, self)
 

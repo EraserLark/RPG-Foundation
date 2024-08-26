@@ -37,8 +37,8 @@ func swapSubMenu(swapToMenu: Menu):
 func backOut():
 	if(menuStack.currentMenu == baseMenu && mandatory):
 		return
-	else:
-		closeSubMenu()
+	#else:
+		#closeSubMenu()
 
 func closeMenuSystem():
 	menuStack.emptyStack() 

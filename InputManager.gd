@@ -1,6 +1,8 @@
 extends Node
 ##INPUT MANAGER
 
+signal newPlayerJoined(joypadNum: int)
+
 func _ready() -> void:
 	Input.joy_connection_changed.connect(connectionChanged)
 
@@ -19,7 +21,7 @@ func connectionChanged(device: int, connected: bool):
 		print(str(joypad, ": ", Input.get_joy_name(joypad), "\n"))
 	
 	if(connected):
-		pass
+		emit_signal("newPlayerJoined", device)
 		#Create empty entry in PlayerRoster
 		#Adjust current Player UIs to fit new anchors
 		#Player selects info from list of profiles or creates new profile

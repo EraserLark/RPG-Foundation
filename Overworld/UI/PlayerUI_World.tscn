@@ -22,8 +22,6 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 script = ExtResource("3_hgk43")
-sounds = null
-mandatory = null
 
 [node name="InitialMenu" type="HBoxContainer" parent="PlayerPanel/MarginContainer" index="1"]
 layout_mode = 2

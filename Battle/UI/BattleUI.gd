@@ -29,5 +29,5 @@ func initialize(bm: BattleManager):
 	
 	var i:= 0
 	for playerUserIntf in playerUIRoster:
-		playerUserIntf.initialize(battleManager, playerUserIntf.playerPanel, i, playerAnchors.currentAnchorLayout)
+		playerUserIntf.initialize(battleManager, playerUserIntf.playerPanel, battleManager.playerEntities[i], playerAnchors.currentAnchorLayout)
 		i+=1

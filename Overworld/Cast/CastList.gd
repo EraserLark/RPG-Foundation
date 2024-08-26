@@ -35,7 +35,7 @@ func initialize(om: OverworldManager, rm: Room):
 		if child is not OW_Player:
 			child.initialize(owManager, room)
 
-func addActor(playerEntity: OWEntity_Player, pos: Vector2):
+func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	#Instance actor, set up data
 	var playerActor = actorScene.instantiate()
 	playerActor.setPlayerInfo(playerEntity.entityInfo)

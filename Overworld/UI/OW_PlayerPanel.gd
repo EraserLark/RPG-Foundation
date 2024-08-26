@@ -32,21 +32,22 @@ func _ready():
 	audioPlayer = $AudioStreamPlayer
 	panelAnchors = panelAnchorNodes.get_children()
 	
-	playerInfo = PlayerRoster.roster[0]
-	subMenuNodes.get_child(0).initMenu(playerInfo)
-	
 	baseMenu = initialMenu
 
 func initialize(om: OverworldManager, pe: OWEntity_Player):
 	owManager = om
 	#player = PlayerRoster.roster[0]		#Change when multiplayer
-	#playerEntity = pe	#Should get set after player chooses profile
+	playerEntity = pe	#Should get set after player chooses profile
+	
+	playerInfo = playerEntity.entityInfo
+	subMenuNodes.get_child(0).initMenu(playerInfo)
 
 func refreshMenu():
 	initialMenu.setHP()
 
 func open():
-	refreshMenu()
+	if(playerInfo != null):
+		refreshMenu()
 	self.visible = true
 	super()
 

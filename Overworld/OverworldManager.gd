@@ -18,7 +18,10 @@ var playerEntities: Array[OWEntity_Player]
 
 func _ready():
 	print("Overworld Ready Start")
-	#await get_tree().root.ready
+	InputManager.newPlayerJoined.connect(newControllerJoined)
+	PlayerRoster.newRosterPlayer.connect(newPlayerJoined)
+	
+	print(str("New Player is connected: ", InputManager.newPlayerJoined.is_connected(newPlayerJoined)))
 	
 	playerEntities.assign(worldRoster.players)
 	
@@ -31,3 +34,17 @@ func _ready():
 		#overworldUI.playerUIRoster[0].playerPanel.playerInfo = playerInfo
 	
 	print("Overworld Ready Finish")
+
+func newControllerJoined(joypadNum: int):
+	PlayerRoster.addEmptySlot()
+	overworldUI.playerAnchors.determineAnchorLayout()
+	var emptyUI = overworldUI.createPlayerUI()
+	emptyUI.currentStageAnchor = overworldUI.playerAnchors.currentAnchorLayout[PlayerRoster.roster.size()-1]
+	emptyUI.currentPanelAnchor = emptyUI.playerPanel.panelAnchors[4]
+	emptyUI.centerPlayerPanel()
+	
+	var menuState = MenuState.new(StateStack, emptyUI.playerPanel)
+	StateStack.addState(menuState)
+
+func newPlayerJoined(info: PlayerInfo):
+	worldRoster.addNewEntity(info, overworldUI.playerUIRoster[info.playerNumber - 1])

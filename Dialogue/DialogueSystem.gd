@@ -30,5 +30,6 @@ func updateOWVars(newUI, newWorld):
 	ui = newUI
 	world = newWorld
 	tbContainer_Stage = ui.tbContainer
-	tbContainer_PlayerPanel = ui.playerUIRoster[0].playerPanel
+	if(!ui.playerUIRoster.is_empty):
+		tbContainer_PlayerPanel = ui.playerUIRoster[0].playerPanel
 	cutsceneMarkers = world.currentRoom.cutsceneMarks

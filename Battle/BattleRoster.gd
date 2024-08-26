@@ -10,7 +10,7 @@ var battleManager
 func _ready():
 	super()
 
-func createEntity(playerInfo: PlayerInfo, playersNode):
+func createEntity(playerInfo: PlayerInfo):
 	var playerEntity = BattleEntity_Player.new()
 	playerEntity.entityInfo = playerInfo
 	playerEntity.playerNumber = playerInfo.playerNumber
@@ -39,8 +39,8 @@ func initialize(stgmn: StageManager):
 		#Add to lists
 		enemies.append(enemyEntity)
 
-func initializeEntity(playerEntity: Entity, number: int):
-	playerEntity.actor = battleManager.battleStage.playerActors[number]
+func initializeEntity(playerEntity: Entity):
+	playerEntity.actor = battleManager.battleStage.playerActors[playerEntity.playerNumber]
 	playerEntity.initialize(null, battleManager)
 
 func checkEnemiesAlive():
