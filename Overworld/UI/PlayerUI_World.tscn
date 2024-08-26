@@ -24,6 +24,7 @@ anchor_bottom = 0.0
 script = ExtResource("3_hgk43")
 
 [node name="InitialMenu" type="HBoxContainer" parent="PlayerPanel/MarginContainer" index="1"]
+visible = false
 layout_mode = 2
 script = ExtResource("6_ob35p")
 

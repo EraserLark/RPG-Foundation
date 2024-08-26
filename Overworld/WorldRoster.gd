@@ -24,3 +24,4 @@ func addNewEntity(playerInfo: PlayerInfo, emptyUI: PlayerUI_World):
 	stageManager.overworldWorld.currentRoom.castList.addActor(newEntity)
 	stageManager.overworldUI.initializePlayerUI(emptyUI, newEntity)
 	initializeEntity(newEntity)
+	stageManager.playerEntities.assign(players)

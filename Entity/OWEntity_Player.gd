@@ -14,7 +14,8 @@ func initialize(om: OverworldManager = null, bm: BattleManager = null):
 		printerr("overworldManager not passed")
 		return
 	overworldManager = om
-	entityActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[playerNumber]
+	if(entityActor == null):
+		entityActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[playerNumber]
 	entityUI = overworldManager.overworldUI.playerUIRoster[playerNumber]
 
 func getClassInstance():

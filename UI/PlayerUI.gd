@@ -27,7 +27,8 @@ func centerPlayerPanel():
 		printerr("currentStageAnchor not set")
 		return
 	
-	var panelAnchorDiff:Vector2 = abs(self.position - currentPanelAnchor.position)
+	#var panelAnchorDiff:Vector2 = abs(self.position - currentPanelAnchor.position)
+	var panelAnchorDiff: Vector2 = currentPanelAnchor.position
 	self.position = currentStageAnchor.position - panelAnchorDiff
 	
 	#var dimensions = getUIDimensions()

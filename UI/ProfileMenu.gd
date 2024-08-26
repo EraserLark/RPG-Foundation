@@ -10,6 +10,6 @@ func OpenMenu():
 	super()
 
 func _on_button_pressed():
-	CloseMenu()
+	menuManager.closeMenuSystem()
 	PlayerRoster.addProfileToRoster(PlayerRoster.profileBank[0])
 	#menuManager.swapSubMenu(menuManager.baseMenu)

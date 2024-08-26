@@ -54,6 +54,15 @@ func initializePlayerUI(pUI: PlayerUI_World, pEntity: OWEntity_Player):
 	#Hide menu when first starting game
 	pUI.playerPanel.visible = false
 
+func adjustMenusLayout():
+	playerAnchors.determineAnchorLayout()
+	var i=0
+	for ui in playerUIRoster:
+		#ui.currentPanelAnchor = 
+		ui.currentStageAnchor = playerAnchors.currentAnchorLayout[i]
+		ui.centerPlayerPanel()
+		i+=1
+
 func showPlayerMenu(condition: bool):
 	for playerUI in playerUIRoster:
 		playerUI.playerPanel.visible = condition
