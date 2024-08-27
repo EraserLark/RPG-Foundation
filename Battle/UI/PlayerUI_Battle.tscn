@@ -124,7 +124,6 @@ patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 script = ExtResource("6_44y4s")
-mandatory = true
 
 [node name="Stats" type="PanelContainer" parent="PlayerPanel"]
 layout_mode = 0

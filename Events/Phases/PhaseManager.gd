@@ -27,4 +27,4 @@ func phaseFinished():
 
 func finishManager():
 	managerFinished = true
-	StateStack.resumeCurrentState()
+	GameStateStack.resumeCurrentState()
