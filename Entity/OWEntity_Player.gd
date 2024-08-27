@@ -1,6 +1,7 @@
 extends Entity
 class_name OWEntity_Player
 
+var playerStateStack = StateStack.new()
 var overworldManager: OverworldManager
 var dialogueManager:= DialogueManager.new(self)
 

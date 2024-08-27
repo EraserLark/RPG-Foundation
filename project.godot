@@ -17,7 +17,7 @@ config/icon="res://Art/icon.svg"
 
 [autoload]
 
-StateStack="*res://States/StateStack.gd"
+GameStateStack="*res://GameStateStack.gd"
 PlayerRoster="*res://PlayerRoster.tscn"
 DialogueSystem="*res://Dialogue/DialogueSystem.tscn"
 NPC_Database="*res://NPC_Database.gd"

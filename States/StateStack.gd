@@ -1,4 +1,5 @@
 extends Node
+class_name StateStack
 
 var stateStack: Array[State]
 var currentState: State = null

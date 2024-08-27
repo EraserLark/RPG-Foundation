@@ -11,7 +11,7 @@ var actionMinigame	#Used in Attack class
 enum TargetTypes {PLAYER, ENEMY, ALL}
 var targetType: TargetTypes
 
-func _init(eManager, send, targ, targType, stgmn: StageManager):
+func _init(eManager: EventQueue, send: Entity, targ: Entity, targType, stgmn: StageManager):
 	super(eManager)
 	sender = send
 	target = targ

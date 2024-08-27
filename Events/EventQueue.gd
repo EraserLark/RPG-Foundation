@@ -1,11 +1,12 @@
 extends Node
 class_name EventQueue
 
+var stateStack: StateStack
 var queue : Array[Event]
 var currentEvent : Event
 
-func _init():
-	pass
+func _init(sStack: StateStack):
+	stateStack = sStack
 
 func addEvent(e : Event):
 	queue.append(e)
@@ -22,4 +23,4 @@ func popQueue():
 		currentEvent.runEvent()
 	else:
 		currentEvent = null
-		StateStack.resumeCurrentState()
+		stateStack.resumeCurrentState()

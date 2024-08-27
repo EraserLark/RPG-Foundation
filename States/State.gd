@@ -14,7 +14,7 @@ func enter(_msg := {}):
 	pass
 
 func update(_delta : float):
-	pass	
+	pass
 
 func physicsUpdate(_delta : float):
 	pass
