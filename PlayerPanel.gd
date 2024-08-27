@@ -7,7 +7,11 @@ class_name PlayerPanel
 var playerEntity: Entity
 
 func open():
-	if(playerEntity == null):
+	if(playerEntity.entityInfo == null):
 		showSubMenu(profileMenu)
 	else:
 		showSubMenu(baseMenu)
+
+func setPlayer(pEntity: Entity):
+	playerEntity = pEntity
+	profileMenu.rosterNum = playerEntity.rosterNumber

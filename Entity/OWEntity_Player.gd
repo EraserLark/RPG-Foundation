@@ -7,7 +7,7 @@ var dialogueManager:= DialogueManager.new(self)
 
 var entityActor: OW_Player
 var entityUI: PlayerUI_World #Not sure OW equivalent for entityUI
-var playerNumber: int
+var rosterNumber: int
 var playerState: State
 
 func initialize(om: OverworldManager = null, bm: BattleManager = null):
@@ -16,8 +16,8 @@ func initialize(om: OverworldManager = null, bm: BattleManager = null):
 		return
 	overworldManager = om
 	if(entityActor == null):
-		entityActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[playerNumber]
-	entityUI = overworldManager.overworldUI.playerUIRoster[playerNumber]
+		entityActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[rosterNumber]
+	entityUI = overworldManager.overworldUI.playerUIRoster[rosterNumber]
 
 func getClassInstance():
 	return self

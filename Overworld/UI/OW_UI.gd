@@ -40,7 +40,7 @@ func addPlayerUI(playerEntity: OWEntity_Player):
 	var playerUI = createPlayerUI()
 	initializePlayerUI(playerUI, playerEntity)
 
-func createPlayerUI():
+func createPlayerUI() -> PlayerUI_World:
 	#Instance empty ui
 	var pUI = playerUIScene.instantiate()
 	add_child(pUI)

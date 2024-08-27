@@ -20,7 +20,6 @@ func _ready():
 	print("Overworld Ready Start")
 	InputManager.newPlayerJoined.connect(newControllerJoined)
 	PlayerRoster.newRosterPlayer.connect(newPlayerJoined)
-	print(str("New Player is connected: ", InputManager.newPlayerJoined.is_connected(newPlayerJoined)))
 	
 	playerEntities.assign(worldRoster.players)
 	
@@ -28,22 +27,15 @@ func _ready():
 	overworldWorld.initialize(self)
 	worldRoster.initialize(self)
 	
-	#for playerInfo in PlayerRoster.roster:
-		#playerInfo.entityUI = overworldUI.playerUI
-		#overworldUI.playerUIRoster[0].playerPanel.playerInfo = playerInfo
-	
 	print("Overworld Ready Finish")
 
 func newControllerJoined(joypadNum: int):
-	PlayerRoster.addEmptySlot()
-	#overworldUI.playerAnchors.determineAnchorLayout()
-	var emptyUI = overworldUI.createPlayerUI()
-	overworldUI.adjustMenusLayout()
-	#emptyUI.currentStageAnchor = overworldUI.playerAnchors.currentAnchorLayout[PlayerRoster.roster.size()-1]
-	#emptyUI.centerPlayerPanel()
+	var emptyEntity = PlayerRoster.addEmptySlot(self)
+	#var emptyUI = overworldUI.createPlayerUI()
+	#overworldUI.adjustMenusLayout()
 	
-	var menuState = MenuState.new(StateStack, emptyUI.playerPanel)
-	StateStack.addState(menuState)
+	var menuState = MenuState.new(emptyEntity.playerStateStack, emptyEntity.entityUI.playerPanel)
+	emptyEntity.playerStateStack.addState(menuState)
 
 func newPlayerJoined(info: PlayerInfo):
 	worldRoster.addNewEntity(info, overworldUI.playerUIRoster[info.playerNumber - 1])
