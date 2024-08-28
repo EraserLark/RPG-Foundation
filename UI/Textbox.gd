@@ -2,6 +2,7 @@ extends Control
 class_name Textbox
 
 static var scenePath = "res://UI/textbox.tscn"
+var ownerState: Textbox_State
 
 @onready var responsePanel:= $ResponsePanel
 @onready var textField:= $NinePatchRect/MarginContainer/RichTextLabel
@@ -80,7 +81,7 @@ func advanceLineQueue():
 		typeText(currentLine)
 	else:
 		finishTextbox()
-		StateStack.resumeCurrentState()
+		ownerState.stateStack.resumeCurrentState()
 
 func typeText(textToType: String):
 	textField.text = textToType

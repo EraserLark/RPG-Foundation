@@ -3,7 +3,7 @@ class_name DefeatEvent
 
 var battleManager
 
-var defeatEQ := EventQueue.new()
+var defeatEQ := EventQueue.new(GameStateStack.stack)
 
 func _init(eManager, bm):
 	super(eManager)
@@ -15,7 +15,7 @@ func runEvent():
 	
 	#battleManager.playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
 	battleManager.battleUI.playerUIRoster[0].playerPanel.showPlayerMenu(true)
-	Textbox_State.createEvent(defeatEQ, StateStack, message, battleManager.battleUI.tbContainer)
+	Textbox_State.createEvent(defeatEQ, GameStateStack.stack, message, battleManager.battleUI.tbContainer)
 	
 	Cutscene_State.createEvent(defeatEQ, battleManager, BattleOutro)
 	

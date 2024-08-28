@@ -45,11 +45,11 @@ func initialize(om: OverworldManager, pe: OWEntity_Player):
 func refreshMenu():
 	initialMenu.setHP()
 
-func open():
+func open(sStack: StateStack):
 	if(playerInfo != null):
 		refreshMenu()
 	self.visible = true
-	super()
+	super(sStack)
 
 func _on_menu_list_item_activated(menuNum):
 	showSubMenu(menus[menuNum])

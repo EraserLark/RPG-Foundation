@@ -43,9 +43,9 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	playerActor.initialize(playerEntity, room)
 	
 	#Create Player Active state to start actor off with
-	var pState = Player_Active.new(StateStack, playerActor)
+	var pState = Player_Active.new(playerEntity.playerStateStack, playerActor)
 	playerEntity.playerState = pState
-	StateStack.addState(pState)
+	playerEntity.playerStateStack.addState(pState)
 	
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list

@@ -60,8 +60,8 @@ func stepCounter():
 		stepCount = 0
 		resetEncounterThreshold()
 		
-		var enterBattleState = Player_EnterBattle.new(StateStack)
-		StateStack.addState(enterBattleState, {"Room": currentRoom})
+		var enterBattleState = Player_EnterBattle.new(GameStateStack.stack)
+		GameStateStack.stack.addState(enterBattleState, {"Room": currentRoom})
 		#currentRoom.startBattle()
 
 func resetEncounterThreshold():
@@ -80,8 +80,8 @@ func faceDirection(dir: Vector2) -> bool:
 	currentDir = dir
 	
 	if(dirChangeCount >= 10):
-		var danceState = Player_Dance.new(StateStack, self)
-		StateStack.addState(danceState)
+		var danceState = Player_Dance.new(playerEntity.playerStateStack, self)
+		playerEntity.playerStateStack.addState(danceState)
 		return true
 	return false
 
@@ -89,13 +89,13 @@ func _on_dance_timer_timeout():
 	dirChangeCount = 0
 
 func danceFinish():
-	StateStack.removeState()
+	playerEntity.playerStateStack.removeState()
 	faceDirection(Vector2(0,1))
 
 ##Interaction
 func openMenu():
-	var menuState = MenuState.new(StateStack, playerEntity.entityUI.playerPanel)
-	StateStack.addState(menuState)
+	var menuState = MenuState.new(playerEntity.playerStateStack, playerEntity.entityUI.playerPanel)
+	playerEntity.playerStateStack.addState(menuState)
 
 func castInteractRay():
 	var interactee = interactRay.get_collider()

@@ -4,7 +4,7 @@ class_name Prompt_Phase
 var battleMenu
 var battleManager: BattleManager
 
-var promptEQ = EventQueue.new()
+#var promptEQ = EventQueue.new(GameStateStack.stack)	#Unused?
 
 func _init(battlePM, bm):
 	super(battlePM)
@@ -12,17 +12,11 @@ func _init(battlePM, bm):
 	battleMenu = bm.playerEntities[0].playerUI
 
 func runPhase():
-	#var battleMenuState = BattleMenu_State.new(StateStack, battleMenu)
-	#StateStack.addState(battleMenuState)
-	var battleMenuState = MenuState.new(StateStack, battleManager.battleUI.playerUIRoster[0].playerPanel)
-	StateStack.addState(battleMenuState)
+	var battleMenuState = MenuState.new(GameStateStack.stack, battleManager.battleUI.playerUIRoster[0].playerPanel)
+	GameStateStack.addState(battleMenuState)
 
 func resumePhase():
-	#if(promptEQ.queue.is_empty() && promptEQ.currentEvent == null):
-		#finishPhase()
-	#else:
-		#promptEQ.currentEvent.resumeEvent()
-		finishPhase()
+	finishPhase()
 
 func finishPhase():
 	super()

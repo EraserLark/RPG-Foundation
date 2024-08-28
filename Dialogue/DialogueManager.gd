@@ -16,8 +16,8 @@ func _init(entity: Entity):
 
 func startDialogue(startStep: DLG_Start):
 	#Create DialogueState
-	dialogueState = DialogueState.new(StateStack, self)
-	StateStack.addState(dialogueState, {"OwnerEntity": ownerEntity})
+	dialogueState = DialogueState.new(ownerEntity.playerStateStack, self)
+	ownerEntity.playerStateStack.addState(dialogueState, {"OwnerEntity": ownerEntity})
 	
 	var timeline = Helper.getAllChildren(startStep)
 	startStep.dialogueManager = self

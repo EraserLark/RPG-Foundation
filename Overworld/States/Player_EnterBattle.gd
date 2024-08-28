@@ -1,11 +1,14 @@
 extends State
 class_name Player_EnterBattle
 
-var battleTransitionQueue:= EventQueue.new()
+var battleTransitionQueue: EventQueue
 
 var animPlayer: AnimationPlayer
 var currentRoom: Room
 var enemyData: Array[EnemyInfo]
+
+func _init(sStack: StateStack):
+	battleTransitionQueue = EventQueue.new(sStack)
 
 func enter(_msg := {}):
 	currentRoom = _msg["Room"]

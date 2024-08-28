@@ -1,12 +1,13 @@
 extends Event
 class_name Death_Event
 
-var deathEQ:= EventQueue.new()
+var deathEQ: EventQueue
 var deadEntity: Entity
 var battleManager
 
-func _init(eManager, entity, bm):
+func _init(sStack: StateStack, eManager: EventQueue, entity, bm):
 	super(eManager)
+	deathEQ = EventQueue.new(sStack)
 	deadEntity = entity
 	battleManager = bm
 

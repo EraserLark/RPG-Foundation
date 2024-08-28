@@ -8,7 +8,7 @@ func _init(sStack: StateStack, m: MenuSystem):
 	menu = m
 
 func enter(_msg:= {}):
-	menu.open()
+	menu.open(stateStack)
 
 func resumeState():
 	if(menu.isFinished):

@@ -12,6 +12,7 @@ func _init(sStack, m, cntnr):
 
 func enter(_msg := {}):
 	textbox = Textbox.createInstance(container, message)
+	textbox.ownerState = self
 	textbox.advanceLineQueue()
 
 func update(_delta : float):
@@ -44,8 +45,8 @@ class EventClass:
 		container = cntnr
 
 	func runEvent():
-		var tbState = Textbox_State.new(StateStack, message, container)
-		StateStack.addState(tbState)
+		var tbState = Textbox_State.new(stateStack, message, container)
+		stateStack.addState(tbState)
 
 	func resumeEvent():
 		finishEvent()

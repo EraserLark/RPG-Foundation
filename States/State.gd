@@ -4,19 +4,19 @@ class_name State
 
 var stateStack = null
 
-func _init(sStack : StateStack):
+func _init(sStack: StateStack):
 	stateStack = sStack
 
-func handleInput(_event : InputEvent):
+func handleInput(_event: InputEvent):
 	pass
 
-func enter(_msg := {}):
+func enter(_msg:= {}):
 	pass
 
-func update(_delta : float):
+func update(_delta: float):
 	pass
 
-func physicsUpdate(_delta : float):
+func physicsUpdate(_delta: float):
 	pass
 
 func resumeState():

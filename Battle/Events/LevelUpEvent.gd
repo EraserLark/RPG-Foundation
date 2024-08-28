@@ -1,22 +1,27 @@
 extends Event
 class_name LevelUp_Event
 
-var levelUpEQ = EventQueue.new()
-var battleManager : BattleManager
+var levelUpEQ: EventQueue
+var battleManager: BattleManager
+var playerEntity: Entity
+var playerStateStack: StateStack
 
-func _init(eManager, bm):
+func _init(player, eManager, bm):
 	super(eManager)
 	battleManager = bm
+	playerEntity = player
+	playerStateStack = playerEntity.playerStateStack
+	levelUpEQ = EventQueue.new(playerStateStack)
 
 func runEvent():
-	battleManager.playerEntities[0].entityInfo.levelUp()
+	playerEntity.entityInfo.levelUp()
 	
 	battleManager.cutsceneManager.play("LevelUp")
 	
-	var message: Array[String] = ["[rainbow]LEVEL UP![/rainbow]", str("You are now Level ", battleManager.playerEntities[0].entityInfo.level)]
+	var message: Array[String] = ["[rainbow]LEVEL UP![/rainbow]", str("You are now Level ", playerEntity.entityInfo.level)]
 	
-	battleManager.playerEntities[0].playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
-	Textbox_State.createEvent(levelUpEQ, StateStack, message, battleManager.playerEntities[0].playerPanel)
+	playerEntity.entityUI.playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
+	Textbox_State.createEvent(levelUpEQ, playerStateStack, message, playerEntity.entityUI.playerPanel)
 	
 	levelUpEQ.popQueue()
 

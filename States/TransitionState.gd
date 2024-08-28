@@ -1,7 +1,7 @@
 extends State
 class_name TransitionState
 
-var transitionEQ = EventQueue.new()
+var transitionEQ: EventQueue
 
 var cutsceneManager
 var world
@@ -10,6 +10,7 @@ var newRoomPort
 
 func _init(sStack, cm, w, rp, pn):
 	super(sStack)
+	transitionEQ = EventQueue.new(sStack)
 	cutsceneManager = cm
 	world = w
 	newRoomPath = rp

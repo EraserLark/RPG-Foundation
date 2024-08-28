@@ -83,5 +83,5 @@ func startBattle(battleData: Array[EnemyInfo] = []):
 
 func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)
-	var transition = TransitionState.new(StateStack, owManager.cutsceneManager, world, newRoomPath, port)
-	StateStack.addState(transition)
+	var transition = TransitionState.new(GameStateStack.stack, owManager.cutsceneManager, world, newRoomPath, port)
+	GameStateStack.stack.addState(transition)

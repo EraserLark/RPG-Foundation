@@ -4,7 +4,7 @@ class_name UpdateTurn
 var battleManager
 var statusRoster
 
-var statusUpdateEQ = EventQueue.new()
+var statusUpdateEQ = EventQueue.new(GameStateStack.stack)
 
 func _init(eManager:EventQueue, bm:BattleManager):
 	super(eManager)
@@ -19,7 +19,7 @@ func runEvent():
 		var readyToEnd = status.checkStatusCount(currentCount)
 		if(readyToEnd):
 			var message: Array[String] = [str(status.status_name, " has ended!")]
-			Textbox_State.createEvent(statusUpdateEQ, StateStack, message, battleManager.battleUI.tbContainer)
+			Textbox_State.createEvent(statusUpdateEQ, GameStateStack.stack, message, battleManager.battleUI.tbContainer)
 			status.endStatus()
 	
 	statusUpdateEQ.popQueue()

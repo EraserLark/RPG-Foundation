@@ -38,10 +38,10 @@ func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: BattleEntity_Player
 	
 	#stats.setInitialHealth()
 
-func open():
+func open(sStack: StateStack):
 	baseMenu = playerMenu
 	player = playerUI.player
-	super()
+	super(sStack)
 
 func attackSelected(index: int):
 	currentSelectedAction = player.attackChosen(index)

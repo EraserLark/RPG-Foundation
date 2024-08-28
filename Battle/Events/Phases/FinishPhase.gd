@@ -4,7 +4,7 @@ class_name Finish_Phase
 var battleUI
 var battleManager
 
-var finishEQ = EventQueue.new()
+var finishEQ = EventQueue.new(GameStateStack.stack)
 
 func _init(battlePM, bm):
 	super(battlePM)

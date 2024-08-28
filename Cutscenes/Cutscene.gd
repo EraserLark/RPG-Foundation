@@ -2,11 +2,12 @@ extends State
 class_name Cutscene_State
 
 var cutsceneManager : CutsceneManager
-var cutsceneEQ = EventQueue.new()
+var cutsceneEQ: EventQueue
 var battleManager: BattleManager
 
 func _init(sStack, cm, bm):
 	super(sStack)
+	cutsceneEQ = EventQueue.new(sStack)
 	cutsceneManager = cm
 	battleManager = bm
 	
@@ -41,8 +42,8 @@ class EventClass:
 		cutsceneClass = cc
 	
 	func runEvent():
-		var cutscene = cutsceneClass.new(StateStack, battleManager.cutsceneManager, battleManager)
-		StateStack.addState(cutscene)
+		var cutscene = cutsceneClass.new(GameStateStack.stack, battleManager.cutsceneManager, battleManager)
+		GameStateStack.stack.addState(cutscene)
 	
 	func resumeEvent():
 		finishEvent()

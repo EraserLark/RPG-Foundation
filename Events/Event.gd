@@ -1,8 +1,8 @@
 extends Node
 class_name Event
 
-var eventName : String
-var eventManager : EventQueue = null
+var eventName: String
+var eventManager: EventQueue = null
 
 signal eventFinished
 

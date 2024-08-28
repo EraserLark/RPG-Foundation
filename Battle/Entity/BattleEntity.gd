@@ -3,6 +3,7 @@ class_name BattleEntity
 
 var entityActor: BattleActor
 var entityUI: EntityUI
+var playerStateStack:= StateStack.new()	#REDUNDANT. Just here to quell errors
 
 ##Outside references
 var battleManager: BattleManager
@@ -64,7 +65,7 @@ func takeDamage(dmg: int, pierce: bool):
 	#updateUI(remainingHealth)
 	
 	if(remainingHealth <= 0):
-		var deathEvent = Death_Event.new(battleManager.actionPhase.actionEQ, self, battleManager)
+		var deathEvent = Death_Event.new(playerStateStack, battleManager.actionPhase.actionEQ, self, battleManager)
 		battleManager.actionPhase.actionEQ.queue.push_front(deathEvent)
 
 func checkRoster():

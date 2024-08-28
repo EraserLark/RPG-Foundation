@@ -4,6 +4,7 @@ class_name MenuSystem
 var baseMenu: Menu
 var subMenus: Array[Menu]
 var menuStack: MenuStack = MenuStack.new()
+var ownerStack: StateStack
 
 var audioPlayer: AudioStreamPlayer
 @export var sounds: Array[AudioStreamMP3]
@@ -11,7 +12,8 @@ var audioPlayer: AudioStreamPlayer
 var isFinished:= false
 @export var mandatory:= false
 
-func open():
+func open(sStack: StateStack):
+	ownerStack = sStack
 	showSubMenu(baseMenu)
 
 func showSubMenu(menu: Menu):
@@ -43,4 +45,4 @@ func backOut():
 func closeMenuSystem():
 	menuStack.emptyStack() 
 	isFinished = true
-	StateStack.resumeCurrentState()
+	ownerStack.resumeCurrentState()

@@ -61,8 +61,8 @@ func _ready():
 	
 	camera.make_current()
 	
-	battleState = Battle_State.new(StateStack, self)
-	StateStack.addState(battleState)
+	battleState = Battle_State.new(GameStateStack.stack, self)
+	GameStateStack.stack.addState(battleState)
 
 func updateTurnCount():
 	turnCount += 1

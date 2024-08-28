@@ -3,24 +3,25 @@ class_name VictoryEvent
 
 var battleManager
 
-var victoryEQ := EventQueue.new()
+var victoryEQ := EventQueue.new(GameStateStack.stack)
 
 func _init(eManager, bm):
 	super(eManager)
 	battleManager = bm
 
 func runEvent():
-	var playerInfo = battleManager.playerEntities[0].entityInfo
+	var playerEntity = battleManager.playerEntities[0]
+	var playerInfo = playerEntity.entityInfo
 	playerInfo.xp += battleManager.xpBank
 	
 	var message : Array[String] = [str("You win! Gained ", battleManager.xpBank, "xp!")]
 	#var textbox = battleManager.battleUI.textbox
 	
-	battleManager.battleUI.playerUIRoster[0].playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
-	Textbox_State.createEvent(victoryEQ, StateStack, message, battleManager.battleUI.tbContainer)
+	playerEntity.entityUI.playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
+	Textbox_State.createEvent(victoryEQ, GameStateStack.stack, message, battleManager.battleUI.tbContainer)
 	
 	if(playerInfo.xp >= playerInfo.nextLevelCost):
-		var lvlUp = LevelUp_Event.new(eventManager, battleManager)
+		var lvlUp = LevelUp_Event.new(playerEntity, eventManager, battleManager)
 		victoryEQ.addEvent(lvlUp)
 	
 	Cutscene_State.createEvent(eventManager, battleManager, BattleOutro)

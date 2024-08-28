@@ -6,7 +6,8 @@ class_name PlayerPanel
 
 var playerEntity: Entity
 
-func open():
+func open(sStack: StateStack):
+	ownerStack = sStack
 	if(playerEntity.entityInfo == null):
 		showSubMenu(profileMenu)
 	else:
