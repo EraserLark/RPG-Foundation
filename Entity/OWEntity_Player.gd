@@ -10,6 +10,9 @@ var entityUI: PlayerUI_World #Not sure OW equivalent for entityUI
 var rosterNumber: int
 var playerState: State
 
+func _ready():
+	self.add_child(playerStateStack)	#Add so _process() gets called
+
 func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	if(om == null):
 		printerr("overworldManager not passed")

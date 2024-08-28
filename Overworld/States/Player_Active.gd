@@ -8,6 +8,9 @@ func _init(sStack: StateStack, plyr: OW_Player):
 	player = plyr
 
 func handleInput(event : InputEvent):
+	if event.device == 0:
+		print("Player 1")
+	
 	if(event.is_action_pressed("ui_accept")):
 		player.castInteractRay()
 	
