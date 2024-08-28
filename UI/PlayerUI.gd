@@ -12,7 +12,7 @@ func initialize(stgmn: StageManager, playerPanel, playerEntity: Entity, currentA
 	#player = stageManager.playerEntities[playerNumber]
 	#currentStageAnchor = currentAnchors[playerNumber]
 	player = playerEntity
-	currentStageAnchor = currentAnchors[player.playerNumber]
+	currentStageAnchor = currentAnchors[player.rosterNumber]
 	
 	if(stageManager is OverworldManager):
 		playerPanel.initialize(stageManager, player)

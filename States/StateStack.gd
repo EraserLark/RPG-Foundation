@@ -4,7 +4,7 @@ class_name StateStack
 var stateStack: Array[State]
 var currentState: State = null
 
-func _ready():
+func _init():
 	var baseState = State.new(self)
 	addState(baseState)
 
