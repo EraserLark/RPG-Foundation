@@ -40,10 +40,13 @@ func addPlayerUI(playerEntity: OWEntity_Player):
 	var playerUI = createPlayerUI()
 	initializePlayerUI(playerUI, playerEntity)
 
-func createPlayerUI() -> PlayerUI_World:
+func createPlayerUI(playerNumber = null) -> PlayerUI_World:
 	#Instance empty ui
 	var pUI = playerUIScene.instantiate()
 	add_child(pUI)
+	if playerNumber != null:
+		pUI.playerPanel.profileMenu.deviceNum = playerNumber
+		#pUI.
 	#Add it to playerUIRoster
 	playerUIRoster.append(pUI)
 	return pUI

@@ -13,6 +13,7 @@ var owManager: OverworldManager
 #var player: OW_Player	#unused?
 #var player: PlayerInfo
 #var playerEntity: OWEntity_Player
+var playerNum: int
 
 ##Non export vars
 var playerInfo: PlayerInfo

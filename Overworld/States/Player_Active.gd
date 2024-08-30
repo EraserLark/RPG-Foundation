@@ -2,22 +2,21 @@ extends State
 class_name Player_Active
 
 var player: OW_Player
+var input: DeviceInput
 
 func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
 	player = plyr
+	input = player.playerEntity.input
 
 func handleInput(event : InputEvent):
-	if event.device != player.playerEntity.rosterNumber:
+	if event.device != player.playerEntity.deviceNumber:
 		return
 	
 	if(event.is_action_pressed("ui_accept")):
 		player.castInteractRay()
 	elif(event.is_action_pressed("ui_cancel")):
 		player.openMenu()
-	
-	#if(event.is_action_pressed("ui_cancel")):
-		#player.openMenu()
 
 func enter(msg := {}):
 	pass
@@ -26,34 +25,27 @@ func update(delta : float):
 	if(player == null):
 		return
 	
-	#if(InputEvent.device != player.playerEntity.rosterNumber):
-		#return
+	##Get input vector
+	var inputDir = Vector2.ZERO
+	inputDir = input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
-	var input = Vector2.ZERO;
-	#input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left");
-	#input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up");
+	##Convert joystick movement to 8 Directions
+	if input.is_joypad() && inputDir != Vector2.ZERO:
+		inputDir = Helper.convertToEightDir(inputDir)
 	
-	input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	#print(str("Input: ", input))
-	player.moveDirection(input)
+	##Move player
+	player.moveDirection(inputDir)
 	
-	if input != Vector2.ZERO:
-		var dancing = player.faceDirection(input)
+	if inputDir != Vector2.ZERO:
+		var dancing = player.faceDirection(inputDir)
 		if(dancing):
 			return
 		
 		player.animState.travel("Walk")
 	else:
 		player.animState.travel("Idle")
-	
-	#if Input.is_action_just_pressed("ui_accept"):
-		#player.castInteractRay()
-	
-	#if Input.is_action_just_pressed("ui_cancel"):
-		#player.openMenu()
 
 func resumeState():
-	#player.owManager.overworldUI.playerMenu.refreshMenu()
 	pass
 
 func exit():

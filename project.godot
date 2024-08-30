@@ -23,6 +23,7 @@ DialogueSystem="*res://Dialogue/DialogueSystem.tscn"
 NPC_Database="*res://NPC_Database.gd"
 FlagManager="*res://Flags/FlagManager.gd"
 InputManager="*res://InputManager.gd"
+MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 
 [display]
 
@@ -31,6 +32,10 @@ window/stretch/mode="viewport"
 [editor]
 
 movie_writer/movie_file="C:/Users/arrin/GameDev/Godot/Recordings/RPG Foundation/Movie1.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")
 
 [input]
 

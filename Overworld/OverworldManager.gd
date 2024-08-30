@@ -30,7 +30,7 @@ func _ready():
 	print("Overworld Ready Finish")
 
 func newControllerJoined(joypadNum: int):
-	var emptyEntity = PlayerRoster.addEmptySlot(self)
+	var emptyEntity = PlayerRoster.addEmptySlot(self, joypadNum)
 	#var emptyUI = overworldUI.createPlayerUI()
 	#overworldUI.adjustMenusLayout()
 	

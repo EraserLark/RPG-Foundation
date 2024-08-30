@@ -7,13 +7,14 @@ extends Node
 signal newRosterPlayer(info: PlayerInfo)
 
 ##Player joined, create Empty Entity
-func addEmptySlot(stageManager: StageManager):
+func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	var emptyEntity = OWEntity_Player.new()
 	emptyEntity.overworldManager = stageManager
+	emptyEntity.deviceNumber = joypadNum
 	roster.append(emptyEntity)
 	emptyEntity.rosterNumber = roster.find(emptyEntity)
 	
-	var emptyUI = stageManager.overworldUI.createPlayerUI()
+	var emptyUI = stageManager.overworldUI.createPlayerUI(joypadNum)
 	emptyEntity.entityUI = emptyUI
 	emptyUI.playerPanel.setPlayer(emptyEntity)	#Do this mainly to get rosterNum to profileMenu
 	stageManager.overworldUI.adjustMenusLayout()

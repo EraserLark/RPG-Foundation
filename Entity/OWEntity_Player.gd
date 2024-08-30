@@ -10,8 +10,13 @@ var entityUI: PlayerUI_World #Not sure OW equivalent for entityUI
 var rosterNumber: int
 var playerState: State
 
+##INPUT
+var deviceNumber:= -99	#Set this so throws error if no controller num passed
+var input: DeviceInput
+
 func _ready():
 	self.add_child(playerStateStack)	#Add so _process() gets called
+	input = DeviceInput.new(deviceNumber)
 
 func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	if(om == null):

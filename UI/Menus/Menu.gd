@@ -27,7 +27,8 @@ func setPrevFocus():
 	prevFocused = get_viewport().gui_get_focus_owner()
 
 func grabFirstFocus():
-	firstFocus.grab_focus()
+	if firstFocus != null:
+		firstFocus.grab_focus()
 
 func grabPrevFocused():
 	prevFocused.grab_focus()
