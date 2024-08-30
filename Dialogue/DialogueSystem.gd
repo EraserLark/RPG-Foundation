@@ -18,7 +18,7 @@ func _ready():
 	#add_child(player1Node)
 
 func startTimeline(timelinePath: String, playerNum: int):
-	var playerEntity: OWEntity_Player = world.owManager.playerEntities[playerNum]
+	var playerEntity: OWEntity_Player = PlayerRoster.roster[playerNum]
 	#Instantiate timeline, parent it under proper player node here
 	var tl = load(timelinePath)
 	var inst = tl.instantiate()	##If crashing here: Timeline path is not valid
