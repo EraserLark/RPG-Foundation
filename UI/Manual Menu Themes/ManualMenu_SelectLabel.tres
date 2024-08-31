@@ -3,10 +3,10 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou1ev"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahnfo"]
-bg_color = Color(0.6, 0.6, 0.6, 0.705882)
+bg_color = Color(1, 1, 1, 0.705882)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc3t7"]
-bg_color = Color(0.6, 0.6, 0.6, 0.392157)
+bg_color = Color(1, 1, 1, 0.392157)
 
 [resource]
 SelectLabel/base_type = &"Label"

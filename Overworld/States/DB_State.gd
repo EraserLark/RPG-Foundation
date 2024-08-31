@@ -50,8 +50,8 @@ class EventClass:
 		parent = p
 
 	func runEvent():
-		var dbState = DialogueBox_State.new(StateStack, message, speaker, parent)
-		StateStack.addState(dbState)
+		var dbState = DialogueBox_State.new(stateStack, message, speaker, parent)
+		stateStack.addState(dbState)
 
 	func resumeEvent():
 		finishEvent()

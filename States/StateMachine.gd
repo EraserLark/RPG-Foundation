@@ -35,4 +35,4 @@ func transition_to(target_state_name : String, msg: Dictionary = {}):
 	emit_signal("tranisitoned", state.name)
 
 func endStateMachine():
-	StateStack.removeSM()
+	manager.removeSM()

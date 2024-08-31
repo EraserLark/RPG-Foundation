@@ -72,7 +72,7 @@ func OpenMenu():
 	super()
 
 func grabFirstFocus():
-	currentSelection = 0
+	currentSelection = prevFocus
 	
 	focusLabel = labelList.get_child(currentSelection)
 	focusLabel.theme_type_variation = "SelectLabel_Selected"
@@ -185,7 +185,7 @@ func selectItem():
 	focusLabel = labelList.get_child(focusIndex)
 	focusLabel.theme_type_variation = "SelectLabel_Selected"
 	
-	print(str("CurrentSelection: ", currentSelection, "  UpperScrollRange: ", upperScrollRange))
+	print(str("Menu: ", self.name, "  CurrentSelection: ", currentSelection, "  UpperScrollRange: ", upperScrollRange))
 
 func activateOption():
 	focusLabel.theme_type_variation = "SelectLabel_Activated"
@@ -196,6 +196,7 @@ func setHP():
 
 func setPrevFocus():
 	#Store prevFocus as int here
+	prevFocus = currentSelection
 	pass
 
 func grabPrevFocus():

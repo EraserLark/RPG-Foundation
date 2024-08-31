@@ -5,6 +5,7 @@ class_name PlayerUI_World
 @onready var hpLabel:= $PlayerPanel/MarginContainer/InitialMenu/VBoxContainer/RichTextLabel
 @onready var itemsList:= $PlayerPanel/MarginContainer/Submenus/ItemMenu
 @onready var playerPanel:= $PlayerPanel
+@onready var scrollTimer:= $ScrollTimer
 
 ##Parent references
 #var owManager: OverworldManager

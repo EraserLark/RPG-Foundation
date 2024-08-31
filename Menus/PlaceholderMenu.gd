@@ -1,5 +1,6 @@
-extends Menu
+extends ManualMenu
 class_name PlaceholderMenu
 
 func _ready():
-	firstFocus = self
+	pass
+	#firstFocus = self
