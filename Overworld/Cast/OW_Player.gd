@@ -94,8 +94,8 @@ func danceFinish():
 
 ##Interaction
 func openMenu():
-	var menuState = MenuState.new(playerEntity.playerStateStack, playerEntity.entityUI.playerPanel)
-	playerEntity.playerStateStack.addState(menuState)
+	var manualmenuState = ManualMenu_State.new(playerEntity.playerStateStack, playerEntity.input, playerEntity.entityUI.playerPanel)
+	playerEntity.playerStateStack.addState(manualmenuState)
 
 func castInteractRay():
 	var interactee = interactRay.get_collider()

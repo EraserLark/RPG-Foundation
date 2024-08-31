@@ -52,7 +52,7 @@ func open(sStack: StateStack):
 	self.visible = true
 	super(sStack)
 
-func _on_menu_list_item_activated(menuNum):
+func showInitialMenuSelection(menuNum):
 	showSubMenu(menus[menuNum])
 
 func itemSelected(index: int):
