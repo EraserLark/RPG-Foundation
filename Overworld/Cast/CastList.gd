@@ -49,6 +49,7 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list
+	playerActors.sort_custom(sortPlayerActors)
 	playerEntity.entityActor = playerActor
 	#playerEntity.entityInfo.setActor(playerActor)	#playerInfo gets a reference
 	

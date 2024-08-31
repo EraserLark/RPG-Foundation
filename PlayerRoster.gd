@@ -15,6 +15,7 @@ func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	emptyEntity.overworldManager = stageManager
 	emptyEntity.deviceNumber = joypadNum
 	roster.append(emptyEntity)
+	roster.sort_custom(sortPlayerEntities)	#Sort to adjust to new device numbers
 	emptyEntity.rosterNumber = roster.find(emptyEntity)
 	
 	var emptyUI = stageManager.overworldUI.createPlayerUI(joypadNum)

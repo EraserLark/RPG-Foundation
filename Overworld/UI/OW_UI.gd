@@ -48,6 +48,7 @@ func createPlayerUI(playerNumber = null) -> PlayerUI_World:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
 	#Add it to playerUIRoster
 	playerUIRoster.append(pUI)
+	playerUIRoster.sort_custom(sortPlayerUI)
 	return pUI
 
 func initializePlayerUI(pUI: PlayerUI_World, pEntity: OWEntity_Player):
@@ -81,3 +82,4 @@ func sortPlayerUI(a, b):
 	if a.player.deviceNumber < b.player.deviceNumber:
 		return true
 	return false
+####
