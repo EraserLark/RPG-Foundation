@@ -67,4 +67,11 @@ func actorSpeak(actorName, actorMessage):
 
 func removeActor(actor: OWEntity_Player):
 	playerActors.erase(actor)
+	playerActors.sort_custom(sortPlayerActors)
 	actor.queue_free()
+
+##Used for sort_custom
+func sortPlayerActors(a, b):
+	if a.playerEntity.deviceNumber < b.playerEntity.deviceNumber:
+		return true
+	return false

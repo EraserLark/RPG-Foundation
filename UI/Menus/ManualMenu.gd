@@ -13,8 +13,11 @@ func buttonPressed(_event: InputEvent):
 		activateOption()
 		get_viewport().set_input_as_handled()
 	elif(_event.is_action_pressed("ui_cancel")):
-		menuManager.backOut()
+		rejectMenu()
 		get_viewport().set_input_as_handled()
 
 func activateOption():
 	pass
+
+func rejectMenu():
+	menuManager.backOut()

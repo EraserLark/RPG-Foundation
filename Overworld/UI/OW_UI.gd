@@ -73,4 +73,11 @@ func showPlayerMenu(condition: bool):
 
 func removePlayerUI(pUI: PlayerUI_World):
 	playerUIRoster.erase(pUI)
+	playerUIRoster.sort_custom(sortPlayerUI)
 	pUI.queue_free()
+
+##Used for sort_custom
+func sortPlayerUI(a, b):
+	if a.player.deviceNumber < b.player.deviceNumber:
+		return true
+	return false

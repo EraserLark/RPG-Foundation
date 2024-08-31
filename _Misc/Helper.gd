@@ -28,6 +28,7 @@ static func getAllChildren(rootNode: Node) -> Array:
 			nodes.append(N)
 	return nodes
 
+
 static var directions = [
 	Vector2.LEFT,
 	Vector2.LEFT + Vector2.UP,

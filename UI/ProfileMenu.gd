@@ -17,6 +17,10 @@ func activateOption():
 	PlayerRoster.addProfileToRoster(PlayerRoster.profileBank[0], rosterNum)
 	get_viewport().set_input_as_handled()
 
+func rejectMenu():
+	PlayerRoster.removePlayer(deviceNum)
+	super()
+
 #func _unhandled_input(event):
 	#if event.is_action_pressed(str(deviceNum, "ui_accept")):
 #

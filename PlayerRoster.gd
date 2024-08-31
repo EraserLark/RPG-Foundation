@@ -53,10 +53,18 @@ func removePlayer(deviceNum: int):
 	var stageManager = leavingPlayer.overworldManager
 	
 	if leavingPlayer.entityInfo != null:
-		#Erase playerActor from playerActors, queue free
+		#Erase playerActor from playerActors, sort roster, queue free
 		stageManager.overworldWorld.currentRoom.castList.removeActor(leavingPlayer.entityActor)
-	#Erase playerUI from playerUIRoster, queue free
+	#Erase playerUI from playerUIRoster, sort roster, queue free
 	stageManager.overworldUI.removePlayerUI(leavingPlayer.entityUI)
-	#Erase playerEntity from roster, queue free
+	#Erase playerEntity from roster, sort roster, queue free
 	roster.erase(leavingPlayer)
+	roster.sort_custom(sortPlayerEntities)
 	leavingPlayer.queue_free()
+
+##Used for sort_custom
+func sortPlayerEntities(a, b):
+	if a.deviceNumber < b.deviceNumber:
+		return true
+	return false
+####
