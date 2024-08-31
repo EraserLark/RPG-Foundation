@@ -1,7 +1,7 @@
 extends ManualMenu
 class_name ProfileSelectionMenu
 
-@onready var goButton:= $VBoxContainer/Button
+#@onready var goButton:= $VBoxContainer/Button
 var rosterNum: int
 var deviceNum
 

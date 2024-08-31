@@ -37,19 +37,31 @@ visible = false
 layout_mode = 2
 script = ExtResource("3_m7k2y")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ProfileSelection"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/ProfileSelection/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/ProfileSelection"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ready?"
+theme_override_font_sizes/font_size = 25
+text = "Press A to join"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/ProfileSelection/VBoxContainer"]
-layout_mode = 2
-text = "GO"
+[node name="Label2" type="Label" parent="MarginContainer/ProfileSelection/Label"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -58.5
+offset_right = 58.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
+text = "Press B to exit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PanelAnchors" type="Control" parent="."]
 layout_mode = 1
@@ -106,5 +118,3 @@ grow_vertical = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
-
-[connection signal="pressed" from="MarginContainer/ProfileSelection/VBoxContainer/Button" to="MarginContainer/ProfileSelection" method="_on_button_pressed"]
