@@ -64,3 +64,7 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 
 func actorSpeak(actorName, actorMessage):
 	emit_signal("actor_speaking", actorName, actorMessage)
+
+func removeActor(actor: OWEntity_Player):
+	playerActors.erase(actor)
+	actor.queue_free()

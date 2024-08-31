@@ -46,7 +46,6 @@ func createPlayerUI(playerNumber = null) -> PlayerUI_World:
 	add_child(pUI)
 	if playerNumber != null:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
-		#pUI.
 	#Add it to playerUIRoster
 	playerUIRoster.append(pUI)
 	return pUI
@@ -71,3 +70,7 @@ func adjustMenusLayout():
 func showPlayerMenu(condition: bool):
 	for playerUI in playerUIRoster:
 		playerUI.playerPanel.visible = condition
+
+func removePlayerUI(pUI: PlayerUI_World):
+	playerUIRoster.erase(pUI)
+	pUI.queue_free()

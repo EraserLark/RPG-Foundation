@@ -6,6 +6,9 @@ extends Node
 
 signal newRosterPlayer(info: PlayerInfo)
 
+func _ready():
+	InputManager.playerLeft.connect(removePlayer)
+
 ##Player joined, create Empty Entity
 func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	var emptyEntity = OWEntity_Player.new()
@@ -36,3 +39,24 @@ func addProfileToRoster(profile: PlayerInfo, rosterNum: int):
 	playerEntity.initialize(owManager, null)
 	#profile.playerNumber = roster.size() - 1
 	emit_signal("newRosterPlayer", profile)
+
+func removePlayer(deviceNum: int):
+	var leavingPlayer: OWEntity_Player
+	for player in roster:
+		if player.deviceNumber == deviceNum:
+			leavingPlayer = player
+	
+	if leavingPlayer == null:
+		printerr("Could not find leaving device number amongst player entity roster")
+		return
+	
+	var stageManager = leavingPlayer.overworldManager
+	
+	if leavingPlayer.entityInfo != null:
+		#Erase playerActor from playerActors, queue free
+		stageManager.overworldWorld.currentRoom.castList.removeActor(leavingPlayer.entityActor)
+	#Erase playerUI from playerUIRoster, queue free
+	stageManager.overworldUI.removePlayerUI(leavingPlayer.entityUI)
+	#Erase playerEntity from roster, queue free
+	roster.erase(leavingPlayer)
+	leavingPlayer.queue_free()

@@ -61,3 +61,9 @@ func checkRoster():
 
 func entityDead():
 	pass
+
+func endEntity():
+	if entityActor != null:
+		entityActor.queue_free()
+	entityUI.queue_free()
+	
