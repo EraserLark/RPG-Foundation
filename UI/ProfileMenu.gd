@@ -1,4 +1,4 @@
-extends Menu
+extends ManualMenu
 class_name ProfileSelectionMenu
 
 @onready var goButton:= $VBoxContainer/Button
@@ -12,11 +12,14 @@ func _ready():
 func OpenMenu():
 	super()
 
-func _unhandled_input(event):
-	if event.is_action_pressed(str(deviceNum, "ui_accept")):
-		menuManager.closeMenuSystem()
-		PlayerRoster.addProfileToRoster(PlayerRoster.profileBank[0], rosterNum)
-		get_viewport().set_input_as_handled()
+func activateOption():
+	menuManager.closeMenuSystem()
+	PlayerRoster.addProfileToRoster(PlayerRoster.profileBank[0], rosterNum)
+	get_viewport().set_input_as_handled()
+
+#func _unhandled_input(event):
+	#if event.is_action_pressed(str(deviceNum, "ui_accept")):
+#
 
 #func _on_button_pressed():
 	#menuManager.closeMenuSystem()

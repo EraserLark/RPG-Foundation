@@ -36,6 +36,9 @@ func swapSubMenu(swapToMenu: Menu):
 	menuStack.popMenu()
 	showSubMenu(swapToMenu)
 
+func resumeSubMenu():
+	menuStack.currentMenu.ResumeMenu()
+
 func backOut():
 	if(menuStack.currentMenu == baseMenu && mandatory):
 		return

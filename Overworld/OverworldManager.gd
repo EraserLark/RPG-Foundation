@@ -34,8 +34,8 @@ func newControllerJoined(joypadNum: int):
 	#var emptyUI = overworldUI.createPlayerUI()
 	#overworldUI.adjustMenusLayout()
 	
-	var menuState = MenuState.new(emptyEntity.playerStateStack, emptyEntity.entityUI.playerPanel)
-	emptyEntity.playerStateStack.addState(menuState)
+	var manualMenuState = ManualMenu_State.new(emptyEntity.playerStateStack, emptyEntity.input, emptyEntity.entityUI.playerPanel)
+	emptyEntity.playerStateStack.addState(manualMenuState)
 
 func newPlayerJoined(info: PlayerInfo):
 	worldRoster.addNewEntity(info, overworldUI.playerUIRoster[info.playerNumber - 1])
