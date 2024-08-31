@@ -2,7 +2,7 @@ extends Control
 class_name Textbox
 
 static var scenePath = "res://UI/textbox.tscn"
-var ownerState: Textbox_State
+var ownerState: State
 
 @onready var responsePanel:= $ResponsePanel
 @onready var textField:= $NinePatchRect/MarginContainer/RichTextLabel
@@ -30,7 +30,7 @@ var currentMode: MODE = MODE.DIALOGUE
 
 signal responseChosen(responseIndex: int)
 
-static func createInstance(parent: Node, lines: Array[String], responseOptions: Array[String] = []) -> Textbox:
+static func createInstance(parent: Node, lines: Array[String], stateOwner: State, responseOptions: Array[String] = []) -> Textbox:
 	var scene = load(scenePath)
 	var inst = scene.instantiate()
 	parent.add_child(inst)
@@ -38,6 +38,7 @@ static func createInstance(parent: Node, lines: Array[String], responseOptions: 
 	inst.lineQueue = lines.duplicate()
 	inst.target = parent
 	inst.responseOptions = responseOptions
+	inst.ownerState = stateOwner
 	
 	return inst
 

@@ -6,16 +6,7 @@ var tbContainer_Stage
 var tbContainer_PlayerPanel
 var cutsceneMarkers
 
-#var player1Node: Node
-
 @export var roomsList = {}
-
-##Will need to refactor for multiplayer
-func _ready():
-	pass
-	#player1Node = Node.new()
-	#player1Node.name = "Player1"
-	#add_child(player1Node)
 
 func startTimeline(timelinePath: String, playerNum: int):
 	var playerEntity: OWEntity_Player = PlayerRoster.roster[playerNum]

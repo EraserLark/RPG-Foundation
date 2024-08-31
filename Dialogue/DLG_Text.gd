@@ -33,17 +33,17 @@ func runStep():
 		match boxLocation:
 			BOX_LOCATION.SmallBubble:
 				var bubbleSpot = speaker.createDBC()
-				dialogueBox = DialogueBox.createDBInstance(bubbleSpot, message, speaker.npcResource.npcName)
+				dialogueBox = DialogueBox.createDBInstance(bubbleSpot, message, speaker.npcResource.npcName, dialogueManager.dialogueState)
 			
 			BOX_LOCATION.BigBubble:
-				dialogueBox = DialogueBox.createDBInstance(DialogueSystem.tbContainer_Stage, message, speaker.npcResource.npcName)
+				dialogueBox = DialogueBox.createDBInstance(DialogueSystem.tbContainer_Stage, message, speaker.npcResource.npcName, dialogueManager.dialogueState)
 			
 			BOX_LOCATION.PlayerPanel:
 				DialogueSystem.tbContainer_PlayerPanel.visible = true
-				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_PlayerPanel.marginContainer, message)
+				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_PlayerPanel.marginContainer, message, dialogueManager.dialogueState)
 			
 			BOX_LOCATION.BigBox:
-				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_Stage, message)
+				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_Stage, message, dialogueManager.dialogueState)
 	else:
 		dialogueBox.lineQueue = message.duplicate()
 	dialogueBox.advanceLineQueue()

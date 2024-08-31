@@ -17,18 +17,18 @@ func runStep():
 			BOX_LOCATION.SmallBubble:
 				var speaker = dialogueManager.performingCast[speakerName]
 				var bubbleSpot = speaker.createDBC()
-				dialogueBox = DialogueBox.createDBInstance(bubbleSpot, message, speaker.npcResource.npcName, choiceOptions)
+				dialogueBox = DialogueBox.createDBInstance(bubbleSpot, message, speaker.npcResource.npcName, dialogueManager.dialogueState, choiceOptions)
 			
 			BOX_LOCATION.BigBubble:
 				var speaker = dialogueManager.performingCast[speakerName]
-				dialogueBox = DialogueBox.createDBInstance(DialogueSystem.tbContainer_Stage, message, speaker.npcResource.npcName, choiceOptions)
+				dialogueBox = DialogueBox.createDBInstance(DialogueSystem.tbContainer_Stage, message, speaker.npcResource.npcName, dialogueManager.dialogueState, choiceOptions)
 			
 			BOX_LOCATION.PlayerPanel:
 				DialogueSystem.tbContainer_PlayerPanel.visible = true
-				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_PlayerPanel.marginContainer, message, choiceOptions)
+				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_PlayerPanel.marginContainer, message, dialogueManager.dialogueState, choiceOptions)
 			
 			BOX_LOCATION.BigBox:
-				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_Stage, message, choiceOptions)
+				dialogueBox = Textbox.createInstance(DialogueSystem.tbContainer_Stage, message, dialogueManager.dialogueState, choiceOptions)
 	else:
 		dialogueBox.lineQueue = message
 		dialogueBox.responseOptions = choiceOptions

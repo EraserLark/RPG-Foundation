@@ -13,12 +13,13 @@ func _ready():
 func setName(name: String):
 	nameLabel.text = name
 
-static func createDBInstance(parent: Node, lines: Array[String], sp: String, responseOptions: Array[String] = []) -> DialogueBox:
+static func createDBInstance(parent: Node, lines: Array[String], sp: String, stateOwner: State, responseOptions: Array[String] = []) -> DialogueBox:
 	var scene = load(DBscenePath)
 	var inst = scene.instantiate()
 	inst.lineQueue = lines.duplicate()
 	inst.target = parent
 	inst.speakerName = sp
+	inst.ownerState = stateOwner
 	inst.responseOptions = responseOptions
 	parent.add_child(inst)
 	

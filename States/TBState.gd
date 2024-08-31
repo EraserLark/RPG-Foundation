@@ -11,7 +11,7 @@ func _init(sStack, m, cntnr):
 	container = cntnr
 
 func enter(_msg := {}):
-	textbox = Textbox.createInstance(container, message)
+	textbox = Textbox.createInstance(container, message, self)
 	textbox.ownerState = self
 	textbox.advanceLineQueue()
 

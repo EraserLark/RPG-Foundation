@@ -18,17 +18,10 @@ var playerUIRoster: Array[PlayerUI_World]
 
 func _ready():
 	pass
-	##Instance a player menu for each player in the PlayerRoster. Child of self.
-	#var pUI = playerUIScene.instantiate()
-	#add_child(pUI)
-	##Add it to playerUIRoster
-	#playerUIRoster.append(pUI)
 
 #Runs after all nodes have finished _ready()
 func initialize(om: OverworldManager):
 	owManager = om
-	#playerUI.initialize(om)
-	#playerMenu.initialize(om)
 	
 	#Instance a player menu for each player in the PlayerRoster. Child of self.
 	var i:= 0
