@@ -2,6 +2,7 @@ extends Node
 
 @export var profileBank: Array[PlayerInfo]
 @export var roster: Array[Entity]	#Includes Empty Entities
+@export var rosterColors: Array[Color]
 #@export var activeRoster: Array[Entity]	#Bad idea? Only contains Initialized Entities
 
 signal newRosterPlayer(info: PlayerInfo)

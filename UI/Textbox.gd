@@ -49,12 +49,6 @@ func _ready():
 	responsePanel.responseSelected.connect(submitResponse)
 	currentMode = MODE.DIALOGUE
 
-func _on_gui_input(event):
-	#if(event.is_action_pressed("ui_accept")):
-		#accept_event()
-		#advance()
-	pass
-
 func confirmInput():
 	match currentMode:
 		MODE.DIALOGUE:

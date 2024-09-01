@@ -133,6 +133,7 @@ position = Vector2(0, -192)
 curve = SubResource("Curve2D_cmj37")
 
 [node name="NavigationRegion2D" parent="NavigationMaps" index="0"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_w8lc8")
 
 [editable path="CastList/Godot Guy"]

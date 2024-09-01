@@ -9,6 +9,7 @@ var responseScenePath = "res://Menus/response.tscn"
 @export var optionsArray: Array[String]
 @export var maxPanelWidth: int
 var selectedOption: int
+var inputHeld:= false
 
 signal responseSelected(responseNum)
 
@@ -39,17 +40,17 @@ func setResponses(responses: Array[String]):
 func getPanelWidth():
 	return self.size.x
 
-func _on_gui_input(event):
-	if(event.is_action_pressed("ui_accept")):
-		confirmSelection(selectedOption)
-	elif(event.is_action_pressed("ui_up")):
-		selectedOption -= 1
-		selectedOption %= optionsArray.size()
-		moveCursor(selectedOption)
-	elif(event.is_action_pressed("ui_down")):
-		selectedOption += 1
-		selectedOption %= optionsArray.size()
-		moveCursor(selectedOption)
+#func _on_gui_input(event):
+	#if(event.is_action_pressed("ui_accept")):
+		#confirmSelection(selectedOption)
+	#elif(event.is_action_pressed("ui_up")):
+		#selectedOption -= 1
+		#selectedOption %= optionsArray.size()
+		#moveCursor(selectedOption)
+	#elif(event.is_action_pressed("ui_down")):
+		#selectedOption += 1
+		#selectedOption %= optionsArray.size()
+		#moveCursor(selectedOption)
 
 func confirmInput():
 	confirmSelection(selectedOption)
