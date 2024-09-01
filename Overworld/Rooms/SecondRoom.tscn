@@ -1,61 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://w0bs4017q6ux"]
+[gd_scene load_steps=8 format=3 uid="uid://w0bs4017q6ux"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_qxik6"]
 [ext_resource type="Script" path="res://RoomData.gd" id="2_csxqy"]
 [ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/Passages/passage.tscn" id="3_3m1ka"]
-[ext_resource type="PackedScene" uid="uid://bfbx5q7fqdq8h" path="res://Overworld/Cast/OW_npc.tscn" id="3_f1wdg"]
 [ext_resource type="Script" path="res://Entity/Info/EnemyInfo.gd" id="3_mi5vl"]
-[ext_resource type="Script" path="res://Flags/FlagList.gd" id="3_xsu55"]
-[ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="3_y45nx"]
 [ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/Snowbro_EnemyData.tres" id="4_54vba"]
 [ext_resource type="Resource" uid="uid://chlomctt2mqiy" path="res://Entity/Info/CoalSprite_EnemyData.tres" id="5_gljll"]
 
 [sub_resource type="Resource" id="Resource_qsdwd"]
 script = ExtResource("2_csxqy")
-castList = Array[String](["OW_NPC"])
+castList = Array[String]([])
 passageList = Array[String](["Passage_0"])
 cutsceneMarks = Array[String]([])
 zone = "Zone1"
 roomName = "SecondRoom"
 
-[sub_resource type="Resource" id="Resource_41c6g"]
-script = ExtResource("3_xsu55")
-flags = {}
-
-[sub_resource type="Resource" id="Resource_cdvgm"]
-script = ExtResource("3_y45nx")
-npcName = ""
-characterFlags = SubResource("Resource_41c6g")
-timelines = {}
-spriteOffset = Vector2(0, 0)
-spriteScale = Vector2(1, 1)
-hFrames = 1
-vFrames = 1
-currentFrame = 0
-characterPortraits = Array[Texture]([])
-interactAreaOffset = Vector2(0, 0)
-collisionOffset = Vector2(0, 0)
-speechSpotPos = Vector2(0, 0)
-
 [node name="Room" instance=ExtResource("1_qxik6")]
 roomData = SubResource("Resource_qsdwd")
 enemyRoster = Array[ExtResource("3_mi5vl")]([ExtResource("4_54vba"), ExtResource("5_gljll")])
-
-[node name="OW_NPC" parent="CastList" index="0" instance=ExtResource("3_f1wdg")]
-position = Vector2(0, -64)
-npcResource = SubResource("Resource_cdvgm")
-
-[node name="Sprite2D" parent="CastList/OW_NPC" index="0"]
-texture = null
-
-[node name="CollisionShape2D" parent="CastList/OW_NPC" index="1"]
-shape = null
-
-[node name="CollisionShape2D" parent="CastList/OW_NPC/Area2D" index="0"]
-shape = null
-
-[node name="SpeechSpot" parent="CastList/OW_NPC" index="6"]
-position = Vector2(0, 0)
 
 [node name="Passage_0" parent="Passages" index="0" instance=ExtResource("3_3m1ka")]
 position = Vector2(0, 352)
@@ -65,5 +27,4 @@ spawnFacing = 2
 [node name="SpawnPoint" parent="Passages/Passage_0" index="1"]
 position = Vector2(0, -32)
 
-[editable path="CastList/OW_NPC"]
 [editable path="Passages/Passage_0"]

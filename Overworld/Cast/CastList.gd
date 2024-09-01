@@ -30,8 +30,9 @@ func initialize(om: OverworldManager, rm: Room):
 	#for playerInfo in PlayerRoster.roster:
 		#addActor(playerInfo, camera.get_screen_center_position())
 	
-	for entity in owManager.playerEntities:
-		addActor(entity, camera.get_screen_center_position())
+	for entity in PlayerRoster.roster:
+		if entity.entityInfo != null:	#Ignore empty entities
+			addActor(entity, camera.get_screen_center_position())
 	
 	for child in get_children():
 		if child is not OW_Player:
