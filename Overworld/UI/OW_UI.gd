@@ -41,6 +41,8 @@ func createPlayerUI(playerNumber = null) -> PlayerUI_World:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
 	#Add it to playerUIRoster
 	playerUIRoster.append(pUI)
+	#Set color
+	pUI.playerPanel.self_modulate = PlayerRoster.rosterColors[playerNumber]
 	return pUI
 
 func initializePlayerUI(pUI: PlayerUI_World, pEntity: OWEntity_Player):
