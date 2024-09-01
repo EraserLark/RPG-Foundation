@@ -12,6 +12,7 @@ var owManager: OverworldManager
 var room: Room
 var passages: PassagesManager
 var camera: Camera2D
+var phantomCam: PhantomCamera2D
 
 ##Non export vars
 var playerActors: Array[OW_Player]
@@ -24,6 +25,7 @@ func initialize(om: OverworldManager, rm: Room):
 	room = rm
 	passages = room.passages
 	camera = room.camera
+	phantomCam = room.roomPhantomCam
 	
 	#for playerInfo in PlayerRoster.roster:
 		#addActor(playerInfo, camera.get_screen_center_position())
@@ -61,7 +63,8 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 		playerActor.position = passages.getSpawnPoint(port)
 		playerActor.faceDirection(passages.getSpawnDir(port))
 	
-	camera.setTarget(playerActor)
+	#camera.setTarget(playerActor)
+	phantomCam.append_follow_targets(playerActor)
 
 func actorSpeak(actorName, actorMessage):
 	emit_signal("actor_speaking", actorName, actorMessage)

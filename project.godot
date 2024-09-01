@@ -24,6 +24,7 @@ NPC_Database="*res://NPC_Database.gd"
 FlagManager="*res://Flags/FlagManager.gd"
 InputManager="*res://InputManager.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -35,7 +36,7 @@ movie_writer/movie_file="C:/Users/arrin/GameDev/Godot/Recordings/RPG Foundation/
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg")
+enabled=PackedStringArray("res://addons/multiplayer_input/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
@@ -58,6 +59,10 @@ ui_cancel={
 
 2d_physics/layer_1="Collision"
 2d_physics/layer_2="Interaction"
+
+[physics]
+
+common/physics_interpolation=true
 
 [rendering]
 

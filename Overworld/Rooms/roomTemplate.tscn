@@ -1,10 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://bayxt5ttehhv8"]
+[gd_scene load_steps=14 format=3 uid="uid://bayxt5ttehhv8"]
 
 [ext_resource type="Script" path="res://Overworld/World/Room.gd" id="1_8hapy"]
 [ext_resource type="Script" path="res://Overworld/Cast/CastList.gd" id="2_uxnsk"]
 [ext_resource type="Script" path="res://Overworld/Rooms/Passages/PassagesManager.gd" id="3_hbvgs"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_x2do0"]
 [ext_resource type="Script" path="res://Overworld/World/OW_Camera.gd" id="4_673pq"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_ghouc"]
 [ext_resource type="Script" path="res://Overworld/Rooms/CutsceneMarks.gd" id="5_3njwv"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_78vf2"]
+
+[sub_resource type="Resource" id="Resource_of24n"]
+script = ExtResource("5_78vf2")
+duration = 1.0
+transition = 0
+ease = 2
 
 [sub_resource type="Animation" id="Animation_3tlxu"]
 resource_name = "EnterBattle"
@@ -140,8 +149,26 @@ script = ExtResource("1_8hapy")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 2
 ignore_rotation = false
 script = ExtResource("4_673pq")
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("3_x2do0")
+
+[node name="CameraMarks" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="PhantCam_FollowPlayers" type="Node2D" parent="CameraMarks"]
+script = ExtResource("4_ghouc")
+priority = 1
+follow_mode = 3
+snap_to_pixel = true
+tween_resource = SubResource("Resource_of24n")
+auto_zoom = true
+auto_zoom_min = 0.75
+auto_zoom_max = 1.0
+auto_zoom_margin = Vector4(150, 84, 150, 84)
 
 [node name="TileLayers" type="Node2D" parent="." groups=["navObstacles"]]
 y_sort_enabled = true
@@ -156,6 +183,7 @@ metadata/_edit_lock_ = true
 
 [node name="Interactables" type="Node2D" parent="."]
 y_sort_enabled = true
+metadata/_edit_lock_ = true
 
 [node name="Passages" type="Node2D" parent="."]
 script = ExtResource("3_hbvgs")

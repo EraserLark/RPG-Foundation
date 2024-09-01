@@ -4,8 +4,7 @@ extends Camera2D
 #None
 
 ##Parent references
-#var world	#unused?
-var castList: CastList
+var castList: CastList	#Unused?
 
 ##Non export vars
 var target = null;
@@ -13,9 +12,9 @@ var target = null;
 func initialize(om: OverworldManager, rm: Room):
 	castList = rm.castList
 
-func setTarget(newTarget: Node2D):
-	target = newTarget
-
-func _process(delta):
-	if(target):
-		self.position = target.position
+#func setTarget(newTarget: Node2D):
+	#target = newTarget
+#
+#func _process(delta):
+	#if(target):
+		#self.position = target.position
