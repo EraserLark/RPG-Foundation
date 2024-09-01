@@ -45,8 +45,11 @@ func update(delta : float):
 	else:
 		player.animState.travel("Idle")
 
+func physicsUpdate(_delta: float):
+	player.physicsUpdate(_delta)
+
 func resumeState():
-	pass
+	player.velocity = Vector2.ZERO
 
 func exit():
 	pass
