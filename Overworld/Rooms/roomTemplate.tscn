@@ -176,6 +176,21 @@ position = Vector2(32, 32)
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
+[node name="Bedrock" type="TileMapLayer" parent="TileLayers"]
+z_index = -2
+y_sort_enabled = true
+
+[node name="Floor" type="TileMapLayer" parent="TileLayers"]
+z_index = -1
+y_sort_enabled = true
+
+[node name="Standing" type="TileMapLayer" parent="TileLayers" groups=["navObstacles"]]
+y_sort_enabled = true
+
+[node name="Ceiling" type="TileMapLayer" parent="TileLayers"]
+z_index = 1
+y_sort_enabled = true
+
 [node name="CastList" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("2_uxnsk")
