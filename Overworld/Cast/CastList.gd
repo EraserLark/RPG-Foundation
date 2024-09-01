@@ -38,7 +38,7 @@ func initialize(om: OverworldManager, rm: Room):
 func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	#Instance actor, set up data
 	var playerActor = actorScene.instantiate()
-	playerActor.setPlayerInfo(playerEntity.entityInfo)
+	#playerActor.setPlayerInfo(playerEntity.entityInfo)
 	self.add_child(playerActor)
 	playerActor.initialize(playerEntity, room)
 	
@@ -73,6 +73,8 @@ func removeActor(actor: OWEntity_Player):
 
 ##Used for sort_custom
 func sortPlayerActors(a, b):
+	if a.playerEntity == null or b.playerEntity==null:
+		return false
 	if a.playerEntity.deviceNumber < b.playerEntity.deviceNumber:
 		return true
 	return false

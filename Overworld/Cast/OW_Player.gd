@@ -18,7 +18,7 @@ var currentRoom: Room
 
 ##Export vars
 @export var speed:= 500
-@export var playerInfo: PlayerInfo
+#@export var playerInfo: PlayerInfo
 @export var stepCount: int
 @export var encounterThreshold: int
 
@@ -40,10 +40,10 @@ func initialize(pe: OWEntity_Player, rm: Room):
 	resetEncounterThreshold()
 
 func getPlayerNum():
-	return playerInfo.playerNumber
+	return playerEntity.rosterNumber
 
-func setPlayerInfo(pi: PlayerInfo):
-	playerInfo = pi
+#func setPlayerInfo(pi: PlayerInfo):
+	#playerInfo = pi
 
 ##Movement
 func moveDirection(dir: Vector2):

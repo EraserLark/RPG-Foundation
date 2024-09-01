@@ -450,7 +450,6 @@ graph_offset = Vector2(-151, 52.8772)
 y_sort_enabled = true
 script = ExtResource("2_nnavp")
 speed = 400
-playerInfo = null
 stepCount = 0
 encounterThreshold = 500
 

@@ -41,7 +41,6 @@ func createPlayerUI(playerNumber = null) -> PlayerUI_World:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
 	#Add it to playerUIRoster
 	playerUIRoster.append(pUI)
-	playerUIRoster.sort_custom(sortPlayerUI)
 	return pUI
 
 func initializePlayerUI(pUI: PlayerUI_World, pEntity: OWEntity_Player):
@@ -49,6 +48,7 @@ func initializePlayerUI(pUI: PlayerUI_World, pEntity: OWEntity_Player):
 	pUI.initialize(owManager, pUI.playerPanel, pEntity, playerAnchors.currentAnchorLayout)
 	#Hide menu when first starting game
 	pUI.playerPanel.visible = false
+	playerUIRoster.sort_custom(sortPlayerUI)
 
 func adjustMenusLayout():
 	playerAnchors.determineAnchorLayout()
@@ -72,7 +72,9 @@ func removePlayerUI(pUI: PlayerUI_World):
 
 ##Used for sort_custom
 func sortPlayerUI(a, b):
-	if a.player.deviceNumber < b.player.deviceNumber:
+	if a.player == null or b.player==null:
+		return false
+	elif a.player.deviceNumber < b.player.deviceNumber:
 		return true
 	return false
 ####

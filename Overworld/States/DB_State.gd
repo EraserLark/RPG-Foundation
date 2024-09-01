@@ -13,7 +13,7 @@ func _init(sStack, m, sp, p):
 	parent = p
 
 func enter(_msg := {}):
-	dialogueBox = DialogueBox.createDBInstance(parent, message, speaker)
+	dialogueBox = DialogueBox.createDBInstance(parent, message, speaker, self)
 	dialogueBox.advanceLineQueue()
 
 func update(_delta : float):
