@@ -20,11 +20,10 @@ func setRoomVars():
 	if roomResource == null:
 		return
 	
-	requiredActors = roomResource.castList
+	availableActors = roomResource.castList
 	timeline = Helper.getAllChildren(self)
 	
-	if(requiredActors.size() > 0):
-		self.availableActors = requiredActors
+	if(availableActors.size() > 0):
 		for step in timeline:
 			if(step is Step):
 				step.availableActors = requiredActors
@@ -50,16 +49,39 @@ func runStep():
 	for member in castList:
 		castNames.append(member.name)
 	
+	var timeline = Helper.getAllChildren(self)
+	for step in timeline:
+		if step is DLG_Text or step is DLG_Choice:
+			if requiredActors.has(step.messageSpeaker):
+				break
+			else:
+				requiredActors.append(step.messageSpeaker)
+		elif step is DLG_SetFlags:
+			if requiredActors.has(step.member):
+				break
+			else:
+				requiredActors.append(step.member)
+		elif step is DLG_Walk:
+			if requiredActors.has(step.actor):
+				break
+			else:
+				requiredActors.append(step.actor)
+	
 	##CAST LIST
 	for actorName in requiredActors:
 		if castNames.has(actorName):
 			var index = castNames.find(actorName)
-			dialogueManager.performingCast[actorName] = castList[index]	#Add actor to dictionary
+			var performingActor = castList[index]
+			dialogueManager.performingCast[actorName] = performingActor	#Add actor to dictionary
+			#Disable required actors interact areas. Signal reverses this once timeline finished
+			performingActor.interactCollider.disabled = true
+			dialogueManager.timelineComplete.connect(performingActor.timelineFinished)
 			break
 		else:
 			var npc = NPC_Database.createNPC(actorName, currentRoom.castList)
 			npc.position = Vector2(800,300)
 			dialogueManager.performingCast[actorName] = npc		#Add actor to dictionary
+	
 	
 	##CUTSCENE MARKERS
 	var cutsceneMarkers: Array = currentRoom.cutsceneMarks.get_children()

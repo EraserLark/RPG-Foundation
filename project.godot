@@ -54,6 +54,11 @@ ui_cancel={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Collision"
+2d_physics/layer_2="Interaction"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

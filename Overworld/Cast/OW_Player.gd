@@ -103,11 +103,11 @@ func castInteractRay():
 		interactee = interactee.get_parent()
 	interact(interactee)
 
-func interact(interactee : Object):
+func interact(interactee: Object):
 	if(interactee == null):
 		return
 	
-	interactee.interactAction(self)
+	interactee.get_parent().interactAction(self)
 
 func addItemToInv(item : Item):
 	var player = PlayerRoster.roster[0]

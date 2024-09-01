@@ -2,13 +2,16 @@ extends State
 class_name DialogueState
 
 var dialogueManager: DialogueManager
-var ownerEntity: Entity
+var playerEntity: Entity
 
-func _init(sStack : StateStack, dm: DialogueManager):
-	super(sStack)
+func _init(pEntity: Entity, dm: DialogueManager):
+	super(pEntity.playerStateStack)
 	dialogueManager = dm
 
 func handleInput(_event : InputEvent):
+	if _event.device != playerEntity.deviceNumber:
+		return
+	
 	if _event.is_action("ui_accept") and _event.is_pressed() and not _event.is_echo():
 		dialogueManager.focusStep.confirmInput()
 	
@@ -23,12 +26,12 @@ func handleInput(_event : InputEvent):
 
 func enter(_msg := {}):
 	if _msg.has("OwnerEntity"):
-		ownerEntity = _msg["OwnerEntity"]
+		playerEntity = _msg["OwnerEntity"]
 	else:
 		printerr("No Entity Owner passed for the DialogueState!")
 		return
 	
-	ownerEntity.entityActor.collisionShape.set_deferred("disabled", true)
+	playerEntity.entityActor.collisionShape.set_deferred("disabled", true)
 
 func update(_delta : float):
 	#if Input.is_action_just_pressed("ui_accept"):
@@ -41,5 +44,5 @@ func resumeState():
 	dialogueManager.resumeFocusStep()
 
 func exit():
-	ownerEntity.entityActor.collisionShape.set_deferred("disabled", false)
+	playerEntity.entityActor.collisionShape.set_deferred("disabled", false)
 	super()

@@ -8,6 +8,7 @@ var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 @onready var speechSpot:= $SpeechSpot
 @onready var navigation_agent_2d:= $NavigationAgent2D
 @onready var collider:= $CollisionShape2D
+@onready var interactCollider:= $Area2D/CollisionShape2D
 
 ##Parent references
 var ui: Control
@@ -73,7 +74,11 @@ func getCorrectTimeline() -> String:
 		return ""
 
 func runNPCTimeline(tlPath: String, playerNum: int):
+	interactCollider.disabled = true
 	DialogueSystem.startTimeline(tlPath, playerNum)
+
+func timelineFinished():
+	interactCollider.disabled = false
 
 func createDBC():
 	#Create dialogueBubbleContainer
