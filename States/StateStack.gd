@@ -32,6 +32,16 @@ func removeState():
 	
 	resumeCurrentState()
 
+func removeGameState():
+	#Iterate through stack until finds first Game State.
+	var popState = stateStack.pop_front()
+	if popState is GameState:
+	#Pop Game State.
+		return
+	else:
+	#Pop each state found along the way.
+		removeGameState()
+
 func _unhandled_input(event):
 	currentState.handleInput(event)
 
