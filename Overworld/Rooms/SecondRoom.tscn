@@ -35,6 +35,6 @@ leadsToRoom = "res://Overworld/Rooms/FirstRoom.tscn"
 spawnFacing = 2
 
 [node name="SpawnPoint" parent="Passages/Passage_0" index="1"]
-position = Vector2(0, -32)
+position = Vector2(0, -64)
 
 [editable path="Passages/Passage_0"]

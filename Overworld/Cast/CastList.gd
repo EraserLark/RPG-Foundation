@@ -68,7 +68,7 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	##Entering Room
 	else:
 		var port = room.playerSpawnPort
-		playerActor.position = passages.getSpawnPoint(port)
+		playerActor.position = passages.getSpawnPoint(port) + Vector2(randi_range(-64, 64), 0)
 		playerActor.faceDirection(passages.getSpawnDir(port))
 	
 	#Add actor to lists
