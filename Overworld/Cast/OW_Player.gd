@@ -95,7 +95,7 @@ func danceFinish():
 	faceDirection(Vector2(0,1))
 
 func scanForSpawn():
-	var spawnPos
+	var spawnPos: Vector2
 	var rayCast = RayCast2D.new()
 	self.add_child(rayCast)
 	
@@ -107,6 +107,7 @@ func scanForSpawn():
 		add_child(posNode)
 		posNode.position = rayCast.target_position
 		spawnPos = posNode.global_position
+		posNode.queue_free()
 	else:
 		#Check front
 		rayCast.target_position = currentDir * 32#Check front
@@ -115,9 +116,11 @@ func scanForSpawn():
 			add_child(posNode)
 			posNode.position = rayCast.target_position
 			spawnPos = posNode.global_position
+			posNode.queue_free()
 		else:
 			spawnPos = Vector2.ZERO
 	
+	rayCast.queue_free()
 	return spawnPos
 
 ##Interaction

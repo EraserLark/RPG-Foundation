@@ -3,7 +3,6 @@ class_name Passage
 
 ##Children references
 @onready var spawnPoint:= $SpawnPoint
-
 ##Parent references
 var owManager: OverworldManager
 var currentRoom: Room
@@ -13,6 +12,7 @@ var currentRoom: Room
 @export var leadsToPassage: int
 enum SPAWN_DIR {E, NE, N, NW, W, SW, S, SE}	#int values correspond to unit circle
 @export var spawnFacing: SPAWN_DIR
+var entered:= false
 
 func _ready():
 	print("Passage Ready Start")
@@ -24,7 +24,9 @@ func initialize(om: OverworldManager, rm: Room):
 
 func _on_body_entered(body):
 	if body is OW_Player:
-		goToNextRoom()
+		if !entered:	#Prevent multiple players from triggering at the same time
+			entered = true
+			goToNextRoom()
 
 func goToNextRoom():
 	#Add transition state, player walks out (follows Path2D?)
