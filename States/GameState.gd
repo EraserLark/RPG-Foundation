@@ -1,43 +1,42 @@
-extends State
+extends Node
 class_name GameState
 
 var playerStacks: Array[StateStack]
 
 ##SELF - Run once when created
-func _init(sStack: StateStack):
-	if sStack != null:
-		printerr("Pass null into GameState. The state stack passed will not be used.")
+func _init():
+	GameStateStack.addGameState(self)
 	
-	for playerEntity in PlayerRoster.getRoster():
-		playerStacks.append(playerEntity.playerStateStack)
-		playerEntity.playerStateStack.addState(self)
+	#for playerEntity in PlayerRoster.getRoster():
+		#playerStacks.append(playerEntity.playerStateStack)
+		#playerEntity.playerStateStack.addState(self)
 
 ##PLAYER - Run when entering each scene tree (1-8 times)
-func enter(_msg:= {}):
+func enter(playerNum: int, _msg:= {}):
 	pass
 
 ##PLAYER - Runs 1-8 times
-func resumeState():
+func resumeState(playerNum: int):
 	pass
 
 ##SELF - Runs once
-func exit():
+func exit(playerNum: int):
 	for stack in playerStacks:
 		stack.removeGameState()
 
 
 ##All of the Player state stacks should be connected & feeding to these functions
 ##PLAYER
-func handleInput(_event: InputEvent):
-	##If you give x input with your device number, let me know
+func handleInput(playerNum: int, _event: InputEvent):
+	##Checks if event number matches player device number before calling (in GameState_Connection)
 	pass
 
 ##PLAYER
-func update(_delta: float):
+func update(playerNum: int, _delta: float):
 	pass
 
 ##PLAYER
-func physicsUpdate(_delta: float):
+func physicsUpdate(playerNum: int, _delta: float):
 	pass
 
 

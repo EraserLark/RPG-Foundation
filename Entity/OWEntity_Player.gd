@@ -17,6 +17,7 @@ var input: DeviceInput
 func _ready():
 	self.add_child(playerStateStack)	#Add so _process() gets called
 	input = DeviceInput.new(deviceNumber)
+	playerStateStack.playerNumber
 
 func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	if(om == null):
@@ -26,6 +27,9 @@ func initialize(om: OverworldManager = null, bm: BattleManager = null):
 	if(entityActor == null):
 		entityActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[rosterNumber]
 	entityUI = overworldManager.overworldUI.playerUIRoster[rosterNumber]
+	
+	var connectionState = GameState_Connection.new(playerStateStack, GameStateStack.foundationGameState)
+	playerStateStack.addState(connectionState)	#Enters game state roundabout
 
 func getClassInstance():
 	return self

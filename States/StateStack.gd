@@ -3,6 +3,8 @@ class_name StateStack
 
 var stateStack: Array[State]
 var currentState: State = null
+var playerNumber:= -99
+var deviceNumber:= -99
 
 func _init():
 	var baseState = State.new(self)

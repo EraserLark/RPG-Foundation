@@ -7,8 +7,6 @@ class_name OverworldManager
 @onready var overworldUI:= $CanvasLayer/OW_UI
 @onready var musicPlayer:= $World/AudioStreamPlayer
 @onready var cutsceneManager:= $CutsceneManager
-#@onready var playerActor:= $World/CastList/OW_Player
-#@onready var castList:= $World/Room/CastList
 
 ##Parent references
 #None
@@ -26,6 +24,8 @@ func _ready():
 	overworldUI.initialize(self)
 	overworldWorld.initialize(self)
 	worldRoster.initialize(self)
+	
+	var overworldGameState = GameState_Overworld.new()	#Adds itself to GameStateStack
 	
 	print("Overworld Ready Finish")
 

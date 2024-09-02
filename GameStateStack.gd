@@ -1,35 +1,48 @@
 extends Node
 ##Game State Stack Autoload
 
-var gameStateStack: StateStack
+var gameStateStack: Array[GameState]
+var frontGameState: GameState = null
+var foundationGameState: GameState = null
 
 func _init():
-	var baseState = State.new(gameStateStack)
-	addState(baseState)
+	pass
+	#var baseState = GameState.new()
+	#addGameState(baseState)
 
-func addState(s: State, _msg:={}):
-	gameStateStack.stateStack.push_front(s)
-	gameStateStack.currentState = gameStateStack.stateStack.front()
-	gameStateStack.currentState.stateStack = gameStateStack
-	for state in gameStateStack.stateStack:
+func addGameState(gs: GameState, _msg:={}):
+	gameStateStack.push_front(gs)
+	frontGameState = gameStateStack.front()
+	#frontGameState.stateStack = gameStateStack
+	foundationGameState = gameStateStack.back()
+	#foundationGameState.stateStack = gameStateStack
+	for state in gameStateStack:
 		print(state.get_script().resource_path.get_file())
 	print("\n")
-	gameStateStack.currentState.enter(_msg)
+	
+	for playerEntity in PlayerRoster.getActiveRoster():
+		var connectionState = GameState_Connection.new(playerEntity.playerStateStack, frontGameState)
+		playerEntity.playerStateStack.addState(connectionState)	#Enters game state roundabout
 
-func resumeCurrentState():
-	gameStateStack.currentState.resumeState()
+#func resumeCurrentState():
+	#frontGameState.resumeState()
 
 func removeState():
-	gameStateStack.stateStack.pop_front()
+	for playerEntity in PlayerRoster.getActiveRoster():
+		playerEntity.playerStateStack.removeGameState()
 	
-	if(gameStateStack.stateStack.is_empty()):
+	gameStateStack.pop_front()
+	if(gameStateStack.is_empty()):
 		print("STACK EMPTY")
-	gameStateStack.currentState = gameStateStack.stateStack.front()
-	for state in gameStateStack.stateStack:
+	frontGameState = gameStateStack.front()
+	for state in gameStateStack:
 		print(state.get_script().resource_path.get_file())
 	print("\n")
 	
-	resumeCurrentState()
+	for playerEntity in PlayerRoster.getActiveRoster():
+		playerEntity.playerStateStack.resumeCurrentState()
+	
+	#resumeCurrentState()
 
 #func _unhandled_input(event):
 	#gameStateStack.currentState.handleInput(event)

@@ -30,7 +30,7 @@ func initialize(om: OverworldManager, rm: Room):
 	#for playerInfo in PlayerRoster.roster:
 		#addActor(playerInfo, camera.get_screen_center_position())
 	
-	for entity in PlayerRoster.getRoster():	#Ignore empty entities
+	for entity in PlayerRoster.getActiveRoster():	#Ignore empty entities
 		addActor(entity, camera.get_screen_center_position())
 	
 	for child in get_children():
@@ -47,10 +47,11 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	#Determine where to spawn the player	
 	##First time spawning
 	if playerEntity.entityActor == null:
+		##Set in Overworld Game State now
 		#Create Player Active state to start actor off with
-		var pState = Player_Active.new(playerEntity.playerStateStack, playerActor)
-		playerEntity.playerActiveState = pState
-		playerEntity.playerStateStack.addState(pState)
+		#var pState = Player_Active.new(playerEntity.playerStateStack, playerActor)
+		#playerEntity.playerActiveState = pState
+		#playerEntity.playerStateStack.addState(pState)
 		
 		#First actor
 		if playerActors.size() <= 0:

@@ -11,7 +11,7 @@ func _ready():
 	InputManager.playerLeft.connect(removePlayer)
 
 ##Filters out empty entities
-func getRoster() -> Array[Entity]:
+func getActiveRoster() -> Array[Entity]:
 	var activeRoster: Array[Entity]
 	for player in roster:
 		if player.entityInfo != null:
@@ -26,6 +26,7 @@ func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	roster.append(emptyEntity)
 	roster.sort_custom(sortPlayerEntities)	#Sort to adjust to new device numbers
 	emptyEntity.rosterNumber = roster.find(emptyEntity)
+	emptyEntity.playerStateStack.playerNumber = emptyEntity.rosterNumber
 	
 	var emptyUI = stageManager.overworldUI.createPlayerUI(joypadNum)
 	emptyEntity.entityUI = emptyUI
