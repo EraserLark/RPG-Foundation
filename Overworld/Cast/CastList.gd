@@ -50,19 +50,32 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	playerEntity.playerState = pState
 	playerEntity.playerStateStack.addState(pState)
 	
+	#Determine where to spawn the player
+	#if(room.playerSpawnPort == null):
+		#playerActor.position = Vector2.ZERO
+	#else:
+		#var port = room.playerSpawnPort
+		#playerActor.position = passages.getSpawnPoint(port)
+		#playerActor.faceDirection(passages.getSpawnDir(port))
+	
+	##First time spawning
+	if playerEntity.entityActor == null:
+		#First actor
+		if playerActors.size() <= 0:
+			playerActor.position = Vector2.ZERO
+		else:
+			playerActor.position = playerActors[0].scanForSpawn()
+	##Entering Room
+	else:
+		var port = room.playerSpawnPort
+		playerActor.position = passages.getSpawnPoint(port)
+		playerActor.faceDirection(passages.getSpawnDir(port))
+	
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list
 	playerActors.sort_custom(sortPlayerActors)
 	playerEntity.entityActor = playerActor
 	#playerEntity.entityInfo.setActor(playerActor)	#playerInfo gets a reference
-	
-	#Determine where to spawn the player
-	if(room.playerSpawnPort == null):
-		playerActor.position = Vector2.ZERO
-	else:
-		var port = room.playerSpawnPort
-		playerActor.position = passages.getSpawnPoint(port)
-		playerActor.faceDirection(passages.getSpawnDir(port))
 	
 	#camera.setTarget(playerActor)
 	phantomCam.append_follow_targets(playerActor)

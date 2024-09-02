@@ -2,7 +2,6 @@
 extends CharacterBody2D
 class_name OW_Player
 
-
 ##Child references
 @onready var animTree:= $"AnimationTree"
 @onready var animState = animTree.get("parameters/playback")
@@ -94,6 +93,32 @@ func _on_dance_timer_timeout():
 func danceFinish():
 	playerEntity.playerStateStack.removeState()
 	faceDirection(Vector2(0,1))
+
+func scanForSpawn():
+	var spawnPos
+	var rayCast = RayCast2D.new()
+	self.add_child(rayCast)
+	
+	#rayCast.target_position = Vector2(32, 0)
+	#Check behind player first
+	rayCast.target_position = -currentDir * 32
+	if !rayCast.get_collider():
+		var posNode = Node2D.new()
+		add_child(posNode)
+		posNode.position = rayCast.target_position
+		spawnPos = posNode.global_position
+	else:
+		#Check front
+		rayCast.target_position = currentDir * 32#Check front
+		if !rayCast.get_collider():
+			var posNode = Node2D.new()
+			add_child(posNode)
+			posNode.position = rayCast.target_position
+			spawnPos = posNode.global_position
+		else:
+			spawnPos = Vector2.ZERO
+	
+	return spawnPos
 
 ##Interaction
 func openMenu():
