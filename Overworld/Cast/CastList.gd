@@ -30,9 +30,8 @@ func initialize(om: OverworldManager, rm: Room):
 	#for playerInfo in PlayerRoster.roster:
 		#addActor(playerInfo, camera.get_screen_center_position())
 	
-	for entity in PlayerRoster.roster:
-		if entity.entityInfo != null:	#Ignore empty entities
-			addActor(entity, camera.get_screen_center_position())
+	for entity in PlayerRoster.getRoster():	#Ignore empty entities
+		addActor(entity, camera.get_screen_center_position())
 	
 	for child in get_children():
 		if child is not OW_Player:
@@ -45,21 +44,14 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	self.add_child(playerActor)
 	playerActor.initialize(playerEntity, room)
 	
-	#Create Player Active state to start actor off with
-	var pState = Player_Active.new(playerEntity.playerStateStack, playerActor)
-	playerEntity.playerState = pState
-	playerEntity.playerStateStack.addState(pState)
-	
-	#Determine where to spawn the player
-	#if(room.playerSpawnPort == null):
-		#playerActor.position = Vector2.ZERO
-	#else:
-		#var port = room.playerSpawnPort
-		#playerActor.position = passages.getSpawnPoint(port)
-		#playerActor.faceDirection(passages.getSpawnDir(port))
-	
+	#Determine where to spawn the player	
 	##First time spawning
 	if playerEntity.entityActor == null:
+		#Create Player Active state to start actor off with
+		var pState = Player_Active.new(playerEntity.playerStateStack, playerActor)
+		playerEntity.playerActiveState = pState
+		playerEntity.playerStateStack.addState(pState)
+		
 		#First actor
 		if playerActors.size() <= 0:
 			playerActor.position = Vector2.ZERO
@@ -67,6 +59,8 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 			playerActor.position = playerActors[0].scanForSpawn()
 	##Entering Room
 	else:
+		playerEntity.playerActiveState.player = playerActor
+		
 		var port = room.playerSpawnPort
 		playerActor.position = passages.getSpawnPoint(port) + Vector2(randi_range(-64, 64), 0)
 		playerActor.faceDirection(passages.getSpawnDir(port))
@@ -74,10 +68,9 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list
 	playerActors.sort_custom(sortPlayerActors)
-	playerEntity.entityActor = playerActor
-	#playerEntity.entityInfo.setActor(playerActor)	#playerInfo gets a reference
+	playerEntity.entityActor = playerActor	#Need this below spawn determination (code above)
 	
-	#camera.setTarget(playerActor)
+	#Camera
 	phantomCam.append_follow_targets(playerActor)
 
 func actorSpeak(actorName, actorMessage):

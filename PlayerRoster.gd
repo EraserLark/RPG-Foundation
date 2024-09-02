@@ -10,6 +10,14 @@ signal newRosterPlayer(info: PlayerInfo)
 func _ready():
 	InputManager.playerLeft.connect(removePlayer)
 
+##Filters out empty entities
+func getRoster() -> Array[Entity]:
+	var activeRoster: Array[Entity]
+	for player in roster:
+		if player.entityInfo != null:
+			activeRoster.append(player)
+	return activeRoster
+
 ##Player joined, create Empty Entity
 func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	var emptyEntity = OWEntity_Player.new()

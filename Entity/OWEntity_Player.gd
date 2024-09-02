@@ -8,7 +8,7 @@ var dialogueManager:= DialogueManager.new(self)
 var entityActor: OW_Player
 var entityUI: PlayerUI_World #Not sure OW equivalent for entityUI
 var rosterNumber: int
-var playerState: State
+var playerActiveState: Player_Active #Store to assign new actors between rooms
 
 ##INPUT
 var deviceNumber:= -99	#Set this so throws error if no controller num passed

@@ -11,13 +11,11 @@ class_name OW_Player
 @onready var collisionShape:= $CollisionShape2D
 
 ##Parent references
-#var owManager: OverworldManager
 var playerEntity: OWEntity_Player
 var currentRoom: Room
 
 ##Export vars
 @export var speed:= 500
-#@export var playerInfo: PlayerInfo
 @export var stepCount: int
 @export var encounterThreshold: int
 
@@ -32,7 +30,6 @@ func _ready():
 	print("Player Ready Finish")
 
 func initialize(pe: OWEntity_Player, rm: Room):
-	#owManager = om
 	playerEntity = pe
 	currentRoom = rm
 	
@@ -40,9 +37,6 @@ func initialize(pe: OWEntity_Player, rm: Room):
 
 func getPlayerNum():
 	return playerEntity.rosterNumber
-
-#func setPlayerInfo(pi: PlayerInfo):
-	#playerInfo = pi
 
 ##Movement
 func moveDirection(dir: Vector2):
@@ -57,14 +51,13 @@ func physicsUpdate(delta: float):
 
 func stepCounter():
 	stepCount += 1
-	print(str("Steps: ", stepCount))
+	#print(str("Steps: ", stepCount))
 	if(stepCount >= encounterThreshold):
 		stepCount = 0
 		resetEncounterThreshold()
 		
 		var enterBattleState = Player_EnterBattle.new(GameStateStack.stack)
 		GameStateStack.stack.addState(enterBattleState, {"Room": currentRoom})
-		#currentRoom.startBattle()
 
 func resetEncounterThreshold():
 	encounterThreshold = randi_range(1500, 3000)
@@ -99,7 +92,6 @@ func scanForSpawn():
 	var rayCast = RayCast2D.new()
 	self.add_child(rayCast)
 	
-	#rayCast.target_position = Vector2(32, 0)
 	#Check behind player first
 	rayCast.target_position = -currentDir * 32
 	if !rayCast.get_collider():
@@ -110,7 +102,7 @@ func scanForSpawn():
 		posNode.queue_free()
 	else:
 		#Check front
-		rayCast.target_position = currentDir * 32#Check front
+		rayCast.target_position = currentDir * 32
 		if !rayCast.get_collider():
 			var posNode = Node2D.new()
 			add_child(posNode)
@@ -146,4 +138,3 @@ func addItemToInv(item : Item):
 
 func endPlayerActor():
 	pass
-	#StateStack.removeState()
