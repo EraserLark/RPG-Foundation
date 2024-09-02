@@ -168,7 +168,7 @@ tween_resource = SubResource("Resource_of24n")
 auto_zoom = true
 auto_zoom_min = 0.75
 auto_zoom_max = 1.0
-auto_zoom_margin = Vector4(150, 84, 150, 84)
+auto_zoom_margin = Vector4(200, 113, 200, 113)
 
 [node name="TileLayers" type="Node2D" parent="." groups=["navObstacles"]]
 y_sort_enabled = true
