@@ -21,3 +21,7 @@ func activateOption():
 
 func rejectMenu():
 	menuManager.backOut()
+
+func setPrevFocus():
+	#Set this to store number of prev selection
+	pass

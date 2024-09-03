@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://yie3dymrkfv5"]
+
+[ext_resource type="Theme" uid="uid://cnak565bjcwb8" path="res://UI/Manual Menu Themes/ManualMenu_SelectLabel.tres" id="1_s1dq7"]
+[ext_resource type="Script" path="res://Menus/ManualMenu_Template.gd" id="1_vewka"]
+[ext_resource type="Texture2D" uid="uid://c0k0qme3yjrsr" path="res://Art/MenuArrow_Anim1.png" id="2_qfd3c"]
+[ext_resource type="Texture2D" uid="uid://cr8hs3avj1c1v" path="res://Art/MenuArrow_Anim2.png" id="3_3m4qv"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_otqrg"]
+frames = 2
+frame_0/texture = ExtResource("2_qfd3c")
+frame_1/texture = ExtResource("3_3m4qv")
+frame_1/duration = 1.0
+
+[node name="ManualMenu" type="Panel" node_paths=PackedStringArray("labelList", "initialTimer", "echoTimer", "upArrow", "downArrow")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+script = ExtResource("1_vewka")
+items = Array[String]([])
+labelList = NodePath("MarginContainer/CenterContainer/MenuLabels")
+initialTimer = NodePath("initialTimer")
+echoTimer = NodePath("echoTimer")
+upArrow = NodePath("MarginContainer/UpArrow")
+downArrow = NodePath("MarginContainer/DownArrow")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MenuLabels" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/MenuLabels"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_s1dq7")
+text = "Item 1"
+
+[node name="Label2" type="Label" parent="MarginContainer/CenterContainer/MenuLabels"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_s1dq7")
+text = "Item 2"
+
+[node name="Label3" type="Label" parent="MarginContainer/CenterContainer/MenuLabels"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_s1dq7")
+text = "Item 3"
+
+[node name="Label4" type="Label" parent="MarginContainer/CenterContainer/MenuLabels"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_s1dq7")
+text = "Item 4"
+
+[node name="UpArrow" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = SubResource("AnimatedTexture_otqrg")
+
+[node name="DownArrow" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AnimatedTexture_otqrg")
+flip_v = true
+
+[node name="initialTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="echoTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="initialTimer" to="." method="_on_initial_timer_timeout"]
+[connection signal="timeout" from="echoTimer" to="." method="_on_echo_timer_timeout"]

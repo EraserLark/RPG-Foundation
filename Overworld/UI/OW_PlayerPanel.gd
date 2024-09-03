@@ -41,6 +41,7 @@ func initialize(om: OverworldManager, pe: OWEntity_Player):
 	playerEntity = pe	#Should get set after player chooses profile
 	
 	playerInfo = playerEntity.entityInfo
+	initialMenu.initMenu()
 	subMenuNodes.get_child(0).initMenu(playerInfo)
 
 func refreshMenu():

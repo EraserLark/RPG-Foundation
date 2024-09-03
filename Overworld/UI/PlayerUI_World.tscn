@@ -1,23 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkgsrieys8sap"]
+[gd_scene load_steps=9 format=3 uid="uid://bkgsrieys8sap"]
 
 [ext_resource type="Script" path="res://Overworld/UI/PlayerUI_World.gd" id="1_j2cxj"]
 [ext_resource type="Script" path="res://Overworld/UI/OW_PlayerPanel.gd" id="3_hgk43"]
-[ext_resource type="Theme" uid="uid://cnak565bjcwb8" path="res://UI/Manual Menu Themes/ManualMenu_SelectLabel.tres" id="5_2dd6w"]
+[ext_resource type="PackedScene" uid="uid://yie3dymrkfv5" path="res://Menus/ManualMenu_Template.tscn" id="5_jl7dq"]
 [ext_resource type="Script" path="res://Overworld/UI/Menus/InitialMenu.gd" id="6_ob35p"]
-[ext_resource type="Texture2D" uid="uid://c0k0qme3yjrsr" path="res://Art/MenuArrow_Anim1.png" id="6_yxtyj"]
-[ext_resource type="Texture2D" uid="uid://cr8hs3avj1c1v" path="res://Art/MenuArrow_Anim2.png" id="7_dimfe"]
 [ext_resource type="Texture2D" uid="uid://cmqkdesj030nd" path="res://Art/RobotFront.png" id="7_s4on4"]
 [ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="8_1ktt8"]
 [ext_resource type="Script" path="res://Menus/PlaceholderMenu.gd" id="9_3x4y6"]
 [ext_resource type="PackedScene" uid="uid://xy1fadjc5rwx" path="res://UI/PlayerPanel.tscn" id="10_rkdgd"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_otqrg"]
-frames = 2
-frame_0/texture = ExtResource("6_yxtyj")
-frame_1/texture = ExtResource("7_dimfe")
-frame_1/duration = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql0yt"]
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -31,82 +21,14 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 script = ExtResource("3_hgk43")
 
-[node name="InitialMenu" type="HBoxContainer" parent="PlayerPanel/MarginContainer" index="1" node_paths=PackedStringArray("labelList", "initialTimer", "echoTimer", "upArrow", "downArrow")]
+[node name="InitialMenu" type="HBoxContainer" parent="PlayerPanel/MarginContainer" index="1"]
 visible = false
 layout_mode = 2
 script = ExtResource("6_ob35p")
-items = Array[String](["Inventory", "Settings"])
-labelList = NodePath("ManualMenu/MarginContainer/CenterContainer/MenuLabels")
-initialTimer = NodePath("initialTimer")
-echoTimer = NodePath("echoTimer")
-upArrow = NodePath("ManualMenu/MarginContainer/UpArrow")
-downArrow = NodePath("ManualMenu/MarginContainer/DownArrow")
+menuOptions = Array[String](["Inventory", "Settings"])
 
-[node name="ManualMenu" type="Panel" parent="PlayerPanel/MarginContainer/InitialMenu"]
+[node name="ManualMenu" parent="PlayerPanel/MarginContainer/InitialMenu" instance=ExtResource("5_jl7dq")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="MarginContainer" type="MarginContainer" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="MenuLabels" type="VBoxContainer" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer/CenterContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-theme_override_constants/separation = 6
-
-[node name="Label" type="Label" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 1"
-
-[node name="Label2" type="Label" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 2"
-
-[node name="Label3" type="Label" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 3"
-
-[node name="Label4" type="Label" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 4"
-
-[node name="UpArrow" type="TextureRect" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture = SubResource("AnimatedTexture_otqrg")
-
-[node name="DownArrow" type="TextureRect" parent="PlayerPanel/MarginContainer/InitialMenu/ManualMenu/MarginContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-texture = SubResource("AnimatedTexture_otqrg")
-flip_v = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel/MarginContainer/InitialMenu"]
 layout_mode = 2
@@ -134,16 +56,10 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "[center]HP: __/__[/center]"
 
-[node name="initialTimer" type="Timer" parent="PlayerPanel/MarginContainer/InitialMenu"]
-wait_time = 0.3
-
-[node name="echoTimer" type="Timer" parent="PlayerPanel/MarginContainer/InitialMenu"]
-wait_time = 0.1
-
 [node name="Submenus" type="Control" parent="PlayerPanel/MarginContainer" index="2"]
 layout_mode = 2
 
-[node name="ItemMenu" type="Control" parent="PlayerPanel/MarginContainer/Submenus" node_paths=PackedStringArray("labelList", "initialTimer", "echoTimer", "upArrow", "downArrow")]
+[node name="ItemMenu" type="Control" parent="PlayerPanel/MarginContainer/Submenus"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -152,89 +68,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_1ktt8")
-labelList = NodePath("ManualMenu/MarginContainer/CenterContainer/MenuLabels")
-initialTimer = NodePath("initialTimer")
-echoTimer = NodePath("echoTimer")
-upArrow = NodePath("ManualMenu/MarginContainer/UpArrow")
-downArrow = NodePath("ManualMenu/MarginContainer/DownArrow")
 
-[node name="ManualMenu" type="Panel" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu"]
+[node name="ManualMenu" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu" instance=ExtResource("5_jl7dq")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ql0yt")
-
-[node name="MarginContainer" type="MarginContainer" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="MenuLabels" type="VBoxContainer" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer/CenterContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-theme_override_constants/separation = 6
-
-[node name="Label" type="Label" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 1"
-
-[node name="Label2" type="Label" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 2"
-
-[node name="Label3" type="Label" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 3"
-
-[node name="Label4" type="Label" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer/CenterContainer/MenuLabels"]
-layout_mode = 2
-size_flags_vertical = 0
-theme = ExtResource("5_2dd6w")
-text = "Item 4"
-
-[node name="UpArrow" type="TextureRect" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture = SubResource("AnimatedTexture_otqrg")
-
-[node name="DownArrow" type="TextureRect" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu/ManualMenu/MarginContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-texture = SubResource("AnimatedTexture_otqrg")
-flip_v = true
-
-[node name="initialTimer" type="Timer" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu"]
-wait_time = 0.3
-
-[node name="echoTimer" type="Timer" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu"]
-wait_time = 0.1
 
 [node name="InventoryMenu2" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus"]
 visible = false
@@ -258,10 +94,5 @@ offset_bottom = 120.0
 script = ExtResource("9_3x4y6")
 
 [node name="ScrollTimer" type="Timer" parent="."]
-
-[connection signal="timeout" from="PlayerPanel/MarginContainer/InitialMenu/initialTimer" to="PlayerPanel/MarginContainer/InitialMenu" method="_on_initial_timer_timeout"]
-[connection signal="timeout" from="PlayerPanel/MarginContainer/InitialMenu/echoTimer" to="PlayerPanel/MarginContainer/InitialMenu" method="_on_echo_timer_timeout"]
-[connection signal="timeout" from="PlayerPanel/MarginContainer/Submenus/ItemMenu/initialTimer" to="PlayerPanel/MarginContainer/Submenus/ItemMenu" method="_on_initial_timer_timeout"]
-[connection signal="timeout" from="PlayerPanel/MarginContainer/Submenus/ItemMenu/echoTimer" to="PlayerPanel/MarginContainer/Submenus/ItemMenu" method="_on_echo_timer_timeout"]
 
 [editable path="PlayerPanel"]
