@@ -37,11 +37,16 @@ func removeState():
 func removeGameState():
 	#Iterate through stack until finds first Game State.
 	var popState = stateStack.pop_front()
-	if popState is GameState:
-	#Pop Game State.
-		return
+	if popState is GameState_Connection:
+		#Pop Game State then resume next state.
+		currentState = stateStack.front()
+		for state in stateStack:
+			print(state.get_script().resource_path.get_file())
+		print("\n")
+		
+		resumeCurrentState()
 	else:
-	#Pop each state found along the way.
+		#Pop each state found along the way.
 		removeGameState()
 
 func _unhandled_input(event):

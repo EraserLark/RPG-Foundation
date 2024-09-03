@@ -9,8 +9,10 @@ func enter(playerNum: int, _msg:= {}):
 ##PLAYER - Runs 1-8 times
 func resumeState(playerNum: int):
 	#Add PlayerActive state to Player State Stack
-	var pStateStack = PlayerRoster.roster[playerNum].playerStateStack
-	var playerActive = Player_Active.new(pStateStack, PlayerRoster.roster[playerNum].entityActor)
+	var playerEntity = PlayerRoster.roster[playerNum]
+	var pStateStack = playerEntity.playerStateStack
+	var playerActive = Player_Active.new(pStateStack, playerEntity.entityActor)
+	playerEntity.playerActiveState = playerActive
 	pStateStack.addState(playerActive)
 	
 	##Then add next active Game State to Player State Stack (if any)

@@ -5,11 +5,21 @@ var playerStacks: Array[StateStack]
 
 ##SELF - Run once when created
 func _init():
-	GameStateStack.addGameState(self)
+	for playerEntity in PlayerRoster.getActiveRoster():
+		playerStacks.append(playerEntity.playerStateStack)
 	
-	#for playerEntity in PlayerRoster.getRoster():
-		#playerStacks.append(playerEntity.playerStateStack)
-		#playerEntity.playerStateStack.addState(self)
+	GameStateStack.addGameState(self)
+
+##SELF - Runs once
+func stackEnter():
+	pass
+
+func stackResume():
+	pass
+
+func stackExit():
+	exit(-99)
+
 
 ##PLAYER - Run when entering each scene tree (1-8 times)
 func enter(playerNum: int, _msg:= {}):
@@ -19,7 +29,7 @@ func enter(playerNum: int, _msg:= {}):
 func resumeState(playerNum: int):
 	pass
 
-##SELF - Runs once
+##PLAYER - Runs 1-8 times
 func exit(playerNum: int):
 	for stack in playerStacks:
 		stack.removeGameState()

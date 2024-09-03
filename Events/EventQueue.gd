@@ -5,10 +5,10 @@ var stateStack: StateStack
 var queue : Array[Event]
 var currentEvent : Event
 
-func _init(sStack: StateStack):
+func _init(sStack: StateStack = null):
 	stateStack = sStack
 
-func addEvent(e : Event):
+func addEvent(e: Event):
 	queue.append(e)
 
 func finishEvent():
@@ -23,4 +23,7 @@ func popQueue():
 		currentEvent.runEvent()
 	else:
 		currentEvent = null
-		stateStack.resumeCurrentState()
+		if stateStack != null:
+			stateStack.resumeCurrentState()
+		else:
+			GameStateStack.resumeCurrentState()
