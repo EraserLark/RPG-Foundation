@@ -22,6 +22,7 @@ func connectionChanged(device: int, connected: bool):
 		print(str(joypad, ": ", Input.get_joy_name(joypad), "\n"))
 	
 	if(connected):
+		print(str("Joypad info: ", Input.get_joy_info(device)))
 		emit_signal("newPlayerJoined", device)
 		#Create empty entry in PlayerRoster
 		#Adjust current Player UIs to fit new anchors

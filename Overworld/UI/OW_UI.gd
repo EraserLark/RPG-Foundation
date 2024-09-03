@@ -25,11 +25,11 @@ func initialize(om: OverworldManager):
 	
 	#Instance a player menu for each player in the PlayerRoster. Child of self.
 	var i:= 0
-	for entity in owManager.playerEntities:
+	for entity in PlayerRoster.getActiveRoster():
 		addPlayerUI(entity)
 		i+=1
 
-func addPlayerUI(playerEntity: OWEntity_Player):
+func addPlayerUI(playerEntity: PlayerEntity):
 	var playerUI = createPlayerUI()
 	initializePlayerUI(playerUI, playerEntity)
 
@@ -45,7 +45,7 @@ func createPlayerUI(playerNumber = null) -> PlayerUI_World:
 	pUI.playerPanel.self_modulate = PlayerRoster.rosterColors[playerNumber]
 	return pUI
 
-func initializePlayerUI(pUI: PlayerUI_World, pEntity: OWEntity_Player):
+func initializePlayerUI(pUI: PlayerUI_World, pEntity: PlayerEntity):
 	#Initialize
 	pUI.initialize(owManager, pUI.playerPanel, pEntity, playerAnchors.currentAnchorLayout)
 	#Hide menu when first starting game

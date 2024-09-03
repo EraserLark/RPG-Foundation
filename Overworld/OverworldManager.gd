@@ -3,7 +3,7 @@ class_name OverworldManager
 
 ##Children references
 @onready var overworldWorld:= $World
-@onready var worldRoster:= $WorldRoster
+#@onready var worldRoster:= $WorldRoster
 @onready var overworldUI:= $CanvasLayer/OW_UI
 @onready var musicPlayer:= $World/AudioStreamPlayer
 @onready var cutsceneManager:= $CutsceneManager
@@ -12,18 +12,18 @@ class_name OverworldManager
 #None
 
 ##Non export vars
-var playerEntities: Array[OWEntity_Player]
+#var playerEntities: Array[PlayerEntity]
 
 func _ready():
 	print("Overworld Ready Start")
 	InputManager.newPlayerJoined.connect(newControllerJoined)
-	PlayerRoster.newRosterPlayer.connect(newPlayerJoined)
+	#PlayerRoster.newRosterPlayer.connect(newPlayerJoined)
 	
-	playerEntities.assign(worldRoster.players)
+	#playerEntities.assign(worldRoster.players)
 	
 	overworldUI.initialize(self)
 	overworldWorld.initialize(self)
-	worldRoster.initialize(self)
+	#worldRoster.initialize(self)
 	
 	var overworldGameState = GameState_Overworld.new()	#Adds itself to GameStateStack
 	
@@ -34,8 +34,8 @@ func newControllerJoined(joypadNum: int):
 	#var emptyUI = overworldUI.createPlayerUI()
 	#overworldUI.adjustMenusLayout()
 	
-	var manualMenuState = ManualMenu_State.new(emptyEntity.playerStateStack, emptyEntity.input, emptyEntity.entityUI.playerPanel)
+	var manualMenuState = ManualMenu_State.new(emptyEntity.playerStateStack, emptyEntity.input, emptyEntity.worldUI.playerPanel)
 	emptyEntity.playerStateStack.addState(manualMenuState)
 
-func newPlayerJoined(info: PlayerInfo):
-	worldRoster.addNewEntity(info, overworldUI.playerUIRoster[info.playerNumber - 1])
+#func newPlayerJoined(info: PlayerInfo):
+	#worldRoster.addNewEntity(info, overworldUI.playerUIRoster[info.playerNumber - 1])

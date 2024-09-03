@@ -37,7 +37,7 @@ func initialize(om: OverworldManager, rm: Room):
 		if child is not OW_Player:
 			child.initialize(owManager, room)
 
-func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
+func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 	#Instance actor, set up data
 	var playerActor = actorScene.instantiate()
 	#playerActor.setPlayerInfo(playerEntity.entityInfo)
@@ -46,7 +46,7 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	
 	#Determine where to spawn the player	
 	##First time spawning
-	if playerEntity.entityActor == null:
+	if playerEntity.worldActor == null:
 		##Set in Overworld Game State now
 		#Create Player Active state to start actor off with
 		#var pState = Player_Active.new(playerEntity.playerStateStack, playerActor)
@@ -69,7 +69,7 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list
 	playerActors.sort_custom(sortPlayerActors)
-	playerEntity.entityActor = playerActor	#Need this below spawn determination (code above)
+	playerEntity.worldActor = playerActor	#Need this below spawn determination (code above)
 	
 	#Camera
 	phantomCam.append_follow_targets(playerActor)
@@ -77,7 +77,7 @@ func addActor(playerEntity: OWEntity_Player, pos: Vector2 = Vector2.ZERO):
 func actorSpeak(actorName, actorMessage):
 	emit_signal("actor_speaking", actorName, actorMessage)
 
-func removeActor(actor: OWEntity_Player):
+func removeActor(actor: PlayerEntity):
 	playerActors.erase(actor)
 	playerActors.sort_custom(sortPlayerActors)
 	actor.queue_free()

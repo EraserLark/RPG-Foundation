@@ -20,7 +20,7 @@ func getActiveRoster() -> Array[Entity]:
 
 ##Player joined, create Empty Entity
 func addEmptySlot(stageManager: StageManager, joypadNum: int):
-	var emptyEntity = OWEntity_Player.new()
+	var emptyEntity = PlayerEntity.new()
 	emptyEntity.overworldManager = stageManager
 	emptyEntity.deviceNumber = joypadNum
 	roster.append(emptyEntity)
@@ -29,7 +29,7 @@ func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	emptyEntity.playerStateStack.playerNumber = emptyEntity.rosterNumber
 	
 	var emptyUI = stageManager.overworldUI.createPlayerUI(joypadNum)
-	emptyEntity.entityUI = emptyUI
+	emptyEntity.worldUI = emptyUI
 	emptyUI.playerPanel.setPlayer(emptyEntity)	#Do this mainly to get rosterNum to profileMenu
 	stageManager.overworldUI.adjustMenusLayout()
 	
@@ -45,14 +45,14 @@ func addProfileToRoster(profile: PlayerInfo, rosterNum: int):
 	##Create actor and initialize emptyUI
 	var owManager = playerEntity.overworldManager
 	owManager.overworldWorld.currentRoom.castList.addActor(playerEntity)
-	owManager.overworldUI.initializePlayerUI(playerEntity.entityUI, playerEntity)
+	owManager.overworldUI.initializePlayerUI(playerEntity.worldUI, playerEntity)
 	##Initialize entity
 	playerEntity.initialize(owManager, null)
 	#profile.playerNumber = roster.size() - 1
 	emit_signal("newRosterPlayer", profile)
 
 func removePlayer(deviceNum: int):
-	var leavingPlayer: OWEntity_Player
+	var leavingPlayer: PlayerEntity
 	for player in roster:
 		if player.deviceNumber == deviceNum:
 			leavingPlayer = player
@@ -67,11 +67,11 @@ func removePlayer(deviceNum: int):
 	roster.erase(leavingPlayer)
 	roster.sort_custom(sortPlayerEntities)
 	#Erase playerUI from playerUIRoster, sort roster, queue free
-	stageManager.overworldUI.removePlayerUI(leavingPlayer.entityUI)
+	stageManager.overworldUI.removePlayerUI(leavingPlayer.worldUI)
 	stageManager.overworldUI.adjustMenusLayout()
 		#Erase playerActor from playerActors, sort roster, queue free
 	if leavingPlayer.entityInfo != null:
-		stageManager.overworldWorld.currentRoom.castList.removeActor(leavingPlayer.entityActor)
+		stageManager.overworldWorld.currentRoom.castList.removeActor(leavingPlayer.worldActor)
 	
 	leavingPlayer.queue_free()
 

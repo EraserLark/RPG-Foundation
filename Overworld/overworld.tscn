@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=12 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="Script" path="res://Overworld/UI/OW_UI.gd" id="1_4a7eq"]
 [ext_resource type="Script" path="res://Overworld/OverworldManager.gd" id="1_flynd"]
 [ext_resource type="Script" path="res://Overworld/World/World.gd" id="2_fscot"]
-[ext_resource type="Script" path="res://Overworld/WorldRoster.gd" id="2_o6f7l"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerAnchors.gd" id="3_co72e"]
 [ext_resource type="PackedScene" uid="uid://dp5gtq4i4l507" path="res://Overworld/Rooms/FirstRoom.tscn" id="11_64vjf"]
 [ext_resource type="AudioStream" uid="uid://d4gp1tjc4uixo" path="res://Audio/Tundra.mp3" id="12_exalw"]
@@ -103,9 +102,6 @@ _data = {
 
 [node name="Overworld" type="Node"]
 script = ExtResource("1_flynd")
-
-[node name="WorldRoster" type="Node" parent="."]
-script = ExtResource("2_o6f7l")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

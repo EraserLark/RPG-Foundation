@@ -37,7 +37,7 @@ func enter(_msg := {}):
 		printerr("No Entity Owner passed for the DialogueState!")
 		return
 	
-	playerEntity.entityActor.collisionShape.set_deferred("disabled", true)
+	playerEntity.worldActor.collisionShape.set_deferred("disabled", true)
 
 func physicsUpdate(_delta : float):
 	pass
@@ -46,5 +46,5 @@ func resumeState():
 	dialogueManager.resumeFocusStep()
 
 func exit():
-	playerEntity.entityActor.collisionShape.set_deferred("disabled", false)
+	playerEntity.worldActor.collisionShape.set_deferred("disabled", false)
 	super()

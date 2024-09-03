@@ -11,7 +11,7 @@ func resumeState(playerNum: int):
 	#Add PlayerActive state to Player State Stack
 	var playerEntity = PlayerRoster.roster[playerNum]
 	var pStateStack = playerEntity.playerStateStack
-	var playerActive = Player_Active.new(pStateStack, playerEntity.entityActor)
+	var playerActive = Player_Active.new(pStateStack, playerEntity.worldActor)
 	playerEntity.playerActiveState = playerActive
 	pStateStack.addState(playerActive)
 	

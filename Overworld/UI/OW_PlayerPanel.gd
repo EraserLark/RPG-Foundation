@@ -35,7 +35,7 @@ func _ready():
 	
 	baseMenu = initialMenu
 
-func initialize(om: OverworldManager, pe: OWEntity_Player):
+func initialize(om: OverworldManager, pe: PlayerEntity):
 	owManager = om
 	#player = PlayerRoster.roster[0]		#Change when multiplayer
 	playerEntity = pe	#Should get set after player chooses profile

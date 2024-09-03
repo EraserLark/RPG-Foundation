@@ -11,7 +11,7 @@ class_name OW_Player
 @onready var collisionShape:= $CollisionShape2D
 
 ##Parent references
-var playerEntity: OWEntity_Player
+var playerEntity: PlayerEntity
 var currentRoom: Room
 
 ##Export vars
@@ -29,7 +29,7 @@ func _ready():
 	print("Player Ready Start")
 	print("Player Ready Finish")
 
-func initialize(pe: OWEntity_Player, rm: Room):
+func initialize(pe: PlayerEntity, rm: Room):
 	playerEntity = pe
 	currentRoom = rm
 	
@@ -117,7 +117,7 @@ func scanForSpawn():
 
 ##Interaction
 func openMenu():
-	var manualmenuState = ManualMenu_State.new(playerEntity.playerStateStack, playerEntity.input, playerEntity.entityUI.playerPanel)
+	var manualmenuState = ManualMenu_State.new(playerEntity.playerStateStack, playerEntity.input, playerEntity.worldUI.playerPanel)
 	playerEntity.playerStateStack.addState(manualmenuState)
 
 func castInteractRay():
