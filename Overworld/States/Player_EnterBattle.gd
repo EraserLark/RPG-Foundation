@@ -1,4 +1,4 @@
-extends State
+extends GameState
 class_name Player_EnterBattle
 
 var battleTransitionQueue: EventQueue
@@ -7,10 +7,11 @@ var animPlayer: AnimationPlayer
 var currentRoom: Room
 var enemyData: Array[EnemyInfo]
 
-func _init(sStack: StateStack):
-	battleTransitionQueue = EventQueue.new(sStack)
+func _init(_msg := {}):
+	battleTransitionQueue = EventQueue.new()
+	super(_msg)
 
-func enter(_msg := {}):
+func stackEnter(_msg := {}):
 	currentRoom = _msg["Room"]
 	animPlayer = currentRoom.animPlayer
 	
@@ -25,10 +26,10 @@ func enter(_msg := {}):
 	
 	battleTransitionQueue.popQueue()
 
-func resumeState():
-	exit()
+func stackResume():
+	stackExit()
 
-func exit():
+func stackExit():
 	#Play anim directly here, no event. (That way players can move)
 	animPlayer.play("ExitBattle")
 	currentRoom.world.resumeWorld()

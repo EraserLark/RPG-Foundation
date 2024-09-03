@@ -4,14 +4,14 @@ class_name GameState
 var playerStacks: Array[StateStack]
 
 ##SELF - Run once when created
-func _init():
+func _init(_msg := {}):
 	for playerEntity in PlayerRoster.getActiveRoster():
 		playerStacks.append(playerEntity.playerStateStack)
 	
-	GameStateStack.addGameState(self)
+	GameStateStack.addGameState(self, _msg)
 
 ##SELF - Runs once
-func stackEnter():
+func stackEnter(_msg := {}):
 	pass
 
 func stackResume():

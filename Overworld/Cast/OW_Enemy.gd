@@ -21,5 +21,5 @@ func initialize(om: OverworldManager, rm: Room):
 	player = rm.castList.find_child("OW_Player")
 
 func interactAction(interacter : OW_Player):
-	var enterBattleState = Player_EnterBattle.new(GameStateStack.stack)
-	GameStateStack.stack.addState(enterBattleState, {"Room": room, "EnemyData": battleData})
+	var enterBattleState = Player_EnterBattle.new({"Room": room, "EnemyData": battleData})
+	#GameStateStack.stack.addState(enterBattleState, )

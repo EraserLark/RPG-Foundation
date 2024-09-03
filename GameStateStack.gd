@@ -19,7 +19,7 @@ func addGameState(gs: GameState, _msg:={}):
 	print("\n")
 	
 	#Run game state enter once
-	frontGameState.stackEnter()
+	frontGameState.stackEnter(_msg)
 	
 	#Run each player's enter (game state enter by extentsion)
 	for playerEntity in PlayerRoster.getActiveRoster():

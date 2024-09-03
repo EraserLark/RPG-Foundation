@@ -17,13 +17,9 @@ class_name OverworldManager
 func _ready():
 	print("Overworld Ready Start")
 	InputManager.newPlayerJoined.connect(newControllerJoined)
-	#PlayerRoster.newRosterPlayer.connect(newPlayerJoined)
-	
-	#playerEntities.assign(worldRoster.players)
 	
 	overworldUI.initialize(self)
 	overworldWorld.initialize(self)
-	#worldRoster.initialize(self)
 	
 	var overworldGameState = GameState_Overworld.new()	#Adds itself to GameStateStack
 	
@@ -31,11 +27,6 @@ func _ready():
 
 func newControllerJoined(joypadNum: int):
 	var emptyEntity = PlayerRoster.addEmptySlot(self, joypadNum)
-	#var emptyUI = overworldUI.createPlayerUI()
-	#overworldUI.adjustMenusLayout()
 	
 	var manualMenuState = ManualMenu_State.new(emptyEntity.playerStateStack, emptyEntity.input, emptyEntity.worldUI.playerPanel)
 	emptyEntity.playerStateStack.addState(manualMenuState)
-
-#func newPlayerJoined(info: PlayerInfo):
-	#worldRoster.addNewEntity(info, overworldUI.playerUIRoster[info.playerNumber - 1])
