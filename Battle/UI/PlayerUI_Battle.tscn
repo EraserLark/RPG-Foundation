@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7fouswjqgykh"]
+[gd_scene load_steps=21 format=3 uid="uid://c7fouswjqgykh"]
 
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_qvh2h"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_h70pe"]
@@ -12,11 +12,15 @@
 [ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="11_jwv4u"]
 [ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="12_fcsqg"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/MiscMenu.gd" id="13_clnyn"]
+[ext_resource type="Script" path="res://Battle/UI/WaitingMenu.gd" id="13_hqadu"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/Menus/action_menu.tscn" id="14_1tgmc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbj4b"]
 atlas = ExtResource("3_rgjmw")
 region = Rect2(595, 170, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yen6o"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_vndq1"]
 resource_name = "Death"
@@ -196,6 +200,7 @@ color = Color(0.176471, 0, 0.701961, 1)
 [node name="MinigameZone" type="Node2D" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
 
 [node name="AttackMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("11_jwv4u")
@@ -211,12 +216,39 @@ layout_mode = 2
 script = ExtResource("12_fcsqg")
 metadata/_edit_group_ = true
 
+[node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" instance=ExtResource("10_14tsx")]
+layout_mode = 2
+
 [node name="MiscMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("13_clnyn")
 metadata/_edit_group_ = true
+
+[node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" instance=ExtResource("10_14tsx")]
+layout_mode = 2
+
+[node name="WaitingMenu" type="Panel" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yen6o")
+script = ExtResource("13_hqadu")
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/PlayerMenu/MarginContainer/WaitingMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ready" type="Label" parent="PlayerPanel/PlayerMenu/MarginContainer/WaitingMenu/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "READY!"
+horizontal_alignment = 1
 
 [node name="ActionMenu" parent="PlayerPanel/PlayerMenu" instance=ExtResource("14_1tgmc")]
 layout_mode = 0

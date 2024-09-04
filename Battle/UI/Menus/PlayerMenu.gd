@@ -6,6 +6,7 @@ class_name PlayerBattleMenu
 @onready var attackMenu= $MarginContainer/AttackMenu
 @onready var itemMenu:= $MarginContainer/ItemMenu
 @onready var miscMenu:= $MarginContainer/MiscMenu
+@onready var waitingMenu:= $MarginContainer/WaitingMenu
 
 var subMenus: Array[Menu]
 
@@ -19,6 +20,7 @@ func initialize(pp: PlayerPanel_Battle):
 	attackMenu.menuManager = pp
 	itemMenu.menuManager = pp
 	miscMenu.menuManager = pp
+	waitingMenu.menuManager = pp
 	
 	#actionMenu.attackMenu = attackMenu
 	#actionMenu.itemMenu = itemMenu

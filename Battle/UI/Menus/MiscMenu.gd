@@ -1,17 +1,39 @@
 extends Menu
 
-@onready var itemList:= $ItemList
+@onready var manualMenu:= $ManualMenu
+var playerEntity: PlayerEntity
 var miscList: Array[Action]
 
-func initMenu(actions: Array[Action]):
-	miscList = actions
+func _ready() -> void:
+	manualMenu.optionActivated.connect(itemActivated)
+
+func initMenu(playerEntity: PlayerEntity):
+	miscList = playerEntity.entityInfo.miscList
+	manualMenu.menuManager = menuManager
 	
-	for action in miscList:
-		itemList.add_item(action.eventName)
+	populateItems(miscList)
 
+func OpenMenu():
+	super()
+	miscList = playerEntity.entityInfo.miscList
+	populateItems(miscList)
+	menuManager.showSubMenu(manualMenu)
+
+func populateItems(newItems: Array[Action]):
+	miscList.clear()
+	manualMenu.items.clear()
+	
+	for action in newItems:
+		manualMenu.items.append(action.name)
+
+func itemActivated(chosenSelection: int):
+	menuManager.actionSelected(chosenSelection)
+	
 func grabFirstFocus():
-	itemList.grab_focus()
-	itemList.select(0)
+	pass
 
-func _on_item_list_item_activated(index):
-	menuManager.actionSelected(index)
+func setPrevFocus():
+	pass
+
+func ResumeMenu():
+	menuManager.backOut()

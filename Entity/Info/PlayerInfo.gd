@@ -10,13 +10,7 @@ class_name PlayerInfo
 var playerNumber: int
 
 ##ENTITY
-var playerEntity: PlayerEntity: set = setPlayerWorldEntity
-#var playerBattleEntity: BattleEntity_Player: set = setPlayerBattleEntity
-#var playerWorldEntity: PlayerEntity: set = setPlayerWorldEntity
-
-###OVERWORLD
-#var playerActor: OW_Player
-#var owPlayerState: Player_Active
+var playerEntity: PlayerEntity: set = setPlayerEntity
 
 func initialize():
 	##Create attacks
@@ -60,10 +54,12 @@ func setupMisc(stgmn: StageManager):
 	for action in miscList:
 		action.setManager(stgmn)
 
-func setPlayerWorldEntity(value):
+func setPlayerEntity(value):
 	playerEntity = value
-	entityUI = playerEntity.worldUI
+	#if playerEntity.battleUI == null:
+		#entityUI = playerEntity.worldUI
+	#else:
+		#entityUI = playerEntity.battleUI
 
-func setPlayerBattleEntity(value):
-	playerEntity = value
-	entityUI = playerEntity.battleUI
+func setPlayerEntityUI(value):
+	entityUI = value

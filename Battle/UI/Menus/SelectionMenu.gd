@@ -18,7 +18,7 @@ var currentSelection : int
 func _ready():
 	firstFocus = self
 	
-	get_viewport().connect("gui_focus_changed", onFocusChanged)
+	#get_viewport().connect("gui_focus_changed", onFocusChanged)
 
 func onFocusChanged(control):
 	if control != null:
