@@ -1,8 +1,8 @@
 extends Node
-class_name PhaseManager
+class_name GameState_PhaseManager
 
-var phases: Array[Phase]
-var currentPhase: Phase
+var phases: Array[GameState]
+var currentPhase: GameState
 var managerFinished:= false
 
 func _init():
@@ -14,12 +14,12 @@ func determineNextPhase():
 
 func runCurrentPhase():
 	if(currentPhase != null):
-		currentPhase.runPhase()
+		currentPhase.stackEnter()
 	else:
 		determineNextPhase()
 
 func resumeCurrentPhase():
-	currentPhase.resumePhase()
+	currentPhase.stackResume()
 
 func phaseFinished():
 	currentPhase.cleanPhase()

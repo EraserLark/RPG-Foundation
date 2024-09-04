@@ -1,4 +1,4 @@
-extends PhaseManager
+extends GameState_PhaseManager
 class_name PM_Battle
 
 var battleManager: BattleManager
@@ -12,10 +12,10 @@ var finishPhase
 
 func _init(bm):
 	battleManager = bm
-	startPhase = Start_Phase.new(self, bm)
-	promptPhase = Prompt_Phase.new(self, bm)
-	actionPhase = Action_Phase.new(self, bm)
-	finishPhase = Finish_Phase.new(self, bm)
+	startPhase = GameState_StartPhase.new(self, bm)
+	promptPhase = GameState_PromptPhase.new(self)
+	actionPhase = GameState_ActionPhase.new(self, bm)
+	finishPhase = GameState_FinishPhase.new(self, bm)
 	
 	battleManager.promptPhase = self.promptPhase
 	battleManager.actionPhase = self.actionPhase

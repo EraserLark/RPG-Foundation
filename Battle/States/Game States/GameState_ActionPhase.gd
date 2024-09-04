@@ -1,7 +1,7 @@
 extends GameState
 class_name GameState_ActionPhase
 
-var phaseManager: PhaseManager
+var phaseManager: GameState_PhaseManager
 var battleManager
 var playerEntities
 var enemies
@@ -12,7 +12,7 @@ var actionEQ: BattleActionQueue
 var statusRoster: Array[StatusEffect]
 var unresolvedStatuses: Array[StatusEffect]
 
-func _init(bm: BattleManager, pm: PhaseManager, _msg := {}):
+func _init(pm: GameState_PhaseManager, bm: BattleManager, _msg := {}):
 	phaseManager = pm
 	battleManager = bm
 	

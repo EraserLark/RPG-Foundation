@@ -1,10 +1,10 @@
 extends GameState
 class_name GameState_PromptPhase
 
-var phaseManager: PhaseManager
+var phaseManager: GameState_PhaseManager
 var menuSystems: Array[MenuSystem]
 
-func _init(pm:PhaseManager, _msg:={}):
+func _init(pm:GameState_PhaseManager, _msg:={}):
 	phaseManager = pm
 
 func enter(playerNum: int, _msg:= {}):
