@@ -31,7 +31,7 @@ signal playerDied
 
 #BattleEntity
 #var battleEntityActor: BattleActor
-var battleUI: EntityUI
+var battleUI: PlayerUI_Battle
 
 ##Outside references
 var battleManager: BattleManager

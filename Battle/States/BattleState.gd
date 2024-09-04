@@ -1,4 +1,4 @@
-extends State
+extends GameState
 class_name Battle_State
 
 var battlePM
@@ -7,25 +7,21 @@ var battleManager
 enum battlePhases {START, PROMPT, ACTION, FINISH}
 var currentPhase: battlePhases
 
-func _init(sStack: StateStack, bm):
-	stateStack = sStack
+func _init(bm):
 	battleManager = bm
-	
 	battlePM = PM_Battle.new(battleManager)
+	super()
 
-func handleInput(_event: InputEvent):
-	pass
-
-func enter(_msg:= {}):
+func stackEnter(_msg:= {}):
 	battlePM.runCurrentPhase()
 
-func resumeState():
+func stackResume():
 	if(battlePM.managerFinished):
-		exit()
+		stackExit()
 	else:
 		battlePM.resumeCurrentPhase()
 
-func exit():
+func stackExit():
 	set_process_input(false)
 	super()
 	battleManager.queue_free()

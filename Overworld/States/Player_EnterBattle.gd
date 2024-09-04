@@ -27,7 +27,10 @@ func stackEnter(_msg := {}):
 	battleTransitionQueue.popQueue()
 
 func stackResume():
-	stackExit()
+	if battleTransitionQueue.queue.is_empty():
+		stackExit()
+	else:
+		battleTransitionQueue.popQueue()
 
 func stackExit():
 	#Play anim directly here, no event. (That way players can move)

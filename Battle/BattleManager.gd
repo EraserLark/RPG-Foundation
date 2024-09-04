@@ -2,12 +2,13 @@ extends StageManager
 class_name BattleManager
 
 ##Scene Path
+#Used in static func initBattle to instance battle scene
 const battleScene: PackedScene = preload("res://Battle/battle.tscn")
 
 #BattleManager
 @export var enemyData: Array[EnemyInfo]
-@onready var battleRoster:= $BattleRoster
-var playerEntities: Array[BattleEntity_Player]
+@onready var enemyRoster:= $EnemyRoster
+#var playerEntities: Array[BattleEntity_Player]
 var enemyEntities: Array[BattleEntity_Enemy]
 var turnCount:= 0
 var xpBank:= 0
@@ -24,9 +25,7 @@ var promptPhase: Prompt_Phase = null
 var actionPhase: Action_Phase = null
 
 #Player
-@onready var playerActors:= $BattleStage/PlayerActors
-#@onready var playerUI:= $CanvasLayer/BattleUI/PlayerUI
-#@onready var playerPanel:= $CanvasLayer/BattleUI/PlayerUI/PlayerPanel
+#@onready var playerActors:= $BattleStage/PlayerActors
 
 #Other
 @onready var camera:= $BattleStage/Camera2D
@@ -41,27 +40,16 @@ static func initBattle(_enemyData):
 	return newBattle
 
 func _ready():
-	#playerUI.battleManager = self
-	#playerPanel.battleManager = self
-	#battleRoster.battleManager = self
-	playerEntities.assign(battleRoster.players)
+	#playerEntities.assign(enemyRoster.players)
 	
-	battleRoster.initialize(self)
-	enemyEntities = battleRoster.enemies
+	enemyRoster.initialize(self)
+	enemyEntities = enemyRoster.enemies
 	battleUI.initialize(self)
 	battleStage.initialize(self)
 	
-	#for player in playerEntities:
-		#player.initialize(self)
-	
-	#for enemy in enemyEntities:
-		#enemy.initialize(self)
-	
-	#playerPanel.initialize()
-	
 	camera.make_current()
 	
-	battleState = Battle_State.new(GameStateStack.stack, self)
+	battleState = Battle_State.new(self)
 	GameStateStack.stack.addState(battleState)
 
 func updateTurnCount():

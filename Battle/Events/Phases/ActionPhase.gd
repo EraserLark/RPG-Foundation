@@ -1,13 +1,12 @@
 extends Phase
 class_name Action_Phase
 
-var battleUI
+#var battleUI
 var player
 var enemies
 var battleManager
 
 var turnUpdated:= false
-#var isOver:= false
 
 var actionEQ: BattleActionQueue
 var statusRoster: Array[StatusEffect]
@@ -18,7 +17,7 @@ func _init(battlePM, bm):
 	battleManager = bm
 	enemies = bm.battleRoster.enemies
 	player = bm.playerEntities[0]
-	battleUI = bm.battleUI
+	#battleUI = bm.battleUI
 	
 	actionEQ = BattleActionQueue.new(battleManager, self)
 

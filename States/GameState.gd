@@ -25,11 +25,9 @@ func stackExit():
 func enter(playerNum: int, _msg:= {}):
 	pass
 
-##PLAYER - Runs 1-8 times
 func resumeState(playerNum: int):
 	pass
 
-##PLAYER - Runs 1-8 times
 func exit(playerNum: int):
 	for stack in playerStacks:
 		stack.removeGameState()
