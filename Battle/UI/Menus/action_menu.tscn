@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://djbkplk44r1sh"]
+[gd_scene load_steps=9 format=3 uid="uid://djbkplk44r1sh"]
 
 [ext_resource type="PackedScene" uid="uid://bcr5iut1amphg" path="res://Battle/UI/Menus/action_button.tscn" id="1_6k8ay"]
-[ext_resource type="Script" path="res://Battle/UI/Menus/action_menu.gd" id="1_481s6"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/ManualMenu_ButtonList.gd" id="1_481s6"]
+[ext_resource type="Texture2D" uid="uid://c0k0qme3yjrsr" path="res://Art/MenuArrow_Anim1.png" id="2_h5q3v"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_rtd54"]
+[ext_resource type="Texture2D" uid="uid://cr8hs3avj1c1v" path="res://Art/MenuArrow_Anim2.png" id="3_hocg3"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_rtyob"]
+frames = 2
+frame_0/texture = ExtResource("2_h5q3v")
+frame_1/texture = ExtResource("3_hocg3")
+frame_1/duration = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vggtq"]
 atlas = ExtResource("2_rtd54")
@@ -12,35 +20,48 @@ region = Rect2(544, 136, 16, 16)
 atlas = ExtResource("2_rtd54")
 region = Rect2(680, 187, 16, 16)
 
-[node name="ActionMenu" type="TabBar"]
-offset_right = 128.0
+[node name="ButtonMenu" type="HBoxContainer" node_paths=PackedStringArray("buttonList", "initialTimer", "echoTimer", "upArrow", "downArrow")]
+offset_right = 168.0
 offset_bottom = 40.0
 script = ExtResource("1_481s6")
+buttonList = NodePath("Buttons")
+initialTimer = NodePath("initialTimer")
+echoTimer = NodePath("echoTimer")
+upArrow = NodePath("UpArrow")
+downArrow = NodePath("DownArrow")
 
-[node name="AttackButton" parent="." instance=ExtResource("1_6k8ay")]
+[node name="UpArrow" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-offset_right = 40.0
-offset_bottom = 40.0
-focus_neighbor_left = NodePath("../ReactButton")
-focus_neighbor_right = NodePath("../ItemButton")
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = SubResource("AnimatedTexture_rtyob")
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AttackButton" parent="Buttons" instance=ExtResource("1_6k8ay")]
+layout_mode = 2
 icon = SubResource("AtlasTexture_vggtq")
 
-[node name="ItemButton" parent="." instance=ExtResource("1_6k8ay")]
+[node name="ItemButton" parent="Buttons" instance=ExtResource("1_6k8ay")]
 layout_mode = 2
-offset_left = 44.0
-offset_right = 84.0
-offset_bottom = 40.0
-focus_neighbor_left = NodePath("../AttackButton")
-focus_neighbor_right = NodePath("../ReactButton")
 icon = SubResource("AtlasTexture_ufbvm")
 
-[node name="ReactButton" parent="." instance=ExtResource("1_6k8ay")]
+[node name="ReactButton" parent="Buttons" instance=ExtResource("1_6k8ay")]
 layout_mode = 2
-offset_left = 88.0
-offset_right = 128.0
-offset_bottom = 40.0
-focus_neighbor_left = NodePath("../ItemButton")
-focus_neighbor_right = NodePath("../AttackButton")
 
-[connection signal="button_down" from="AttackButton" to="." method="_on_attack_button_button_down"]
-[connection signal="button_down" from="ItemButton" to="." method="_on_item_button_button_down"]
+[node name="DownArrow" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AnimatedTexture_rtyob")
+flip_v = true
+
+[node name="initialTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="echoTimer" type="Timer" parent="."]
+wait_time = 0.1

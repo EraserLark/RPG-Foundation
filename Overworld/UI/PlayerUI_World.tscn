@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Overworld/UI/PlayerUI_World.gd" id="1_j2cxj"]
 [ext_resource type="Script" path="res://Overworld/UI/OW_PlayerPanel.gd" id="3_hgk43"]
-[ext_resource type="PackedScene" uid="uid://yie3dymrkfv5" path="res://Menus/ManualMenu_Template.tscn" id="5_jl7dq"]
+[ext_resource type="PackedScene" uid="uid://yie3dymrkfv5" path="res://Menus/ManualMenu_LabelList.tscn" id="5_jl7dq"]
 [ext_resource type="Script" path="res://Overworld/UI/Menus/InitialMenu.gd" id="6_ob35p"]
 [ext_resource type="Texture2D" uid="uid://cmqkdesj030nd" path="res://Art/RobotFront.png" id="7_s4on4"]
 [ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="8_1ktt8"]

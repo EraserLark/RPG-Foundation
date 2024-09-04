@@ -9,42 +9,15 @@ class_name PlayerUI_Battle
 @onready var animPlayer:= $AnimationPlayer
 
 ##Outside references
-#var battleManager: BattleManager
 var battleUI: Control
-#var player: BattleEntity_Player
-#var currentStageAnchor: Control
-#
-###Inside vars
-#var currentPanelAnchor: Control
 
 func initialize(stgmn: StageManager, playerPanel, playerEntity: Entity, currentAnchors: Array):
-	#battleManager = bm
-	#player = battleManager.playerEntities[playerNumber]
-	#currentStageAnchor = currentAnchors[playerNumber]
-	
 	super(stgmn, playerPanel, playerEntity, currentAnchors)
 	
 	selectionMenu.initialize(stageManager, self)
 
-	
-	#Bottom center panel anchor
-	#centerPlayerPanel()
-#
-#func centerPlayerPanel():
-	##Only set up for 1 Player atm
-	#if(currentStageAnchor == null):
-		#printerr("currentStageAnchor not set")
-		#return
-	#
-	#var panelAnchorDiff:Vector2 = abs(self.position - currentPanelAnchor.position)
-	#self.position = currentStageAnchor.position - panelAnchorDiff
-	#
-	##var dimensions = getUIDimensions()
-	##var offset = Vector2(dimensions.x / 2, dimensions.y)
-	##position = (currentStageAnchor.position + offset)
-
-func getUIDimensions() -> Vector2:
-	return Vector2(playerPanel.size.x, playerPanel.size.y)
+#func getUIDimensions() -> Vector2:
+	#return Vector2(playerPanel.size.x, playerPanel.size.y)
 
 func setHP(value):
 	stats.changeHealth(value)

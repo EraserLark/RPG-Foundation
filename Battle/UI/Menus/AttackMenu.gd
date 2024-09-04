@@ -1,18 +1,41 @@
 extends Menu
 class_name AttackMenu_Battle
 
-@onready var itemList:= $ItemList
+#@onready var itemList:= $ItemList
+@onready var manualMenu:= $ManualMenu
+var playerEntity: PlayerEntity
 var attackList: Array[Action]
 
-func initMenu(attacks: Array[Action]):
-	attackList = attacks
+func _ready() -> void:
+	manualMenu.optionActivated.connect(itemActivated)
+
+func initMenu(playerEntity: PlayerEntity):
+	attackList = playerEntity.entityInfo.attackList
+	manualMenu.menuManager = menuManager
 	
-	for attack in attackList:
-		itemList.add_item(attack.eventName)
+	populateItems(attackList)
 
+func OpenMenu():
+	super()
+	attackList = playerEntity.entityInfo.attackList
+	populateItems(attackList)
+	menuManager.showSubMenu(manualMenu)
+
+func populateItems(newItems: Array[Action]):
+	attackList.clear()
+	manualMenu.items.clear()
+	
+	for attack in newItems:
+		manualMenu.items.append(attack.name)
+
+func itemActivated(chosenSelection: int):
+	menuManager.attackSelected(chosenSelection)
+	
 func grabFirstFocus():
-	itemList.grab_focus()
-	itemList.select(0)
+	pass
 
-func _on_item_list_item_activated(index):
-	menuManager.attackSelected(index)
+func setPrevFocus():
+	pass
+
+func ResumeMenu():
+	menuManager.backOut()

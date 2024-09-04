@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://yie3dymrkfv5"]
 
 [ext_resource type="Theme" uid="uid://cnak565bjcwb8" path="res://UI/Manual Menu Themes/ManualMenu_SelectLabel.tres" id="1_s1dq7"]
-[ext_resource type="Script" path="res://Menus/ManualMenu_Template.gd" id="1_vewka"]
+[ext_resource type="Script" path="res://Menus/ManualMenu_LabelList.gd" id="1_vewka"]
 [ext_resource type="Texture2D" uid="uid://c0k0qme3yjrsr" path="res://Art/MenuArrow_Anim1.png" id="2_qfd3c"]
 [ext_resource type="Texture2D" uid="uid://cr8hs3avj1c1v" path="res://Art/MenuArrow_Anim2.png" id="3_3m4qv"]
 

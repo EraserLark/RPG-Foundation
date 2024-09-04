@@ -1,5 +1,5 @@
 extends ManualMenu
-class_name ManualMenu_Template
+class_name ManualMenu_LabelList
 
 @export var items: Array[String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
 @export var labelList: Control
@@ -68,7 +68,7 @@ func grabFirstFocus():
 	currentSelection = prevFocus
 	
 	focusLabel = labelList.get_child(currentSelection)
-	focusLabel.theme_type_variation = "SelectLabel_Selected"
+	focusLabel.theme_type_variation = "Selected"
 
 func runMenuUpdate(input: DeviceInput):
 	if input.is_action_pressed("ui_down"):
@@ -176,12 +176,12 @@ func selectItem():
 	
 	##Set label theme
 	focusLabel = labelList.get_child(focusIndex)
-	focusLabel.theme_type_variation = "SelectLabel_Selected"
+	focusLabel.theme_type_variation = "Selected"
 	
 	print(str("Menu: ", self.name, "  CurrentSelection: ", currentSelection, "  UpperScrollRange: ", upperScrollRange))
 
 func activateOption():
-	focusLabel.theme_type_variation = "SelectLabel_Activated"
+	focusLabel.theme_type_variation = "Activated"
 	emit_signal("optionActivated", currentSelection)
 
 func setPrevFocus():

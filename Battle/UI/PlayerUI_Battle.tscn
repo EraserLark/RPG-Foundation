@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7fouswjqgykh"]
+[gd_scene load_steps=19 format=3 uid="uid://c7fouswjqgykh"]
 
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_qvh2h"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_h70pe"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="5_73jwi"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/BA_PlayerPanel.gd" id="6_44y4s"]
 [ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="9_cyk76"]
+[ext_resource type="PackedScene" uid="uid://yie3dymrkfv5" path="res://Menus/ManualMenu_LabelList.tscn" id="10_14tsx"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/PlayerMenu.gd" id="10_yjjpt"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="11_jwv4u"]
 [ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="12_fcsqg"]
@@ -124,6 +125,7 @@ patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 script = ExtResource("6_44y4s")
+mandatory = true
 
 [node name="Stats" type="PanelContainer" parent="PlayerPanel"]
 layout_mode = 0
@@ -169,20 +171,20 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+[node name="MinigameView" type="SubViewportContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
 layout_mode = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(272, 120)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
+[node name="Camera2D" type="Camera2D" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
 anchor_mode = 0
 
-[node name="ColorRect" type="ColorRect" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
+[node name="ColorRect" type="ColorRect" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -191,20 +193,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.176471, 0, 0.701961, 1)
 
-[node name="MinigameZone" type="Node2D" parent="PlayerPanel/PlayerMenu/MarginContainer/SubViewportContainer/SubViewport"]
+[node name="MinigameZone" type="Node2D" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
 
 [node name="AttackMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("11_jwv4u")
 metadata/_edit_group_ = true
 
-[node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu"]
+[node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu" instance=ExtResource("10_14tsx")]
 layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-fixed_icon_size = Vector2i(16, 16)
 
 [node name="ItemMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
 visible = false
@@ -213,12 +211,6 @@ layout_mode = 2
 script = ExtResource("12_fcsqg")
 metadata/_edit_group_ = true
 
-[node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-fixed_icon_size = Vector2i(16, 16)
-
 [node name="MiscMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
@@ -226,16 +218,16 @@ layout_mode = 2
 script = ExtResource("13_clnyn")
 metadata/_edit_group_ = true
 
-[node name="ItemList" type="ItemList" parent="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-fixed_icon_size = Vector2i(16, 16)
-
 [node name="ActionMenu" parent="PlayerPanel/PlayerMenu" instance=ExtResource("14_1tgmc")]
 layout_mode = 0
 offset_top = -40.0
 offset_bottom = 0.0
+
+[node name="UpArrow" parent="PlayerPanel/PlayerMenu/ActionMenu" index="0"]
+visible = false
+
+[node name="DownArrow" parent="PlayerPanel/PlayerMenu/ActionMenu" index="2"]
+visible = false
 
 [node name="PanelAnchors" type="Control" parent="PlayerPanel"]
 layout_mode = 1
@@ -299,10 +291,6 @@ libraries = {
 }
 
 [connection signal="gui_input" from="SelectionMenu" to="SelectionMenu" method="_on_gui_input"]
-[connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu" method="_on_item_list_item_activated"]
-[connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" method="_on_item_list_item_activated"]
-[connection signal="item_activated" from="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu/ItemList" to="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" method="_on_item_list_item_activated"]
-[connection signal="button_down" from="PlayerPanel/PlayerMenu/ActionMenu/ReactButton" to="PlayerPanel/PlayerMenu/ActionMenu" method="_on_react_button_button_down"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="PlayerPanel/PlayerMenu/ActionMenu"]

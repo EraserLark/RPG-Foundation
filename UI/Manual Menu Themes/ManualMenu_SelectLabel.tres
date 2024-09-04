@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cnak565bjcwb8"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cnak565bjcwb8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru4yo"]
+bg_color = Color(1, 1, 1, 0.705882)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou1ev"]
 
@@ -8,10 +11,17 @@ bg_color = Color(1, 1, 1, 0.705882)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc3t7"]
 bg_color = Color(1, 1, 1, 0.392157)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygfd4"]
+bg_color = Color(1, 1, 1, 0.392157)
+
 [resource]
+Activated/base_type = &"SelectLabel"
+Activated/styles/normal = SubResource("StyleBoxFlat_ru4yo")
 SelectLabel/base_type = &"Label"
 SelectLabel/styles/normal = SubResource("StyleBoxEmpty_ou1ev")
 SelectLabel_Activated/base_type = &"SelectLabel"
 SelectLabel_Activated/styles/normal = SubResource("StyleBoxFlat_ahnfo")
 SelectLabel_Selected/base_type = &"SelectLabel"
 SelectLabel_Selected/styles/normal = SubResource("StyleBoxFlat_qc3t7")
+Selected/base_type = &"SelectLabel"
+Selected/styles/normal = SubResource("StyleBoxFlat_ygfd4")

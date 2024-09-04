@@ -2,20 +2,44 @@ extends Menu
 class_name PlayerBattleMenu
 
 ##Children references
-@onready var actionMenu:= $ActionMenu
+@onready var actionSelectionMenu:= $ActionMenu
 @onready var attackMenu= $MarginContainer/AttackMenu
 @onready var itemMenu:= $MarginContainer/ItemMenu
 @onready var miscMenu:= $MarginContainer/MiscMenu
 
+var subMenus: Array[Menu]
+
 func _ready():
-	firstFocus = actionMenu.attackButton
+	actionSelectionMenu.optionActivated.connect(itemActivated)
+	
+	subMenus = [attackMenu, itemMenu, miscMenu]
 
 func initialize(pp: PlayerPanel_Battle):
-	actionMenu.menuManager = pp
+	actionSelectionMenu.menuManager = pp
 	attackMenu.menuManager = pp
 	itemMenu.menuManager = pp
 	miscMenu.menuManager = pp
 	
-	actionMenu.attackMenu = attackMenu
-	actionMenu.itemMenu = itemMenu
-	actionMenu.miscMenu = miscMenu
+	#actionMenu.attackMenu = attackMenu
+	#actionMenu.itemMenu = itemMenu
+	#actionMenu.miscMenu = miscMenu
+
+#func initMenu():
+	#actionSelectionMenu.menuManager = menuManager
+
+func OpenMenu():
+	super()
+	menuManager.showSubMenu(actionSelectionMenu)
+
+func itemActivated(chosenSelection: int):
+	#menuManager.showInitialMenuSelection(chosenSelection)
+	menuManager.showSubMenu(subMenus[chosenSelection])
+
+func ResumeMenu():
+	menuManager.backOut()
+
+func grabFirstFocus():
+	pass
+
+func setPrevFocus():
+	pass
