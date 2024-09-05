@@ -24,11 +24,10 @@ func OpenMenu():
 	menuManager.showSubMenu(manualMenu)
 
 func populateItems(newItems: Array[Action]):
-	attackList.clear()
 	manualMenu.items.clear()
 	
 	for attack in newItems:
-		manualMenu.items.append(attack.name)
+		manualMenu.items.append(attack.eventName)
 
 func itemActivated(chosenSelection: int):
 	menuManager.attackSelected(chosenSelection)

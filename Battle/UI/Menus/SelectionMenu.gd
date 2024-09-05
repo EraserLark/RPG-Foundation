@@ -41,8 +41,10 @@ func initialize(bm: BattleManager, pui: PlayerUI_Battle):
 func OpenMenu():
 	super()
 	selectedAction = playerPanel.currentSelectedAction
+	selectedAction.setManager(battleManager)
 	selectedAction.setupTargetOptions()
 	targetRoster = selectedAction.targetOptions
+	listSize = targetRoster.size()
 	
 	currentSelection = 0
 	moveCursor(currentSelection)

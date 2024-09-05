@@ -94,7 +94,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qvh2h")
 
-[node name="SelectionMenu" type="Control" parent="."]
+[node name="SelectionMenu" type="Control" parent="." node_paths=PackedStringArray("initialTimer", "echoTimer")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -106,6 +106,8 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_mode = 2
 script = ExtResource("2_h70pe")
+initialTimer = NodePath("initialTimer")
+echoTimer = NodePath("echoTimer")
 
 [node name="PlayerPointer" type="TextureRect" parent="SelectionMenu"]
 self_modulate = Color(0, 0, 1, 1)
