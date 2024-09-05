@@ -16,7 +16,7 @@ var battleIsOver:= false
 
 #Systems
 var battleState: Battle_State
-@onready var battleUI:= $CanvasLayer/BattleUI
+#@onready var battleUI:= $CanvasLayer/BattleUI
 @onready var battleStage:= $BattleStage
 @onready var cutsceneManager:= $CutsceneManager
 
@@ -42,9 +42,11 @@ static func initBattle(_enemyData):
 func _ready():
 	#playerEntities.assign(enemyRoster.players)
 	
+	stageUI = $CanvasLayer/BattleUI
+	
 	enemyRoster.initialize(self)
 	enemyEntities = enemyRoster.enemies
-	battleUI.initialize(self)
+	stageUI.initialize(self)
 	battleStage.initialize(self)
 	
 	camera.make_current()

@@ -27,7 +27,7 @@ func _ready():
 	print("Actor Ready Finish")
 
 func initialize(om: OverworldManager, rm: Room):
-	ui = om.overworldUI
+	ui = om.stageUI
 
 func setNPCInfo(info: NPC_Info):
 	npcResource = info

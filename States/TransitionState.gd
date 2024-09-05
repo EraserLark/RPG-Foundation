@@ -17,6 +17,8 @@ func _init(cm, w, rp, pn):
 	super()
 
 func stackEnter(_msg := {}):
+	super()	#Give all players connection state to GameStateStack for this
+	
 	var fadeIn = AnimationEvent.new(transitionEQ, cutsceneManager, "FadeIn")
 	transitionEQ.addEvent(fadeIn)
 	

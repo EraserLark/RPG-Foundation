@@ -1,18 +1,19 @@
-extends Control
+extends Stage_UI
+class_name Battle_UI
 
 ##Preload vars
-var playerUIScene:= preload("res://Battle/UI/PlayerUI_Battle.tscn")
+#var playerUIScene:= preload("res://Battle/UI/PlayerUI_Battle.tscn")
 
 ##Children references
 #@onready var playerUI:= $PlayerUI
 @onready var tbContainer:= $TBContainer
-@onready var playerAnchors:= $PlayerAnchors
+#@onready var playerAnchors:= $PlayerAnchors
 
 ##Parent references
 var battleManager: BattleManager
 
 ##Inside vars
-var playerUIRoster: Array[PlayerUI_Battle]
+#var playerUIRoster: Array[PlayerUI_Battle]
 
 func _ready():
 	#Determine UI anchors based off how many players are currently playing
@@ -25,10 +26,5 @@ func _ready():
 		player.battleUI = pUI
 		playerUIRoster.append(pUI)
 
-func initialize(bm: BattleManager):
-	battleManager = bm
-	
-	var i:= 0
-	for playerUserIntf in playerUIRoster:
-		playerUserIntf.initialize(battleManager, playerUserIntf.playerPanel, PlayerRoster.roster[i], playerAnchors.currentAnchorLayout)
-		i+=1
+func initialize(sm: StageManager):
+	super(sm)

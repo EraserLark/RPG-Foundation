@@ -20,7 +20,7 @@ func _ready():
 
 func initialize(om: OverworldManager):
 	owManager = om
-	DialogueSystem.updateOWVars(owManager.overworldUI, self)	#Update before room. Actors use for spawn flags
+	DialogueSystem.updateOWVars(owManager.stageUI, self)	#Update before room. Actors use for spawn flags
 	currentRoom.initialize(om)
 
 func pauseWorld():
@@ -45,6 +45,6 @@ func onRoomExit(newRoomPath: String, port: int):
 	add_child(inst)
 	currentRoom = inst
 	#Update vars (actors use this for spawn flags)
-	DialogueSystem.updateOWVars(owManager.overworldUI, self)
+	DialogueSystem.updateOWVars(owManager.stageUI, self)
 	#Initialize new room
 	currentRoom.initialize(owManager)

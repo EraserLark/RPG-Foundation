@@ -58,7 +58,7 @@ func initialize(om: OverworldManager = null, bm: BattleManager = null):
 		overworldManager = om
 		if(worldActor == null):
 			worldActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[rosterNumber]
-		worldUI = overworldManager.overworldUI.playerUIRoster[rosterNumber]
+		worldUI = overworldManager.stageUI.playerUIRoster[rosterNumber]
 		
 		var connectionState = GameState_Connection.new(playerStateStack, GameStateStack.foundationGameState)
 		playerStateStack.addState(connectionState)	#Enters game state roundabout

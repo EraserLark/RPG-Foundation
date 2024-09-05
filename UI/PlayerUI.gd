@@ -9,8 +9,6 @@ var currentPanelAnchor: Control
 
 func initialize(stgmn: StageManager, playerPanel, playerEntity: PlayerEntity, currentAnchors: Array):
 	stageManager = stgmn
-	#player = stageManager.playerEntities[playerNumber]
-	#currentStageAnchor = currentAnchors[playerNumber]
 	player = playerEntity
 	currentStageAnchor = currentAnchors[player.rosterNumber]
 	
@@ -18,8 +16,6 @@ func initialize(stgmn: StageManager, playerPanel, playerEntity: PlayerEntity, cu
 		playerPanel.initialize(stageManager, player)
 	elif(stageManager is BattleManager):
 		playerPanel.initialize(stageManager, self, player)
-	#currentPanelAnchor = playerPanel.panelAnchors[4]
-	#centerPlayerPanel()
 
 func centerPlayerPanel():
 	if(currentStageAnchor == null):
