@@ -10,8 +10,8 @@ func _init(battlePM, bm):
 	battleUI = bm.battleUI
 
 func runPhase():
-	var introCutscene = BattleIntro.new(GameStateStack.stack, battleManager.cutsceneManager, battleManager)
-	GameStateStack.stack.addState(introCutscene)
+	var introCutscene = BattleIntro.new(battleManager.cutsceneManager, battleManager)
+	#GameStateStack.stack.addState(introCutscene)
 
 func resumePhase():
 	finishPhase()

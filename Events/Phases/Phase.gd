@@ -2,7 +2,7 @@ extends Node
 class_name Phase
 
 var phaseName: String
-var phaseManager: PhaseManager
+var phaseManager: GameState_PhaseManager
 
 func _init(pManager):
 	phaseManager = pManager

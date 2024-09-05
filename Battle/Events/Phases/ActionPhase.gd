@@ -22,13 +22,13 @@ func _init(battlePM, bm):
 	actionEQ = BattleActionQueue.new(battleManager, self)
 
 func runPhase():
-	var playerAction = player.entityInfo.selectedAction
-	if(playerAction.actionMinigame != null):
-		var minigameEvent = CreateMinigameEvent.new(actionEQ, battleManager, playerAction.actionMinigame)
-		actionEQ.addEvent(minigameEvent)
-	playerAction.eventManager = actionEQ
-	playerAction.sender = player
-	actionEQ.queue.append(playerAction)
+	#var playerAction = player.entityInfo.selectedAction
+	#if(playerAction.actionMinigame != null):
+		#var minigameEvent = CreateMinigameEvent.new(player.entityInfo.playerNumber, actionEQ, battleManager, playerAction.actionMinigame)
+		#actionEQ.addEvent(minigameEvent)
+	#playerAction.eventManager = actionEQ
+	#playerAction.sender = player
+	#actionEQ.queue.append(playerAction)
 	
 	for enemy in battleManager.battleRoster.enemies:
 		var enemyAction = enemy.chooseAttack()

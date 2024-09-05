@@ -94,6 +94,22 @@ func fullHeal():
 func takeDamage(dmg: int, pierce: bool):
 	pass
 
+func attackChosen(attackNum: int):
+	entityInfo.selectedAction = entityInfo.attackList[attackNum]
+	return entityInfo.selectedAction
+
+func actionChosen(actionNum: int):
+	entityInfo.selectedAction = entityInfo.miscList[actionNum]
+	return entityInfo.selectedAction
+
+func itemChosen(itemNum: int):
+	var item = entityInfo.itemList[itemNum]
+	entityInfo.selectedAction = item.itemAction
+	return entityInfo.selectedAction
+
+func itemDiscarded(itemNum: int):
+	entityInfo.itemList = Helper.removeIndex(entityInfo.itemList, itemNum)
+
 func checkRoster():
 	pass
 

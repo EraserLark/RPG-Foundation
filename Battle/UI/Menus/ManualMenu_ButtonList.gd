@@ -17,7 +17,7 @@ var listSize: int
 
 ##Base Manual Menu
 var currentSelection: int
-var focusLabel: Label
+var focusButton: Button
 #var arraySize: int
 var inputTimerStarted:= false
 var inputTimerFinished:= false
@@ -75,8 +75,8 @@ func OpenMenu():
 func grabFirstFocus():
 	currentSelection = prevFocus
 	
-	focusLabel = buttonList.get_child(currentSelection)
-	focusLabel.theme_type_variation = "Selected"
+	focusButton = buttonList.get_child(currentSelection)
+	focusButton.theme_type_variation = "Selected"
 
 func runMenuUpdate(input: DeviceInput):
 	if input.is_action_pressed("ui_right"):
@@ -130,7 +130,7 @@ func runMenuUpdate(input: DeviceInput):
 			initialInput = true
 
 func selectItem():
-	focusLabel.theme_type_variation = "SelectButton"
+	focusButton.theme_type_variation = "SelectButton"
 	var focusIndex: int
 	
 	if noCrop:
@@ -183,13 +183,13 @@ func selectItem():
 			downArrow.visible = false
 	
 	##Set label theme
-	focusLabel = buttonList.get_child(focusIndex)
-	focusLabel.theme_type_variation = "Selected"
+	focusButton = buttonList.get_child(focusIndex)
+	focusButton.theme_type_variation = "Selected"
 	
 	print(str("Menu: ", self.name, "  CurrentSelection: ", currentSelection, "  UpperScrollRange: ", upperScrollRange))
 
 func activateOption():
-	focusLabel.theme_type_variation = "Activated"
+	focusButton.theme_type_variation = "Activated"
 	emit_signal("optionActivated", currentSelection)
 
 func setPrevFocus():

@@ -115,6 +115,12 @@ offset_bottom = 40.0
 texture = SubResource("AtlasTexture_pbj4b")
 script = ExtResource("4_tfohc")
 
+[node name="initialTimer" type="Timer" parent="SelectionMenu"]
+wait_time = 0.3
+
+[node name="echoTimer" type="Timer" parent="SelectionMenu"]
+wait_time = 0.1
+
 [node name="PlayerPanel" type="NinePatchRect" parent="."]
 self_modulate = Color(1, 0, 0, 1)
 layout_mode = 1
@@ -323,6 +329,8 @@ libraries = {
 }
 
 [connection signal="gui_input" from="SelectionMenu" to="SelectionMenu" method="_on_gui_input"]
+[connection signal="timeout" from="SelectionMenu/initialTimer" to="SelectionMenu" method="_on_initial_timer_timeout"]
+[connection signal="timeout" from="SelectionMenu/echoTimer" to="SelectionMenu" method="_on_echo_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="PlayerPanel/PlayerMenu/ActionMenu"]

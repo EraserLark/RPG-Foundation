@@ -12,9 +12,9 @@ class_name PlayerPanel_Battle
 ##Parent/Outside references
 var battleManager: BattleManager
 var playerUI: PlayerUI_Battle
-var selectionMenu: BattleSelectionMenu
+var selectionMenu: TargetSelectionMenu
 var playerPointer: Cursor
-var player: BattleEntity_Player
+var player: PlayerEntity
 
 ##Inside vars
 var currentSelectedAction
@@ -26,7 +26,7 @@ func _ready():
 	audioPlayer = $AudioStreamPlayer
 	panelAnchors = $PanelAnchors.get_children()
 
-func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: BattleEntity_Player):
+func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
 	battleManager = bm
 	playerUI = pui
 	selectionMenu = playerUI.selectionMenu
@@ -40,7 +40,7 @@ func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: BattleEntity_Player
 
 func open(sStack: StateStack):
 	baseMenu = playerMenu
-	player = playerUI.player
+	#player = playerUI.player
 	super(sStack)
 
 func attackSelected(index: int):
