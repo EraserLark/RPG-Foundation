@@ -12,10 +12,14 @@ func _init(_msg := {}):
 
 ##SELF - Runs once
 func stackEnter(_msg := {}):
-	pass
+	#Run each player's enter (game state enter by extentsion)
+	for playerEntity in PlayerRoster.getActiveRoster():
+		var connectionState = GameState_Connection.new(playerEntity.playerStateStack, self)
+		playerEntity.playerStateStack.addState(connectionState)	#Enters game state roundabout
 
 func stackResume():
-	pass
+	for playerEntity in PlayerRoster.getActiveRoster():
+		playerEntity.playerStateStack.resumeCurrentState()
 
 func stackExit():
 	exit(-99)
@@ -29,8 +33,9 @@ func resumeState(playerNum: int):
 	pass
 
 func exit(playerNum: int):
-	for stack in playerStacks:
-		stack.removeGameState()
+	GameStateStack.removeState()
+	#for stack in playerStacks:
+		#stack.removeGameState()
 
 
 ##All of the Player state stacks should be connected & feeding to these functions

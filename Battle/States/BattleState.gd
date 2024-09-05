@@ -1,8 +1,8 @@
 extends GameState
 class_name Battle_State
 
-var battlePM
-var battleManager
+var battlePM: GameState_PhaseManager
+var battleManager: BattleManager
 
 enum battlePhases {START, PROMPT, ACTION, FINISH}
 var currentPhase: battlePhases
@@ -13,13 +13,14 @@ func _init(bm):
 	super()
 
 func stackEnter(_msg:= {}):
+	super()
 	battlePM.runCurrentPhase()
 
 func stackResume():
 	if(battlePM.managerFinished):
 		stackExit()
 	else:
-		battlePM.resumeCurrentPhase()
+		battlePM.determineNextPhase()
 
 func stackExit():
 	set_process_input(false)

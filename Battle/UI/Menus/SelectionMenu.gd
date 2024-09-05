@@ -36,7 +36,7 @@ func initialize(bm: BattleManager, pui: PlayerUI_Battle):
 	
 	menuManager = playerPanel
 	
-	playerPointer.set_self_modulate(PlayerRoster.rosterColors[menuManager.player.rosterNumber])
+	playerPointer.set_self_modulate(PlayerRoster.rosterColors[menuManager.playerEntity.rosterNumber])
 
 func OpenMenu():
 	super()
@@ -112,7 +112,7 @@ func moveCursor(selection : int):
 	currentTarget = targetRoster[selection]
 	var targetPos = currentTarget.actor.position
 	#Move arrow down to accomodate multiple player arrows
-	targetPos += Vector2(0, 16 * menuManager.player.rosterNumber)
+	targetPos += Vector2(0, 16 * menuManager.playerEntity.rosterNumber)
 	
 	playerPointer.moveToPosition(targetPos)
 

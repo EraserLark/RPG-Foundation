@@ -16,10 +16,12 @@ func _ready():
 	subMenus = [attackMenu, itemMenu, miscMenu]
 
 func initialize(pp: PlayerPanel_Battle):
+	self.menuManager = pp
 	actionSelectionMenu.menuManager = pp
-	attackMenu.menuManager = pp
+	attackMenu.initMenu(pp)
 	itemMenu.menuManager = pp
-	miscMenu.menuManager = pp
+	itemMenu.initMenu(pp.playerEntity.entityInfo)
+	miscMenu.initMenu(pp)
 	waitingMenu.menuManager = pp
 	
 	#actionMenu.attackMenu = attackMenu

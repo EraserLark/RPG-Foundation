@@ -9,7 +9,9 @@ var attackList: Array[Action]
 func _ready() -> void:
 	manualMenu.optionActivated.connect(itemActivated)
 
-func initMenu(playerEntity: PlayerEntity):
+func initMenu(playerPanel: PlayerPanel_Battle):
+	menuManager = playerPanel
+	self.playerEntity = menuManager.playerEntity
 	attackList = playerEntity.entityInfo.attackList
 	manualMenu.menuManager = menuManager
 	

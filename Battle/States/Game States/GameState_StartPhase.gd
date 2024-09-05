@@ -3,6 +3,7 @@ class_name GameState_StartPhase
 
 var phaseManager: GameState_PhaseManager
 var battleManager
+var alreadyResumed = false
 
 func _init(pm:GameState_PhaseManager, bm: BattleManager, _msg:={}):
 	phaseManager = pm
@@ -13,6 +14,11 @@ func stackEnter(_msg := {}):
 
 func stackResume():
 	stackExit()
+
+func resume():
+	if !alreadyResumed:
+		alreadyResumed = true
+		stackResume()
 
 func stackExit():
 	super()

@@ -7,7 +7,9 @@ var miscList: Array[Action]
 func _ready() -> void:
 	manualMenu.optionActivated.connect(itemActivated)
 
-func initMenu(playerEntity: PlayerEntity):
+func initMenu(playerPanel: PlayerPanel_Battle):
+	menuManager = playerPanel
+	playerEntity = playerPanel.playerEntity
 	miscList = playerEntity.entityInfo.miscList
 	manualMenu.menuManager = menuManager
 	

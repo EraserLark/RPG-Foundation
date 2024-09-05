@@ -5,6 +5,8 @@ func _init(cm, sm):
 	super(cm, sm)
 
 func stackEnter(_msg := {}):
+	super()
+	
 	var fadeIn = AnimationEvent.new(cutsceneEQ, cutsceneManager, "FadeIn")
 	cutsceneEQ.addEvent(fadeIn)
 	

@@ -2,13 +2,16 @@ extends State
 class_name GameState_Connection
 
 var gameState: GameState
+var deviceNumber: int
 
 func _init(sStack: StateStack, gs: GameState):
 	stateStack = sStack
 	gameState = gs
+	
+	deviceNumber = PlayerRoster.roster[stateStack.playerNumber].deviceNumber
 
 func handleInput(_event: InputEvent):
-	if _event.device == stateStack.deviceNumber:
+	if _event.device == deviceNumber:
 		gameState.handleInput(stateStack.playerNumber, _event)
 
 func enter(_msg:= {}):

@@ -2,19 +2,20 @@ extends GameState
 class_name GameState_PromptPhase
 
 var phaseManager: GameState_PhaseManager
-var menuSystems: Array[MenuSystem]
+var menuSystems: Array
 
 func _init(pm:GameState_PhaseManager, _msg:={}):
 	phaseManager = pm
 
 func enter(playerNum: int, _msg:= {}):
-	menuSystems[playerNum] = PlayerRoster.roster[playerNum].battleUI.playerPanel
-	menuSystems[playerNum].open(PlayerRoster.roster[playerNum].playerStateStack)
+	var playerEntity = PlayerRoster.roster[playerNum]
+	var playerPanel = playerEntity.battleUI.playerPanel
+	menuSystems.append(playerPanel)
+	menuSystems[playerNum].open(playerEntity.playerStateStack)
 
 #Runs the 'resumeState()' func in each player's GameState_Connection state
 func stackResume():
-	for player in PlayerRoster.getActiveRoster():
-		player.playerStateStack.resumeCurrentState()
+	super()
 
 func resumeState(playerNum: int):
 	if(menuSystems[playerNum].isFinished):

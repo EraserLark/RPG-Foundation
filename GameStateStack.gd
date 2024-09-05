@@ -21,10 +21,10 @@ func addGameState(gs: GameState, _msg:={}):
 	#Run game state enter once
 	frontGameState.stackEnter(_msg)
 	
-	#Run each player's enter (game state enter by extentsion)
-	for playerEntity in PlayerRoster.getActiveRoster():
-		var connectionState = GameState_Connection.new(playerEntity.playerStateStack, frontGameState)
-		playerEntity.playerStateStack.addState(connectionState)	#Enters game state roundabout
+	##Run each player's enter (game state enter by extentsion)
+	#for playerEntity in PlayerRoster.getActiveRoster():
+		#var connectionState = GameState_Connection.new(playerEntity.playerStateStack, frontGameState)
+		#playerEntity.playerStateStack.addState(connectionState)	#Enters game state roundabout
 
 func resumeCurrentState():
 	frontGameState.stackResume()
@@ -41,5 +41,4 @@ func removeState():
 		print(state.get_script().resource_path.get_file())
 	print("\n")
 	
-	for playerEntity in PlayerRoster.getActiveRoster():
-		playerEntity.playerStateStack.resumeCurrentState()
+	resumeCurrentState()

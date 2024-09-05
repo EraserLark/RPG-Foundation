@@ -14,7 +14,7 @@ var battleManager: BattleManager
 var playerUI: PlayerUI_Battle
 var selectionMenu: TargetSelectionMenu
 var playerPointer: Cursor
-var player: PlayerEntity
+#var player: PlayerEntity
 
 ##Inside vars
 var currentSelectedAction
@@ -31,9 +31,10 @@ func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
 	playerUI = pui
 	selectionMenu = playerUI.selectionMenu
 	playerPointer = selectionMenu.playerPointer
-	player = pe
+	playerEntity = pe
+	#player = pe
 	
-	stats.initialize(player.entityInfo)
+	stats.initialize(playerEntity.entityInfo)
 	playerMenu.initialize(self)
 	
 	#stats.setInitialHealth()
@@ -44,18 +45,18 @@ func open(sStack: StateStack):
 	super(sStack)
 
 func attackSelected(index: int):
-	currentSelectedAction = player.attackChosen(index)
+	currentSelectedAction = playerEntity.attackChosen(index)
 	isActionItem = false
 	setupSelection(currentSelectedAction)
 
 func itemSelected(index: int):
-	currentSelectedAction = player.itemChosen(index)
+	currentSelectedAction = playerEntity.itemChosen(index)
 	isActionItem = true
 	itemIndex = index
 	setupSelection(currentSelectedAction)
 
 func actionSelected(index: int):
-	currentSelectedAction = player.actionChosen(index)
+	currentSelectedAction = playerEntity.actionChosen(index)
 	isActionItem = false
 	setupSelection(currentSelectedAction)
 
@@ -65,7 +66,7 @@ func setupSelection(selectedAction: Action):
 
 func actionTargetSelected():
 	if(isActionItem):
-		player.itemDiscarded(itemIndex)
+		playerEntity.itemDiscarded(itemIndex)
 	
 	closeMenuSystem()
 

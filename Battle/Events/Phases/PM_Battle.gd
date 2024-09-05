@@ -21,6 +21,7 @@ func _init(bm):
 	battleManager.actionPhase = self.actionPhase
 	
 	currentPhase = startPhase
+	currentEnumPhase = bPhases.START
 
 func determineNextPhase():
 	match currentEnumPhase:
