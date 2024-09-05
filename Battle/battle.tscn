@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=20 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/BattleRoster.gd" id="2_l87y1"]
 [ext_resource type="Script" path="res://Battle/UI/BattleUI.gd" id="6_jkbya"]
+[ext_resource type="PackedScene" uid="uid://c7fouswjqgykh" path="res://Battle/UI/PlayerUI_Battle.tscn" id="9_sivmv"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerAnchors.gd" id="11_errmb"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
 [ext_resource type="Script" path="res://Battle/States/BattleState.gd" id="17_6gfpt"]
@@ -218,6 +219,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_jkbya")
+playerUIScene = ExtResource("9_sivmv")
 metadata/_edit_lock_ = true
 
 [node name="PlayerAnchors" type="Control" parent="CanvasLayer/BattleUI"]

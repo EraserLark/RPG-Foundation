@@ -35,13 +35,15 @@ func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	
 	##Creating Stage UI + Updating UI positions
 	var emptyUI = stageManager.stageUI.createPlayerUI(joypadNum)
+	
+	#Do this for Profile ManualMenu State
+	##Actual setting of this UI happens in PlayerUI class
 	if stageManager is BattleManager:
 		emptyEntity.battleUI = emptyUI
 	else:
 		emptyEntity.worldUI = emptyUI
-	emptyUI.playerPanel.setPlayer(emptyEntity)	#Do this mainly to get rosterNum to profileMenu
-	stageManager.stageUI.adjustMenusLayout()
 	
+	emptyUI.playerPanel.setPlayer(emptyEntity)	#Do this mainly to get rosterNum to profileMenu
 	self.add_child(emptyEntity)	#Have entity show up in scene tree
 	
 	return emptyEntity

@@ -14,6 +14,10 @@ func initialize(sm: StageManager):
 	for entity in PlayerRoster.getActiveRoster():
 		addPlayerUI(entity)
 		i+=1
+		
+func addPlayerUI(playerEntity: PlayerEntity):
+	var playerUI = createPlayerUI(playerEntity.deviceNumber)
+	initializePlayerUI(playerUI, playerEntity)
 
 func createPlayerUI(playerNumber = null) -> PlayerUI:
 	#Instance empty ui
@@ -23,20 +27,14 @@ func createPlayerUI(playerNumber = null) -> PlayerUI:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
 	#Add it to playerUIRoster
 	playerUIRoster.append(pUI)
-	#Set color
-	pUI.playerPanel.self_modulate = PlayerRoster.rosterColors[playerNumber]
+	#Adjust UI layout
+	stageManager.stageUI.adjustMenusLayout()
 	return pUI
 
 func initializePlayerUI(pUI: PlayerUI, pEntity: PlayerEntity):
 	#Initialize
 	pUI.initialize(stageManager, pUI.playerPanel, pEntity, playerAnchors.currentAnchorLayout)
-	#Hide menu when first starting game
-	pUI.playerPanel.visible = false
 	playerUIRoster.sort_custom(sortPlayerUI)
-
-func addPlayerUI(playerEntity: PlayerEntity):
-	var playerUI = createPlayerUI()
-	initializePlayerUI(playerUI, playerEntity)
 
 func adjustMenusLayout():
 	playerAnchors.determineAnchorLayout()

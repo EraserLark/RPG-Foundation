@@ -24,6 +24,11 @@ func _ready():
 func initialize(sm: StageManager):
 	super(sm)
 
+func initializePlayerUI(pUI: PlayerUI, pEntity: PlayerEntity):
+	super(pUI, pEntity)
+	#Hide menu when first starting game
+	pUI.playerPanel.visible = false
+
 #func addPlayerUI(playerEntity: PlayerEntity):
 	#var playerUI = createPlayerUI()
 	#initializePlayerUI(playerUI, playerEntity)

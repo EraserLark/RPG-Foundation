@@ -18,28 +18,16 @@ var worldUI: PlayerUI_World
 var playerActiveState: Player_Active #Store to assign new actors between rooms
 
 ##BATTLE
-#BattleEntity_Player
-##Outside references
-#var playerBattleUI: PlayerUI_Battle
-var playerBattlePanel: PlayerPanel_Battle
+var battleManager: BattleManager
+#var playerBattlePanel: PlayerPanel_Battle	#Unecessary?
+var battleUI: PlayerUI_Battle
+var battleActor: BattleActor
 
-##Inside vars
-#var playerActor: BattleActor_Player
+var statusEffects: Array[StatusEffect]
+var isDead:= false
 
 ##Signals
 signal playerDied
-
-#BattleEntity
-#var battleEntityActor: BattleActor
-var battleUI: PlayerUI_Battle
-
-##Outside references
-var battleManager: BattleManager
-var battleActor: BattleActor
-
-##Inside references
-var statusEffects: Array[StatusEffect]
-var isDead:= false
 
 
 func _ready():

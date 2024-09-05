@@ -40,8 +40,6 @@ static func initBattle(_enemyData):
 	return newBattle
 
 func _ready():
-	#playerEntities.assign(enemyRoster.players)
-	
 	stageUI = $CanvasLayer/BattleUI
 	
 	enemyRoster.initialize(self)
@@ -52,7 +50,6 @@ func _ready():
 	camera.make_current()
 	
 	battleState = Battle_State.new(self)
-	#GameStateStack.stack.addState(battleState)
 
 func updateTurnCount():
 	turnCount += 1

@@ -16,15 +16,16 @@ var battleManager: BattleManager
 #var playerUIRoster: Array[PlayerUI_Battle]
 
 func _ready():
+	pass
 	#Determine UI anchors based off how many players are currently playing
 	
-	for player in PlayerRoster.roster:
-		#Instance a player menu for each player in the PlayerRoster. Child of self.
-		var pUI = playerUIScene.instantiate()
-		add_child(pUI)
-		#Add it to playerUIRoster
-		player.battleUI = pUI
-		playerUIRoster.append(pUI)
+	#for player in PlayerRoster.roster:
+		##Instance a player menu for each player in the PlayerRoster. Child of self.
+		#var pUI = playerUIScene.instantiate()
+		#add_child(pUI)
+		##Add it to playerUIRoster
+		#player.battleUI = pUI
+		#playerUIRoster.append(pUI)
 
 func initialize(sm: StageManager):
 	super(sm)

@@ -13,9 +13,14 @@ func initialize(stgmn: StageManager, playerPanel, playerEntity: PlayerEntity, cu
 	currentStageAnchor = currentAnchors[player.rosterNumber]
 	
 	if(stageManager is OverworldManager):
+		playerEntity.worldUI = self
 		playerPanel.initialize(stageManager, player)
 	elif(stageManager is BattleManager):
+		playerEntity.battleUI = self
 		playerPanel.initialize(stageManager, self, player)
+	
+	#Set color
+	playerPanel.self_modulate = PlayerRoster.rosterColors[playerEntity.rosterNumber]
 
 func centerPlayerPanel():
 	if(currentStageAnchor == null):
