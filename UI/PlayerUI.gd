@@ -7,7 +7,7 @@ var player: Entity
 var currentStageAnchor: Control
 var currentPanelAnchor: Control
 
-func initialize(stgmn: StageManager, playerPanel, playerEntity: Entity, currentAnchors: Array):
+func initialize(stgmn: StageManager, playerPanel, playerEntity: PlayerEntity, currentAnchors: Array):
 	stageManager = stgmn
 	#player = stageManager.playerEntities[playerNumber]
 	#currentStageAnchor = currentAnchors[playerNumber]

@@ -11,6 +11,8 @@ func _init(cm: CutsceneManager, sm: StageManager):
 	stageManager = sm
 	
 	cutsceneManager.currentCutscene = self
+	
+	super()
 
 func animFin():
 	cutsceneEQ.currentEvent.resumeEvent()

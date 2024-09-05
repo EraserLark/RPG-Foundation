@@ -11,6 +11,11 @@ func enter(playerNum: int, _msg:= {}):
 	menuSystems[playerNum] = PlayerRoster.roster[playerNum].battleUI.playerPanel
 	menuSystems[playerNum].open(PlayerRoster.roster[playerNum].playerStateStack)
 
+#Runs the 'resumeState()' func in each player's GameState_Connection state
+func stackResume():
+	for player in PlayerRoster.getActiveRoster():
+		player.playerStateStack.resumeCurrentState()
+
 func resumeState(playerNum: int):
 	if(menuSystems[playerNum].isFinished):
 		playerSubmit()

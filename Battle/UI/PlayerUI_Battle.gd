@@ -11,7 +11,7 @@ class_name PlayerUI_Battle
 ##Outside references
 var battleUI: Control
 
-func initialize(stgmn: StageManager, playerPanel, playerEntity: Entity, currentAnchors: Array):
+func initialize(stgmn: StageManager, playerPanel, playerEntity: PlayerEntity, currentAnchors: Array):
 	super(stgmn, playerPanel, playerEntity, currentAnchors)
 	
 	selectionMenu.initialize(stageManager, self)

@@ -44,7 +44,8 @@ func removeGameState():
 			print(state.get_script().resource_path.get_file())
 		print("\n")
 		
-		resumeCurrentState()
+		if currentState is not GameState_Connection:
+			resumeCurrentState()
 	else:
 		#Pop each state found along the way.
 		removeGameState()

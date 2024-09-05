@@ -22,6 +22,7 @@ func _ready():
 		var pUI = playerUIScene.instantiate()
 		add_child(pUI)
 		#Add it to playerUIRoster
+		player.battleUI = pUI
 		playerUIRoster.append(pUI)
 
 func initialize(bm: BattleManager):
@@ -29,5 +30,5 @@ func initialize(bm: BattleManager):
 	
 	var i:= 0
 	for playerUserIntf in playerUIRoster:
-		playerUserIntf.initialize(battleManager, playerUserIntf.playerPanel, battleManager.playerEntities[i], playerAnchors.currentAnchorLayout)
+		playerUserIntf.initialize(battleManager, playerUserIntf.playerPanel, PlayerRoster.roster[i], playerAnchors.currentAnchorLayout)
 		i+=1

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_h70pe"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="3_rgjmw"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/PlayerPointer.gd" id="4_tfohc"]
-[ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="5_73jwi"]
+[ext_resource type="PackedScene" uid="uid://xy1fadjc5rwx" path="res://UI/PlayerPanel.tscn" id="5_3bnqo"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/BA_PlayerPanel.gd" id="6_44y4s"]
 [ext_resource type="Script" path="res://Battle/UI/Stats.gd" id="9_cyk76"]
 [ext_resource type="PackedScene" uid="uid://yie3dymrkfv5" path="res://Menus/ManualMenu_LabelList.tscn" id="10_14tsx"]
@@ -32,10 +32,10 @@ tracks/0/path = NodePath("PlayerPanel:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.65),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 0, 0, 1), Color(0.114897, 0.114897, 0.114897, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.06, 0.06, 0.06, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_gqoo2"]
@@ -49,10 +49,10 @@ tracks/0/path = NodePath("PlayerPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-10, -10), Vector2(8, 0), Vector2(-6, 6), Vector2(4, 0), Vector2(-2, -2), Vector2(0, 0)]
+"values": [Vector2(10, 10), Vector2(-8, -8), Vector2(6, 6), Vector2(-4, -4), Vector2(2, 2), Vector2(0, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sving"]
@@ -60,26 +60,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerPanel:position")
+tracks/0/path = NodePath("PlayerPanel:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerPanel:self_modulate")
+tracks/1/path = NodePath("PlayerPanel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 0, 0, 1)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kukrl"]
@@ -121,21 +121,14 @@ wait_time = 0.3
 [node name="echoTimer" type="Timer" parent="SelectionMenu"]
 wait_time = 0.1
 
-[node name="PlayerPanel" type="NinePatchRect" parent="."]
-self_modulate = Color(1, 0, 0, 1)
-layout_mode = 1
+[node name="PlayerPanel" parent="." instance=ExtResource("5_3bnqo")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_right = 288.0
 offset_bottom = 136.0
-texture = ExtResource("5_73jwi")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
 script = ExtResource("6_44y4s")
-mandatory = true
 
 [node name="Stats" type="PanelContainer" parent="PlayerPanel"]
 layout_mode = 0
@@ -188,7 +181,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(272, 120)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
@@ -267,62 +260,6 @@ visible = false
 [node name="DownArrow" parent="PlayerPanel/PlayerMenu/ActionMenu" index="2"]
 visible = false
 
-[node name="PanelAnchors" type="Control" parent="PlayerPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="PlayerPanel/PanelAnchors"]
-layout_mode = 1
-anchors_preset = 0
-
-[node name="Control2" type="Control" parent="PlayerPanel/PanelAnchors"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-
-[node name="Control3" type="Control" parent="PlayerPanel/PanelAnchors"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-
-[node name="Control4" type="Control" parent="PlayerPanel/PanelAnchors"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-
-[node name="Control5" type="Control" parent="PlayerPanel/PanelAnchors"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Control6" type="Control" parent="PlayerPanel/PanelAnchors"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerPanel"]
-volume_db = -5.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kukrl")
@@ -333,4 +270,5 @@ libraries = {
 [connection signal="timeout" from="SelectionMenu/echoTimer" to="SelectionMenu" method="_on_echo_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
+[editable path="PlayerPanel"]
 [editable path="PlayerPanel/PlayerMenu/ActionMenu"]

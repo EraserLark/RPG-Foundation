@@ -4,9 +4,9 @@ class_name PlayerPanel_Battle
 ##Children references
 @onready var stats:= $Stats
 @onready var playerMenu:= $PlayerMenu
-@onready var minigameContainer:= $PlayerMenu/MarginContainer/SubViewportContainer
-@onready var minigameView:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport
-@onready var minigameZone:= $PlayerMenu/MarginContainer/SubViewportContainer/SubViewport/MinigameZone
+@onready var minigameContainer:= $PlayerMenu/MarginContainer/MinigameView
+@onready var minigameView:= $PlayerMenu/MarginContainer/MinigameView/SubViewport
+@onready var minigameZone:= $PlayerMenu/MarginContainer/MinigameView/SubViewport/MinigameZone
 #@onready var panelAnchorNodes:= $PanelAnchors
 
 ##Parent/Outside references

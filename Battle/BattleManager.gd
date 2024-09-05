@@ -21,8 +21,8 @@ var battleState: Battle_State
 @onready var cutsceneManager:= $CutsceneManager
 
 #Phases
-var promptPhase: Prompt_Phase = null
-var actionPhase: Action_Phase = null
+var promptPhase: GameState_PromptPhase = null
+var actionPhase: GameState_ActionPhase = null
 
 #Player
 #@onready var playerActors:= $BattleStage/PlayerActors
@@ -50,7 +50,7 @@ func _ready():
 	camera.make_current()
 	
 	battleState = Battle_State.new(self)
-	GameStateStack.stack.addState(battleState)
+	#GameStateStack.stack.addState(battleState)
 
 func updateTurnCount():
 	turnCount += 1

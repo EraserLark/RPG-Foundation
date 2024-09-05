@@ -19,6 +19,8 @@ func _init(bm):
 	
 	battleManager.promptPhase = self.promptPhase
 	battleManager.actionPhase = self.actionPhase
+	
+	currentPhase = startPhase
 
 func determineNextPhase():
 	match currentEnumPhase:

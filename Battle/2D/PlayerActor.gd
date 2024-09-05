@@ -18,7 +18,7 @@ var cam: Camera2D
 
 func initialize(bm: BattleManager, bs: BattleStage, num:int):
 	battleManager = bm
-	playerUI = bm.playerEntities[num].playerUI
+	playerUI = PlayerRoster.roster[num].battleUI
 	animPlayer = battleManager.battleUI.playerUIRoster[num].animPlayer
 	cam = bs.camera
 
