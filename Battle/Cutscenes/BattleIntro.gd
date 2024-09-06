@@ -13,6 +13,9 @@ func stackEnter(_msg := {}):
 	var enemiesEntering = EnemyEnter.new(cutsceneEQ, stageManager.enemyEntities)
 	cutsceneEQ.addEvent(enemiesEntering)
 	
+	var battleStartText = AnimationEvent.new(cutsceneEQ, cutsceneManager, "BattleMessage_Start")
+	cutsceneEQ.addEvent(battleStartText)
+	
 	#var introMessage = Textbox_State.TB_Event.new(cutsceneEQ, StateStack, battleManager.battleUI.textbox, "Snowbros are ready to tussle!")
 	#Textbox_State.createEvent(cutsceneEQ, GameStateStack.stack, ["[b]Snowbros[/b] are ready to tussle!", "Line 2!"], battleManager.battleUI.tbContainer)
 	

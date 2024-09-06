@@ -44,7 +44,7 @@ class EventClass:
 	
 	func runEvent():
 		var cutscene = cutsceneClass.new(stageManager.cutsceneManager, stageManager)
-		GameStateStack.stack.addState(cutscene)
+		#GameStateStack.stack.addState(cutscene)
 	
 	func resumeEvent():
 		finishEvent()

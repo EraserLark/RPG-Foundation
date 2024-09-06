@@ -1,14 +1,16 @@
-extends Cutscene_State
+extends  GameState_Cutscene
 class_name BattleOutro
 
-func _init(sStack, cm, bm):
-	super(sStack, cm, bm)
+func _init(cm, bm):
+	super(cm, bm)
 
-func enter(_msg := {}):
+func stackEnter(_msg := {}):
+	super()
+	
 	var fadeOut = AnimationEvent.new(cutsceneEQ, cutsceneManager, "FadeOut")
 	cutsceneEQ.addEvent(fadeOut)
 	
 	cutsceneEQ.popQueue()
 
-func exit():
+func stackExit():
 	super()

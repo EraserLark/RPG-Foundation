@@ -12,6 +12,11 @@ var goalGot:= false
 func update(delta):
 	super(delta)
 
+func buttonPressed(_event: InputEvent):
+	if player.is_on_floor():
+		if _event.is_action_pressed("ui_accept"):
+			player.velocity.y = -jumpForce
+
 func physicsUpdate(_delta : float):
 	apply_gravity()
 	
@@ -23,9 +28,6 @@ func physicsUpdate(_delta : float):
 	else:
 		apply_acceleration(movement.x)
 	
-	if player.is_on_floor():
-		if Input.is_action_just_pressed("ui_up"):
-			player.velocity.y = -jumpForce
 	#else:
 		#if Input.is_action_just_released("ui_up") and player.velocity.y < -30:
 			#player.velocity.y = -30;

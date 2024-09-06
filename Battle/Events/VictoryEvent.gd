@@ -24,7 +24,7 @@ func runEvent():
 		var lvlUp = LevelUp_Event.new(playerEntity, eventManager, battleManager)
 		victoryEQ.addEvent(lvlUp)
 	
-	Cutscene_State.createEvent(eventManager, battleManager, BattleOutro)
+	GameState_Cutscene.createEvent(eventManager, battleManager, BattleOutro)
 	
 	victoryEQ.popQueue()
 
