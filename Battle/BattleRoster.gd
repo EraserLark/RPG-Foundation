@@ -35,13 +35,13 @@ func initialize(stgmn: StageManager):
 		var enemyInstActor = battleManager.battleStage.createEnemyActor(enemyData)
 		enemyEntity.actor = enemyInstActor
 		#Initialize
-		enemyEntity.initialize(null, battleManager)
+		enemyEntity.initialize(battleManager)
 		#Add to lists
 		enemies.append(enemyEntity)
 
 func initializeEntity(playerEntity: Entity):
 	playerEntity.actor = battleManager.battleStage.playerActors[playerEntity.playerNumber]
-	playerEntity.initialize(null, battleManager)
+	playerEntity.initialize(battleManager)
 
 func checkEnemiesAlive():
 	if(enemies.size() <= 0):

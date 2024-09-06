@@ -10,8 +10,8 @@ var enemyActor: BattleActor_Enemy
 
 signal entered
 
-func initialize(om: OverworldManager = null, bm: BattleManager = null):
-	super(om, bm)
+func initialize(sm: StageManager = null):
+	super(sm)
 	
 	#:P This is gross
 	localInfo = entityInfo.duplicate_deep_workaround()

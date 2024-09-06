@@ -12,12 +12,12 @@ var playerActor: BattleActor_Player
 ##Signals
 signal playerDied
 
-func initialize(om: OverworldManager = null, bm: BattleManager = null):
-	super(om, bm)
+func initialize(sm: StageManager = null):
+	super(sm)
 	
-	actor = bm.battleStage.playerActors[playerNumber]
+	actor = battleManager.battleStage.playerActors[playerNumber]
 	playerActor = actor
-	playerUI = bm.battleUI.playerUIRoster[playerNumber]
+	playerUI = battleManager.battleUI.playerUIRoster[playerNumber]
 	playerPanel = playerUI.playerPanel
 	
 	entityInfo.playerBattleEntity = self

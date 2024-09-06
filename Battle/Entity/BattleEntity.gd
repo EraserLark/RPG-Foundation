@@ -13,11 +13,11 @@ var actor: BattleActor
 var statusEffects: Array[StatusEffect]
 var isDead:= false
 
-func initialize(om: OverworldManager = null, bm: BattleManager = null):
-	if(bm == null):
+func initialize(sm: StageManager = null):
+	if(sm == null):
 		printerr("battleManager not passed")
 		return
-	battleManager = bm
+	battleManager = sm
 
 func getClassInstance():
 	return self

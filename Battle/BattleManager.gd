@@ -42,6 +42,9 @@ static func initBattle(_enemyData):
 func _ready():
 	stageUI = $CanvasLayer/BattleUI
 	
+	for player in PlayerRoster.roster:
+		player.battleManager = self
+	
 	enemyRoster.initialize(self)
 	enemyEntities = enemyRoster.enemies
 	stageUI.initialize(self)

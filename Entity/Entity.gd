@@ -5,7 +5,7 @@ var entityInfo: Resource #EntityInfo?
 
 signal reactionComplete
 
-func initialize(om: OverworldManager = null, bm: BattleManager = null):
+func initialize(sm: StageManager = null):
 	pass
 
 func getClassInstance():

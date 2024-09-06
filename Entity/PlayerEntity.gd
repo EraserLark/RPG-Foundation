@@ -38,20 +38,30 @@ func _ready():
 	elif currentStage == STAGE.BATTLE:
 		pass
 
-func initialize(om: OverworldManager = null, bm: BattleManager = null):
-	if currentStage == STAGE.WORLD:
-		if(om == null):
+func initialize(sm: StageManager = null):
+	if sm is OverworldManager:
+		if(sm == null):
 			printerr("overworldManager not passed")
 			return
-		overworldManager = om
+		overworldManager = sm
 		if(worldActor == null):
 			worldActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[rosterNumber]
 		worldUI = overworldManager.stageUI.playerUIRoster[rosterNumber]
 		
 		var connectionState = GameState_Connection.new(playerStateStack, GameStateStack.foundationGameState)
 		playerStateStack.addState(connectionState)	#Enters game state roundabout
-	elif currentStage == STAGE.BATTLE:
-		pass
+	elif sm is BattleManager:
+		if(sm == null):
+			printerr("battleManager not passed")
+			return
+		battleManager = sm
+		if(battleActor == null):
+			battleActor = battleManager.battleStage.playerActors[rosterNumber]
+		battleUI = battleManager.stageUI.playerUIRoster[rosterNumber]
+		
+		var connectionState = GameState_Connection.new(playerStateStack, GameStateStack.foundationGameState)
+		playerStateStack.addState(connectionState)	#Enters game state roundabout
+
 
 func getClassInstance():
 	return self

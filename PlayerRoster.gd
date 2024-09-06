@@ -53,13 +53,21 @@ func addProfileToRoster(profile: PlayerInfo, rosterNum: int):
 	profile.initialize()
 	var playerEntity = roster[rosterNum]
 	playerEntity.entityInfo = profile
+	
 	##Create actor and initialize emptyUI
-	var owManager = playerEntity.overworldManager
-	owManager.overworldWorld.currentRoom.castList.addActor(playerEntity)
-	owManager.stageUI.initializePlayerUI(playerEntity.worldUI, playerEntity)
+	var stageManager: StageManager
+	if playerEntity.battleManager != null:
+		stageManager = playerEntity.battleManager
+		stageManager.battleStage.addPlayerActor(playerEntity)
+		stageManager.stageUI.initializePlayerUI(playerEntity.battleUI, playerEntity)
+	else:
+		stageManager = playerEntity.overworldManager
+		stageManager.overworldWorld.currentRoom.castList.addActor(playerEntity)
+		stageManager.stageUI.initializePlayerUI(playerEntity.worldUI, playerEntity)
+	
 	##Initialize entity
-	playerEntity.initialize(owManager, null)
-	#profile.playerNumber = roster.size() - 1
+	playerEntity.initialize(stageManager)
+	
 	emit_signal("newRosterPlayer", profile)
 
 func removePlayer(deviceNum: int):

@@ -4,7 +4,7 @@ class_name UpdateTurn
 var battleManager
 var statusRoster
 
-var statusUpdateEQ = EventQueue.new(GameStateStack.stack)
+var statusUpdateEQ = EventQueue.new()
 
 func _init(eManager:EventQueue, bm:BattleManager):
 	super(eManager)
