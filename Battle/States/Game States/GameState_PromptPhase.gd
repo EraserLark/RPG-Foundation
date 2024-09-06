@@ -41,7 +41,18 @@ func playerSubmit():
 	stackExit()	#Only call once all players have submitted!
 
 func stackExit():
-	super()
+	for playerEntity in PlayerRoster.getActiveRoster():
+		playerEntity.playerStateStack.removeGameState()
+	
+	var gameStateStack = GameStateStack.gameStateStack
+	gameStateStack.pop_front()
+	if(gameStateStack.is_empty()):
+		print("STACK EMPTY")
+	GameStateStack.frontGameState = gameStateStack.front()
+	for state in gameStateStack:
+		print(state.get_script().resource_path.get_file())
+	print("\n")
+
 	phaseManager.phaseFinished()
 
 func cleanPhase():

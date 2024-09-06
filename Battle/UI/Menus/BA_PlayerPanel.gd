@@ -74,7 +74,7 @@ func changeStatsHealth(remaningHP: int):
 	stats.changeHealth(remaningHP)
 
 func showMinigame(case: bool):
-	playerMenu.actionMenu.visible = !case
+	playerMenu.actionSelectionMenu.visible = !case
 	playerMenu.attackMenu.visible = false
 	#self.visible = case
 	playerMenu.visible = case

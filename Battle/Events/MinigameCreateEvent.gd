@@ -14,12 +14,14 @@ func _init(playerNum: int, eManager: EventQueue, bm: BattleManager, mg: PackedSc
 
 func runEvent():
 	var mg = minigame.instantiate()
+	#var mgClass = mg.getClassInstance()
 	mg.initialize(PlayerRoster.roster[playerNumber])
 	#mg.playerNumber = playerNumber
 	#mg.battleManager = battleManager
 	
 	var playerPanel = PlayerRoster.roster[playerNumber].battleUI.playerPanel
 	playerPanel.minigameZone.add_child(mg)
+	print("Stall")
 
 func resumeEvent():
 	finishEvent()

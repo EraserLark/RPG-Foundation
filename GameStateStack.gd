@@ -14,6 +14,7 @@ func addGameState(gs: GameState, _msg:={}):
 	#frontGameState.stateStack = gameStateStack
 	foundationGameState = gameStateStack.back()
 	#foundationGameState.stateStack = gameStateStack
+	print("\nGSS")
 	for state in gameStateStack:
 		print(state.get_script().resource_path.get_file())
 	print("\n")
@@ -37,6 +38,7 @@ func removeState():
 	if(gameStateStack.is_empty()):
 		print("STACK EMPTY")
 	frontGameState = gameStateStack.front()
+	print("\nGSS")
 	for state in gameStateStack:
 		print(state.get_script().resource_path.get_file())
 	print("\n")

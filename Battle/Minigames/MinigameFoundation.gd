@@ -11,10 +11,10 @@ var stageWidth
 @onready var timer:= $Timer
 @onready var progressBar:= $TextureRect
 
-func _init(player: PlayerEntity):
-	minigameState = MinigameState.new(player.playerStateStack, self)
-	playerNumber = player.rosterNumber
-	input = player.input
+#func _init(player: PlayerEntity):
+	#minigameState = MinigameState.new(player.playerStateStack, self)
+	#playerNumber = player.rosterNumber
+	#input = player.input
 
 func _ready():
 	stageWidth = get_viewport_rect().size.x

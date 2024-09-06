@@ -35,6 +35,9 @@ func fullHeal():
 func takeDamage(dmg: int, pierce: bool):
 	pass
 
+func attack():
+	pass
+
 func checkRoster():
 	pass
 

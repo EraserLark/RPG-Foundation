@@ -10,6 +10,7 @@ func _init(pm:GameState_PhaseManager, bm: BattleManager, _msg:={}):
 	battleManager = bm
 
 func stackEnter(_msg := {}):
+	super()
 	var introCutscene = BattleIntro.new(battleManager.cutsceneManager, battleManager)
 
 func stackResume():
@@ -21,7 +22,18 @@ func resume():
 		stackResume()
 
 func stackExit():
-	super()
+	for playerEntity in PlayerRoster.getActiveRoster():
+		playerEntity.playerStateStack.removeGameState()
+	
+	var gameStateStack = GameStateStack.gameStateStack
+	gameStateStack.pop_front()
+	if(gameStateStack.is_empty()):
+		print("STACK EMPTY")
+	GameStateStack.frontGameState = gameStateStack.front()
+	for state in gameStateStack:
+		print(state.get_script().resource_path.get_file())
+	print("\n")
+
 	phaseManager.phaseFinished()
 
 func cleanPhase():

@@ -80,7 +80,22 @@ func fullHeal():
 	entityInfo.addHealth(maxHP - currentHP)
 
 func takeDamage(dmg: int, pierce: bool):
-	pass
+	if currentStage == STAGE.BATTLE:
+		var trueDmg = dmg
+	
+		if(!pierce):
+			trueDmg = entityInfo.calcDamage(dmg)
+		
+		entityInfo.takeDamage(trueDmg)
+		battleActor.damageFeedback(trueDmg)
+		
+		var remainingHealth = entityInfo.hp
+		#updateUI(remainingHealth)
+		
+		if(remainingHealth <= 0):
+			var deathEvent = Death_Event.new(playerStateStack, battleManager.actionPhase.actionEQ, self, battleManager)
+			battleManager.actionPhase.actionEQ.queue.push_front(deathEvent)
+
 
 func attackChosen(attackNum: int):
 	entityInfo.selectedAction = entityInfo.attackList[attackNum]
@@ -111,3 +126,9 @@ func endEntity():
 		worldUI.queue_free()
 	elif currentStage == STAGE.BATTLE:
 		pass
+
+func enterBattleStage():
+	currentStage = STAGE.BATTLE
+
+func exitBattleStage():
+	currentStage = STAGE.WORLD

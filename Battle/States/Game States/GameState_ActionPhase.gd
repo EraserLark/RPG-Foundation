@@ -19,6 +19,8 @@ func _init(pm: GameState_PhaseManager, bm: BattleManager, _msg := {}):
 	actionEQ = BattleActionQueue.new(battleManager, self)
 
 func stackEnter(_msg:= {}):
+	super()
+	
 	enemies = battleManager.enemyRoster.enemies
 	playerEntities = PlayerRoster.getActiveRoster()
 	
@@ -42,7 +44,14 @@ func stackEnter(_msg:= {}):
 	
 	actionEQ.popQueue()
 
+#Coming out of minigame states
+func resumeState(playerNum: int):
+	decideNextStep()
+
 func stackResume():
+	decideNextStep()
+
+func decideNextStep():
 	if(actionEQ.queue.is_empty() && actionEQ.currentEvent == null):
 		if(!turnUpdated):
 			turnUpdated = true
@@ -58,8 +67,20 @@ func stackResume():
 		actionEQ.currentEvent.resumeEvent()
 
 func stackExit():
-	super()
-	phaseManager.phaseFinished()	#??
+	##Remove gamestate from all stacks, but do not delete game state
+	for playerEntity in PlayerRoster.getActiveRoster():
+		playerEntity.playerStateStack.removeGameState()
+	
+	var gameStateStack = GameStateStack.gameStateStack
+	gameStateStack.pop_front()
+	if(gameStateStack.is_empty()):
+		print("STACK EMPTY")
+	GameStateStack.frontGameState = gameStateStack.front()
+	for state in gameStateStack:
+		print(state.get_script().resource_path.get_file())
+	print("\n")
+
+	phaseManager.phaseFinished()
 
 func cleanPhase():
 	actionEQ.queue.clear()

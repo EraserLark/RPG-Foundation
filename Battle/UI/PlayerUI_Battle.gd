@@ -2,10 +2,10 @@ extends PlayerUI
 class_name PlayerUI_Battle
 
 ##Children references
+@onready var playerPanel:= $PlayerPanel
 @onready var stats:= $PlayerPanel/Stats
 @onready var playerMenu:= $PlayerPanel/PlayerMenu
 @onready var selectionMenu:= $SelectionMenu
-@onready var playerPanel:= $PlayerPanel
 @onready var animPlayer:= $AnimationPlayer
 
 ##Outside references

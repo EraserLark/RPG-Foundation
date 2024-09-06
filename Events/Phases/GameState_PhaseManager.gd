@@ -14,7 +14,8 @@ func determineNextPhase():
 
 func runCurrentPhase():
 	if(currentPhase != null):
-		currentPhase.stackEnter()
+		GameStateStack.addGameState(currentPhase)
+		#currentPhase.stackEnter()
 	else:
 		determineNextPhase()
 

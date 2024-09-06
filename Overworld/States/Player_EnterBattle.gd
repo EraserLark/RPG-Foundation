@@ -11,7 +11,12 @@ func _init(_msg := {}):
 	battleTransitionQueue = EventQueue.new()
 	super(_msg)
 
+func enter(playerNum: int, _msg:= {}):
+	PlayerRoster.roster[playerNum].enterBattleStage()
+
 func stackEnter(_msg := {}):
+	super()
+	
 	currentRoom = _msg["Room"]
 	animPlayer = currentRoom.animPlayer
 	
@@ -36,4 +41,8 @@ func stackExit():
 	#Play anim directly here, no event. (That way players can move)
 	animPlayer.play("ExitBattle")
 	currentRoom.world.resumeWorld()
+	
+	for player in PlayerRoster.getActiveRoster():
+		player.exitBattleStage()
+	
 	super()
