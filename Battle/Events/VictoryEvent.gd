@@ -3,7 +3,7 @@ class_name VictoryEvent
 
 var battleManager
 
-var victoryEQ := EventQueue.new(GameStateStack.stack)
+var victoryEQ := EventQueue.new()
 
 func _init(eManager, bm):
 	super(eManager)

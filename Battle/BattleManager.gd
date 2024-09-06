@@ -57,3 +57,15 @@ func _ready():
 func updateTurnCount():
 	turnCount += 1
 	return turnCount
+
+func checkEnemiesAlive():
+	if(enemyRoster.enemies.size() <= 0):
+		return false
+	else:
+		return true
+
+func checkPlayersAlive():
+	for player in PlayerRoster.roster:
+		if !player.isDead:
+			return true
+	return false

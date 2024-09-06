@@ -65,7 +65,8 @@ func takeDamage(dmg: int, pierce: bool):
 	#updateUI(remainingHealth)
 	
 	if(remainingHealth <= 0):
-		var deathEvent = Death_Event.new(playerStateStack, battleManager.actionPhase.actionEQ, self, battleManager)
+		#Pass null state stack to resume ActionPhase Game State
+		var deathEvent = Death_Event.new(null, battleManager.actionPhase.actionEQ, self, battleManager)
 		battleManager.actionPhase.actionEQ.queue.push_front(deathEvent)
 
 func checkRoster():
@@ -75,6 +76,8 @@ func entityDead():
 	isDead = true
 	eraseSelectedAction()
 	actor.queue_free()
+	##Emit signal updating remaining action targets for enemies/players
+	
 	for effect in statusEffects:
 		effect.endStatus()
 	emit_signal("reactionComplete")

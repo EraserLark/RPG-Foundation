@@ -12,7 +12,14 @@ func _init(sStack: StateStack, eManager: EventQueue, entity, bm):
 	battleManager = bm
 
 func runEvent():
-	var deathAnim = AnimationEvent.new(deathEQ, deadEntity.actor.animPlayer, "Death")
+	#Determine what type of actor is dying
+	var actor
+	if deadEntity is PlayerEntity:
+		actor = deadEntity.battleActor
+	else:
+		actor = deadEntity.enemyActor
+		
+	var deathAnim = AnimationEvent.new(deathEQ, actor.animPlayer, "Death")
 	deathEQ.queue.push_front(deathAnim)
 	
 	deathEQ.popQueue()

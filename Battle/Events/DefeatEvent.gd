@@ -3,7 +3,7 @@ class_name DefeatEvent
 
 var battleManager
 
-var defeatEQ := EventQueue.new(GameStateStack.stack)
+var defeatEQ := EventQueue.new()
 
 func _init(eManager, bm):
 	super(eManager)

@@ -47,12 +47,12 @@ func attack():
 	enemyActor.attackFeedback()
 
 func checkRoster():
-	var result = battleManager.battleRoster.checkEnemiesAlive()
+	var result = battleManager.checkEnemiesAlive()
 	return result
 
 func entityDead():
-	battleManager.battleRoster.enemies.erase(self)
-	battleManager.battleRoster.checkEnemiesAlive()
+	battleManager.enemyRoster.enemies.erase(self)
+	battleManager.checkEnemiesAlive()
 	battleManager.xpBank += entityInfo.xpReward
 	super()
 

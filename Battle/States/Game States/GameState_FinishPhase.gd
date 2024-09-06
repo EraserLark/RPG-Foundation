@@ -13,9 +13,9 @@ func _init(pm: GameState_PhaseManager, bm: BattleManager):
 func stackEnter(_msg := {}):
 	var resultEvent : Event
 	
-	if(!battleManager.battleRoster.checkPlayersAlive()):
+	if(!battleManager.checkPlayersAlive()):
 		resultEvent = DefeatEvent.new(finishEQ, battleManager)
-	elif(!battleManager.battleRoster.checkEnemiesAlive()):
+	elif(!battleManager.checkEnemiesAlive()):
 		resultEvent = VictoryEvent.new(finishEQ, battleManager)
 	
 	finishEQ.addEvent(resultEvent)

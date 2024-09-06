@@ -103,6 +103,7 @@ func takeDamage(dmg: int, pierce: bool):
 		#updateUI(remainingHealth)
 		
 		if(remainingHealth <= 0):
+			isDead = true
 			var deathEvent = Death_Event.new(playerStateStack, battleManager.actionPhase.actionEQ, self, battleManager)
 			battleManager.actionPhase.actionEQ.queue.push_front(deathEvent)
 

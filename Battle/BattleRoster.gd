@@ -43,17 +43,17 @@ func initializeEntity(playerEntity: Entity):
 	playerEntity.actor = battleManager.battleStage.playerActors[playerEntity.playerNumber]
 	playerEntity.initialize(battleManager)
 
-func checkEnemiesAlive():
-	if(enemies.size() <= 0):
-		return false
-	else:
-		return true
-
-func checkPlayersAlive():
-	for player in battleManager.playerEntities:
-		if !player.isDead:
-			return true
-	return false
+#func checkEnemiesAlive():
+	#if(enemies.size() <= 0):
+		#return false
+	#else:
+		#return true
+#
+#func checkPlayersAlive():
+	#for player in battleManager.playerEntities:
+		#if !player.isDead:
+			#return true
+	#return false
 	#if(players.size() <= 0):
 		#return false
 	#else:
