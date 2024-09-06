@@ -10,10 +10,12 @@ func _ready():
 	super()
 
 func update(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		newLight()
-	
 	super(delta)
+
+##Parent class filters out other player input
+func buttonPressed(_event : InputEvent):
+	if _event.is_action_pressed("ui_accept"):
+		newLight()
 
 func newLight():
 	if(litCount >= lightSprites.get_child_count()):
@@ -26,7 +28,7 @@ func newLight():
 func wrapUp():
 	super()
 
-func guageSuccess():
+func judgeSuccess():
 	if(successPercent == 100):
 		return 1
 	elif(successPercent >= 50):

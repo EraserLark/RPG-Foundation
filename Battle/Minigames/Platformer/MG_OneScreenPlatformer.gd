@@ -13,19 +13,19 @@ func update(delta):
 	super(delta)
 
 func physicsUpdate(_delta : float):
-	apply_gravity();
+	apply_gravity()
 	
-	var input = Vector2.ZERO;
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left");
+	var movement = Vector2.ZERO
+	movement.x = inputDir.x
 	
-	if input.x == 0:
-		apply_friction();
+	if movement.x == 0:
+		apply_friction()
 	else:
-		apply_acceleration(input.x);
+		apply_acceleration(movement.x)
 	
 	if player.is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
-			player.velocity.y = -jumpForce;
+			player.velocity.y = -jumpForce
 	#else:
 		#if Input.is_action_just_released("ui_up") and player.velocity.y < -30:
 			#player.velocity.y = -30;
@@ -43,7 +43,7 @@ func apply_friction():
 func apply_acceleration(amount):
 	player.velocity.x = move_toward(player.velocity.x, 50 * amount, 10)
 
-func guageSuccess():
+func judgeSuccess():
 	if(goalGot):
 		return 1
 	else:

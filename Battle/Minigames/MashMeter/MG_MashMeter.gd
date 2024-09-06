@@ -7,10 +7,14 @@ var meterAmt: float
 func _ready():
 	super()
 
-func update(delta):
-	if Input.is_action_just_pressed("ui_accept"):
+func buttonPressed(_event: InputEvent):
+	if _event.is_action_pressed("ui_accept"):
 		addMeter()
-	
+
+func update(delta):
+	#if Input.is_action_just_pressed("ui_accept"):
+		#addMeter()
+	#
 	meterAmt -= 0.25
 	if(meterAmt <= 0):
 		meterAmt = 0
@@ -25,7 +29,7 @@ func wrapUp():
 	successPercent = meterAmt
 	super()
 
-func guageSuccess():
+func judgeSuccess():
 	if(successPercent == 100):
 		return 1
 	elif(successPercent >= 50):

@@ -19,7 +19,7 @@ func _init(pm: GameState_PhaseManager, bm: BattleManager, _msg := {}):
 	actionEQ = BattleActionQueue.new(battleManager, self)
 
 func stackEnter(_msg:= {}):
-	enemies = battleManager.battleRoster.enemies
+	enemies = battleManager.enemyRoster.enemies
 	playerEntities = PlayerRoster.getActiveRoster()
 	
 	for player in playerEntities:
@@ -31,7 +31,7 @@ func stackEnter(_msg:= {}):
 		playerAction.sender = player
 		actionEQ.queue.append(playerAction)
 	
-	for enemy in battleManager.battleRoster.enemies:
+	for enemy in enemies:
 		var enemyAction = enemy.chooseAttack()
 		enemyAction.eventManager = actionEQ
 		enemyAction.sender = enemy
