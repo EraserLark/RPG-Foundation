@@ -11,6 +11,8 @@ func _init(pm: GameState_PhaseManager, bm: BattleManager):
 	battleManager = bm
 
 func stackEnter(_msg := {}):
+	super()
+	
 	var resultEvent : Event
 	
 	if(!battleManager.checkPlayersAlive()):
@@ -30,4 +32,3 @@ func stackResume():
 
 func stackExit():
 	super()
-	phaseManager.phaseFinished()

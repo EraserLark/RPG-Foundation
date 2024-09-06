@@ -20,7 +20,9 @@ func enter(_msg := {}):
 		#textbox.advance()
 
 func handleInput(_event: InputEvent):
-	pass
+	if _event.device == PlayerRoster.roster[stateStack.playerNumber].deviceNumber:
+		if _event.is_action_pressed("ui_accept"):
+			textbox.confirmInput()
 
 func resumeState():
 	if(textbox.finished):

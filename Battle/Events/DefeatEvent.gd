@@ -10,14 +10,16 @@ func _init(eManager, bm):
 	battleManager = bm
 
 func runEvent():
-	var message: Array[String] = ["You lose!"]
+	#var message: Array[String] = ["You lose!"]
 	#var textbox = battleManager.battleUI.textbox
 	
 	#battleManager.playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
-	battleManager.battleUI.playerUIRoster[0].playerPanel.showPlayerMenu(true)
-	Textbox_State.createEvent(defeatEQ, GameStateStack.stack, message, battleManager.battleUI.tbContainer)
+	#battleManager.battleUI.playerUIRoster[0].playerPanel.showPlayerMenu(true)
+	#Textbox_State.createEvent(defeatEQ, GameStateStack.stack, message, battleManager.battleUI.tbContainer)
 	
-	Cutscene_State.createEvent(defeatEQ, battleManager, BattleOutro)
+	GameState_Cutscene.createEvent(defeatEQ, battleManager, ResultText)
+	
+	GameState_Cutscene.createEvent(defeatEQ, battleManager, BattleOutro)
 	
 	defeatEQ.popQueue()
 

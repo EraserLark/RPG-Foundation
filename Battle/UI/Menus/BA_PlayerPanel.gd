@@ -80,7 +80,8 @@ func showMinigame(case: bool):
 	playerMenu.visible = case
 	minigameContainer.visible = case
 
+##Used when showing textbox inside player panel
 func showPlayerMenu(case: bool):
 	self.visible = case
 	playerMenu.visible = case
-	playerMenu.actionMenu.visible = false
+	playerMenu.actionSelectionMenu.visible = false
