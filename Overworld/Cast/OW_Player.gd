@@ -57,7 +57,7 @@ func stepCounter():
 		stepCount = 0
 		resetEncounterThreshold()
 		
-	var enterBattleState = Player_EnterBattle.new({"Room": currentRoom})
+		var enterBattleState = Player_EnterBattle.new({"Room": currentRoom})
 		#GameStateStack.stack.addState(enterBattleState, {"Room": currentRoom})
 
 func resetEncounterThreshold():
