@@ -41,6 +41,7 @@ func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
 
 func open(sStack: StateStack):
 	baseMenu = playerMenu
+	isFinished = false
 	#player = playerUI.player
 	super(sStack)
 

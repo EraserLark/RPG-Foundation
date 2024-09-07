@@ -77,8 +77,9 @@ func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 func actorSpeak(actorName, actorMessage):
 	emit_signal("actor_speaking", actorName, actorMessage)
 
-func removeActor(actor: PlayerEntity):
+func removeActor(actor: OW_Player):
 	playerActors.erase(actor)
+	phantomCam.erase_follow_targets(actor)
 	playerActors.sort_custom(sortPlayerActors)
 	actor.queue_free()
 
