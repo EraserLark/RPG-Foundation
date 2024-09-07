@@ -68,7 +68,8 @@ func actionTargetSelected():
 	if(isActionItem):
 		playerEntity.itemDiscarded(itemIndex)
 	
-	closeMenuSystem()
+	#closeMenuSystem()
+	showSubMenu(playerMenu.waitingMenu)
 
 func changeStatsHealth(remaningHP: int):
 	stats.changeHealth(remaningHP)

@@ -10,6 +10,9 @@ func _init(pm:GameState_PhaseManager, _msg:={}):
 func enter(playerNum: int, _msg:= {}):
 	var playerEntity = PlayerRoster.roster[playerNum]
 	var playerPanel = playerEntity.battleUI.playerPanel
+	
+	playerPanel.playerMenu.waitingMenu.playerSubmitted.connect(playerSubmit)
+	
 	menuSystems.append(playerPanel)
 	menuSystems[playerNum].open(playerEntity.playerStateStack)
 
@@ -18,10 +21,11 @@ func stackResume():
 	super()
 
 func resumeState(playerNum: int):
-	if(menuSystems[playerNum].isFinished):
-		playerSubmit()
-	else:
-		menuSystems[playerNum].resumeSubMenu()
+	pass
+	#if(menuSystems[playerNum].isFinished):
+		#playerSubmit()
+	#else:
+	#menuSystems[playerNum].resumeSubMenu()
 
 ##For directional input
 func update(playerNum: int, delta):
@@ -32,7 +36,8 @@ func handleInput(playerNum: int, _event: InputEvent):
 	if _event.device != PlayerRoster.roster[playerNum].deviceNumber:
 		return
 	
-	menuSystems[playerNum].menuStack.currentMenu.buttonPressed(_event)
+	var currentMenu = menuSystems[playerNum].menuStack.currentMenu
+	currentMenu.buttonPressed(_event)
 
 func playerSubmit():
 	for menuSystem in menuSystems:
@@ -42,6 +47,9 @@ func playerSubmit():
 
 func stackExit():
 	for playerEntity in PlayerRoster.getActiveRoster():
+		#Close menu system
+		playerEntity.battleUI.playerPanel.closeMenuSystem()
+		#Remove game state connection
 		playerEntity.playerStateStack.removeGameState()
 	
 	var gameStateStack = GameStateStack.gameStateStack

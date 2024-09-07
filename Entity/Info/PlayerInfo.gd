@@ -61,5 +61,13 @@ func setPlayerEntity(value):
 	#else:
 		#entityUI = playerEntity.battleUI
 
-func setPlayerEntityUI(value):
-	entityUI = value
+func setHP(value: int):
+	hp = value
+	if(playerEntity != null):
+		if(playerEntity.battleUI != null):
+			playerEntity.battleUI.setHP(hp)
+		else:
+			playerEntity.worldUI.setHP(hp)
+
+#func setPlayerEntityUI(value):
+	#entityUI = value
