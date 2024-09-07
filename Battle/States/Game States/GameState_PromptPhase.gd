@@ -7,6 +7,11 @@ var menuSystems: Array
 func _init(pm:GameState_PhaseManager, _msg:={}):
 	phaseManager = pm
 
+func stackEnter(_msg:={}):
+	for playerEntity in PlayerRoster.getLivingRoster():
+		var connectionState = GameState_Connection.new(playerEntity.playerStateStack, self)
+		playerEntity.playerStateStack.addState(connectionState)	#Enters game state roundabout
+
 func enter(playerNum: int, _msg:= {}):
 	var playerEntity = PlayerRoster.roster[playerNum]
 	var playerPanel = playerEntity.battleUI.playerPanel
@@ -46,7 +51,7 @@ func playerSubmit():
 	stackExit()	#Only call once all players have submitted!
 
 func stackExit():
-	for playerEntity in PlayerRoster.getActiveRoster():
+	for playerEntity in PlayerRoster.getLivingRoster():
 		#Close menu system
 		playerEntity.battleUI.playerPanel.closeMenuSystem()
 		#Remove game state connection

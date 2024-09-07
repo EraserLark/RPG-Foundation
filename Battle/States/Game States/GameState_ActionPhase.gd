@@ -3,7 +3,7 @@ class_name GameState_ActionPhase
 
 var phaseManager: GameState_PhaseManager
 var battleManager
-var playerEntities
+var livingPlayers
 var enemies
 
 var turnUpdated:= false
@@ -19,12 +19,14 @@ func _init(pm: GameState_PhaseManager, bm: BattleManager, _msg := {}):
 	actionEQ = BattleActionQueue.new(battleManager, self)
 
 func stackEnter(_msg:= {}):
-	super()
+	for playerEntity in PlayerRoster.getLivingRoster():
+		var connectionState = GameState_Connection.new(playerEntity.playerStateStack, self)
+		playerEntity.playerStateStack.addState(connectionState)	#Enters game state roundabout
 	
 	enemies = battleManager.enemyRoster.enemies
-	playerEntities = PlayerRoster.getActiveRoster()
+	livingPlayers = PlayerRoster.getLivingRoster()
 	
-	for player in playerEntities:
+	for player in livingPlayers:
 		var playerAction = player.entityInfo.selectedAction
 		if(playerAction.actionMinigame != null):
 			var minigameEvent = CreateMinigameEvent.new(player.rosterNumber, actionEQ, battleManager, playerAction.actionMinigame)
@@ -37,7 +39,7 @@ func stackEnter(_msg:= {}):
 		var enemyAction = enemy.chooseAttack()
 		enemyAction.eventManager = actionEQ
 		enemyAction.sender = enemy
-		enemyAction.target = playerEntities.pick_random()
+		enemyAction.target = livingPlayers.pick_random()
 		actionEQ.queue.append(enemyAction)
 	
 	unresolvedStatuses = statusRoster.duplicate()
@@ -68,7 +70,7 @@ func decideNextStep():
 
 func stackExit():
 	##Remove gamestate from all stacks, but do not delete game state
-	for playerEntity in PlayerRoster.getActiveRoster():
+	for playerEntity in PlayerRoster.getLivingRoster():
 		playerEntity.playerStateStack.removeGameState()
 	
 	var gameStateStack = GameStateStack.gameStateStack

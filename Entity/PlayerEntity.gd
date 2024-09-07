@@ -103,7 +103,6 @@ func takeDamage(dmg: int, pierce: bool):
 		#updateUI(remainingHealth)
 		
 		if(remainingHealth <= 0):
-			isDead = true
 			var deathEvent = Death_Event.new(playerStateStack, battleManager.actionPhase.actionEQ, self, battleManager)
 			battleManager.actionPhase.actionEQ.queue.push_front(deathEvent)
 
@@ -124,11 +123,13 @@ func itemChosen(itemNum: int):
 func itemDiscarded(itemNum: int):
 	entityInfo.itemList = Helper.removeIndex(entityInfo.itemList, itemNum)
 
-func checkRoster():
-	pass
-
 func entityDead():
-	pass
+	isDead = true
+	playerStateStack.removeGameState()	#Removes Action Game State
+
+func checkRoster():
+	var result = battleManager.checkPlayersAlive()
+	return result
 
 func endEntity():
 	if currentStage == STAGE.WORLD:

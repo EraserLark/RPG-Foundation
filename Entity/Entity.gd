@@ -38,8 +38,8 @@ func takeDamage(dmg: int, pierce: bool):
 func attack():
 	pass
 
-func checkRoster():
+func entityDead():
 	pass
 
-func entityDead():
+func checkRoster():
 	pass

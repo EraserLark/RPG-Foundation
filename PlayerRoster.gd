@@ -18,6 +18,14 @@ func getActiveRoster() -> Array[Entity]:
 			activeRoster.append(player)
 	return activeRoster
 
+func getLivingRoster() -> Array[Entity]:
+	var livingRoster: Array[Entity]
+	var activeRoster: Array[Entity] = getActiveRoster()
+	for player in activeRoster:
+		if !player.isDead:
+			livingRoster.append(player)
+	return livingRoster
+
 ##Player joined, create Empty Entity
 func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	var emptyEntity = PlayerEntity.new()
