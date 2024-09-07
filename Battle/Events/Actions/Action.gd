@@ -11,7 +11,7 @@ var actionMinigame	#Used in Attack class
 enum TargetTypes {PLAYER, ENEMY, ALL}
 var targetType: TargetTypes
 
-func _init(eManager: EventQueue, send: Entity, targ: Entity, targType, stgmn: StageManager):
+func _init(eManager: EventQueue, send, targ, targType, stgmn: StageManager):
 	super(eManager)
 	sender = send
 	target = targ
@@ -24,11 +24,11 @@ func setManager(manager: StageManager):
 func setupTargetOptions():
 	match targetType:
 		TargetTypes.PLAYER:
-			if stageManager.playerEntities.is_empty():
+			if PlayerRoster.getLivingRoster().is_empty():
 				printerr("No players to target")
 				return
 			else:
-				targetOptions = stageManager.playerEntities
+				targetOptions = PlayerRoster.getLivingRoster()
 		TargetTypes.ENEMY:
 			if stageManager.enemyEntities.is_empty():
 				printerr("No enemies to target")
@@ -36,12 +36,12 @@ func setupTargetOptions():
 			else:
 				targetOptions = stageManager.enemyEntities
 		TargetTypes.ALL:
-			if stageManager.playerEntities.is_empty():
+			if PlayerRoster.getLivingRoster().is_empty():
 				printerr("No players to target")
 				return
 			elif stageManager.enemyEntities.is_empty():
 				printerr("No enemies to target")
 				return
 			else:
-				targetOptions += stageManager.playerEntities
+				targetOptions += PlayerRoster.getLivingRoster()
 				targetOptions += stageManager.enemyEntities

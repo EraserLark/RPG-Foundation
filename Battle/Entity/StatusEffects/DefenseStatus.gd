@@ -29,8 +29,8 @@ class DefendedAction:
 		target.reactionComplete.connect(resumeEvent)
 		target.boostDefense(1)
 		var message: Array[String] = ["Defense boosted by 1 for this turn!"]
-		var tbState = Textbox_State.new(GameStateStack.stack, message, stageManager.battleUI.tbContainer)
-		GameStateStack.stack.addState(tbState)
+		var tbState = Textbox_State.new(target.playerStateStack, message, target.battleUI.playerPanel)
+		target.playerStateStack.addState(tbState)
 	func resumeEvent():
 		target.reactionComplete.disconnect(resumeEvent)
 		finishEvent()

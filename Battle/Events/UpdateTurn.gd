@@ -19,7 +19,7 @@ func runEvent():
 		var readyToEnd = status.checkStatusCount(currentCount)
 		if(readyToEnd):
 			var message: Array[String] = [str(status.status_name, " has ended!")]
-			Textbox_State.createEvent(statusUpdateEQ, GameStateStack.stack, message, battleManager.battleUI.tbContainer)
+			Textbox_State.createEvent(statusUpdateEQ, status.target.playerStateStack, message, status.target.battleUI.playerPanel)
 			status.endStatus()
 	
 	statusUpdateEQ.popQueue()

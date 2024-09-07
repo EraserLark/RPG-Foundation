@@ -66,11 +66,21 @@ func initialize(sm: StageManager = null):
 func getClassInstance():
 	return self
 
+#Only built for battle rn
 func gainStatus(statusType):
-	pass
+	if(statusType == Status.Type.POISON):
+		applyStatus(PoisonStatus, battleManager.actionPhase.statusRoster)
+	elif(statusType == Status.Type.DEFUP):
+		applyStatus(DefenseStatus, battleManager.actionPhase.statusRoster)
+	emit_signal("reactionComplete")
 
+#Only built for battle rn
 func applyStatus(statusEffect, statusRoster):
-	pass
+	var newStatus = statusEffect.new(battleManager, self, statusRoster)
+	statusEffects.append(newStatus)
+	statusRoster.append(newStatus)
+	
+	battleManager.actionPhase.unresolvedStatuses.append(newStatus)
 
 func boostDefense(amt: int):
 	super(amt)
@@ -125,7 +135,13 @@ func itemDiscarded(itemNum: int):
 
 func entityDead():
 	isDead = true
+	eraseSelectedAction()
+	for effect in statusEffects:
+		effect.endStatus()
 	playerStateStack.removeGameState()	#Removes Action Game State
+
+func eraseSelectedAction():
+	battleManager.actionPhase.actionEQ.queue.erase(entityInfo.selectedAction)
 
 func checkRoster():
 	var result = battleManager.checkPlayersAlive()

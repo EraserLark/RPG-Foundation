@@ -17,7 +17,7 @@ var playerPointer: Cursor
 #var player: PlayerEntity
 
 ##Inside vars
-var currentSelectedAction
+var currentSelectedAction: Action
 var isActionItem:= false
 var itemIndex
 var panelAnchors: Array
@@ -54,12 +54,18 @@ func itemSelected(index: int):
 	currentSelectedAction = playerEntity.itemChosen(index)
 	isActionItem = true
 	itemIndex = index
-	setupSelection(currentSelectedAction)
+	#setupSelection(currentSelectedAction)
+	
+	currentSelectedAction.target = playerEntity
+	actionTargetSelected()
 
 func actionSelected(index: int):
 	currentSelectedAction = playerEntity.actionChosen(index)
 	isActionItem = false
-	setupSelection(currentSelectedAction)
+	#setupSelection(currentSelectedAction)
+	
+	currentSelectedAction.target = playerEntity
+	actionTargetSelected()
 
 func setupSelection(selectedAction: Action):
 	get_viewport().set_input_as_handled() #prevents input from carrying thru

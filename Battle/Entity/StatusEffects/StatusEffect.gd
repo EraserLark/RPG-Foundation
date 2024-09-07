@@ -2,7 +2,7 @@ extends Node #extends Entity
 class_name StatusEffect
 
 var battleManager: BattleManager
-var actionPhase: Action_Phase
+var actionPhase: GameState_ActionPhase
 var statusRoster
 var unresolvedStatuses
 
