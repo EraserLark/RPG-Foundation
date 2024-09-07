@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlayerInfo" load_steps=2 format=3 uid="uid://c2h32pxrt1q2c"]
+
+[ext_resource type="Script" path="res://Entity/Info/PlayerInfo.gd" id="1_mg3pe"]
+
+[resource]
+script = ExtResource("1_mg3pe")
+xp = 0
+nextLevelCost = 10
+level = 1
+money = 0
+items = Array[String]([])
+entityName = "Player 1"
+hp = 10
+hpMax = 15
+atk = 1
+def = 1

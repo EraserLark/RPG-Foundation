@@ -14,7 +14,7 @@ func OpenMenu():
 
 func activateOption():
 	menuManager.closeMenuSystem()
-	PlayerRoster.addProfileToRoster(PlayerRoster.profileBank[0], rosterNum)
+	PlayerRoster.addProfileToRoster(PlayerRoster.profileBank[rosterNum], rosterNum)
 	get_viewport().set_input_as_handled()
 
 func rejectMenu():
