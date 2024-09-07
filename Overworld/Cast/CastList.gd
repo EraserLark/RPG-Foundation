@@ -64,7 +64,13 @@ func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 		
 		var port = room.playerSpawnPort
 		playerActor.position = passages.getSpawnPoint(port) + Vector2(randi_range(-64, 64), 0)
-		playerActor.faceDirection(passages.getSpawnDir(port))
+		var spawnDir = passages.getSpawnDir(port)
+		playerActor.faceDirection(spawnDir)
+		
+		if int(spawnDir.x) != 0:
+			playerActor.position += Vector2(0, randi_range(-64, 64))
+		elif int(spawnDir.y) != 0:
+			playerActor.position += Vector2(randi_range(-64, 64), 0)
 	
 	#Add actor to lists
 	playerActors.append(playerActor)	#local list
