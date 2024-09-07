@@ -42,8 +42,9 @@ func getPlayerNum():
 func moveDirection(dir: Vector2):
 	##Play walk animation?
 	self.velocity = dir.normalized() * speed;
-	if(dir != Vector2.ZERO):
-		stepCounter()
+	if(playerEntity.rosterNumber == 0):
+		if(dir != Vector2.ZERO):
+			stepCounter()
 
 ##Called in Player_Active state so it can't run once state changes
 func physicsUpdate(delta: float):
@@ -56,8 +57,8 @@ func stepCounter():
 		stepCount = 0
 		resetEncounterThreshold()
 		
-		var enterBattleState = Player_EnterBattle.new(GameStateStack.stack)
-		GameStateStack.stack.addState(enterBattleState, {"Room": currentRoom})
+	var enterBattleState = Player_EnterBattle.new({"Room": currentRoom})
+		#GameStateStack.stack.addState(enterBattleState, {"Room": currentRoom})
 
 func resetEncounterThreshold():
 	encounterThreshold = randi_range(1500, 3000)

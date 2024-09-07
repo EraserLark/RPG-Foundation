@@ -63,7 +63,7 @@ func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 		playerEntity.playerActiveState.player = playerActor
 		
 		var port = room.playerSpawnPort
-		playerActor.position = passages.getSpawnPoint(port) + Vector2(randi_range(-64, 64), 0)
+		playerActor.position = passages.getSpawnPoint(port)
 		var spawnDir = passages.getSpawnDir(port)
 		playerActor.faceDirection(spawnDir)
 		
