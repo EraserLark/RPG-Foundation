@@ -1,11 +1,13 @@
 extends State
 class_name Player_Dance
 
-var player = null
+var player: OW_Player
+var input: DeviceInput
 
-func _init(sStack, plyr):
+func _init(sStack, plyr: OW_Player):
 	super(sStack)
 	player = plyr
+	input = player.playerEntity.input
 
 func handleInput(event : InputEvent):
 	pass
@@ -14,12 +16,12 @@ func enter(msg := {}):
 	player.animState.travel("Dance")
 
 func update(delta : float):
-	var input = Vector2.ZERO;
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left");
-	input.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up");
+	var inputDir = Vector2.ZERO;
+	inputDir.x = input.get_action_strength("ui_right") - input.get_action_strength("ui_left");
+	inputDir.y = input.get_action_strength("ui_down") - input.get_action_strength("ui_up");
 	
-	if(input != Vector2.ZERO):
-		player.animTree.set("parameters/Dance/blend_position", input)
+	if(inputDir != Vector2.ZERO):
+		player.animTree.set("parameters/Dance/blend_position", inputDir)
 
 #Called if Player enters passage while in Dance State.
 func resumeState():
