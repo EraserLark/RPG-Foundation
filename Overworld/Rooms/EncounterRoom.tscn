@@ -47,7 +47,7 @@ position = Vector2(0, 64)
 position = Vector2(5120, -2560)
 rotation = 1.5708
 script = ExtResource("7_i5bat")
-leadsToRoom = "res://Overworld/Rooms/NPC_Room.tscn"
+leadsToRoom = "res://Overworld/Rooms/Booger_Room.tscn"
 spawnFacing = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Passages/Passage_num2" index="0"]

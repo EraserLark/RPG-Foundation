@@ -4,18 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://buuutwg87padp" path="res://Art/NPC_Booger.png" id="2_cw70n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axojr"]
-size = Vector2(120, 33)
+size = Vector2(200, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8b7"]
-size = Vector2(120, 33)
+size = Vector2(200, 33)
 
 [resource]
 script = ExtResource("1_rnokg")
 npcName = "Booger"
 timelines = {}
 spriteSheet = ExtResource("2_cw70n")
-spriteOffset = Vector2(0, -7)
-spriteScale = Vector2(5, 5)
+spriteOffset = Vector2(0, -8)
+spriteScale = Vector2(8, 8)
 hFrames = 1
 vFrames = 1
 currentFrame = 0
