@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=4 uid="uid://cjv1mcuglg2br"]
+[gd_scene load_steps=5 format=4 uid="uid://cjv1mcuglg2br"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_hm4o3"]
 [ext_resource type="TileSet" uid="uid://dikauwaok43yf" path="res://Overworld/Art/SnowTileset_Blank.tres" id="2_vmp0o"]
 [ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/Passages/passage.tscn" id="3_uwrd7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lbwl"]
+size = Vector2(192, 17.0004)
 
 [node name="StartRoom" instance=ExtResource("1_hm4o3")]
 
@@ -21,6 +24,7 @@ leadsToRoom = "res://Overworld/Rooms/EncounterRoom.tscn"
 spawnFacing = 4
 
 [node name="CollisionShape2D" parent="Passages/Passage_num" index="0"]
-position = Vector2(-1.39876e-06, -32)
+position = Vector2(-0.00010239, -32.4998)
+shape = SubResource("RectangleShape2D_4lbwl")
 
 [editable path="Passages/Passage_num"]

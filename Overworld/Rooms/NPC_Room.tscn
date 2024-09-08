@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://f8q7qiban00i"]
+[gd_scene load_steps=9 format=4 uid="uid://f8q7qiban00i"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_06gjc"]
 [ext_resource type="TileSet" uid="uid://dikauwaok43yf" path="res://Overworld/Art/SnowTileset_Blank.tres" id="2_ac4hh"]
@@ -7,6 +7,9 @@
 [ext_resource type="Resource" uid="uid://bkifnhwlq3ir6" path="res://Entity/NPC/Booger.tres" id="4_7208v"]
 [ext_resource type="Resource" uid="uid://dt0af3ndjvlet" path="res://Entity/NPC/JD.tres" id="4_tihkv"]
 [ext_resource type="PackedScene" uid="uid://dkt3x5qf05q4f" path="res://Overworld/Interactibles/sign.tscn" id="7_3bqm2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxpxx"]
+size = Vector2(128, 18)
 
 [node name="Room" instance=ExtResource("1_06gjc")]
 
@@ -33,8 +36,12 @@ lines = Array[String](["There are many secrets in this world", "But none of them
 [node name="Passage_num" parent="Passages" index="0" instance=ExtResource("3_0fiiy")]
 position = Vector2(-56, 32)
 rotation = -1.5708
-leadsToRoom = "res://Overworld/Rooms/FirstRoom.tscn"
+leadsToRoom = "res://Overworld/Rooms/EncounterRoom.tscn"
 leadsToPassage = 1
 spawnFacing = 0
+
+[node name="CollisionShape2D" parent="Passages/Passage_num" index="0"]
+position = Vector2(-7.62939e-06, -1.14441e-05)
+shape = SubResource("RectangleShape2D_jxpxx")
 
 [editable path="Passages/Passage_num"]

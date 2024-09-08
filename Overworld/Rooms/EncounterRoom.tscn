@@ -1,12 +1,18 @@
-[gd_scene load_steps=8 format=4 uid="uid://bsvhj1ebkppws"]
+[gd_scene load_steps=10 format=4 uid="uid://bsvhj1ebkppws"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_p4bps"]
 [ext_resource type="Script" path="res://Entity/Info/EnemyInfo.gd" id="2_ctuxy"]
 [ext_resource type="TileSet" uid="uid://dikauwaok43yf" path="res://Overworld/Art/SnowTileset_Blank.tres" id="2_e4e0b"]
 [ext_resource type="Resource" uid="uid://bl44thjmt52c7" path="res://Entity/Info/Snowbro_EnemyData.tres" id="3_iyppr"]
 [ext_resource type="PackedScene" uid="uid://dkt3x5qf05q4f" path="res://Overworld/Interactibles/sign.tscn" id="3_ter0t"]
-[ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/Passages/passage.tscn" id="4_k7gvo"]
 [ext_resource type="Resource" uid="uid://chlomctt2mqiy" path="res://Entity/Info/CoalSprite_EnemyData.tres" id="4_y8nnm"]
+[ext_resource type="Script" path="res://Overworld/World/Passage.gd" id="7_i5bat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og07t"]
+size = Vector2(192, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r1db"]
+size = Vector2(320, 18)
 
 [node name="Room" instance=ExtResource("1_p4bps")]
 enemyRoster = Array[ExtResource("2_ctuxy")]([ExtResource("3_iyppr"), ExtResource("4_y8nnm")])
@@ -23,10 +29,34 @@ tile_set = ExtResource("2_e4e0b")
 position = Vector2(24, -152)
 lines = Array[String](["CAREFUL! Monsters ahead!", "Watch out for pissed off snowbros."])
 
-[node name="Passage_num" parent="Passages" index="0" instance=ExtResource("4_k7gvo")]
+[node name="Passage_num" type="Area2D" parent="Passages" index="0"]
 position = Vector2(-384, 0)
 rotation = -1.5708
+script = ExtResource("7_i5bat")
 leadsToRoom = "res://Overworld/Rooms/StartRoom.tscn"
-spawnFacing = 0
 
-[editable path="Passages/Passage_num"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Passages/Passage_num" index="0"]
+position = Vector2(-1.90735e-06, 0)
+shape = SubResource("RectangleShape2D_og07t")
+debug_color = Color(0.810394, 0.00105657, 0.890717, 0.419608)
+
+[node name="SpawnPoint" type="Node2D" parent="Passages/Passage_num" index="1"]
+position = Vector2(0, 64)
+
+[node name="Passage_num2" type="Area2D" parent="Passages" index="1"]
+position = Vector2(5120, -2560)
+rotation = 1.5708
+script = ExtResource("7_i5bat")
+leadsToRoom = "res://Overworld/Rooms/NPC_Room.tscn"
+spawnFacing = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Passages/Passage_num2" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_1r1db")
+debug_color = Color(0.810394, 0.00105657, 0.890717, 0.419608)
+
+[node name="SpawnPoint" type="Node2D" parent="Passages/Passage_num2" index="1"]
+position = Vector2(0, 64)
+
+[connection signal="body_entered" from="Passages/Passage_num" to="Passages/Passage_num" method="_on_body_entered"]
+[connection signal="body_entered" from="Passages/Passage_num2" to="Passages/Passage_num2" method="_on_body_entered"]
