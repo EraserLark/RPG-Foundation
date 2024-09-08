@@ -7,6 +7,7 @@ var panelAnchorPositions = {}
 func _ready():
 	determineAnchorLayout()
 
+#{Player #: Anchor #}
 func determineAnchorLayout():
 	match PlayerRoster.roster.size():
 		1:
@@ -15,6 +16,12 @@ func determineAnchorLayout():
 		2:
 			currentAnchorLayout = get_child(1).get_children()
 			panelAnchorPositions = {0: 4, 1: 4}
+		3:
+			currentAnchorLayout = get_child(0).get_children()
+			panelAnchorPositions = {0: 3, 1: 4, 2: 5}
+		4:
+			currentAnchorLayout = get_child(1).get_children()
+			panelAnchorPositions = {0: 3, 1: 4, 2: 4, 3: 5}
 		_:
 			printerr("Unable to determine anchor layout")
 

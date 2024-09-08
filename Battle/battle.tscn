@@ -507,6 +507,89 @@ offset_right = 0.768005
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="3Players" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P1" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/3Players"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="P2" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/3Players"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="P3" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/3Players"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="4Players" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="P1" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/4Players"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="P2" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/4Players"]
+layout_mode = 1
+anchor_left = 0.333
+anchor_top = 1.0
+anchor_right = 0.333
+anchor_bottom = 1.0
+offset_left = 0.384003
+offset_right = 0.384003
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="P3" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/4Players"]
+layout_mode = 1
+anchor_left = 0.666
+anchor_top = 1.0
+anchor_right = 0.666
+anchor_bottom = 1.0
+offset_left = 0.768005
+offset_right = 0.768005
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="P4" type="Control" parent="CanvasLayer/BattleUI/PlayerAnchors/4Players"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="TBContainer" type="MarginContainer" parent="CanvasLayer/BattleUI"]
 layout_mode = 1
 anchors_preset = 10
