@@ -22,8 +22,8 @@ func initialize():
 	
 	##Create items
 	var healItem = Item_Heal.new()
-	var poisonItem = Item_Poison.new()
-	itemList.append_array([healItem, poisonItem])
+	#var poisonItem = Item_Poison.new()
+	itemList.append_array([healItem])
 	
 	##Create Misc
 	var defend = Defend.new(null, null, playerEntity, Action.TargetTypes.PLAYER, null)

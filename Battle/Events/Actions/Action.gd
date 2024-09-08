@@ -21,6 +21,12 @@ func _init(eManager: EventQueue, send, targ, targType, stgmn: StageManager):
 func setManager(manager: StageManager):
 	stageManager = manager
 
+func runEvent():
+	#If target dies before you run your action, reset target
+	if target == null or target.isDead:
+		setupTargetOptions()
+		target = targetOptions[0]
+
 func setupTargetOptions():
 	match targetType:
 		TargetTypes.PLAYER:
