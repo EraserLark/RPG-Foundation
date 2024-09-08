@@ -14,7 +14,7 @@ class_name PlayerUI_World
 	#owManager = om
 
 func setHP(value):
-	hpLabel.text = str("HP: ", value, "/", stageManager.player.playerInfo.hp)
+	hpLabel.text = str("HP: ", value, "/", player.entityInfo.hp)
 
 func setItems(value):
 	itemsList.populateMenu(value)

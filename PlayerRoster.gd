@@ -61,6 +61,7 @@ func addProfileToRoster(profile: PlayerInfo, rosterNum: int):
 	profile.initialize()
 	var playerEntity = roster[rosterNum]
 	playerEntity.entityInfo = profile
+	playerEntity.entityInfo.playerEntity = playerEntity
 	
 	##Create actor and initialize emptyUI
 	var stageManager: StageManager
