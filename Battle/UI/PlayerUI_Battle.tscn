@@ -131,6 +131,7 @@ anchor_bottom = 0.0
 offset_right = 288.0
 offset_bottom = 136.0
 script = ExtResource("6_44y4s")
+mandatory = true
 
 [node name="Stats" type="PanelContainer" parent="PlayerPanel"]
 layout_mode = 0

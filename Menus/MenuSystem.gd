@@ -42,6 +42,9 @@ func resumeSubMenu():
 func backOut():
 	if(menuStack.currentMenu == baseMenu && mandatory):
 		return
+	#Edge case for player battle menu (menuStack has playerMenu and Manual menu seperate)
+	elif(menuStack.currentMenu is ManualMenu_ButtonList && mandatory):
+		return
 	else:
 		closeSubMenu()
 
