@@ -8,7 +8,9 @@ func _init(pm:GameState_PhaseManager, _msg:={}):
 	phaseManager = pm
 
 func stackEnter(_msg:={}):
-	super()
+	for playerEntity in PlayerRoster.getLivingRoster():
+		var connectionState = GameState_Connection.new(playerEntity.playerStateStack, self)
+		playerEntity.playerStateStack.addState(connectionState)	#Enters game state roundabout
 
 func enter(playerNum: int, _msg:= {}):
 	var playerEntity = PlayerRoster.roster[playerNum]

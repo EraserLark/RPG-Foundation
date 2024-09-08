@@ -55,6 +55,23 @@ tracks/0/keys = {
 "values": [Vector2(10, 10), Vector2(-8, -8), Vector2(6, 6), Vector2(-4, -4), Vector2(2, 2), Vector2(0, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_io652"]
+resource_name = "Player_Healed"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_sving"]
 length = 0.001
 tracks/0/type = "value"
@@ -92,23 +109,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_io652"]
-resource_name = "Player_Healed"
-length = 0.75
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerPanel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kukrl"]
@@ -214,7 +214,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(272, 120)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
