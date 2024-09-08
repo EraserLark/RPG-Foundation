@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://f8q7qiban00i"]
+[gd_scene load_steps=8 format=4 uid="uid://f8q7qiban00i"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_06gjc"]
 [ext_resource type="TileSet" uid="uid://dikauwaok43yf" path="res://Overworld/Art/SnowTileset_Blank.tres" id="2_ac4hh"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bfbx5q7fqdq8h" path="res://Overworld/Cast/OW_npc.tscn" id="3_qiu11"]
 [ext_resource type="Resource" uid="uid://bkifnhwlq3ir6" path="res://Entity/NPC/Booger.tres" id="4_7208v"]
 [ext_resource type="Resource" uid="uid://dt0af3ndjvlet" path="res://Entity/NPC/JD.tres" id="4_tihkv"]
+[ext_resource type="PackedScene" uid="uid://dkt3x5qf05q4f" path="res://Overworld/Interactibles/sign.tscn" id="7_3bqm2"]
 
 [node name="Room" instance=ExtResource("1_06gjc")]
 
@@ -24,6 +25,10 @@ npcResource = ExtResource("4_7208v")
 [node name="JD" parent="CastList" index="1" instance=ExtResource("3_qiu11")]
 position = Vector2(984, -93)
 npcResource = ExtResource("4_tihkv")
+
+[node name="Sign" parent="Interactables" index="0" instance=ExtResource("7_3bqm2")]
+position = Vector2(128, -192)
+lines = Array[String](["There are many secrets in this world", "But none of them will be featured in this demo", "Sorry"])
 
 [node name="Passage_num" parent="Passages" index="0" instance=ExtResource("3_0fiiy")]
 position = Vector2(-56, 32)

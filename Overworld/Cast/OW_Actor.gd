@@ -11,7 +11,7 @@ var dbcPath = "res://UI/DialogueBubbleContainer.tscn"
 @onready var interactCollider:= $Area2D/CollisionShape2D
 
 ##Parent references
-var ui: Control
+var worldUI: Control
 
 ##Export vars
 @export var npcResource: NPC_Info: set = setNPCInfo
@@ -27,7 +27,7 @@ func _ready():
 	print("Actor Ready Finish")
 
 func initialize(om: OverworldManager, rm: Room):
-	ui = om.stageUI
+	worldUI = om.stageUI
 
 func setNPCInfo(info: NPC_Info):
 	npcResource = info
@@ -85,7 +85,7 @@ func createDBC():
 	#Create dialogueBubbleContainer
 	var dbc = load(dbcPath)
 	var inst = dbc.instantiate()
-	ui.add_child(inst)
+	worldUI.add_child(inst)
 	#Assign its transform to the SpeechSpot
 	inst.refSpot = speechSpot
 	return inst

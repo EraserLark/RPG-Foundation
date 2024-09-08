@@ -14,6 +14,7 @@ func _init(sStack, m, sp, p):
 
 func enter(_msg := {}):
 	dialogueBox = DialogueBox.createDBInstance(parent, message, speaker, self)
+	dialogueBox.ownerState = self
 	dialogueBox.advanceLineQueue()
 
 func update(_delta : float):
@@ -21,8 +22,13 @@ func update(_delta : float):
 		#dialogueBox.advance()
 		pass
 
+func handleInput(_event: InputEvent):
+	if _event.device == PlayerRoster.roster[stateStack.playerNumber].deviceNumber:
+		if _event.is_action_pressed("ui_accept"):
+			dialogueBox.confirmInput()
+
 func resumeState():
-	if(dialogueBox.tbFinished):
+	if(dialogueBox.finished):
 		exit()
 
 func exit():

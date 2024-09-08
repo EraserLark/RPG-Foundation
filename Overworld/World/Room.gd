@@ -8,6 +8,7 @@ var battleScenePath = "res://Battle/battle.tscn"
 ##Children references
 @onready var tileLayers:= $TileLayers
 @onready var castList:= $CastList
+@onready var interactables:= $Interactables
 @onready var passages:= $Passages
 @onready var camera:= $Camera2D
 @onready var cameraMarks:= $CameraMarks
@@ -45,6 +46,7 @@ func initialize(om: OverworldManager):
 	
 	camera.initialize(om, self)
 	castList.initialize(om, self)
+	interactables.initialize(om, self)
 	passages.initialize(om, self)
 	
 	populateGlobalVars()

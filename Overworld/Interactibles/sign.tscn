@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkt3x5qf05q4f"]
+
+[ext_resource type="Script" path="res://Overworld/Interactibles/Sign.gd" id="1_2idd3"]
+[ext_resource type="Texture2D" uid="uid://dvphadovkot2" path="res://Art/Sign.png" id="2_ijrxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u5cn"]
+size = Vector2(78, 12)
+
+[node name="Sign" type="Node2D"]
+script = ExtResource("1_2idd3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(12, -42)
+scale = Vector2(3, 3)
+texture = ExtResource("2_ijrxx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(9, -3)
+shape = SubResource("RectangleShape2D_8u5cn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(9, -3)
+shape = SubResource("RectangleShape2D_8u5cn")
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="SpeechSpot" type="Node2D" parent="."]
+position = Vector2(100, -100)

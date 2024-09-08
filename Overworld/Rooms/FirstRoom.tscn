@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dp5gtq4i4l507"]
+[gd_scene load_steps=22 format=4 uid="uid://dp5gtq4i4l507"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_sgwbx"]
 [ext_resource type="TileSet" uid="uid://2cpjct5qw5oo" path="res://Overworld/Art/SnowTileset.tres" id="2_t2xpc"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://chlomctt2mqiy" path="res://Entity/Info/CoalSprite_EnemyData.tres" id="9_22w46"]
 [ext_resource type="Texture2D" uid="uid://ev0rhfg3oxel" path="res://Art/icon.svg" id="9_fqaae"]
 [ext_resource type="PackedScene" uid="uid://b5b2rcrnu7ck5" path="res://Overworld/Interactibles/SavePoint.tscn" id="12_domw0"]
+[ext_resource type="PackedScene" uid="uid://dkt3x5qf05q4f" path="res://Overworld/Interactibles/sign.tscn" id="14_5eerf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmo6j"]
 size = Vector2(128, 128)
@@ -113,6 +114,10 @@ npcResource = ExtResource("8_p2dmw")
 
 [node name="SavePoint" parent="Interactables" index="0" instance=ExtResource("12_domw0")]
 position = Vector2(960, 88)
+
+[node name="Sign" parent="Interactables" index="1" instance=ExtResource("14_5eerf")]
+position = Vector2(864, 96)
+lines = Array[String](["Yo I'm a sign", "This is a save station. Use it to save your game and heal yourself!"])
 
 [node name="Passage_0" parent="Passages" index="0" instance=ExtResource("6_x2mqx")]
 position = Vector2(32, -384)
