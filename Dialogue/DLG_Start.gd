@@ -24,9 +24,10 @@ func setRoomVars():
 	timeline = Helper.getAllChildren(self)
 	
 	if(availableActors.size() > 0):
+		print(availableActors)
 		for step in timeline:
 			if(step is Step):
-				step.availableActors = requiredActors
+				step.availableActors = availableActors
 	
 	if(roomResource.cutsceneMarks.size() > 0):
 		for step in timeline:

@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://e584ty8ppfg3"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_esx6a"]
+[ext_resource type="Resource" uid="uid://kxus6v33cy0j" path="res://Overworld/Rooms/BoogerRoom_Rsrc1.tres" id="2_ukamv"]
+[ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="3_61fjy"]
+[ext_resource type="Script" path="res://Dialogue/DLG_WALK.gd" id="4_6mf8w"]
+[ext_resource type="Script" path="res://Dialogue/DLG_SetFlags.gd" id="4_hnfu5"]
+
+[node name="DLG_Start" type="Node"]
+script = ExtResource("1_esx6a")
+roomResource = ExtResource("2_ukamv")
+
+[node name="DLG_Text" type="Node" parent="."]
+script = ExtResource("3_61fjy")
+message = Array[String](["Wait, JD is alright?"])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text2" type="Node" parent="."]
+script = ExtResource("3_61fjy")
+message = Array[String](["YIPPEE!"])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text3" type="Node" parent="."]
+script = ExtResource("3_61fjy")
+message = Array[String](["..."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text4" type="Node" parent="."]
+script = ExtResource("3_61fjy")
+message = Array[String](["I'm too tired to walk, but I bet I can slide over there."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text5" type="Node" parent="."]
+script = ExtResource("3_61fjy")
+message = Array[String](["Thank you!"])
+messageSpeaker = "Booger"
+
+[node name="DLG_SetFlags" type="Node" parent="."]
+script = ExtResource("4_hnfu5")
+setTo = true
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "Problem Solved"
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "Problem Solved"
+
+[node name="DLG_Walk" type="Node" parent="."]
+script = ExtResource("4_6mf8w")
+cutsceneMarkOptions = Array[String](["Node2D"])
+cutscenePathOptions = Array[String](["Path2D"])
+actor = "Booger"
+walkMode = 0
+cutscenePath = "Path2D"

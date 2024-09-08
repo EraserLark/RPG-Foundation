@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://keqrv8mcymrs"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_nfwng"]
+[ext_resource type="Resource" uid="uid://kxus6v33cy0j" path="res://Overworld/Rooms/BoogerRoom_Rsrc1.tres" id="2_7iprl"]
+[ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="3_dmoqw"]
+
+[node name="DLG_Start" type="Node"]
+script = ExtResource("1_nfwng")
+roomResource = ExtResource("2_7iprl")
+
+[node name="DLG_Text" type="Node" parent="."]
+script = ExtResource("3_dmoqw")
+message = Array[String](["I hope JD is staying warm."])
+messageSpeaker = "Booger"

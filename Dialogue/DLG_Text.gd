@@ -24,6 +24,8 @@ func _get_property_list() -> Array:
 		"hint_string": Helper.arrayToString(availableActors)
 	})
 	
+	print(str("Text step available actors: ", availableActors))
+	
 	return properties
 
 func runStep():

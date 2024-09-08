@@ -55,6 +55,11 @@ func checkSpawnFlags():
 				var markers = DialogueSystem.cutsceneMarkers
 				var mark = DialogueSystem.cutsceneMarkers.marksArray[0]
 				position = mark.position
+		elif(npcResource.characterFlags.flags.has("Problem Solved")):
+			if(npcResource.characterFlags.flags["Problem Solved"]):
+				var markers = DialogueSystem.cutsceneMarkers
+				var mark = DialogueSystem.cutsceneMarkers.marksArray[0]
+				position = mark.position
 
 func interactAction(interacter : OW_Player):
 	var timelinePath = getCorrectTimeline()
@@ -66,6 +71,11 @@ func getCorrectTimeline() -> String:
 	var timelines = npcResource.timelines
 	if(npcFlags["1st Interaction"]):
 		return timelines["1st_Interaction"]
+	elif(npcFlags["Troubled"]):
+		return timelines["Troubled"]
+	elif(npcFlags["Player Has Solution"]):
+		return timelines["PlayerSolution"]
+		
 	elif(npcFlags["Liked"]):
 		return timelines["LikedInteraction"]
 	elif(npcFlags["Disliked"]):

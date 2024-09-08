@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgf47c4117amd"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_6rnd3"]
+[ext_resource type="Resource" uid="uid://kxus6v33cy0j" path="res://Overworld/Rooms/BoogerRoom_Rsrc1.tres" id="2_buetd"]
+[ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="3_w5mdp"]
+[ext_resource type="Script" path="res://Dialogue/DLG_SetFlags.gd" id="4_vgv5y"]
+
+[node name="DLG_Start" type="Node"]
+script = ExtResource("1_6rnd3")
+roomResource = ExtResource("2_buetd")
+
+[node name="DLG_Text" type="Node" parent="."]
+script = ExtResource("3_w5mdp")
+message = Array[String](["Woah, robots! Cool."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text2" type="Node" parent="."]
+script = ExtResource("3_w5mdp")
+message = Array[String](["..."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text3" type="Node" parent="."]
+script = ExtResource("3_w5mdp")
+message = Array[String](["Oh, am I blocking you? Sorry."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text4" type="Node" parent="."]
+script = ExtResource("3_w5mdp")
+message = Array[String](["You see, I'm depressed."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text5" type="Node" parent="."]
+script = ExtResource("3_w5mdp")
+message = Array[String](["All this cold air is bringing down the vibes, and my blood temperature."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text7" type="Node" parent="."]
+script = ExtResource("3_w5mdp")
+message = Array[String](["I'd need something to really pump me up in order to move."])
+messageSpeaker = "Booger"
+
+[node name="DLG_SetFlags" type="Node" parent="."]
+script = ExtResource("4_vgv5y")
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "1st Interaction"
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "1st Interaction"
+
+[node name="DLG_SetFlags2" type="Node" parent="."]
+script = ExtResource("4_vgv5y")
+setTo = true
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "Troubled"
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "Troubled"

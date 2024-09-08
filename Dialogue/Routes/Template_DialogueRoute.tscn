@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bua6jg5jxlyth"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_d5pfw"]
+
+[node name="DLG_Start" type="Node"]
+script = ExtResource("1_d5pfw")

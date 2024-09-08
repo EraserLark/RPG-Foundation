@@ -61,7 +61,7 @@ func populateGlobalVars():
 		roomData.clearData()
 		roomData.room = self
 		
-		var roomFlagList = FlagManager.flags["World"]["Zone1"]["FirstRoom"]
+		var roomFlagList = FlagManager.flags["World"]["Zone1"][roomData.roomName]
 		
 		for child in $CastList.get_children():
 			roomData.castList.append(child.name)

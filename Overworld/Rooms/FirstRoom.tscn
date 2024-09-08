@@ -129,7 +129,7 @@ leadsToRoom = "res://Overworld/Rooms/SecondRoom.tscn"
 [node name="Passage_1" parent="Passages" index="1" instance=ExtResource("6_x2mqx")]
 position = Vector2(1504, 416)
 rotation = 1.5708
-leadsToRoom = "res://Overworld/Rooms/EncounterRoom.tscn"
+leadsToRoom = "res://Overworld/Rooms/Booger_Room.tscn"
 spawnFacing = 4
 metadata/_edit_group_ = true
 

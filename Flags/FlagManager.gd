@@ -11,6 +11,10 @@ extends Node
 			"SecondRoom":{
 				"CastList": {},
 				"Interactables": {}
+			},
+			"BoogerRoom":{
+				"CastList": {},
+				"Interactables": {}
 			}
 		},
 		"Zone2": {

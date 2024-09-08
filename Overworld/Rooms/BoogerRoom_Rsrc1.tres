@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=2 format=3 uid="uid://kxus6v33cy0j"]
+
+[ext_resource type="Script" path="res://RoomData.gd" id="1_es4sg"]
+
+[resource]
+script = ExtResource("1_es4sg")
+castList = Array[String](["Booger"])
+passageList = Array[String](["Passage_num"])
+cutsceneMarks = Array[String](["Node2D", "Path2D"])
+zone = "Zone1"
+roomName = "BoogerRoom"
