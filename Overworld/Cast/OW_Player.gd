@@ -42,9 +42,10 @@ func getPlayerNum():
 func moveDirection(dir: Vector2):
 	##Play walk animation?
 	self.velocity = dir.normalized() * speed;
-	if(playerEntity.rosterNumber == 0):
-		if(dir != Vector2.ZERO):
-			stepCounter()
+	if(!currentRoom.safeRoom):
+		if(playerEntity.rosterNumber == 0):
+			if(dir != Vector2.ZERO):
+				stepCounter()
 
 ##Called in Player_Active state so it can't run once state changes
 func physicsUpdate(delta: float):
@@ -52,7 +53,7 @@ func physicsUpdate(delta: float):
 
 func stepCounter():
 	stepCount += 1
-	#print(str("Steps: ", stepCount))
+	print(str("Steps: ", stepCount))
 	if(stepCount >= encounterThreshold):
 		stepCount = 0
 		resetEncounterThreshold()

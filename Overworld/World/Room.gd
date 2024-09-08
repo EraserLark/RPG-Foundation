@@ -26,6 +26,7 @@ var cutsceneManager
 ##Export vars
 @export var roomData: RoomData
 @export var enemyRoster: Array[EnemyInfo]
+@export var safeRoom:= true
 
 ##Non export vars
 var playerSpawnPort: int

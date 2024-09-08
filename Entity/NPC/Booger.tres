@@ -4,24 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://buuutwg87padp" path="res://Art/NPC_Booger.png" id="2_cw70n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axojr"]
-size = Vector2(72, 20)
+size = Vector2(120, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny8b7"]
-size = Vector2(72, 20)
+size = Vector2(120, 33)
 
 [resource]
 script = ExtResource("1_rnokg")
 npcName = "Booger"
 timelines = {}
 spriteSheet = ExtResource("2_cw70n")
-spriteOffset = Vector2(0, 0)
-spriteScale = Vector2(3, 3)
+spriteOffset = Vector2(0, -7)
+spriteScale = Vector2(5, 5)
 hFrames = 1
 vFrames = 1
 currentFrame = 0
 characterPortraits = Array[Texture]([])
 interactAreaShape = SubResource("RectangleShape2D_ny8b7")
-interactAreaOffset = Vector2(0, 24)
+interactAreaOffset = Vector2(0, 5)
 collisionShape = SubResource("RectangleShape2D_axojr")
-collisionOffset = Vector2(0, 24)
-speechSpotPos = Vector2(0, 0)
+collisionOffset = Vector2(0, 5)
+speechSpotPos = Vector2(100, 100)

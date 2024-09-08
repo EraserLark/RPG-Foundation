@@ -47,6 +47,7 @@ source_geometry_group_name = &"navObstacles"
 [node name="FirstRoom" instance=ExtResource("1_sgwbx")]
 roomData = ExtResource("2_wi5o4")
 enemyRoster = Array[ExtResource("7_8xbgv")]([ExtResource("8_u5pc7"), ExtResource("9_22w46")])
+safeRoom = false
 
 [node name="Camera2D" parent="." index="0"]
 metadata/_edit_lock_ = true
@@ -70,6 +71,7 @@ npcResource = ExtResource("4_qg7gy")
 walkSpeed = 200.0
 
 [node name="Sprite2D" parent="CastList/Godot Guy" index="0"]
+y_sort_enabled = false
 texture = ExtResource("9_fqaae")
 
 [node name="CollisionShape2D" parent="CastList/Godot Guy" index="1"]
@@ -84,6 +86,7 @@ script = ExtResource("4_ua3m4")
 battleData = Array[ExtResource("7_8xbgv")]([ExtResource("8_u5pc7"), ExtResource("9_22w46")])
 
 [node name="Sprite2D" parent="CastList/OW_EnemyNPC" index="0"]
+y_sort_enabled = false
 scale = Vector2(3, 3)
 texture = ExtResource("5_h78mw")
 offset = Vector2(0, -18)

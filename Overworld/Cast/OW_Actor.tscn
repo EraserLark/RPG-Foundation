@@ -15,6 +15,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_4a8gj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = SubResource("CompressedTexture2D_earmp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
