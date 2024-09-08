@@ -166,6 +166,7 @@ priority = 1
 follow_mode = 3
 snap_to_pixel = true
 tween_resource = SubResource("Resource_of24n")
+tween_on_load = false
 auto_zoom = true
 auto_zoom_min = 0.75
 auto_zoom_max = 1.0

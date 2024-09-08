@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://3fhv07gurso2"]
+[gd_scene load_steps=15 format=4 uid="uid://3fhv07gurso2"]
 
 [ext_resource type="PackedScene" uid="uid://bayxt5ttehhv8" path="res://Overworld/Rooms/roomTemplate.tscn" id="1_uwy11"]
 [ext_resource type="Resource" uid="uid://bpi8gtqnif727" path="res://Overworld/Rooms/JDRoom_Rsrc.tres" id="2_k3iq2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Flags/FlagList.gd" id="5_csuhd"]
 [ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="5_napyw"]
 [ext_resource type="Texture2D" uid="uid://bya400p4jnxcs" path="res://Art/MushMan.png" id="6_qbqdx"]
+[ext_resource type="PackedScene" uid="uid://dkt3x5qf05q4f" path="res://Overworld/Interactibles/sign.tscn" id="8_g51rg"]
 [ext_resource type="PackedScene" uid="uid://cng5hucdg71lw" path="res://Overworld/Rooms/Passages/passage.tscn" id="8_m34me"]
 
 [sub_resource type="Resource" id="Resource_u0g8y"]
@@ -61,6 +62,10 @@ tile_set = ExtResource("2_m181s")
 
 [node name="JD" parent="CastList" index="0" instance=ExtResource("4_vxaum")]
 npcResource = SubResource("Resource_wjfhc")
+
+[node name="Sign" parent="Interactables" index="0" instance=ExtResource("8_g51rg")]
+position = Vector2(480, 256)
+lines = Array[String](["Dancing is a great way to relieve stress.", "Try dancing your character around.", "I'm sure they would appreciate it!"])
 
 [node name="Passage_num" parent="Passages" index="0" instance=ExtResource("8_m34me")]
 position = Vector2(-640, 0)
