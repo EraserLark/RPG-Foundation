@@ -93,6 +93,9 @@ func revertStatus():
 
 func gainHealth(amt: int):
 	entityInfo.addHealth(amt)
+	
+	if currentStage == STAGE.BATTLE:
+		battleActor.healFeedback()
 
 func fullHeal():
 	var maxHP = entityInfo.hpMax

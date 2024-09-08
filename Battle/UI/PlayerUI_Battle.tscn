@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c7fouswjqgykh"]
+[gd_scene load_steps=22 format=3 uid="uid://c7fouswjqgykh"]
 
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_qvh2h"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_h70pe"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://yie3dymrkfv5" path="res://Menus/ManualMenu_LabelList.tscn" id="10_14tsx"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/PlayerMenu.gd" id="10_yjjpt"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/AttackMenu.gd" id="11_jwv4u"]
-[ext_resource type="Script" path="res://Menus/ItemMenu.gd" id="12_fcsqg"]
+[ext_resource type="Script" path="res://Battle/UI/Menus/Battle_ItemMenu.gd" id="11_sc0v8"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/MiscMenu.gd" id="13_clnyn"]
 [ext_resource type="Script" path="res://Battle/UI/WaitingMenu.gd" id="13_hqadu"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/Menus/action_menu.tscn" id="14_1tgmc"]
@@ -81,11 +81,41 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerPanel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_io652"]
+resource_name = "Player_Healed"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerPanel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kukrl"]
 _data = {
 "Death": SubResource("Animation_vndq1"),
 "Player_Damaged": SubResource("Animation_gqoo2"),
+"Player_Healed": SubResource("Animation_io652"),
 "RESET": SubResource("Animation_sving")
 }
 
@@ -215,7 +245,7 @@ layout_mode = 2
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-script = ExtResource("12_fcsqg")
+script = ExtResource("11_sc0v8")
 metadata/_edit_group_ = true
 
 [node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" instance=ExtResource("10_14tsx")]
@@ -226,7 +256,6 @@ visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("13_clnyn")
-metadata/_edit_group_ = true
 
 [node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" instance=ExtResource("10_14tsx")]
 layout_mode = 2

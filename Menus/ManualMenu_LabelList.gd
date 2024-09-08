@@ -181,8 +181,9 @@ func selectItem():
 	print(str("Menu: ", self.name, "  CurrentSelection: ", currentSelection, "  UpperScrollRange: ", upperScrollRange))
 
 func activateOption():
-	focusLabel.theme_type_variation = "Activated"
-	emit_signal("optionActivated", currentSelection)
+	if listSize > 0:
+		focusLabel.theme_type_variation = "Activated"
+		emit_signal("optionActivated", currentSelection)
 
 func setPrevFocus():
 	#Store prevFocus as int here
