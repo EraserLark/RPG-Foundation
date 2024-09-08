@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="NPC_Info" load_steps=5 format=3 uid="uid://dt0af3ndjvlet"]
+
+[ext_resource type="Script" path="res://Entity/NPC/NPC_Info.gd" id="1_m2u0y"]
+[ext_resource type="Texture2D" uid="uid://boi0b4bav626q" path="res://Art/NPC_JD.png" id="2_k4g66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdo50"]
+size = Vector2(72, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plvqy"]
+size = Vector2(72, 20)
+
+[resource]
+script = ExtResource("1_m2u0y")
+npcName = "JD"
+timelines = {}
+spriteSheet = ExtResource("2_k4g66")
+spriteOffset = Vector2(0, 0)
+spriteScale = Vector2(3, 3)
+hFrames = 1
+vFrames = 1
+currentFrame = 0
+characterPortraits = Array[Texture]([])
+interactAreaShape = SubResource("RectangleShape2D_plvqy")
+interactAreaOffset = Vector2(0, 20)
+collisionShape = SubResource("RectangleShape2D_cdo50")
+collisionOffset = Vector2(0, 20)
+speechSpotPos = Vector2(0, 0)

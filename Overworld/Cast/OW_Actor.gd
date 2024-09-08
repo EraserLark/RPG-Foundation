@@ -49,11 +49,12 @@ func setNPCInfo(info: NPC_Info):
 	$SpeechSpot.position = info.speechSpotPos
 
 func checkSpawnFlags():
-	if(npcResource.characterFlags.flags.has("Disliked")):
-		if(npcResource.characterFlags.flags["Disliked"]):
-			var markers = DialogueSystem.cutsceneMarkers
-			var mark = DialogueSystem.cutsceneMarkers.marksArray[0]
-			position = mark.position
+	if npcResource.characterFlags != null:
+		if(npcResource.characterFlags.flags.has("Disliked")):
+			if(npcResource.characterFlags.flags["Disliked"]):
+				var markers = DialogueSystem.cutsceneMarkers
+				var mark = DialogueSystem.cutsceneMarkers.marksArray[0]
+				position = mark.position
 
 func interactAction(interacter : OW_Player):
 	var timelinePath = getCorrectTimeline()
