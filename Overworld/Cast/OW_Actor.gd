@@ -71,10 +71,10 @@ func getCorrectTimeline() -> String:
 	var timelines = npcResource.timelines
 	if(npcFlags["1st Interaction"]):
 		return timelines["1st_Interaction"]
-	elif(npcFlags["Troubled"]):
-		return timelines["Troubled"]
 	elif(npcFlags["Player Has Solution"]):
 		return timelines["PlayerSolution"]
+	elif(npcFlags["Troubled"]):
+		return timelines["Troubled"]
 		
 	elif(npcFlags["Liked"]):
 		return timelines["LikedInteraction"]

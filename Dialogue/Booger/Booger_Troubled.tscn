@@ -10,5 +10,5 @@ roomResource = ExtResource("2_7iprl")
 
 [node name="DLG_Text" type="Node" parent="."]
 script = ExtResource("3_dmoqw")
-message = Array[String](["I hope JD is staying warm."])
+message = Array[String](["I miss JD. Wonder how he's doing."])
 messageSpeaker = "Booger"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=2 format=3 uid="uid://bpi8gtqnif727"]
+
+[ext_resource type="Script" path="res://RoomData.gd" id="1_stx6a"]
+
+[resource]
+script = ExtResource("1_stx6a")
+castList = Array[String](["JD"])
+passageList = Array[String](["Passage_num"])
+cutsceneMarks = Array[String]([])
+zone = "Zone1"
+roomName = "JDRoom"

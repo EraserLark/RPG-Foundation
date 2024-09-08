@@ -7,8 +7,8 @@
 [sub_resource type="Resource" id="Resource_fd2i4"]
 script = ExtResource("1_hvd5u")
 flags = {
-"1st Interaction": false,
-"Player Has Solution": true,
+"1st Interaction": true,
+"Player Has Solution": false,
 "Problem Solved": false,
 "Troubled": false
 }
@@ -39,4 +39,4 @@ interactAreaShape = SubResource("RectangleShape2D_ny8b7")
 interactAreaOffset = Vector2(0, 5)
 collisionShape = SubResource("RectangleShape2D_axojr")
 collisionOffset = Vector2(0, 5)
-speechSpotPos = Vector2(100, 100)
+speechSpotPos = Vector2(100, -100)

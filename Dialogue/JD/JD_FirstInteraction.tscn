@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwoxbt3f4nwqm"]
+
+[ext_resource type="Script" path="res://Dialogue/DLG_Start.gd" id="1_am16f"]
+[ext_resource type="Resource" uid="uid://bpi8gtqnif727" path="res://Overworld/Rooms/JDRoom_Rsrc.tres" id="2_a38jq"]
+[ext_resource type="Script" path="res://Dialogue/DLG_Text.gd" id="3_bhi14"]
+[ext_resource type="Script" path="res://Dialogue/DLG_SetFlags.gd" id="4_mylln"]
+
+[node name="DLG_Start" type="Node"]
+script = ExtResource("1_am16f")
+roomResource = ExtResource("2_a38jq")
+
+[node name="DLG_Text" type="Node" parent="."]
+script = ExtResource("3_bhi14")
+message = Array[String](["Sup."])
+messageSpeaker = "JD"
+
+[node name="DLG_Text2" type="Node" parent="."]
+script = ExtResource("3_bhi14")
+message = Array[String](["I gotta let my boy Booger know JD is back in town."])
+messageSpeaker = "JD"
+
+[node name="DLG_SetFlags" type="Node" parent="."]
+script = ExtResource("4_mylln")
+setTo = true
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "Player Has Solution"
+zone = "Zone1"
+room = "BoogerRoom"
+section = "CastList"
+member = "Booger"
+flagName = "Player Has Solution"

@@ -15,6 +15,10 @@ extends Node
 			"BoogerRoom":{
 				"CastList": {},
 				"Interactables": {}
+			},
+			"JDRoom":{
+				"CastList": {},
+				"Interactables": {}
 			}
 		},
 		"Zone2": {

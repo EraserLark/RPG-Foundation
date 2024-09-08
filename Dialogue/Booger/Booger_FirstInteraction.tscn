@@ -31,12 +31,17 @@ messageSpeaker = "Booger"
 
 [node name="DLG_Text5" type="Node" parent="."]
 script = ExtResource("3_w5mdp")
-message = Array[String](["All this cold air is bringing down the vibes, and my blood temperature."])
+message = Array[String](["All this cold air is bringing down the vibes."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text6" type="Node" parent="."]
+script = ExtResource("3_w5mdp")
+message = Array[String](["*yawn* And my blood temperature."])
 messageSpeaker = "Booger"
 
 [node name="DLG_Text7" type="Node" parent="."]
 script = ExtResource("3_w5mdp")
-message = Array[String](["I'd need something to really pump me up in order to move."])
+message = Array[String](["I don't know if I can move until I cheer up."])
 messageSpeaker = "Booger"
 
 [node name="DLG_SetFlags" type="Node" parent="."]

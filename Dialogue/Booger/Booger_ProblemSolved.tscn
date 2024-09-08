@@ -12,15 +12,25 @@ roomResource = ExtResource("2_ukamv")
 
 [node name="DLG_Text" type="Node" parent="."]
 script = ExtResource("3_61fjy")
-message = Array[String](["Wait, JD is alright?"])
+message = Array[String](["Oh hi again."])
 messageSpeaker = "Booger"
 
 [node name="DLG_Text2" type="Node" parent="."]
 script = ExtResource("3_61fjy")
-message = Array[String](["YIPPEE!"])
+message = Array[String](["Wait, [shake]WHAT[/shake]??"])
 messageSpeaker = "Booger"
 
 [node name="DLG_Text3" type="Node" parent="."]
+script = ExtResource("3_61fjy")
+message = Array[String](["JD is here? YIPPEE!"])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text6" type="Node" parent="."]
+script = ExtResource("3_61fjy")
+message = Array[String](["I gotta go find him."])
+messageSpeaker = "Booger"
+
+[node name="DLG_Text7" type="Node" parent="."]
 script = ExtResource("3_61fjy")
 message = Array[String](["..."])
 messageSpeaker = "Booger"
