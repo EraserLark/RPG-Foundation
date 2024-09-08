@@ -217,29 +217,20 @@ grow_vertical = 2
 
 [node name="P1" type="Control" parent="CanvasLayer/OW_UI/PlayerAnchors/4Players"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
+anchors_preset = 0
 
 [node name="P2" type="Control" parent="CanvasLayer/OW_UI/PlayerAnchors/4Players"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
 
 [node name="P3" type="Control" parent="CanvasLayer/OW_UI/PlayerAnchors/4Players"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-grow_horizontal = 2
 grow_vertical = 0
 
 [node name="P4" type="Control" parent="CanvasLayer/OW_UI/PlayerAnchors/4Players"]

@@ -21,7 +21,7 @@ func determineAnchorLayout():
 			panelAnchorPositions = {0: 3, 1: 4, 2: 5}
 		4:
 			currentAnchorLayout = get_child(3).get_children()
-			panelAnchorPositions = {0: 3, 1: 5, 2: 3, 3: 5}
+			panelAnchorPositions = {0: 0, 1: 2, 2: 3, 3: 5}
 		_:
 			printerr("Unable to determine anchor layout")
 
