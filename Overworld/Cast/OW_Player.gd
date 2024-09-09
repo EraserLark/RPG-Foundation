@@ -62,7 +62,7 @@ func stepCounter():
 		#GameStateStack.stack.addState(enterBattleState, {"Room": currentRoom})
 
 func resetEncounterThreshold():
-	encounterThreshold = randi_range(1500, 3000)
+	encounterThreshold = randi_range(1000, 2000)
 	print(str("Encounter Threshold: ", encounterThreshold))
 
 func faceDirection(dir: Vector2) -> bool:

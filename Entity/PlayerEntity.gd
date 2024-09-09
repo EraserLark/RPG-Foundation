@@ -160,7 +160,7 @@ func endEntity():
 
 func enterBattleStage():
 	currentStage = STAGE.BATTLE
-	entityInfo.entityUI = battleUI
+	#entityInfo.entityUI = battleUI
 
 func exitBattleStage():
 	currentStage = STAGE.WORLD
