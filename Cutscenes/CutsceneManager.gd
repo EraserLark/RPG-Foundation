@@ -1,7 +1,7 @@
 extends AnimationPlayer
 class_name CutsceneManager
 
-var battleManager
+var stageManager
 var battleUI
 var battleStage
 

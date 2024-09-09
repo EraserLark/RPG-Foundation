@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_es4sg")
 castList = Array[String](["Booger"])
-passageList = Array[String](["Passage_num", "Passage_num2"])
+passageList = Array[String](["Passage_num", "Passage_num2", "Passage_num3"])
 cutsceneMarks = Array[String](["Node2D", "Path2D"])
 zone = "Zone1"
 roomName = "BoogerRoom"

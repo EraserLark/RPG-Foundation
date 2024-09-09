@@ -22,6 +22,7 @@ func _ready():
 	
 	stageUI.initialize(self)
 	overworldWorld.initialize(self)
+	cutsceneManager.stageManager = self
 	
 	var overworldGameState = GameState_Overworld.new()	#Adds itself to GameStateStack
 	
