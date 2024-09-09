@@ -165,3 +165,6 @@ func enterBattleStage():
 func exitBattleStage():
 	currentStage = STAGE.WORLD
 	entityInfo.entityUI = worldUI
+	
+	if entityInfo.hp <= 0:
+		gainHealth(1)

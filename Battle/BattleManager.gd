@@ -44,6 +44,8 @@ func _ready():
 	
 	for player in PlayerRoster.roster:
 		player.battleManager = self
+		if player.entityInfo.hp > 0:
+			player.isDead = false
 	
 	enemyRoster.initialize(self)
 	enemyEntities = enemyRoster.enemies
