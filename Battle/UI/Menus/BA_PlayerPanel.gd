@@ -17,6 +17,8 @@ var playerPointer: Cursor
 #var player: PlayerEntity
 
 ##Inside vars
+@export var healthbarFlipped:= false
+@export var actionButtonsFlipped:= false
 var currentSelectedAction: Action
 var isActionItem:= false
 var itemIndex
@@ -44,6 +46,26 @@ func open(sStack: StateStack):
 	isFinished = false
 	#player = playerUI.player
 	super(sStack)
+
+func flipHealthbar(condition: bool):
+	healthbarFlipped = condition
+	
+	if healthbarFlipped:
+		stats.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+		stats.position.x += 16
+	else:
+		stats.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		stats.position.x -= 16
+	
+func flipActionButtons(condition: bool):
+	actionButtonsFlipped = condition
+	
+	if actionButtonsFlipped:
+		playerMenu.actionSelectionMenu.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+		playerMenu.actionSelectionMenu.position.y += 40
+	else:
+		playerMenu.actionSelectionMenu.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		playerMenu.actionSelectionMenu.position.y -= 40
 
 func attackSelected(index: int):
 	currentSelectedAction = playerEntity.attackChosen(index)

@@ -45,6 +45,11 @@ func adjustMenusLayout():
 		ui.currentPanelAnchor = ui.playerPanel.panelAnchors[panelAnchorIndex]
 		ui.currentStageAnchor = playerAnchors.currentAnchorLayout[i]
 		ui.centerPlayerPanel()
+		
+		if self is Battle_UI:
+			ui.playerPanel.flipHealthbar(playerAnchors.panelAttachmentsFlip[i][0])
+			ui.playerPanel.flipActionButtons(playerAnchors.panelAttachmentsFlip[i][0])
+		
 		i+=1
 
 func showPlayerMenu(condition: bool):
