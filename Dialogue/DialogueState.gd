@@ -2,13 +2,16 @@ extends State
 class_name DialogueState
 
 var dialogueManager: DialogueManager
-var playerEntity: Entity
+var playerEntity: PlayerEntity
 var playerInput
 var inputHeld:= false
+var currentRoom: Room
 
-func _init(pEntity: Entity, dm: DialogueManager):
+func _init(pEntity: PlayerEntity, dm: DialogueManager):
 	super(pEntity.playerStateStack)
+	playerEntity = pEntity
 	dialogueManager = dm
+	currentRoom = playerEntity.overworldManager.overworldWorld.currentRoom
 
 func handleInput(_event: InputEvent):
 	if _event.device != playerEntity.deviceNumber:
@@ -43,7 +46,11 @@ func physicsUpdate(_delta : float):
 	pass
 
 func resumeState():
-	dialogueManager.resumeFocusStep()
+	if playerEntity.overworldManager.overworldWorld.currentRoom != currentRoom:
+		dialogueManager.endDialogue()
+		#exit()
+	else:
+		dialogueManager.resumeFocusStep()
 
 func exit():
 	playerEntity.worldActor.collisionShape.set_deferred("disabled", false)

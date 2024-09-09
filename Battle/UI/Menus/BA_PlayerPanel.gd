@@ -52,20 +52,20 @@ func flipHealthbar(condition: bool):
 	
 	if healthbarFlipped:
 		stats.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-		stats.position.x += 16
+		stats.position.x = 288
 	else:
 		stats.set_anchors_preset(Control.PRESET_TOP_LEFT)
-		stats.position.x -= 16
+		stats.position.x = -16
 	
 func flipActionButtons(condition: bool):
 	actionButtonsFlipped = condition
 	
 	if actionButtonsFlipped:
 		playerMenu.actionSelectionMenu.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-		playerMenu.actionSelectionMenu.position.y += 40
+		playerMenu.actionSelectionMenu.position.y = 136
 	else:
 		playerMenu.actionSelectionMenu.set_anchors_preset(Control.PRESET_TOP_LEFT)
-		playerMenu.actionSelectionMenu.position.y -= 40
+		playerMenu.actionSelectionMenu.position.y = -40
 
 func attackSelected(index: int):
 	currentSelectedAction = playerEntity.attackChosen(index)

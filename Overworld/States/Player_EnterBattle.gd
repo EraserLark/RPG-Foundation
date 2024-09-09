@@ -15,6 +15,11 @@ func enter(playerNum: int, _msg:= {}):
 	PlayerRoster.roster[playerNum].enterBattleStage()
 
 func stackEnter(_msg := {}):
+	for player in PlayerRoster.getActiveRoster():
+		var topState = player.playerStateStack.currentState
+		if topState is ManualMenu_State:
+			topState.menuSystem.closeMenuSystem()
+	
 	super()
 	
 	currentRoom = _msg["Room"]

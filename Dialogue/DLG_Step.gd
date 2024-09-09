@@ -14,6 +14,9 @@ func runStep():
 func resumeStep():
 	pass
 
+func endStepEarly():
+	pass
+
 func getNextStep(currentStep: Step) -> Step:
 	var parent = currentStep.get_parent()
 	var currentIndex = currentStep.get_index()

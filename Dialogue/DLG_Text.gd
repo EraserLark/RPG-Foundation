@@ -62,6 +62,10 @@ func resumeStep():
 		nextStep.dialogueBox = dialogueBox
 	advanceNextStep(self)
 
+func endStepEarly():
+	dialogueBox.closeTextbox()
+	#DialogueSystem.tbContainer_PlayerPanel.visible = false
+
 func confirmInput():
 	dialogueBox.confirmInput()
 

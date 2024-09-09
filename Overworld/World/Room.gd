@@ -88,5 +88,9 @@ func startBattle(battleData: Array[EnemyInfo] = []):
 
 func exitRoom(newRoomPath: String, port: int):
 	#world.onRoomExit(newRoomPath, port)
+	for player in PlayerRoster.getActiveRoster():
+		var topState = player.playerStateStack.currentState
+		if topState is ManualMenu_State:
+			topState.menuSystem.closeMenuSystem()
 	var transition = TransitionState.new(owManager.cutsceneManager, world, newRoomPath, port)
 	#GameStateStack.addGameState(transition)

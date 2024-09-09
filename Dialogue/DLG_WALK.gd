@@ -78,6 +78,9 @@ func runStep():
 		var newPathRunner = PathRunner.newPathRunner(250, walker, pathToRun)
 		newPathRunner.pathComplete.connect(walkFinished)
 
+#func endStepEarly():
+	#walkFinished(null)
+
 func walkFinished(path):
 	walker.disableCollider(false)
 	

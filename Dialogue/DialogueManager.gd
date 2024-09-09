@@ -35,6 +35,9 @@ func startDialogue(startStep: DLG_Start):
 func endDialogue():
 	emit_signal("timelineComplete")	#Reenable interact areas for npcs starring in timeline
 	
+	if focusStep!= null:
+		focusStep.endStepEarly()
+	
 	dialogueState.exit()
 	focusStep = null
 	firstStep.queue_free()
