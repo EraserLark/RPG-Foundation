@@ -48,7 +48,7 @@ func adjustMenusLayout():
 		
 		if self is Battle_UI:
 			ui.playerPanel.flipHealthbar(playerAnchors.panelAttachmentsFlip[i][0])
-			ui.playerPanel.flipActionButtons(playerAnchors.panelAttachmentsFlip[i][0])
+			ui.playerPanel.flipActionButtons(playerAnchors.panelAttachmentsFlip[i][1])
 		
 		i+=1
 
