@@ -1,4 +1,3 @@
-#extends OW_Actor
 extends CharacterBody2D
 class_name OW_Player
 
@@ -19,6 +18,7 @@ var currentRoom: Room
 @export var speed:= 500
 @export var stepCount: int
 @export var encounterThreshold: int
+@export var highlightColors: Array[Color]
 
 ##Non export vars
 var currentDir: Vector2
@@ -33,7 +33,7 @@ func initialize(pe: PlayerEntity, rm: Room):
 	currentRoom = rm
 	
 	#Set player highlight color
-	var highlightColor = PlayerRoster.rosterColors[playerEntity.rosterNumber]
+	var highlightColor = highlightColors[playerEntity.rosterNumber]
 	sprite.material.set_shader_parameter("newColor", highlightColor)
 	
 	resetEncounterThreshold()
@@ -50,7 +50,7 @@ func moveDirection(dir: Vector2):
 			if(dir != Vector2.ZERO):
 				stepCounter()
 
-##Called in Player_Active state so it can't run once state changes
+#Called in Player_Active state so it can't run once state changes
 func physicsUpdate(delta: float):
 	move_and_slide()
 
@@ -62,7 +62,6 @@ func stepCounter():
 		resetEncounterThreshold()
 		
 		var enterBattleState = Player_EnterBattle.new({"Room": currentRoom})
-		#GameStateStack.stack.addState(enterBattleState, {"Room": currentRoom})
 
 func resetEncounterThreshold():
 	encounterThreshold = randi_range(1000, 2000)
@@ -72,7 +71,6 @@ func faceDirection(dir: Vector2) -> bool:
 	interactRay.target_position = dir * rayLength;
 	animTree.set("parameters/Idle/blend_position", dir)
 	animTree.set("parameters/Walk/blend_position", dir)
-	#animState.travel("Idle")
 	
 	if(dir != currentDir):
 		danceTimer.start()

@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cixgb"]
 shader = ExtResource("3_8ovrh")
 shader_parameter/origin = Color(0.858824, 0.121569, 0.121569, 1)
-shader_parameter/newColor = Color(1, 0, 1, 1)
+shader_parameter/newColor = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skch1"]
 resource_local_to_scene = true
@@ -458,6 +458,7 @@ script = ExtResource("2_nnavp")
 speed = 400
 stepCount = 0
 encounterThreshold = 500
+highlightColors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 0.623529, 0, 1), Color(0.623529, 0, 1, 1), Color(1, 0, 1, 1), Color(0, 1, 1, 1)])
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_cixgb")
