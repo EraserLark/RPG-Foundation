@@ -1,8 +1,14 @@
-[gd_scene load_steps=40 format=3 uid="uid://b7utuwwqeb7na"]
+[gd_scene load_steps=42 format=3 uid="uid://b7utuwwqeb7na"]
 
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="1_tv04i"]
 [ext_resource type="Script" path="res://Overworld/Cast/OW_Player.gd" id="2_nnavp"]
-[ext_resource type="Texture2D" uid="uid://ttrrdjb6up0h" path="res://Art/Player/Robot_SpriteSheet_2.1.png" id="3_u2e80"]
+[ext_resource type="Shader" path="res://Overworld/Cast/OW_Player.gdshader" id="3_8ovrh"]
+[ext_resource type="Texture2D" uid="uid://bw03dvnpmj24s" path="res://Art/Player/Robot_SpriteSheet_2.2-sheet.png" id="4_hp574"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cixgb"]
+shader = ExtResource("3_8ovrh")
+shader_parameter/origin = Color(0.858824, 0.121569, 0.121569, 1)
+shader_parameter/newColor = Color(1, 0, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skch1"]
 resource_local_to_scene = true
@@ -454,8 +460,9 @@ stepCount = 0
 encounterThreshold = 500
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_cixgb")
 scale = Vector2(4, 4)
-texture = ExtResource("3_u2e80")
+texture = ExtResource("4_hp574")
 offset = Vector2(0, -10)
 hframes = 16
 vframes = 2

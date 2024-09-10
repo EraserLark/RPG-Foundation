@@ -28,9 +28,6 @@ position = Vector2(0, -800)
 scale = Vector2(10, 10)
 texture = ExtResource("2_4u4ox")
 
-[node name="PhantCam_FollowPlayers" parent="CameraMarks" index="0"]
-draw_limits = true
-
 [node name="PhantomCamera2D" type="Node2D" parent="CameraMarks" index="1"]
 position = Vector2(0, -832)
 script = ExtResource("3_k4voe")

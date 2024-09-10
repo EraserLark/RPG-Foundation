@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name OW_Player
 
 ##Child references
+@onready var sprite:= $Sprite2D
 @onready var animTree:= $"AnimationTree"
 @onready var animState = animTree.get("parameters/playback")
 @onready var animPlayer:= $AnimationPlayer
@@ -24,14 +25,16 @@ var currentDir: Vector2
 var dirChangeCount:= 0
 var rayLength := 32
 
-##Initialization
 func _ready():
-	print("Player Ready Start")
-	print("Player Ready Finish")
+	pass
 
 func initialize(pe: PlayerEntity, rm: Room):
 	playerEntity = pe
 	currentRoom = rm
+	
+	#Set player highlight color
+	var highlightColor = PlayerRoster.rosterColors[playerEntity.rosterNumber]
+	sprite.material.set_shader_parameter("newColor", highlightColor)
 	
 	resetEncounterThreshold()
 
