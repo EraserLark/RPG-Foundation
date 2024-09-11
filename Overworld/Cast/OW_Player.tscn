@@ -9,6 +9,7 @@
 shader = ExtResource("3_8ovrh")
 shader_parameter/origin = Color(0.858824, 0.121569, 0.121569, 1)
 shader_parameter/newColor = Color(1, 1, 1, 1)
+shader_parameter/ignoreColor = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_skch1"]
 resource_local_to_scene = true
