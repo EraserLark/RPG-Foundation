@@ -12,7 +12,7 @@ void fragment() {
 	else if (COLOR == ignoreColor)
 		COLOR = current_pixel;
 	else
-		COLOR = mix(COLOR, newColor, 0.25);
+		COLOR = mix(COLOR, newColor, 0.175);
 		COLOR.a = current_pixel.a;
 }
 
