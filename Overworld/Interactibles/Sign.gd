@@ -11,7 +11,7 @@ var worldUI: Control
 func _ready():
 	pass
 
-func interactAction(interacter : OW_Player):
+func interactAction(interacter: OW_Player):
 	var playerEntity = interacter.playerEntity
 	var dialogueBoxParent = createDBC()
 	var tbState = DialogueBox_State.new(playerEntity.playerStateStack, lines, self.name, dialogueBoxParent)

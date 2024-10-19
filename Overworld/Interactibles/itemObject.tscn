@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Overworld/Interactibles/OW_Item.gd" id="1_8jjee"]
 [ext_resource type="Texture2D" uid="uid://b5q065gxp68yq" path="res://Art/monochrome-transparent.png" id="2_olft3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_estis"]
-radius = 16.0
-height = 48.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3r2m"]
+size = Vector2(31.9999, 32.0001)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vpvpc"]
 atlas = ExtResource("2_olft3")
@@ -18,7 +17,7 @@ script = ExtResource("1_8jjee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_estis")
+shape = SubResource("RectangleShape2D_x3r2m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

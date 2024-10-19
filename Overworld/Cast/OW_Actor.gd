@@ -61,7 +61,7 @@ func checkSpawnFlags():
 				var mark = DialogueSystem.cutsceneMarkers.marksArray[0]
 				position = mark.position
 
-func interactAction(interacter : OW_Player):
+func interactAction(interacter: OW_Player):
 	var timelinePath = getCorrectTimeline()
 	if(timelinePath != ""):
 		runNPCTimeline(timelinePath, interacter.getPlayerNum())

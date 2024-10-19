@@ -20,11 +20,11 @@ texture = ExtResource("2_ijrxx")
 position = Vector2(9, -3)
 shape = SubResource("RectangleShape2D_8u5cn")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="InteractArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2(9, -3)
 shape = SubResource("RectangleShape2D_8u5cn")
 debug_color = Color(1, 1, 0, 0.419608)
