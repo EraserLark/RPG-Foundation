@@ -342,7 +342,6 @@ metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
 stream = ExtResource("12_exalw")
-autoplay = true
 
 [node name="StartRoom" parent="World" instance=ExtResource("7_s70q1")]
 
