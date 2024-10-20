@@ -46,6 +46,7 @@ func initialize(om: OverworldManager):
 	cutsceneManager = owManager.cutsceneManager
 	
 	camera.initialize(om, self)
+	roomPhantomCam.position = passages.getSpawnPoint(playerSpawnPort)
 	castList.initialize(om, self)
 	interactables.initialize(om, self)
 	passages.initialize(om, self)

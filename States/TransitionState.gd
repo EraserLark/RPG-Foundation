@@ -37,4 +37,5 @@ func stackResume():
 		transitionEQ.currentEvent.resumeEvent()
 
 func stackExit():
+	world.currentRoom.roomPhantomCam.follow_damping = true
 	super()
