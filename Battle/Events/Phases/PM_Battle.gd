@@ -53,15 +53,28 @@ func setNextPhase():
 			nextPhase = startPhase
 		bPhases.PROMPT:
 			nextPhase = promptPhase
-			battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Prompt")
+			var tween = create_tween()
+			tween.tween_property(battleManager.battleStage.music, "volume_db", -20, 1)
+			tween.finished.connect(checkWhenTweenFin)
+			tween.play()
+			#battleManager.battleStage.music.volume_db = -10
+			#battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Prompt")
 		bPhases.ACTION:
 			nextPhase = actionPhase
-			battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Full")
+			var tween = create_tween()
+			tween.tween_property(battleManager.battleStage.music, "volume_db", 0, 1)
+			tween.finished.connect(checkWhenTweenFin)
+			tween.play()
+			#battleManager.battleStage.music.volume_db = 0
+			#battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Full")
 		bPhases.FINISH:
 			nextPhase = finishPhase
 	currentPhase = nextPhase
 	
 	runCurrentPhase()
+
+func checkWhenTweenFin():
+	print_rich("[color=blue]Tween Fin[/color]")
 
 func runCurrentPhase():
 	super()
