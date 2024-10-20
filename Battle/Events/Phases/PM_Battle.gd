@@ -53,8 +53,10 @@ func setNextPhase():
 			nextPhase = startPhase
 		bPhases.PROMPT:
 			nextPhase = promptPhase
+			battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Prompt")
 		bPhases.ACTION:
 			nextPhase = actionPhase
+			battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Full")
 		bPhases.FINISH:
 			nextPhase = finishPhase
 	currentPhase = nextPhase
