@@ -54,19 +54,11 @@ func setNextPhase():
 		bPhases.PROMPT:
 			nextPhase = promptPhase
 			var tween = create_tween()
-			tween.tween_property(battleManager.battleStage.music, "volume_db", -20, 1)
-			tween.finished.connect(checkWhenTweenFin)
-			tween.play()
-			#battleManager.battleStage.music.volume_db = -10
-			#battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Prompt")
+			battleManager.battleStage.music.fadeMusic(0.5, 1)
 		bPhases.ACTION:
 			nextPhase = actionPhase
 			var tween = create_tween()
-			tween.tween_property(battleManager.battleStage.music, "volume_db", 0, 1)
-			tween.finished.connect(checkWhenTweenFin)
-			tween.play()
-			#battleManager.battleStage.music.volume_db = 0
-			#battleManager.battleStage.music.get_stream_playback().switch_to_clip_by_name("Battle Theme 1 Full")
+			battleManager.battleStage.music.fadeMusic(1, 1)
 		bPhases.FINISH:
 			nextPhase = finishPhase
 	currentPhase = nextPhase

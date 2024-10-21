@@ -53,6 +53,7 @@ func moveDirection(dir: Vector2):
 #Called in Player_Active state so it can't run once state changes
 func physicsUpdate(delta: float):
 	move_and_slide()
+	#self.global_position = round(self.global_position/ 2) * 2
 
 func stepCounter():
 	stepCount += 1

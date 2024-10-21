@@ -56,9 +56,6 @@ func _ready():
 	
 	battleState = Battle_State.new(self)
 
-func _process(delta):
-	print(battleStage.music.volume_db)
-
 func updateTurnCount():
 	turnCount += 1
 	return turnCount
