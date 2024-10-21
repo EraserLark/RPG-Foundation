@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1vfgrbgsn1dq"]
+[gd_scene load_steps=27 format=3 uid="uid://b1vfgrbgsn1dq"]
 
 [ext_resource type="Script" path="res://Battle/BattleManager.gd" id="1_70l2y"]
 [ext_resource type="Script" path="res://Battle/BattleRoster.gd" id="2_l87y1"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c7fouswjqgykh" path="res://Battle/UI/PlayerUI_Battle.tscn" id="9_sivmv"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerAnchors.gd" id="11_errmb"]
 [ext_resource type="Script" path="res://Battle/BattleMessage.gd" id="11_jmgew"]
+[ext_resource type="Shader" path="res://Battle/ScrollRepeat.gdshader" id="13_eygk8"]
+[ext_resource type="Texture2D" uid="uid://drm05waynt25x" path="res://Art/BattleBG_Checker.png" id="13_vpw0n"]
 [ext_resource type="AudioStream" uid="uid://brry4b5h84cfh" path="res://Audio/Music/BattleTheme1_FULL.wav" id="14_r5gw8"]
 [ext_resource type="Script" path="res://Battle/2D/BattleStage.gd" id="14_yybxn"]
 [ext_resource type="Script" path="res://Battle/BattleMusic.gd" id="15_gr6t0"]
@@ -13,9 +15,12 @@
 [ext_resource type="Script" path="res://Battle/Events/Phases/StartPhase.gd" id="18_56cgw"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/PromptPhase.gd" id="19_1ilki"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/ActionPhase.gd" id="20_a8p5w"]
-[ext_resource type="Texture2D" uid="uid://18dlppb0l7c6" path="res://Art/BattleBG_Snow1.png" id="20_pstye"]
 [ext_resource type="Script" path="res://Battle/Events/Phases/FinishPhase.gd" id="21_jxd88"]
 [ext_resource type="Script" path="res://Cutscenes/CutsceneManager.gd" id="26_8cjoh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crd5y"]
+shader = ExtResource("13_eygk8")
+shader_parameter/speed = 0.031
 
 [sub_resource type="Animation" id="Animation_sukq8"]
 resource_name = "BattleMessage_Start"
@@ -615,9 +620,10 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="BattleStage"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_crd5y")
 position = Vector2(576, 328)
-scale = Vector2(8, 8)
-texture = ExtResource("20_pstye")
+texture = ExtResource("13_vpw0n")
 
 [node name="PlayerActors" type="Node2D" parent="BattleStage"]
 

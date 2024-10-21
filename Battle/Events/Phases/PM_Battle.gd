@@ -53,20 +53,15 @@ func setNextPhase():
 			nextPhase = startPhase
 		bPhases.PROMPT:
 			nextPhase = promptPhase
-			var tween = create_tween()
-			battleManager.battleStage.music.fadeMusic(0.5, 1)
+			battleManager.battleStage.music.fadeMusic(0.65, 1)
 		bPhases.ACTION:
 			nextPhase = actionPhase
-			var tween = create_tween()
 			battleManager.battleStage.music.fadeMusic(1, 1)
 		bPhases.FINISH:
 			nextPhase = finishPhase
 	currentPhase = nextPhase
 	
 	runCurrentPhase()
-
-func checkWhenTweenFin():
-	print_rich("[color=blue]Tween Fin[/color]")
 
 func runCurrentPhase():
 	super()
