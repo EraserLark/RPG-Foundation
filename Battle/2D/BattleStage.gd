@@ -33,10 +33,10 @@ func initialize(bm: BattleManager):
 	battleManager = bm
 	
 	#Set up actor information
-	var i:=0
-	for entity in PlayerRoster.getActiveRoster():	
-		var playerActor = addPlayerActor(entity)
-		i+=1
+	#var i:=0
+	#for entity in PlayerRoster.getActiveRoster():
+		#var playerActor = addPlayerActor(entity)
+		#i+=1
 
 func addPlayerActor(pe: PlayerEntity):
 	#Create actor, add to tree

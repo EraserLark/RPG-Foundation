@@ -47,12 +47,6 @@ func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 	#Determine where to spawn the player	
 	##First time spawning
 	if playerEntity.worldActor == null:
-		##Set in Overworld Game State now
-		#Create Player Active state to start actor off with
-		#var pState = Player_Active.new(playerEntity.playerStateStack, playerActor)
-		#playerEntity.playerActiveState = pState
-		#playerEntity.playerStateStack.addState(pState)
-		
 		#First actor
 		if playerActors.size() <= 0:
 			playerActor.position = Vector2.ZERO
@@ -68,6 +62,7 @@ func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 		var spawnDir = passages.getSpawnDir(port)
 		playerActor.faceDirection(spawnDir)
 		
+		##Spawn players out in a line (roughly)
 		if int(spawnDir.x) != 0:
 			playerActor.position += Vector2(0, randi_range(-64, 64))
 		elif int(spawnDir.y) != 0:

@@ -10,10 +10,10 @@ func initialize(sm: StageManager):
 	stageManager = sm
 	
 	#Instance a player menu for each player in the PlayerRoster. Child of self.
-	var i:= 0
-	for entity in PlayerRoster.getActiveRoster():
-		addPlayerUI(entity)
-		i+=1
+	#var i:= 0
+	#for entity in PlayerRoster.getActiveRoster():
+		#addPlayerUI(entity)
+		#i+=1
 		
 func addPlayerUI(playerEntity: PlayerEntity):
 	var playerUI = createPlayerUI(playerEntity.deviceNumber)
@@ -25,7 +25,7 @@ func createPlayerUI(playerNumber = null) -> PlayerUI:
 	add_child(pUI)
 	if playerNumber != null:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
-	#Add it to playerUIRoster
+	
 	playerUIRoster.append(pUI)
 	#Adjust UI layout
 	stageManager.stageUI.adjustMenusLayout()

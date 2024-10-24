@@ -48,8 +48,9 @@ func initialize(sm: StageManager = null):
 			worldActor = overworldManager.overworldWorld.currentRoom.castList.playerActors[rosterNumber]
 		worldUI = overworldManager.stageUI.playerUIRoster[rosterNumber]
 		
-		var connectionState = GameState_Connection.new(playerStateStack, GameStateStack.foundationGameState)
-		playerStateStack.addState(connectionState)	#Enters game state roundabout
+		#var connectionState = GameState_Connection.new(playerStateStack, GameStateStack.foundationGameState)
+		#playerStateStack.addState(connectionState)	#Enters game state roundabout
+		GameStateStack.CatchUpOnStates(playerStateStack)
 	elif sm is BattleManager:
 		if(sm == null):
 			printerr("battleManager not passed")

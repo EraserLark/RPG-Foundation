@@ -16,6 +16,16 @@ func stackEnter(_msg:= {}):
 	super()
 	battlePM.runCurrentPhase()
 
+func enter(playerNum: int, _msg:= {}):
+	var player = PlayerRoster.roster[playerNum]
+	
+	player.battleManager = battleManager
+	if player.entityInfo.hp > 0:
+		player.isDead = false
+	
+	battleManager.stageUI.addPlayerUI(player)
+	var playerActor = battleManager.battleStage.addPlayerActor(player)
+
 func stackResume():
 	if(battlePM.managerFinished):
 		stackExit()

@@ -636,7 +636,6 @@ ignore_rotation = false
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="BattleStage"]
 stream = ExtResource("14_r5gw8")
-autoplay = true
 script = ExtResource("15_gr6t0")
 
 [node name="MinigameZone" type="Node2D" parent="BattleStage"]

@@ -8,7 +8,6 @@ const battleScene: PackedScene = preload("res://Battle/battle.tscn")
 #BattleManager
 @export var enemyData: Array[EnemyInfo]
 @onready var enemyRoster:= $EnemyRoster
-#var playerEntities: Array[BattleEntity_Player]
 var enemyEntities: Array[BattleEntity_Enemy]
 var turnCount:= 0
 var xpBank:= 0
@@ -16,16 +15,12 @@ var battleIsOver:= false
 
 #Systems
 var battleState: Battle_State
-#@onready var battleUI:= $CanvasLayer/BattleUI
 @onready var battleStage:= $BattleStage
 @onready var cutsceneManager:= $CutsceneManager
 
 #Phases
 var promptPhase: GameState_PromptPhase = null
 var actionPhase: GameState_ActionPhase = null
-
-#Player
-#@onready var playerActors:= $BattleStage/PlayerActors
 
 #Other
 @onready var camera:= $BattleStage/Camera2D
@@ -42,8 +37,8 @@ static func initBattle(_enemyData):
 func _ready():
 	stageUI = $CanvasLayer/BattleUI
 	
-	for player in PlayerRoster.roster:
-		player.battleManager = self
+	for player in PlayerRoster.getActiveRoster():
+		#player.battleManager = self
 		if player.entityInfo.hp > 0:
 			player.isDead = false
 	

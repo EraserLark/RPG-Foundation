@@ -2,7 +2,7 @@ extends GameState
 class_name GameState_PromptPhase
 
 var phaseManager: GameState_PhaseManager
-var menuSystems: Array
+var menuSystems: Array = [null, null, null, null, null, null, null]
 
 func _init(pm:GameState_PhaseManager, _msg:={}):
 	phaseManager = pm
@@ -18,7 +18,9 @@ func enter(playerNum: int, _msg:= {}):
 	
 	playerPanel.playerMenu.waitingMenu.playerSubmitted.connect(playerSubmit)
 	
-	menuSystems.append(playerPanel)
+	#menuSystems.insert(playerNum, playerPanel)
+	menuSystems[playerNum] = playerPanel
+	#playerPanel.open(playerEntity.playerStateStack)
 	menuSystems[playerNum].open(playerEntity.playerStateStack)
 
 #Runs the 'resumeState()' func in each player's GameState_Connection state
@@ -46,7 +48,9 @@ func handleInput(playerNum: int, _event: InputEvent):
 
 func playerSubmit():
 	for menuSystem in menuSystems:
-		if !menuSystem.isFinished:
+		if menuSystem == null:
+			break
+		elif !menuSystem.isFinished:
 			return
 	stackExit()	#Only call once all players have submitted!
 

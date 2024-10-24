@@ -65,14 +65,14 @@ func addProfileToRoster(profile: PlayerInfo, rosterNum: int):
 	
 	##Create actor and initialize emptyUI
 	var stageManager: StageManager
-	if playerEntity.battleManager != null:
-		stageManager = playerEntity.battleManager
-		stageManager.battleStage.addPlayerActor(playerEntity)
-		stageManager.stageUI.initializePlayerUI(playerEntity.battleUI, playerEntity)
-	else:
-		stageManager = playerEntity.overworldManager
-		stageManager.overworldWorld.currentRoom.castList.addActor(playerEntity)
-		stageManager.stageUI.initializePlayerUI(playerEntity.worldUI, playerEntity)
+	#if playerEntity.battleManager != null:
+		#stageManager = playerEntity.battleManager
+		#stageManager.battleStage.addPlayerActor(playerEntity)
+		#stageManager.stageUI.initializePlayerUI(playerEntity.battleUI, playerEntity)
+	#else:
+	stageManager = playerEntity.overworldManager
+	stageManager.overworldWorld.currentRoom.castList.addActor(playerEntity)
+	stageManager.stageUI.initializePlayerUI(playerEntity.worldUI, playerEntity)
 	
 	##Initialize entity
 	playerEntity.initialize(stageManager)
