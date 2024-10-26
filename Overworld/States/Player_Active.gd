@@ -1,28 +1,28 @@
 extends State
 class_name Player_Active
 
-var player: OW_Player
+var playerActor: OW_Player
 var input: DeviceInput
 
 func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
-	player = plyr
-	input = player.playerEntity.input
+	playerActor = plyr
+	input = playerActor.playerEntity.input
 
 func handleInput(event : InputEvent):
-	if event.device != player.playerEntity.deviceNumber:
+	if event.device != playerActor.playerEntity.deviceNumber:
 		return
 	
 	if(event.is_action_pressed("ui_accept")):
-		player.castInteractRay()
+		playerActor.castInteractRay()
 	elif(event.is_action_pressed("ui_cancel")):
-		player.openMenu()
+		playerActor.openMenu()
 
 func enter(msg := {}):
 	pass
 
 func update(delta : float):
-	if(player == null):
+	if(playerActor == null):
 		return
 	
 	##Get input vector
@@ -33,23 +33,31 @@ func update(delta : float):
 	if input.is_joypad() && inputDir != Vector2.ZERO:
 		inputDir = Helper.convertToEightDir(inputDir)
 	
-	##Move player
-	player.moveDirection(inputDir)
+	##Move playerActor
+	playerActor.moveDirection(inputDir)
 	
 	if inputDir != Vector2.ZERO:
-		var dancing = player.faceDirection(inputDir)
+		var dancing = playerActor.faceDirection(inputDir)
 		if(dancing):
 			return
 		
-		player.animState.travel("Walk")
+		playerActor.animState.travel("Walk")
 	else:
-		player.animState.travel("Idle")
+		playerActor.animState.travel("Idle")
 
 func physicsUpdate(_delta: float):
-	player.physicsUpdate(_delta)
+	playerActor.physicsUpdate(_delta)
+
+func interruptState(interruptor):
+	super(interruptor)
+	
+	if interruptor is not Player_Dance:
+		#Pause animation
+		playerActor.animPlayer.pause()
 
 func resumeState():
-	player.velocity = Vector2.ZERO
+	playerActor.velocity = Vector2.ZERO
+	playerActor.animPlayer.play()
 
 func exit():
 	pass

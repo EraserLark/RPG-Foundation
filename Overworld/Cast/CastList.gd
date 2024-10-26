@@ -54,7 +54,7 @@ func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 			playerActor.position = playerActors[0].scanForSpawn()
 	##Entering Room
 	else:
-		playerEntity.playerActiveState.player = playerActor
+		playerEntity.playerActiveState.playerActor = playerActor
 		
 		var port = room.playerSpawnPort
 		var portPos = passages.getSpawnPoint(port)

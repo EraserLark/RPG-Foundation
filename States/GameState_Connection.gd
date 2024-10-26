@@ -23,6 +23,9 @@ func update(_delta: float):
 func physicsUpdate(_delta: float):
 	gameState.physicsUpdate(stateStack.playerNumber, _delta)
 
+func interruptState(interruptor):
+	pass
+
 func resumeState():
 	gameState.resumeState(stateStack.playerNumber)
 

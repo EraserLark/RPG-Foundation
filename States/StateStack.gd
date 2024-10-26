@@ -11,6 +11,15 @@ func _init():
 	addState(baseState)
 
 func addState(s: State, _msg:={}):
+	##Run interruption code
+	if currentState != null:
+		var intState = s
+		##Get game state from connection
+		if intState is GameState_Connection:
+			intState = intState.gameState
+		currentState.interruptState(intState)
+	
+	##Add new state to stack
 	stateStack.push_front(s)
 	currentState = stateStack.front()
 	currentState.stateStack = self

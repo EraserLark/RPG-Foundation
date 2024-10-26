@@ -452,7 +452,7 @@ states/Start/position = Vector2(201, 100)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_eurub")
 states/Walk/position = Vector2(549, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qeq8d"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_krb6k"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_w26xb"), "Idle", "Dance", SubResource("AnimationNodeStateMachineTransition_tkt83"), "Dance", "Idle", SubResource("AnimationNodeStateMachineTransition_2q2mb")]
-graph_offset = Vector2(-151, 52.8772)
+graph_offset = Vector2(-140, 6.8772)
 
 [node name="OW_Player" instance=ExtResource("1_tv04i")]
 y_sort_enabled = true

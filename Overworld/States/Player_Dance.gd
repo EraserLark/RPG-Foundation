@@ -1,19 +1,19 @@
 extends State
 class_name Player_Dance
 
-var player: OW_Player
+var playerActor: OW_Player
 var input: DeviceInput
 
 func _init(sStack, plyr: OW_Player):
 	super(sStack)
-	player = plyr
-	input = player.playerEntity.input
+	playerActor = plyr
+	input = playerActor.playerEntity.input
 
 func handleInput(event : InputEvent):
 	pass
 
 func enter(msg := {}):
-	player.animState.travel("Dance")
+	playerActor.animState.travel("Dance")
 
 func update(delta : float):
 	var inputDir = Vector2.ZERO;
@@ -21,11 +21,28 @@ func update(delta : float):
 	inputDir.y = input.get_action_strength("ui_down") - input.get_action_strength("ui_up");
 	
 	if(inputDir != Vector2.ZERO):
-		player.animTree.set("parameters/Dance/blend_position", inputDir)
+		playerActor.animTree.set("parameters/Dance/blend_position", inputDir)
+
+func interruptState(interruptor):
+	super(interruptor)
+	
+	if interruptorClass is TransitionState:
+		#Pause animation
+		playerActor.animPlayer.pause()
+	else:
+		#End Dance
+		playerActor.animState.travel("Idle")
 
 #Called if Player enters passage while in Dance State.
 func resumeState():
-	exit()
+	if interrupted:
+		interrupted = false
+		if interruptorClass is TransitionState:
+			#End Dance
+			exit()
+		else:
+			#Resume animation
+			playerActor.animPlayer.play()
 
 ##NOT CALLED INTRINSICALLY. STATE IS USUALLY ENDED IN OW_PLAYER :P
 func exit():
