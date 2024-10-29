@@ -489,8 +489,8 @@ libraries = {
 [node name="AnimationTree" parent="." index="4"]
 tree_root = SubResource("AnimationNodeStateMachine_w1fng")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Dance/blend_position = Vector2(-0.000925064, 0.00236559)
-parameters/Idle/blend_position = Vector2(-0.000925064, -0.00484574)
+parameters/Dance/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="DanceTimer" type="Timer" parent="." index="7"]

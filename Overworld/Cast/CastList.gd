@@ -75,6 +75,7 @@ func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 	
 	#Camera
 	phantomCam.append_follow_targets(playerActor)
+	##This is disabled in Player_Entrance state until state ends
 
 func actorSpeak(actorName, actorMessage):
 	emit_signal("actor_speaking", actorName, actorMessage)
