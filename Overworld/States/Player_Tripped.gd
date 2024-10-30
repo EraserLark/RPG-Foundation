@@ -12,7 +12,7 @@ func _init(sStack: StateStack, plyr: OW_Player):
 	playerActor = plyr
 	input = playerActor.playerEntity.input
 	
-	shakeQuota = randi_range(2, 4)
+	shakeQuota = randi_range(3, 5)
 
 func enter(_msg:= {}):
 	playerActor.animTree.active = false
