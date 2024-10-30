@@ -1,9 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://b7utuwwqeb7na"]
+[gd_scene load_steps=47 format=3 uid="uid://b7utuwwqeb7na"]
 
 [ext_resource type="PackedScene" uid="uid://kbweqbjxrnod" path="res://Overworld/Cast/OW_Actor.tscn" id="1_tv04i"]
 [ext_resource type="Script" path="res://Overworld/Cast/OW_Player.gd" id="2_nnavp"]
 [ext_resource type="Shader" path="res://Overworld/Cast/OW_Player.gdshader" id="3_8ovrh"]
-[ext_resource type="Texture2D" uid="uid://bw03dvnpmj24s" path="res://Art/Player/Robot_SpriteSheet_2.2-sheet.png" id="4_hp574"]
+[ext_resource type="Texture2D" uid="uid://1t5iu720hnui" path="res://Art/Player/Robot_SpriteSheet_3.1.png" id="4_pckdy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cixgb"]
 resource_local_to_scene = true
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [34]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -70,7 +70,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [17]
+"values": [33]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -111,7 +111,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [35]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -152,7 +152,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [16]
+"values": [32]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -271,6 +271,51 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2(0, -10)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6ns4y"]
+resource_name = "Shake"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(8, 0), Vector2(-6, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aplkt"]
+resource_name = "Tripped_Idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
+}
 
 [sub_resource type="Animation" id="Animation_8w276"]
 resource_name = "Walk_Down"
@@ -351,6 +396,8 @@ _data = {
 "Idle_Right": SubResource("Animation_rcido"),
 "Idle_Up": SubResource("Animation_3fbvv"),
 "RESET": SubResource("Animation_hj200"),
+"Shake": SubResource("Animation_6ns4y"),
+"Tripped_Idle": SubResource("Animation_aplkt"),
 "Walk_Down": SubResource("Animation_8w276"),
 "Walk_Left": SubResource("Animation_h83g7"),
 "Walk_Right": SubResource("Animation_knh4o"),
@@ -407,6 +454,9 @@ min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_102sa"]
+animation = &"Tripped_Idle"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3utlp"]
 animation = &"Walk_Down"
 
@@ -442,6 +492,10 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2q2mb"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qd2iy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4ieeo"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w1fng"]
 states/Dance/node = SubResource("AnimationNodeBlendSpace2D_jjdsx")
 states/Dance/position = Vector2(363, 228.877)
@@ -449,9 +503,11 @@ states/End/position = Vector2(779, 95)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_1he51")
 states/Idle/position = Vector2(363, 100)
 states/Start/position = Vector2(201, 100)
+states/Tripped_Idle/node = SubResource("AnimationNodeAnimation_102sa")
+states/Tripped_Idle/position = Vector2(549, 228.877)
 states/Walk/node = SubResource("AnimationNodeBlendSpace2D_eurub")
 states/Walk/position = Vector2(549, 100)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qeq8d"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_krb6k"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_w26xb"), "Idle", "Dance", SubResource("AnimationNodeStateMachineTransition_tkt83"), "Dance", "Idle", SubResource("AnimationNodeStateMachineTransition_2q2mb")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qeq8d"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_krb6k"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_w26xb"), "Idle", "Dance", SubResource("AnimationNodeStateMachineTransition_tkt83"), "Dance", "Idle", SubResource("AnimationNodeStateMachineTransition_2q2mb"), "Idle", "Tripped_Idle", SubResource("AnimationNodeStateMachineTransition_qd2iy"), "Tripped_Idle", "Idle", SubResource("AnimationNodeStateMachineTransition_4ieeo")]
 graph_offset = Vector2(-140, 6.8772)
 
 [node name="OW_Player" instance=ExtResource("1_tv04i")]
@@ -465,10 +521,10 @@ highlightColors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1), Color(1, 1
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_cixgb")
 scale = Vector2(4, 4)
-texture = ExtResource("4_hp574")
+texture = ExtResource("4_pckdy")
 offset = Vector2(0, -10)
 hframes = 16
-vframes = 2
+vframes = 3
 frame = 8
 
 [node name="CollisionShape2D" parent="." index="1"]

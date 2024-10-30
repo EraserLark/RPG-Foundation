@@ -11,7 +11,6 @@ func enter(playerNum: int, _msg:= {}):
 	var playerEntity = PlayerRoster.roster[playerNum]
 	var pStateStack = playerEntity.playerStateStack
 	
-	##OLD
 	var playerActive = Player_Active.new(pStateStack, playerEntity.worldActor)
 	playerEntity.playerActiveState = playerActive
 	pStateStack.addState(playerActive)

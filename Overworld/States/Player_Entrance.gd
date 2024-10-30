@@ -11,6 +11,7 @@ var beamInstance
 var descentTween
 var roomPhantomCam
 var t = 0.0
+var turbo = false
 
 func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
@@ -28,8 +29,9 @@ func handleInput(event : InputEvent):
 		return
 	
 	if(event.is_action_pressed("ui_accept")):
-		#Player plummets to ground. Enter Tripped state upon exit
-		pass
+		turbo = true
+		descentTween.set_trans(Tween.TRANS_LINEAR)
+		descentTween.set_speed_scale(2)
 
 func enter(_msg:= {}):
 	#Start player off screen, disable collision
@@ -43,7 +45,7 @@ func enter(_msg:= {}):
 	roomPhantomCam.append_follow_targets(beamInstance)
 	#Start descent tween
 	descentTween = playerActor.get_tree().create_tween()
-	descentTween.finished.connect(exit)
+	descentTween.finished.connect(postLanding)
 	descentTween.tween_property(playerActor, "position", landingPosition, 2).set_trans(Tween.TRANS_CUBIC)
 
 func physicsUpdate(_delta: float):
@@ -56,11 +58,23 @@ func physicsUpdate(_delta: float):
 	playerActor.interactRay.target_position = dirVector * playerActor.rayLength;
 	playerActor.animTree.set("parameters/Idle/blend_position", dirVector)
 
-func exit():
+func postLanding():
 	descentTween.kill()
 	playerActor.collisionShape.disabled = false
 	beamInstance.CloseBeam()
 	#Switch cam focus from beam to player
 	roomPhantomCam.append_follow_targets(playerActor)
 	roomPhantomCam.erase_follow_targets(beamInstance)
+	
+	if turbo:
+		var playerStateStack = playerActor.playerEntity.playerStateStack
+		var playerTripped = Player_Tripped.new(playerStateStack, playerActor)
+		playerStateStack.addState(playerTripped)
+	else:
+		exit()
+
+func resumeState():
+	exit()
+
+func exit():
 	super()
