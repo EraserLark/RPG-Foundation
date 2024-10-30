@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3x6xxnirtyh0"]
+
+[ext_resource type="Texture2D" uid="uid://dgyefx7nrj1g" path="res://Art/OrbitEntry.png" id="1_w8joa"]
+
+[sub_resource type="Animation" id="Animation_em0rr"]
+resource_name = "Burn"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_bmf4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82q67"]
+_data = {
+"Burn": SubResource("Animation_em0rr"),
+"RESET": SubResource("Animation_bmf4f")
+}
+
+[node name="OrbitEntry" type="Sprite2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_w8joa")
+offset = Vector2(0, -19)
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_82q67")
+}
+autoplay = "Burn"

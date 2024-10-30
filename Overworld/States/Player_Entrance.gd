@@ -7,7 +7,9 @@ var input: DeviceInput
 var landingPosition: Vector2
 var startingPosition: Vector2
 var beamScene = preload("res://Overworld/EntranceBeam.tscn")
+var fireScene = preload("res://Overworld/OrbitEntry.tscn")
 var beamInstance
+var fireInstance
 var descentTween
 var roomPhantomCam
 var t = 0.0
@@ -30,8 +32,12 @@ func handleInput(event : InputEvent):
 	
 	if(event.is_action_pressed("ui_accept")):
 		turbo = true
+		
+		fireInstance = fireScene.instantiate()
+		playerActor.add_child(fireInstance)
+		
 		descentTween.set_trans(Tween.TRANS_LINEAR)
-		descentTween.set_speed_scale(2)
+		descentTween.set_speed_scale(3)
 
 func enter(_msg:= {}):
 	#Start player off screen, disable collision
@@ -62,6 +68,8 @@ func postLanding():
 	descentTween.kill()
 	playerActor.collisionShape.disabled = false
 	beamInstance.CloseBeam()
+	if fireInstance:
+		fireInstance.queue_free()
 	#Switch cam focus from beam to player
 	roomPhantomCam.append_follow_targets(playerActor)
 	roomPhantomCam.erase_follow_targets(beamInstance)

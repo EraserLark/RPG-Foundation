@@ -16,7 +16,8 @@ func _init(sStack: StateStack, plyr: OW_Player):
 
 func enter(_msg:= {}):
 	playerActor.animTree.active = false
-	playerActor.animPlayer.play("Tripped_Idle")
+	playerActor.sprite.frame = 36	#Set to trip frame while other animation plays
+	playerActor.animPlayer.play("Shake")
 
 func handleInput(event : InputEvent):
 	if event.device != playerActor.playerEntity.deviceNumber:
