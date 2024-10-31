@@ -8,12 +8,14 @@ var landingPosition: Vector2
 var startingPosition: Vector2
 var beamScene = preload("res://Overworld/EntranceBeam.tscn")
 var fireScene = preload("res://Overworld/OrbitEntry.tscn")
+var craterScene = preload("res://Overworld/ExplosionCrater.tscn")
 var beamInstance
 var fireInstance
 var descentTween
 var roomPhantomCam
 var t = 0.0
 var turbo = false
+var tweenLength = 2
 
 func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
@@ -31,13 +33,20 @@ func handleInput(event : InputEvent):
 		return
 	
 	if(event.is_action_pressed("ui_accept")):
-		turbo = true
-		
-		fireInstance = fireScene.instantiate()
-		playerActor.add_child(fireInstance)
-		
-		descentTween.set_trans(Tween.TRANS_LINEAR)
-		descentTween.set_speed_scale(3)
+		if !turbo:
+			turbo = true
+			
+			fireInstance = fireScene.instantiate()
+			playerActor.add_child(fireInstance)
+			
+			var timeRan = descentTween.get_total_elapsed_time()
+			descentTween.disconnect("finished", postLanding)
+			descentTween.kill()
+			
+			descentTween = playerActor.get_tree().create_tween()
+			descentTween.finished.connect(postLanding)
+			descentTween.tween_property(playerActor, "position", landingPosition, (tweenLength - timeRan)).set_trans(Tween.TRANS_LINEAR)
+			descentTween.set_speed_scale(4)
 
 func enter(_msg:= {}):
 	#Start player off screen, disable collision
@@ -52,7 +61,7 @@ func enter(_msg:= {}):
 	#Start descent tween
 	descentTween = playerActor.get_tree().create_tween()
 	descentTween.finished.connect(postLanding)
-	descentTween.tween_property(playerActor, "position", landingPosition, 2).set_trans(Tween.TRANS_CUBIC)
+	descentTween.tween_property(playerActor, "position", landingPosition, tweenLength).set_trans(Tween.TRANS_CUBIC)
 
 func physicsUpdate(_delta: float):
 	#Player floats down, spinning in circles
@@ -75,6 +84,9 @@ func postLanding():
 	roomPhantomCam.erase_follow_targets(beamInstance)
 	
 	if turbo:
+		var craterInstance = craterScene.instantiate()
+		playerActor.currentRoom.add_child(craterInstance)
+		
 		var playerStateStack = playerActor.playerEntity.playerStateStack
 		var playerTripped = Player_Tripped.new(playerStateStack, playerActor)
 		playerStateStack.addState(playerTripped)

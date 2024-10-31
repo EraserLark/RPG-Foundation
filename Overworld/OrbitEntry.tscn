@@ -42,6 +42,7 @@ _data = {
 }
 
 [node name="OrbitEntry" type="Sprite2D"]
+z_index = 11
 scale = Vector2(4, 4)
 texture = ExtResource("1_w8joa")
 offset = Vector2(0, -19)
