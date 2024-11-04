@@ -2,7 +2,7 @@ extends PlayerUI
 class_name PlayerUI_Battle
 
 ##Children references
-@onready var playerPanel:= $PlayerPanel
+#@onready var playerPanel:= $PlayerPanel
 @onready var stats:= $PlayerPanel/Stats
 @onready var playerMenu:= $PlayerPanel/PlayerMenu
 @onready var selectionMenu:= $SelectionMenu
@@ -10,6 +10,9 @@ class_name PlayerUI_Battle
 
 ##Outside references
 var battleUI: Control
+
+func _ready():
+	playerPanel = $PlayerPanel
 
 func initialize(stgmn: StageManager, playerPanel, playerEntity: PlayerEntity, currentAnchors: Array):
 	super(stgmn, playerPanel, playerEntity, currentAnchors)

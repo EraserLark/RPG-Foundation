@@ -3,13 +3,15 @@ class_name PlayerUI
 
 var stageManager: StageManager
 var player: Entity
+var playerPanel
 
 var currentStageAnchor: Control
 var currentPanelAnchor: Control
 
-func initialize(stgmn: StageManager, playerPanel, playerEntity: PlayerEntity, currentAnchors: Array):
+func initialize(stgmn: StageManager, plyrPanel, playerEntity: PlayerEntity, currentAnchors: Array):
 	stageManager = stgmn
 	player = playerEntity
+	playerPanel = plyrPanel
 	currentStageAnchor = currentAnchors[player.rosterNumber]
 	
 	if(stageManager is OverworldManager):
@@ -28,4 +30,6 @@ func centerPlayerPanel():
 		return
 	
 	var panelAnchorDiff: Vector2 = currentPanelAnchor.position
-	self.position = currentStageAnchor.position - panelAnchorDiff
+	var targetPos = currentStageAnchor.position - panelAnchorDiff
+	
+	playerPanel.movePanel(targetPos)

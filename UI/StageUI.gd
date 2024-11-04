@@ -8,13 +8,7 @@ var stageManager: StageManager
 
 func initialize(sm: StageManager):
 	stageManager = sm
-	
-	#Instance a player menu for each player in the PlayerRoster. Child of self.
-	#var i:= 0
-	#for entity in PlayerRoster.getActiveRoster():
-		#addPlayerUI(entity)
-		#i+=1
-		
+
 func addPlayerUI(playerEntity: PlayerEntity):
 	var playerUI = createPlayerUI(playerEntity.deviceNumber)
 	initializePlayerUI(playerUI, playerEntity)
@@ -27,7 +21,11 @@ func createPlayerUI(playerNumber = null) -> PlayerUI:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
 	
 	playerUIRoster.append(pUI)
-	#Adjust UI layout
+	#Update UI anchors
+	stageManager.stageUI.updateMenusLayout()
+	#Move new UI offscreen
+	pUI.playerPanel.position = pUI.currentStageAnchor.position - Vector2((pUI.playerPanel.size.x / 2), 0)
+	#Move UI layout
 	stageManager.stageUI.adjustMenusLayout()
 	return pUI
 
@@ -36,14 +34,26 @@ func initializePlayerUI(pUI: PlayerUI, pEntity: PlayerEntity):
 	pUI.initialize(stageManager, pUI.playerPanel, pEntity, playerAnchors.currentAnchorLayout)
 	playerUIRoster.sort_custom(sortPlayerUI)
 
-func adjustMenusLayout():
+##Update each ui's anchor info
+func updateMenusLayout():
 	playerAnchors.determineAnchorLayout()
 	var i=0
 	for ui in playerUIRoster:
-		var rosterIndex = PlayerRoster.roster.size()-1	#Grabs most recent addition to playerRoster
 		var panelAnchorIndex = stageManager.stageUI.playerAnchors.panelAnchorPositions[i]
 		ui.currentPanelAnchor = ui.playerPanel.panelAnchors[panelAnchorIndex]
 		ui.currentStageAnchor = playerAnchors.currentAnchorLayout[i]
+		
+		i+=1
+
+##Move each ui based off (presumably new) anchor info
+func adjustMenusLayout():
+	#playerAnchors.determineAnchorLayout()
+	var i=0
+	for ui in playerUIRoster:
+		##var rosterIndex = PlayerRoster.roster.size()-1	#Grabs most recent addition to playerRoster
+		#var panelAnchorIndex = stageManager.stageUI.playerAnchors.panelAnchorPositions[i]
+		#ui.currentPanelAnchor = ui.playerPanel.panelAnchors[panelAnchorIndex]
+		#ui.currentStageAnchor = playerAnchors.currentAnchorLayout[i]
 		ui.centerPlayerPanel()
 		
 		if self is Battle_UI:
