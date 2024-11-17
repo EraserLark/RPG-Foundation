@@ -27,9 +27,6 @@ func initialize(om: OverworldManager, rm: Room):
 	camera = room.camera
 	phantomCam = room.roomPhantomCam
 	
-	#for playerInfo in PlayerRoster.roster:
-		#addActor(playerInfo, camera.get_screen_center_position())
-	
 	for entity in PlayerRoster.getActiveRoster():	#Ignore empty entities
 		addActor(entity, camera.get_screen_center_position())
 	
@@ -40,7 +37,6 @@ func initialize(om: OverworldManager, rm: Room):
 func addActor(playerEntity: PlayerEntity, pos: Vector2 = Vector2.ZERO):
 	#Instance actor, set up data
 	var playerActor = actorScene.instantiate()
-	#playerActor.setPlayerInfo(playerEntity.entityInfo)
 	self.add_child(playerActor)
 	playerActor.initialize(playerEntity, room)
 	
