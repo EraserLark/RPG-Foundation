@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://wf85spc1lhaa"]
+[gd_scene load_steps=13 format=3 uid="uid://wf85spc1lhaa"]
 
 [ext_resource type="Script" path="res://Overworld/UI/OW_UI.gd" id="1_4a7eq"]
 [ext_resource type="Script" path="res://Overworld/OverworldManager.gd" id="1_flynd"]
 [ext_resource type="Script" path="res://Overworld/World/World.gd" id="2_fscot"]
 [ext_resource type="PackedScene" uid="uid://bkgsrieys8sap" path="res://Overworld/UI/PlayerUI_World.tscn" id="3_6b10h"]
 [ext_resource type="Script" path="res://Battle/UI/PlayerAnchors.gd" id="3_co72e"]
-[ext_resource type="PackedScene" uid="uid://cjv1mcuglg2br" path="res://Overworld/Rooms/StartRoom.tscn" id="6_map7u"]
 [ext_resource type="AudioStream" uid="uid://d4gp1tjc4uixo" path="res://Audio/Tundra.mp3" id="12_exalw"]
 [ext_resource type="Script" path="res://Cutscenes/CutsceneManager.gd" id="23_dssid"]
 
@@ -338,8 +337,6 @@ text = "[font_size=75][center]Your goal lies further ahead...[/center][/font_siz
 y_sort_enabled = true
 script = ExtResource("2_fscot")
 metadata/_edit_lock_ = true
-
-[node name="StartRoom" parent="World" instance=ExtResource("6_map7u")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="World"]
 stream = ExtResource("12_exalw")

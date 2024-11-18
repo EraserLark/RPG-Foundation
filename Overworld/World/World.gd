@@ -11,15 +11,15 @@ var currentRoom
 
 func _ready():
 	print("World Ready Start")
-	for child in get_children():
-		if child is Room:
-			currentRoom = child
-		else:
-			printerr("No room scene")
 	print("World Ready Finish")
 
-func initialize(om: OverworldManager):
+func initialize(om: OverworldManager, cr: Room):
 	owManager = om
+
+	currentRoom = cr
+	cr.reparent(self)
+	cr.set_owner(self)
+	
 	DialogueSystem.updateOWVars(owManager.stageUI, self)	#Update before room. Actors use for spawn flags
 	currentRoom.initialize(om)
 

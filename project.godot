@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPG Foundation"
-run/main_scene="res://game.tscn"
+run/main_scene="res://Overworld/Rooms/StartRoom.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Art/icon.svg"
 
@@ -25,6 +25,7 @@ FlagManager="*res://Flags/FlagManager.gd"
 InputManager="*res://InputManager.gd"
 MultiplayerInput="*res://addons/multiplayer_input/multiplayer_input.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+Game="*res://game.tscn"
 
 [display]
 
