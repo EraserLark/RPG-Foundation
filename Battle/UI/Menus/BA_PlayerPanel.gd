@@ -2,19 +2,17 @@ extends PlayerPanel
 class_name PlayerPanel_Battle
 
 ##Children references
-@onready var stats:= $Stats
-@onready var playerMenu:= $PlayerMenu
-@onready var minigameContainer:= $PlayerMenu/MarginContainer/MinigameView
-@onready var minigameView:= $PlayerMenu/MarginContainer/MinigameView/SubViewport
-@onready var minigameZone:= $PlayerMenu/MarginContainer/MinigameView/SubViewport/MinigameZone
-#@onready var panelAnchorNodes:= $PanelAnchors
+@onready var stats:= $Panel/Stats
+@onready var playerMenu:= $Panel/PlayerMenu
+@onready var minigameContainer:= $Panel/PlayerMenu/MarginContainer/MinigameView
+@onready var minigameView:= $Panel/PlayerMenu/MarginContainer/MinigameView/SubViewport
+@onready var minigameZone:= $Panel/PlayerMenu/MarginContainer/MinigameView/SubViewport/MinigameZone
 
 ##Parent/Outside references
 var battleManager: BattleManager
 var playerUI: PlayerUI_Battle
 var selectionMenu: TargetSelectionMenu
 var playerPointer: Cursor
-#var player: PlayerEntity
 
 ##Inside vars
 @export var healthbarFlipped:= false
@@ -25,8 +23,8 @@ var itemIndex
 var panelAnchors: Array
 
 func _ready():
-	audioPlayer = $AudioStreamPlayer
-	panelAnchors = $PanelAnchors.get_children()
+	audioPlayer = $Panel/AudioStreamPlayer
+	panelAnchors = $Panel/PanelAnchors.get_children()
 
 func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
 	battleManager = bm
@@ -34,17 +32,13 @@ func initialize(bm: BattleManager, pui: PlayerUI_Battle, pe: PlayerEntity):
 	selectionMenu = playerUI.selectionMenu
 	playerPointer = selectionMenu.playerPointer
 	playerEntity = pe
-	#player = pe
 	
 	stats.initialize(playerEntity.entityInfo)
 	playerMenu.initialize(self)
-	
-	#stats.setInitialHealth()
 
 func open(sStack: StateStack):
 	baseMenu = playerMenu
 	isFinished = false
-	#player = playerUI.player
 	super(sStack)
 
 func flipHealthbar(condition: bool):
@@ -76,7 +70,6 @@ func itemSelected(index: int):
 	currentSelectedAction = playerEntity.itemChosen(index)
 	isActionItem = true
 	itemIndex = index
-	#setupSelection(currentSelectedAction)
 	
 	currentSelectedAction.target = playerEntity
 	actionTargetSelected()
@@ -84,7 +77,6 @@ func itemSelected(index: int):
 func actionSelected(index: int):
 	currentSelectedAction = playerEntity.actionChosen(index)
 	isActionItem = false
-	#setupSelection(currentSelectedAction)
 	
 	currentSelectedAction.target = playerEntity
 	actionTargetSelected()
@@ -97,7 +89,6 @@ func actionTargetSelected():
 	if(isActionItem):
 		playerEntity.itemDiscarded(itemIndex)
 	
-	#closeMenuSystem()
 	showSubMenu(playerMenu.waitingMenu)
 
 func changeStatsHealth(remaningHP: int):
@@ -106,7 +97,6 @@ func changeStatsHealth(remaningHP: int):
 func showMinigame(case: bool):
 	playerMenu.actionSelectionMenu.visible = !case
 	playerMenu.attackMenu.visible = false
-	#self.visible = case
 	playerMenu.visible = case
 	minigameContainer.visible = case
 

@@ -9,38 +9,35 @@
 [ext_resource type="Script" path="res://Menus/PlaceholderMenu.gd" id="9_3x4y6"]
 [ext_resource type="PackedScene" uid="uid://xy1fadjc5rwx" path="res://UI/PlayerPanel.tscn" id="10_rkdgd"]
 
-[node name="PlayerUI" type="Control"]
+[node name="PlayerUI_World" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_j2cxj")
 
 [node name="PlayerPanel" parent="." instance=ExtResource("10_rkdgd")]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 script = ExtResource("3_hgk43")
 
-[node name="InitialMenu" type="HBoxContainer" parent="PlayerPanel/MarginContainer" index="1"]
+[node name="InitialMenu" type="HBoxContainer" parent="PlayerPanel/Panel/MarginContainer" index="1"]
 visible = false
 layout_mode = 2
 script = ExtResource("6_ob35p")
 menuOptions = Array[String](["Inventory", "Settings"])
 
-[node name="ManualMenu" parent="PlayerPanel/MarginContainer/InitialMenu" instance=ExtResource("5_jl7dq")]
+[node name="ManualMenu" parent="PlayerPanel/Panel/MarginContainer/InitialMenu" instance=ExtResource("5_jl7dq")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel/MarginContainer/InitialMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel/Panel/MarginContainer/InitialMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/MarginContainer/InitialMenu/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/Panel/MarginContainer/InitialMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/MarginContainer/InitialMenu/VBoxContainer/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/Panel/MarginContainer/InitialMenu/VBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(36, 81)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -49,17 +46,17 @@ texture = ExtResource("7_s4on4")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/MarginContainer/InitialMenu/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/Panel/MarginContainer/InitialMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
 text = "[center]HP: __/__[/center]"
 
-[node name="Submenus" type="Control" parent="PlayerPanel/MarginContainer" index="2"]
+[node name="Submenus" type="Control" parent="PlayerPanel/Panel/MarginContainer" index="2"]
 layout_mode = 2
 
-[node name="ItemMenu" type="Control" parent="PlayerPanel/MarginContainer/Submenus"]
+[node name="ItemMenu" type="Control" parent="PlayerPanel/Panel/MarginContainer/Submenus"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -69,24 +66,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_1ktt8")
 
-[node name="ManualMenu" parent="PlayerPanel/MarginContainer/Submenus/ItemMenu" instance=ExtResource("5_jl7dq")]
+[node name="ManualMenu" parent="PlayerPanel/Panel/MarginContainer/Submenus/ItemMenu" instance=ExtResource("5_jl7dq")]
 layout_mode = 1
 
-[node name="InventoryMenu2" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus"]
+[node name="InventoryMenu2" type="ItemList" parent="PlayerPanel/Panel/MarginContainer/Submenus"]
 visible = false
 layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
 script = ExtResource("9_3x4y6")
 
-[node name="InventoryMenu3" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus"]
+[node name="InventoryMenu3" type="ItemList" parent="PlayerPanel/Panel/MarginContainer/Submenus"]
 visible = false
 layout_mode = 2
 offset_right = 272.0
 offset_bottom = 120.0
 script = ExtResource("9_3x4y6")
 
-[node name="InventoryMenu4" type="ItemList" parent="PlayerPanel/MarginContainer/Submenus"]
+[node name="InventoryMenu4" type="ItemList" parent="PlayerPanel/Panel/MarginContainer/Submenus"]
 visible = false
 layout_mode = 2
 offset_right = 272.0

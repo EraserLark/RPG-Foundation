@@ -1,8 +1,9 @@
 extends MenuSystem
 class_name PlayerPanel
 
-@onready var panelAnchorNodes:= $PanelAnchors
-@onready var profileMenu:= $MarginContainer/ProfileSelection
+@onready var panel:= $Panel
+@onready var panelAnchorNodes:= $Panel/PanelAnchors
+@onready var profileMenu:= $Panel/MarginContainer/ProfileSelection
 
 var playerEntity: Entity
 var moveTween: Tween

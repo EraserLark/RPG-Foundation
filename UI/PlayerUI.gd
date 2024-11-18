@@ -22,7 +22,7 @@ func initialize(stgmn: StageManager, plyrPanel, playerEntity: PlayerEntity, curr
 		playerPanel.initialize(stageManager, self, player)
 	
 	#Set color
-	playerPanel.self_modulate = PlayerRoster.rosterColors[playerEntity.rosterNumber]
+	playerPanel.panel.self_modulate = PlayerRoster.rosterColors[playerEntity.rosterNumber]
 
 func centerPlayerPanel():
 	if(currentStageAnchor == null):

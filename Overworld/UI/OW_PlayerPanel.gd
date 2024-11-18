@@ -2,10 +2,10 @@ extends PlayerPanel
 class_name PlayerPanel_World
 
 ##Children References
-@onready var marginContainer:= $MarginContainer
-@onready var initialMenu:= $MarginContainer/InitialMenu
+@onready var marginContainer:= $Panel/MarginContainer
+@onready var initialMenu:= $Panel/MarginContainer/InitialMenu
 #@onready var menuList:= $MarginContainer/InitialMenu/ItemList
-@onready var subMenuNodes:= $MarginContainer/Submenus
+@onready var subMenuNodes:= $Panel/MarginContainer/Submenus
 #@onready var panelAnchorNodes:= $PanelAnchors
 
 ##Parent References
@@ -30,14 +30,13 @@ func _ready():
 	for menu in menus:
 		menu.menuManager = self
 	
-	audioPlayer = $AudioStreamPlayer
+	audioPlayer = $Panel/AudioStreamPlayer
 	panelAnchors = panelAnchorNodes.get_children()
 	
 	baseMenu = initialMenu
 
 func initialize(om: OverworldManager, pe: PlayerEntity):
 	owManager = om
-	#player = PlayerRoster.roster[0]		#Change when multiplayer
 	playerEntity = pe	#Should get set after player chooses profile
 	
 	playerInfo = playerEntity.entityInfo

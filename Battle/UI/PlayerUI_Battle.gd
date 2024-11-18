@@ -3,8 +3,8 @@ class_name PlayerUI_Battle
 
 ##Children references
 #@onready var playerPanel:= $PlayerPanel
-@onready var stats:= $PlayerPanel/Stats
-@onready var playerMenu:= $PlayerPanel/PlayerMenu
+@onready var stats:= $PlayerPanel/Panel/Stats
+@onready var playerMenu:= $PlayerPanel/Panel/PlayerMenu
 @onready var selectionMenu:= $SelectionMenu
 @onready var animPlayer:= $AnimationPlayer
 

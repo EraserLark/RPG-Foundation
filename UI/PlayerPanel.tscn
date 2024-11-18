@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://xy1fadjc5rwx"]
+[gd_scene load_steps=4 format=3 uid="uid://xy1fadjc5rwx"]
 
 [ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="1_sxvnm"]
 [ext_resource type="Script" path="res://PlayerPanel.gd" id="2_cm5au"]
-[ext_resource type="AudioStream" uid="uid://dmpr62yh26ukq" path="res://Audio/Confirm.mp3" id="3_drcwk"]
 [ext_resource type="Script" path="res://UI/ProfileMenu.gd" id="3_m7k2y"]
-[ext_resource type="AudioStream" uid="uid://cvbtxdtccumk3" path="res://Audio/Deny.mp3" id="4_wc2cx"]
 
-[node name="PlayerPanel" type="NinePatchRect"]
+[node name="PlayerPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_cm5au")
+
+[node name="Panel" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(288, 136)
+layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.25
 anchor_bottom = 0.209877
@@ -18,12 +22,10 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-script = ExtResource("2_cm5au")
-sounds = Array[AudioStreamMP3]([ExtResource("3_drcwk"), ExtResource("4_wc2cx")])
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,12 +37,12 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="ProfileSelection" type="CenterContainer" parent="MarginContainer"]
+[node name="ProfileSelection" type="CenterContainer" parent="Panel/MarginContainer"]
 visible = false
 layout_mode = 2
 script = ExtResource("3_m7k2y")
 
-[node name="Label" type="Label" parent="MarginContainer/ProfileSelection"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/ProfileSelection"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
@@ -48,7 +50,7 @@ text = "Press A to join"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/ProfileSelection/Label"]
+[node name="Label2" type="Label" parent="Panel/MarginContainer/ProfileSelection/Label"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -66,7 +68,7 @@ text = "Press B to exit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelAnchors" type="Control" parent="."]
+[node name="PanelAnchors" type="Control" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,32 +76,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="PanelAnchors"]
+[node name="Control" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 0
 
-[node name="Control2" type="Control" parent="PanelAnchors"]
+[node name="Control2" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
-[node name="Control3" type="Control" parent="PanelAnchors"]
+[node name="Control3" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 
-[node name="Control4" type="Control" parent="PanelAnchors"]
+[node name="Control4" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="Control5" type="Control" parent="PanelAnchors"]
+[node name="Control5" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -109,7 +111,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Control6" type="Control" parent="PanelAnchors"]
+[node name="Control6" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -119,5 +121,5 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel"]
 volume_db = -5.0

@@ -2,8 +2,8 @@ extends PlayerUI
 class_name PlayerUI_World
 
 ##Children references
-@onready var hpLabel:= $PlayerPanel/MarginContainer/InitialMenu/VBoxContainer/RichTextLabel
-@onready var itemsList:= $PlayerPanel/MarginContainer/Submenus/ItemMenu
+@onready var hpLabel:= $PlayerPanel/Panel/MarginContainer/InitialMenu/VBoxContainer/RichTextLabel
+@onready var itemsList:= $PlayerPanel/Panel/MarginContainer/Submenus/ItemMenu
 #@onready var playerPanel:= $PlayerPanel
 @onready var scrollTimer:= $ScrollTimer
 

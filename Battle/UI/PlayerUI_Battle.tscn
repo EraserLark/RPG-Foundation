@@ -28,7 +28,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerPanel:self_modulate")
+tracks/0/path = NodePath("PlayerPanel/Panel:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +45,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerPanel:position")
+tracks/0/path = NodePath("PlayerPanel/Panel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +62,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerPanel:modulate")
+tracks/0/path = NodePath("PlayerPanel/Panel:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -77,7 +77,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerPanel:self_modulate")
+tracks/0/path = NodePath("PlayerPanel/Panel:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +89,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerPanel:position")
+tracks/1/path = NodePath("PlayerPanel/Panel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -97,18 +97,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerPanel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kukrl"]
@@ -119,7 +107,7 @@ _data = {
 "RESET": SubResource("Animation_sving")
 }
 
-[node name="PlayerUI" type="Control"]
+[node name="PlayerUI_Battle" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qvh2h")
@@ -155,9 +143,6 @@ wait_time = 0.1
 
 [node name="PlayerPanel" parent="." instance=ExtResource("5_3bnqo")]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_right = 288.0
 offset_bottom = 136.0
 script = ExtResource("6_44y4s")
@@ -165,13 +150,17 @@ healthbarFlipped = false
 actionButtonsFlipped = false
 mandatory = true
 
-[node name="Stats" type="PanelContainer" parent="PlayerPanel"]
+[node name="Panel" parent="PlayerPanel" index="0"]
+offset_right = 216.0
+offset_bottom = 107.457
+
+[node name="Stats" type="PanelContainer" parent="PlayerPanel/Panel" index="3"]
 layout_mode = 1
 offset_right = 16.0
 offset_bottom = 136.0
 script = ExtResource("9_cyk76")
 
-[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/Stats"]
+[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/Panel/Stats"]
 self_modulate = Color(0, 1, 0, 1)
 custom_minimum_size = Vector2(16, 112)
 layout_mode = 2
@@ -180,7 +169,7 @@ value = 10.0
 fill_mode = 3
 show_percentage = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/Stats"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/Panel/Stats"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 8
@@ -188,7 +177,7 @@ theme_override_font_sizes/normal_font_size = 10
 text = "10/10"
 scroll_active = false
 
-[node name="PlayerMenu" type="Control" parent="PlayerPanel"]
+[node name="PlayerMenu" type="Control" parent="PlayerPanel/Panel" index="4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,7 +186,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_yjjpt")
 
-[node name="MarginContainer" type="MarginContainer" parent="PlayerPanel/PlayerMenu"]
+[node name="MarginContainer" type="MarginContainer" parent="PlayerPanel/Panel/PlayerMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,20 +198,20 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="MinigameView" type="SubViewportContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+[node name="MinigameView" type="SubViewportContainer" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer"]
 layout_mode = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView"]
+[node name="SubViewport" type="SubViewport" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/MinigameView"]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(272, 120)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
+[node name="Camera2D" type="Camera2D" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
 anchor_mode = 0
 
-[node name="ColorRect" type="ColorRect" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
+[node name="ColorRect" type="ColorRect" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,44 +220,44 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.176471, 0, 0.701961, 1)
 
-[node name="MinigameZone" type="Node2D" parent="PlayerPanel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
+[node name="MinigameZone" type="Node2D" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/MinigameView/SubViewport"]
 
-[node name="AttackMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+[node name="AttackMenu" type="PanelContainer" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("11_jwv4u")
 metadata/_edit_group_ = true
 
-[node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/AttackMenu" instance=ExtResource("10_14tsx")]
+[node name="ManualMenu" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/AttackMenu" instance=ExtResource("10_14tsx")]
 layout_mode = 2
 
-[node name="ItemMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+[node name="ItemMenu" type="PanelContainer" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("11_sc0v8")
 metadata/_edit_group_ = true
 
-[node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/ItemMenu" instance=ExtResource("10_14tsx")]
+[node name="ManualMenu" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/ItemMenu" instance=ExtResource("10_14tsx")]
 layout_mode = 2
 
-[node name="MiscMenu" type="PanelContainer" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+[node name="MiscMenu" type="PanelContainer" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 script = ExtResource("13_clnyn")
 
-[node name="ManualMenu" parent="PlayerPanel/PlayerMenu/MarginContainer/MiscMenu" instance=ExtResource("10_14tsx")]
+[node name="ManualMenu" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/MiscMenu" instance=ExtResource("10_14tsx")]
 layout_mode = 2
 
-[node name="WaitingMenu" type="Panel" parent="PlayerPanel/PlayerMenu/MarginContainer"]
+[node name="WaitingMenu" type="Panel" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer"]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yen6o")
 script = ExtResource("13_hqadu")
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/PlayerMenu/MarginContainer/WaitingMenu"]
+[node name="CenterContainer" type="CenterContainer" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/WaitingMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -276,21 +265,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Ready" type="Label" parent="PlayerPanel/PlayerMenu/MarginContainer/WaitingMenu/CenterContainer"]
+[node name="Ready" type="Label" parent="PlayerPanel/Panel/PlayerMenu/MarginContainer/WaitingMenu/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "READY!"
 horizontal_alignment = 1
 
-[node name="ActionMenu" parent="PlayerPanel/PlayerMenu" instance=ExtResource("14_1tgmc")]
+[node name="ActionMenu" parent="PlayerPanel/Panel/PlayerMenu" instance=ExtResource("14_1tgmc")]
 layout_mode = 1
 offset_right = 128.0
 
-[node name="UpArrow" parent="PlayerPanel/PlayerMenu/ActionMenu" index="0"]
+[node name="UpArrow" parent="PlayerPanel/Panel/PlayerMenu/ActionMenu" index="0"]
 visible = false
 
-[node name="DownArrow" parent="PlayerPanel/PlayerMenu/ActionMenu" index="2"]
+[node name="DownArrow" parent="PlayerPanel/Panel/PlayerMenu/ActionMenu" index="2"]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -304,4 +293,4 @@ libraries = {
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="PlayerPanel"]
-[editable path="PlayerPanel/PlayerMenu/ActionMenu"]
+[editable path="PlayerPanel/Panel/PlayerMenu/ActionMenu"]
