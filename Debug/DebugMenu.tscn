@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://lg5sc1usdo7p"]
+[gd_scene load_steps=4 format=3 uid="uid://lg5sc1usdo7p"]
 
 [ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/debug_ui_theme.tres" id="1_dy2u8"]
 [ext_resource type="PackedScene" uid="uid://c8y5aqhov86aj" path="res://Debug/DebugGameStackDisplay.tscn" id="3_g3u84"]
+[ext_resource type="LabelSettings" uid="uid://cojushbpj57gk" path="res://Debug/debug_label_title.tres" id="4_vv67r"]
 
 [node name="DebugMenu" type="TabContainer"]
 offset_right = 1152.0
@@ -21,8 +22,61 @@ layout_mode = 2
 [node name="Game Stack Display" parent="State Stack Data/Columns" instance=ExtResource("3_g3u84")]
 layout_mode = 2
 
-[node name="Player Stack Display" parent="State Stack Data/Columns" instance=ExtResource("3_g3u84")]
+[node name="Player 1 Stack" type="VBoxContainer" parent="State Stack Data/Columns"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="State Stack Data/Columns/Player 1 Stack"]
+layout_mode = 2
+text = "\"Player 1 Stack\""
+label_settings = ExtResource("4_vv67r")
+
+[node name="StackText" type="Label" parent="State Stack Data/Columns/Player 1 Stack"]
+layout_mode = 2
+text = "[Not Yet Implemented]"
+
+[node name="Player 2 Stack" type="VBoxContainer" parent="State Stack Data/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="State Stack Data/Columns/Player 2 Stack"]
+layout_mode = 2
+text = "\"Player 2 Stack\""
+label_settings = ExtResource("4_vv67r")
+
+[node name="StackText" type="Label" parent="State Stack Data/Columns/Player 2 Stack"]
+layout_mode = 2
+text = "[Not Yet Implemented]"
+
+[node name="Player 3 Stack" type="VBoxContainer" parent="State Stack Data/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="State Stack Data/Columns/Player 3 Stack"]
+layout_mode = 2
+text = "\"Player 3 Stack\""
+label_settings = ExtResource("4_vv67r")
+
+[node name="StackText" type="Label" parent="State Stack Data/Columns/Player 3 Stack"]
+layout_mode = 2
+text = "[Not Yet Implemented]"
+
+[node name="Player 4 Stack" type="VBoxContainer" parent="State Stack Data/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="State Stack Data/Columns/Player 4 Stack"]
+layout_mode = 2
+text = "\"Player 2 Stack\""
+label_settings = ExtResource("4_vv67r")
+
+[node name="StackText" type="Label" parent="State Stack Data/Columns/Player 4 Stack"]
+layout_mode = 2
+text = "[Not Yet Implemented]"
 
 [node name="Player Info Display (Temp)" type="Label" parent="."]
 visible = false
@@ -37,4 +91,3 @@ text = "Temp. Debug Options will go here once implemented"
 metadata/_tab_index = 2
 
 [editable path="State Stack Data/Columns/Game Stack Display"]
-[editable path="State Stack Data/Columns/Player Stack Display"]
