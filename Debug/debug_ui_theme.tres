@@ -1,0 +1,9 @@
+[gd_resource type="Theme" format=3 uid="uid://nqnk0wqa1r2c"]
+
+[resource]
+default_font_size = 16
+BoxContainer/constants/separation = 8
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8

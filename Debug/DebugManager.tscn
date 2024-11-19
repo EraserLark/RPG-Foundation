@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqgcvlcmuidx6"]
+
+[ext_resource type="PackedScene" uid="uid://lg5sc1usdo7p" path="res://Debug/DebugMenu.tscn" id="1_1yd6o"]
+[ext_resource type="Script" path="res://Debug/DebugManager.gd" id="1_3lurx"]
+
+[node name="DebugManager" type="Node"]
+script = ExtResource("1_3lurx")
+
+[node name="DebugCanvas" type="CanvasLayer" parent="."]
+layer = 128
+visible = false
+
+[node name="DebugMenu" parent="DebugCanvas" instance=ExtResource("1_1yd6o")]

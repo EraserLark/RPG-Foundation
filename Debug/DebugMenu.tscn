@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://lg5sc1usdo7p"]
+
+[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/debug_ui_theme.tres" id="1_dy2u8"]
+[ext_resource type="PackedScene" uid="uid://c8y5aqhov86aj" path="res://Debug/DebugGameStackDisplay.tscn" id="3_g3u84"]
+
+[node name="DebugMenu" type="TabContainer"]
+offset_right = 1152.0
+offset_bottom = 617.0
+size_flags_horizontal = 3
+theme = ExtResource("1_dy2u8")
+current_tab = 0
+tab_focus_mode = 0
+
+[node name="State Stack Data" type="MarginContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Columns" type="HBoxContainer" parent="State Stack Data"]
+layout_mode = 2
+
+[node name="Game Stack Display" parent="State Stack Data/Columns" instance=ExtResource("3_g3u84")]
+layout_mode = 2
+
+[node name="Player Stack Display" parent="State Stack Data/Columns" instance=ExtResource("3_g3u84")]
+layout_mode = 2
+
+[node name="Player Info Display (Temp)" type="Label" parent="."]
+visible = false
+layout_mode = 2
+text = "Temp. Debug Player Info will go here once implemented"
+metadata/_tab_index = 1
+
+[node name="Options Display (Temp)" type="Label" parent="."]
+visible = false
+layout_mode = 2
+text = "Temp. Debug Options will go here once implemented"
+metadata/_tab_index = 2
+
+[editable path="State Stack Data/Columns/Game Stack Display"]
+[editable path="State Stack Data/Columns/Player Stack Display"]
