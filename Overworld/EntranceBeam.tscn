@@ -174,10 +174,10 @@ region_rect = Rect2(0, 0, 24, 8)
 
 [node name="Column" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 24.5092)
-scale = Vector2(4, 506.375)
+position = Vector2(0, 20)
+scale = Vector2(4, 500)
 texture = ExtResource("3_7q8vl")
-offset = Vector2(0, -12.08)
+offset = Vector2(0, -12.072)
 region_enabled = true
 region_rect = Rect2(0, 0, 24, 24)
 

@@ -56,6 +56,7 @@ func enter(_msg:= {}):
 	#Spawn Entrance Beam
 	beamInstance = beamScene.instantiate()
 	playerActor.currentRoom.add_child(beamInstance)
+	beamInstance.position = landingPosition
 	#Focus cam
 	roomPhantomCam.append_follow_targets(beamInstance)
 	#Start descent tween
@@ -86,6 +87,7 @@ func postLanding():
 	if turbo:
 		var craterInstance = craterScene.instantiate()
 		playerActor.currentRoom.add_child(craterInstance)
+		craterInstance.position = landingPosition
 		
 		var playerStateStack = playerActor.playerEntity.playerStateStack
 		var playerTripped = Player_Tripped.new(playerStateStack, playerActor)
