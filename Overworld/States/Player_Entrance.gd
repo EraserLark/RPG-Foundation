@@ -56,6 +56,7 @@ func enter(_msg:= {}):
 	#Spawn Entrance Beam
 	beamInstance = beamScene.instantiate()
 	playerActor.currentRoom.add_child(beamInstance)
+	beamInstance.position = landingPosition
 	#Focus cam
 	roomPhantomCam.append_follow_targets(beamInstance)
 	#Start descent tween
