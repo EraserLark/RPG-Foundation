@@ -18,8 +18,7 @@ func _update_data() -> void:
 	var displayString: String = ""
 
 	for state in stack:
-		displayString += _get_state_name(state) + '\n'
-	displayString = displayString.trim_suffix('\n') # get rid of trailing line return
+		displayString = _get_state_name(state) + '\n' + displayString
 
 	text.text = displayString
 	
