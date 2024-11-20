@@ -3,6 +3,33 @@
 [ext_resource type="Texture2D" uid="uid://b4rywysprgiwl" path="res://Art/Crater.png" id="1_if3xf"]
 [ext_resource type="Texture2D" uid="uid://bowuolnlc01tq" path="res://Art/Explosion.png" id="2_aaqar"]
 
+[sub_resource type="Animation" id="Animation_myab0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_vhf8s"]
 resource_name = "Spawn"
 length = 0.15
@@ -32,33 +59,6 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_myab0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Explosion:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Explosion:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hnx8s"]
 _data = {
 "RESET": SubResource("Animation_myab0"),
@@ -66,16 +66,16 @@ _data = {
 }
 
 [node name="ExplosionCrater" type="Node2D"]
-position = Vector2(8, -56)
+y_sort_enabled = true
 metadata/_edit_group_ = true
 
 [node name="Crater" type="Sprite2D" parent="."]
-position = Vector2(0, 36)
+position = Vector2(0, -64)
 scale = Vector2(4, 4)
 texture = ExtResource("1_if3xf")
+offset = Vector2(0, 12)
 
 [node name="Explosion" type="Sprite2D" parent="."]
-position = Vector2(0, 36)
 scale = Vector2(4, 4)
 texture = ExtResource("2_aaqar")
 hframes = 3

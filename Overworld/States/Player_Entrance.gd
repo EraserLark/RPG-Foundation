@@ -87,6 +87,7 @@ func postLanding():
 	if turbo:
 		var craterInstance = craterScene.instantiate()
 		playerActor.currentRoom.add_child(craterInstance)
+		craterInstance.position = landingPosition
 		
 		var playerStateStack = playerActor.playerEntity.playerStateStack
 		var playerTripped = Player_Tripped.new(playerStateStack, playerActor)
