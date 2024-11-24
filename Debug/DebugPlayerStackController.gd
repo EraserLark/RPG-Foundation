@@ -8,10 +8,11 @@ class_name DebugPlayerStackController
 
 @onready var _display_container: Container = $DisplayContainer
 
+
 func _ready() -> void:
 	InputManager.newPlayerJoined.connect(_on_player_joined)
 	InputManager.playerLeft.connect(_on_player_left)
-	
+
 
 func _on_player_joined(deviceNum: int) -> void:
 	print("Debug: Player %d joined!", deviceNum)
@@ -22,7 +23,7 @@ func _on_player_joined(deviceNum: int) -> void:
 
 func _on_player_left(deviceNum: int) -> void:
 	print("Debug: Player %d left!", deviceNum)
-	for display : DebugPlayerStackDisplay in _display_container.get_children():
+	for display: DebugPlayerStackDisplay in _display_container.get_children():
 		if deviceNum == display.deviceNum:
 			display.queue_free()
 			return

@@ -12,21 +12,24 @@ var stackCount: int = -1
 var topState: State = null
 
 # Persistent information
-var _playerStateStack : StateStack
+var _playerStateStack: StateStack
 var deviceNum: int = -99
+
 
 func initialize(deviceNumber: int):
 	self.deviceNum = deviceNumber
 	playerNumText.text = str(deviceNumber)
 
+
 # As with the Game State equivalent, this can be made more efficient using signals from the appropriate player state machine
 func _process(_delta):
 	_update_data()
-	
+
+
 func _update_data() -> void:
 	# cannot display if player stack does not yet exist
 	if _playerStateStack == null and not _try_cache_stack_from_roster(): return
-	
+
 	var stack := _playerStateStack.stateStack
 	var stackChanged: bool = (stack.size() != stackCount || stack.front() != topState)
 	if (!stackChanged): return
@@ -54,9 +57,10 @@ func _try_cache_stack_from_roster() -> bool:
 			_playerStateStack = player.playerStateStack
 			return true
 	return false
-	
+
+
 ## Retrieve name of state based on filename of its script
 func _get_state_name(state: State) -> String:
-	var filename : String = state.get_script().resource_path.get_file()
+	var filename: String = state.get_script().resource_path.get_file()
 	return filename.trim_suffix(".gd") # remove script suffix
 	
