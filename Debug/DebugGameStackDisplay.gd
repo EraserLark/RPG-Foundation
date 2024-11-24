@@ -22,14 +22,18 @@ func _update_data() -> void:
 	
 	var displayString: String = ""
 
-	for state in stack:
-		displayString = _get_state_name(state) + '\n' + displayString
+	# Create new lines for each state in the stack, growing downwards
+	var lineNumber: int = stack.size() - 1
+	for state : GameState in stack:
+		var newLine: String = "%d. %s\n" % [lineNumber, _get_game_state_name(state)] # state with number label
+		displayString = newLine + displayString
+		lineNumber -= 1
 
 	text.text = displayString
 
 
 ## Retrieve name of state based on filename of its script
-func _get_state_name(state: GameState) -> String:
+func _get_game_state_name(state: GameState) -> String:
 	var filename : String = state.get_script().resource_path.get_file()
 	return filename.trim_suffix(".gd") # remove script suffix
 	
