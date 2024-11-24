@@ -1,4 +1,4 @@
-﻿# singleton DebugManager class
+﻿## singleton DebugManager class
 extends Node
 
 ## Input action used to toggle on and off the debug overlay
