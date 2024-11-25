@@ -59,8 +59,12 @@ func _try_cache_stack_from_roster() -> bool:
 	return false
 
 
-## Retrieve name of state based on filename of its script
+## Retrieve name of state to display
 func _get_state_name(state: State) -> String:
-	var filename: String = state.get_script().resource_path.get_file()
-	return filename.trim_suffix(".gd") # remove script suffix
+	var stateName: String
+	if state is GameState_Connection:
+		stateName = "GSC: %s" % state.gameState.get_script().resource_path.get_file()
+	else:
+		stateName = state.get_script().resource_path.get_file()
+	return stateName.trim_suffix(".gd") # remove script suffix
 	
