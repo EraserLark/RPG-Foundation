@@ -11,16 +11,16 @@ func _ready():
 	InputManager.playerLeft.connect(removePlayer)
 
 ##Filters out empty entities
-func getActiveRoster() -> Array[Entity]:
-	var activeRoster: Array[Entity]
+func getActiveRoster() -> Array[PlayerEntity]:
+	var activeRoster: Array[PlayerEntity]
 	for player in roster:
 		if player.entityInfo != null:
 			activeRoster.append(player)
 	return activeRoster
 
-func getLivingRoster() -> Array[Entity]:
-	var livingRoster: Array[Entity]
-	var activeRoster: Array[Entity] = getActiveRoster()
+func getLivingRoster() -> Array[PlayerEntity]:
+	var livingRoster: Array[PlayerEntity]
+	var activeRoster: Array[PlayerEntity] = getActiveRoster()
 	for player in activeRoster:
 		if !player.isDead:
 			livingRoster.append(player)
