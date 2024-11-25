@@ -14,22 +14,25 @@ size_flags_vertical = 0
 theme = ExtResource("1_3e5ct")
 script = ExtResource("1_outv3")
 
-[node name="DataContainer" type="VBoxContainer" parent="."]
+[node name="Data" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="DataContainer"]
+[node name="Title" type="Label" parent="Data"]
 layout_mode = 2
 text = "Game Data"
 label_settings = ExtResource("2_u1lkq")
 
-[node name="StateStackTitle" type="Label" parent="DataContainer"]
+[node name="StateStack" type="VBoxContainer" parent="Data"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Data/StateStack"]
 layout_mode = 2
 text = "State Stack:"
 
-[node name="StackTextPanel" type="PanelContainer" parent="DataContainer"]
+[node name="Panel" type="PanelContainer" parent="Data/StateStack"]
 layout_mode = 2
 
-[node name="StackText" type="Label" parent="DataContainer/StackTextPanel"]
+[node name="Text" type="Label" parent="Data/StateStack/Panel"]
 layout_mode = 2
 text = "[Stack Data]"

@@ -4,8 +4,12 @@ extends Control
 class_name DebugPlayerDataDisplay
 
 # Child Nodes
-@onready var stackText: Label = $DataContainer/StackTextPanel/StackText
-@onready var playerNumText: Label = $DataContainer/PlayerNumContainer/PlayerNumText
+@onready var controllerNumText: Label = $Data/ControllerNum/Text
+@onready var controllerNameText: Label = $Data/ControllerName/Text
+@onready var rosterNumText: Label = $Data/RosterNum/Text
+@onready var playerNameText: Label = $Data/PlayerName/Text
+@onready var playerHpText: Label = $Data/PlayerHP/Text
+@onready var stackText: Label = $Data/StateStack/Panel/Text
 
 # Change-detection cache variables
 var stackCount: int = -1
@@ -18,7 +22,7 @@ var deviceNum: int = -99
 
 func initialize(deviceNumber: int):
 	self.deviceNum = deviceNumber
-	playerNumText.text = str(deviceNumber)
+	controllerNumText.text = str(deviceNumber)
 
 
 # As with the Game State equivalent, this can be made more efficient using signals from the appropriate player state machine
