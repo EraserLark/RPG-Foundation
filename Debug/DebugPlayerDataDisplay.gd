@@ -14,27 +14,34 @@ class_name DebugPlayerDataDisplay
 # Change-detection cache variables
 var stackCount: int = -1
 var topState: State = null
+var playerHp: int = -1
 
 # Persistent information
-var _playerStateStack: StateStack
-var deviceNum: int = -99
+var playerInfo: PlayerInfo
 
 
-func initialize(deviceNumber: int):
-	self.deviceNum = deviceNumber
-	controllerNumText.text = str(deviceNumber)
+func initialize(info: PlayerInfo):
+	# set up references
+	playerInfo = info
+	
+	# init displays for immutable values
+	var playerEntity := info.playerEntity
+	if playerEntity:
+		controllerNumText.text = str(playerEntity.deviceNumber)
+		controllerNameText.text = Input.get_joy_name(playerEntity.deviceNumber)
+		rosterNumText.text = str(playerEntity.rosterNumber)
+	playerNameText.text = info.entityName
 
 
-# As with the Game State equivalent, this can be made more efficient using signals from the appropriate player state machine
+# Poll for changes to mutable values
 func _process(_delta):
-	_update_data()
+	if playerInfo == null: return
+	_update_state_stack()
+	_update_hp()
 
 
-func _update_data() -> void:
-	# cannot display if player stack does not yet exist
-	if _playerStateStack == null and not _try_cache_stack_from_roster(): return
-
-	var stack := _playerStateStack.stateStack
+func _update_state_stack() -> void:
+	var stack :=             playerInfo.playerEntity.playerStateStack.stateStack
 	var stackChanged: bool = (stack.size() != stackCount || stack.front() != topState)
 	if (!stackChanged): return
 
@@ -53,14 +60,10 @@ func _update_data() -> void:
 	stackText.text = displayString
 
 
-## Attempt to find and cache player state stack for assigned player number in roster. 
-## Returns true if successful
-func _try_cache_stack_from_roster() -> bool:
-	for player: PlayerEntity in PlayerRoster.roster:
-		if player.deviceNumber == deviceNum:
-			_playerStateStack = player.playerStateStack
-			return true
-	return false
+func _update_hp():
+	if (playerInfo.hp == playerHp): return
+	playerHp = playerInfo.hp
+	playerHpText.text = str(playerHp)
 
 
 ## Retrieve name of state to display

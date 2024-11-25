@@ -10,20 +10,20 @@ class_name DebugPlayerStackController
 
 
 func _ready() -> void:
-	InputManager.newPlayerJoined.connect(_on_player_joined)
-	InputManager.playerLeft.connect(_on_player_left)
+	PlayerRoster.newRosterPlayer.connect(_on_player_joined)
+	PlayerRoster.discardRosterPlayer.connect(_on_player_left)
 
 
-func _on_player_joined(deviceNum: int) -> void:
-	print("Debug: Player %d joined!", deviceNum)
+func _on_player_joined(info: PlayerInfo) -> void:
+	print("Debug: %s joined!" % info.entityName)
 	var display := _display_scene.instantiate() as DebugPlayerDataDisplay;
 	_display_container.add_child(display);
-	display.initialize(deviceNum)
+	display.initialize(info)
 
 
-func _on_player_left(deviceNum: int) -> void:
-	print("Debug: Player %d left!", deviceNum)
+func _on_player_left(info: PlayerInfo) -> void:
+	print("Debug: %s left!" % info.entityName)
 	for display: DebugPlayerDataDisplay in _display_container.get_children():
-		if deviceNum == display.deviceNum:
+		if info.entityName == display.playerInfo.entityName:
 			display.queue_free()
 			return
