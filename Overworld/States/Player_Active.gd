@@ -40,7 +40,6 @@ func update(delta : float):
 		var dancing = playerActor.faceDirection(inputDir)
 		if(dancing):
 			return
-		
 		playerActor.animState.travel("Walk")
 	else:
 		playerActor.animState.travel("Idle")
@@ -51,13 +50,13 @@ func physicsUpdate(_delta: float):
 func interruptState(interruptor):
 	super(interruptor)
 	
-	if interruptor is not Player_Dance:
+	if interruptor is not Player_Dance and interruptor is not Player_Entrance:
 		#Pause animation
-		playerActor.animPlayer.pause()
+		playerActor.animTree.active = false
 
 func resumeState():
 	playerActor.velocity = Vector2.ZERO
-	playerActor.animPlayer.play()
+	playerActor.animTree.active = true
 
 func exit():
 	pass
