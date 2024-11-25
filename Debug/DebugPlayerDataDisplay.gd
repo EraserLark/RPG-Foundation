@@ -1,11 +1,11 @@
 ## Displays the state stack for a given player in the debug menu
 
 extends Control
-class_name DebugPlayerStackDisplay
+class_name DebugPlayerDataDisplay
 
 # Child Nodes
-@onready var stackText: Label = $StackText
-@onready var playerNumText: Label = $PlayerNumContainer/PlayerNumText
+@onready var stackText: Label = $DataContainer/StackTextPanel/StackText
+@onready var playerNumText: Label = $DataContainer/PlayerNumContainer/PlayerNumText
 
 # Change-detection cache variables
 var stackCount: int = -1

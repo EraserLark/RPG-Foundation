@@ -1,22 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8y5aqhov86aj"]
+[gd_scene load_steps=4 format=3 uid="uid://c8y5aqhov86aj"]
 
+[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/debug_ui_theme.tres" id="1_3e5ct"]
 [ext_resource type="Script" path="res://Debug/DebugGameStackDisplay.gd" id="1_outv3"]
-[ext_resource type="LabelSettings" uid="uid://cojushbpj57gk" path="res://Debug/debug_label_title.tres" id="2_u1lkq"]
+[ext_resource type="LabelSettings" uid="uid://cojushbpj57gk" path="res://Debug/debug_label_title_1.tres" id="2_u1lkq"]
 
-[node name="DebugGameStackDisplay" type="VBoxContainer"]
+[node name="DebugGameDataDisplay" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
+theme = ExtResource("1_3e5ct")
 script = ExtResource("1_outv3")
 
-[node name="Title" type="Label" parent="."]
+[node name="DataContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-text = "Game State Stack"
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="DataContainer"]
+layout_mode = 2
+text = "Game Data"
 label_settings = ExtResource("2_u1lkq")
 
-[node name="StackText" type="Label" parent="."]
+[node name="StateStackTitle" type="Label" parent="DataContainer"]
+layout_mode = 2
+text = "State Stack:"
+
+[node name="StackTextPanel" type="PanelContainer" parent="DataContainer"]
+layout_mode = 2
+
+[node name="StackText" type="Label" parent="DataContainer/StackTextPanel"]
 layout_mode = 2
 text = "[Stack Data]"

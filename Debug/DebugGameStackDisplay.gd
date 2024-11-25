@@ -3,7 +3,7 @@
 extends Control
 class_name DebugGameStackDisplay
 
-@onready var text: Label = $StackText
+@onready var stackText: Label = $DataContainer/StackTextPanel/StackText
 
 var stackCount: int = -1;
 var topState: GameState = null;
@@ -31,7 +31,7 @@ func _update_data() -> void:
 		displayString = newLine + displayString
 		lineNumber -= 1
 
-	text.text = displayString
+	stackText.text = displayString
 
 
 ## Retrieve name of state based on filename of its script

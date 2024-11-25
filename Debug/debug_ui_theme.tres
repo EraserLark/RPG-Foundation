@@ -1,9 +1,15 @@
-[gd_resource type="Theme" format=3 uid="uid://nqnk0wqa1r2c"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://nqnk0wqa1r2c"]
+
+[ext_resource type="StyleBox" uid="uid://bkn6q2at6f6mf" path="res://Debug/debug_panel_container_style.tres" id="1_sif7r"]
+[ext_resource type="StyleBox" uid="uid://cw2o2eerb2wrn" path="res://Debug/debug_subpanel_container_style.tres" id="1_ulvq5"]
 
 [resource]
 default_font_size = 16
 BoxContainer/constants/separation = 8
+DebugSubpanel/base_type = &"PanelContainer"
+DebugSubpanel/styles/panel = ExtResource("1_ulvq5")
 MarginContainer/constants/margin_bottom = 8
 MarginContainer/constants/margin_left = 8
 MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 8
+PanelContainer/styles/panel = ExtResource("1_sif7r")

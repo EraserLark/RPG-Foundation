@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdnq7ru8oota6"]
+
+[ext_resource type="Script" path="res://Debug/DebugPlayerDataDisplay.gd" id="1_b1s3b"]
+[ext_resource type="LabelSettings" uid="uid://cojushbpj57gk" path="res://Debug/debug_label_title_1.tres" id="2_cof8j"]
+[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/debug_ui_theme.tres" id="3_mjtyf"]
+
+[node name="DebugPlayerDataDisplay" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("3_mjtyf")
+script = ExtResource("1_b1s3b")
+
+[node name="DataContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="DataContainer"]
+layout_mode = 2
+text = "Player Data"
+label_settings = ExtResource("2_cof8j")
+
+[node name="PlayerNumContainer" type="HBoxContainer" parent="DataContainer"]
+layout_mode = 2
+
+[node name="PlayerNumLabel" type="Label" parent="DataContainer/PlayerNumContainer"]
+layout_mode = 2
+text = "Player Number: "
+
+[node name="PlayerNumText" type="Label" parent="DataContainer/PlayerNumContainer"]
+layout_mode = 2
+text = "###"
+
+[node name="StateStackTitle" type="Label" parent="DataContainer"]
+layout_mode = 2
+text = "State Stack:"
+
+[node name="StackTextPanel" type="PanelContainer" parent="DataContainer"]
+z_index = 9
+layout_mode = 2
+theme = ExtResource("3_mjtyf")
+
+[node name="StackText" type="Label" parent="DataContainer/StackTextPanel"]
+layout_mode = 2
+text = "[Stack Data]"

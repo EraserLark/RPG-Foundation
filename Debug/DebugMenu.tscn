@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lg5sc1usdo7p"]
 
 [ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/debug_ui_theme.tres" id="1_dy2u8"]
-[ext_resource type="PackedScene" uid="uid://dsieywqfw24ao" path="res://Debug/DebugPlayerStackController.tscn" id="3_7qth7"]
+[ext_resource type="PackedScene" uid="uid://dsieywqfw24ao" path="res://Debug/DebugPlayerDataController.tscn" id="3_7qth7"]
 [ext_resource type="PackedScene" uid="uid://c8y5aqhov86aj" path="res://Debug/DebugGameStackDisplay.tscn" id="3_g3u84"]
 
 [node name="DebugMenu" type="TabContainer"]
@@ -22,7 +22,7 @@ layout_mode = 2
 [node name="Game Stack Display" parent="State Stack Data/Columns" instance=ExtResource("3_g3u84")]
 layout_mode = 2
 
-[node name="Player Stack Displays" parent="State Stack Data/Columns" instance=ExtResource("3_7qth7")]
+[node name="Player Data Displays" parent="State Stack Data/Columns" instance=ExtResource("3_7qth7")]
 layout_mode = 2
 size_flags_horizontal = 3
 
