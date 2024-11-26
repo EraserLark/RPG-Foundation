@@ -6,6 +6,7 @@ extends Node
 #@export var activeRoster: Array[Entity]	#Bad idea? Only contains Initialized Entities
 
 signal newRosterPlayer(info: PlayerInfo)
+signal discardRosterPlayer(info: PlayerInfo)
 
 func _ready():
 	InputManager.playerLeft.connect(removePlayer)
@@ -77,7 +78,7 @@ func addProfileToRoster(profile: PlayerInfo, rosterNum: int):
 	##Initialize entity
 	playerEntity.initialize(stageManager)
 	
-	emit_signal("newRosterPlayer", profile)
+	newRosterPlayer.emit(profile)
 
 func removePlayer(deviceNum: int):
 	var leavingPlayer: PlayerEntity
@@ -101,6 +102,7 @@ func removePlayer(deviceNum: int):
 	if leavingPlayer.entityInfo != null:
 		stageManager.overworldWorld.currentRoom.castList.removeActor(leavingPlayer.worldActor)
 	
+	discardRosterPlayer.emit(leavingPlayer.entityInfo)
 	leavingPlayer.queue_free()
 
 ##Used for sort_custom
