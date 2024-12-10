@@ -15,6 +15,8 @@ func buttonPressed(_event: InputEvent):
 	elif(_event.is_action_pressed("ui_cancel")):
 		rejectMenu()
 		get_viewport().set_input_as_handled()
+	
+	print("Menu state active")
 
 func activateOption():
 	pass

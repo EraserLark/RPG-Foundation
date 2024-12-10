@@ -43,7 +43,7 @@ func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	emptyEntity.playerStateStack.playerNumber = emptyEntity.rosterNumber
 	
 	##Creating Stage UI + Updating UI positions
-	var emptyUI = stageManager.stageUI.createPlayerUI(joypadNum)
+	var emptyUI = stageManager.stageUI.createPlayerUI(emptyEntity.rosterNumber)
 	
 	#Do this for Profile ManualMenu State
 	##Actual setting of this UI happens in PlayerUI class
