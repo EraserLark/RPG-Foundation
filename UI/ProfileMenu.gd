@@ -20,12 +20,3 @@ func activateOption():
 func rejectMenu():
 	PlayerRoster.removePlayer(deviceNum)
 	super()
-
-#func _unhandled_input(event):
-	#if event.is_action_pressed(str(deviceNum, "ui_accept")):
-#
-
-#func _on_button_pressed():
-	#menuManager.closeMenuSystem()
-	#PlayerRoster.addProfileToRoster(PlayerRoster.profileBank[0], rosterNum)
-	#menuManager.swapSubMenu(menuManager.baseMenu)

@@ -25,7 +25,12 @@ func update(delta):
 ##For button presses
 func handleInput(_event: InputEvent):
 	if _event.device != playerInput.device:
-		return
+		#Accomodate keyboard inputs registered as 0 in _event, -1 in DeviceInput
+		#This means keyboard can only be player 1
+		if playerInput.is_keyboard() and _event.device <= 0:
+			pass
+		else:
+			return
 	
 	menuSystem.menuStack.currentMenu.buttonPressed(_event)
 

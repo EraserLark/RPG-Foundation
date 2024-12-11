@@ -7,6 +7,10 @@ signal playerLeft(joypadNum: int)
 func _ready() -> void:
 	Input.joy_connection_changed.connect(connectionChanged)
 
+func initialize():
+	#Assumes keyboard is always connected atm. Gives it player 1
+	emit_signal("newPlayerJoined", -1)
+
 func _process(delta: float) -> void:
 	pass
 
