@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://lg5sc1usdo7p"]
 
-[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/debug_ui_theme.tres" id="1_dy2u8"]
-[ext_resource type="PackedScene" uid="uid://dsieywqfw24ao" path="res://Debug/DebugPlayerDataController.tscn" id="3_7qth7"]
-[ext_resource type="PackedScene" uid="uid://c8y5aqhov86aj" path="res://Debug/DebugGameStackDisplay.tscn" id="3_g3u84"]
+[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/Styles/debug_ui_theme.tres" id="1_dy2u8"]
+[ext_resource type="PackedScene" uid="uid://dsieywqfw24ao" path="res://Debug/GameData/DebugPlayerDataController.tscn" id="3_7qth7"]
+[ext_resource type="PackedScene" uid="uid://c8y5aqhov86aj" path="res://Debug/GameData/DebugGameStackDisplay.tscn" id="3_g3u84"]
 
 [node name="DebugMenu" type="TabContainer"]
 offset_right = 1152.0

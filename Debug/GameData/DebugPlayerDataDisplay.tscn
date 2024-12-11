@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdnq7ru8oota6"]
 
-[ext_resource type="Script" path="res://Debug/DebugPlayerDataDisplay.gd" id="1_b1s3b"]
-[ext_resource type="LabelSettings" uid="uid://cojushbpj57gk" path="res://Debug/debug_label_title_1.tres" id="2_cof8j"]
-[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/debug_ui_theme.tres" id="3_mjtyf"]
+[ext_resource type="Script" path="res://Debug/GameData/DebugPlayerDataDisplay.gd" id="1_b1s3b"]
+[ext_resource type="LabelSettings" uid="uid://cojushbpj57gk" path="res://Debug/Styles/debug_label_title_1.tres" id="2_cof8j"]
+[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/Styles/debug_ui_theme.tres" id="3_mjtyf"]
 
 [node name="DebugPlayerDataDisplay" type="PanelContainer"]
 anchors_preset = 15
