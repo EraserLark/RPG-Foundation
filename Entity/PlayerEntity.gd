@@ -1,7 +1,7 @@
 extends Entity
 class_name PlayerEntity
 
-var playerStateStack = StateStack.new()
+var playerStateStack := StateStack.new()
 var dialogueManager:= DialogueManager.new(self)
 var rosterNumber: int
 enum STAGE {WORLD, BATTLE}
