@@ -34,5 +34,6 @@ metadata/_tab_index = 1
 
 [node name="Menu" parent="Options" instance=ExtResource("4_yyk52")]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [editable path="Game Data/Columns/Game Stack Display"]
