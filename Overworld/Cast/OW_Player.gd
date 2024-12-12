@@ -45,10 +45,11 @@ func getPlayerNum():
 func moveDirection(dir: Vector2):
 	##Play walk animation?
 	self.velocity = dir.normalized() * speed;
-	if(!currentRoom.safeRoom):
-		if(playerEntity.rosterNumber == 0):
-			if(dir != Vector2.ZERO):
-				stepCounter()
+	if (!DebugManager.get_flag(DebugManager.DISABLE_ENEMIES)):
+		if(!currentRoom.safeRoom):
+			if(playerEntity.rosterNumber == 0):
+				if(dir != Vector2.ZERO):
+					stepCounter()
 
 #Called in Player_Active state so it can't run once state changes
 func physicsUpdate(delta: float):
