@@ -7,7 +7,6 @@ extends Node
 @onready var _toggleContainer: Container = $Toggles
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	# create a toggle for each button
 	for flag : DebugManager.Flags in DebugManager.Flags.values():
