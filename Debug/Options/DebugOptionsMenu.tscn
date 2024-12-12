@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfeflwn3owfns"]
+
+[ext_resource type="Theme" uid="uid://nqnk0wqa1r2c" path="res://Debug/Styles/debug_ui_theme.tres" id="1_u4wg7"]
+[ext_resource type="Script" path="res://Debug/Options/DebugOptionsMenu.gd" id="2_7rxow"]
+
+[node name="DebugOptions" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme = ExtResource("1_u4wg7")
+script = ExtResource("2_7rxow")
+
+[node name="List" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DisableEnemies" type="HBoxContainer" parent="List"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="List/DisableEnemies"]
+layout_mode = 2
+text = "Disable Enemies"
+
+[node name="Toggle" type="CheckBox" parent="List/DisableEnemies"]
+layout_mode = 2
