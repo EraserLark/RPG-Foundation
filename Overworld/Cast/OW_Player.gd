@@ -45,7 +45,7 @@ func getPlayerNum():
 func moveDirection(dir: Vector2):
 	##Play walk animation?
 	self.velocity = dir.normalized() * speed;
-	if (!DebugManager.get_flag(DebugManager.DISABLE_ENEMIES)):
+	if (!DebugManager.get_flag(DebugManager.Flags.DISABLE_ENEMIES)):
 		if(!currentRoom.safeRoom):
 			if(playerEntity.rosterNumber == 0):
 				if(dir != Vector2.ZERO):
