@@ -9,16 +9,24 @@ enum Flags {
 	DISABLE_ENEMIES
 }
 
+
 # child references
 ## Canvas layer containing debug menu
 @onready var debugCanvas: CanvasLayer = $DebugCanvas
+
 
 # export variables
 ## Is debug functionality available?
 @export var _enable_debug: bool = true
 
+
 # private variables
 var _debugFlags: Array[bool] = []
+
+
+# signals
+## Emitted when a debug flag changes. Parameters are the flag affected and its new value
+signal debug_flag_changed(flag: Flags, new_value: bool)
 
 
 # public methods
@@ -43,6 +51,7 @@ func set_flag(flag: Flags, value: bool) -> void:
 		return
 	print("Setting debug flag %s to %s" % [Flags.keys()[flag], "true" if value else "false"])
 	_debugFlags[flag] = value
+	debug_flag_changed.emit(flag, value)
 
 
 # private methods
