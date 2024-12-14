@@ -139,9 +139,11 @@ position = Vector2(0, -27)
 
 [node name="GodotGuy_Dejected" type="Node2D" parent="CutsceneMarks" index="0"]
 position = Vector2(0, -192)
+metadata/_edit_lock_ = true
 
 [node name="Path2D" type="Path2D" parent="CutsceneMarks" index="1"]
 curve = SubResource("Curve2D_cmj37")
+metadata/_edit_lock_ = true
 
 [node name="NavigationRegion2D" parent="NavigationMaps" index="0"]
 visible = false
