@@ -17,15 +17,13 @@ func enter(_msg := {}):
 	dialogueBox.ownerState = self
 	dialogueBox.advanceLineQueue()
 
-func update(_delta : float):
-	#if Input.is_action_just_pressed("ui_accept"):
-		#dialogueBox.advance()
-		pass
+func update(_delta: float, deviceInput: int):
+	pass
 
 func handleInput(_event: InputEvent):
-	if _event.device == PlayerRoster.roster[stateStack.playerNumber].deviceNumber:
-		if _event.is_action_pressed("ui_accept"):
-			dialogueBox.confirmInput()
+	#if _event.device == stateStack.playerEntity.deviceNumber:
+	if _event.is_action_pressed("ui_accept"):
+		dialogueBox.confirmInput()
 
 func resumeState():
 	if(dialogueBox.finished):

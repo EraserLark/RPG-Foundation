@@ -11,16 +11,13 @@ func buttonPressed(_event: InputEvent):
 	if _event.is_action_pressed("ui_accept"):
 		addMeter()
 
-func update(delta):
-	#if Input.is_action_just_pressed("ui_accept"):
-		#addMeter()
-	#
+func update(_delta: float, deviceNum: int):
 	meterAmt -= 0.25
 	if(meterAmt <= 0):
 		meterAmt = 0
 	mashBar.value = meterAmt
 	
-	super(delta)
+	super(_delta, deviceNum)
 
 func addMeter():
 	meterAmt += 7.5

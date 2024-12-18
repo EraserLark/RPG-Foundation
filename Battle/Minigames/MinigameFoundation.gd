@@ -2,8 +2,10 @@ extends Node2D
 class_name MinigameFoundation
 
 #var battleManager: BattleManager
-var playerNumber: int
-var input: DeviceInput
+#var playerNumber: int
+#var input: DeviceInput
+var localDeviceNum:= 0	#Store to detect when device # changes
+var localInput: DeviceInput
 var inputDir: Vector2
 var minigameState
 var successPercent := 0
@@ -11,27 +13,26 @@ var stageWidth
 @onready var timer:= $Timer
 @onready var progressBar:= $TextureRect
 
-#func _init(player: PlayerEntity):
-	#minigameState = MinigameState.new(player.playerStateStack, self)
-	#playerNumber = player.rosterNumber
-	#input = player.input
-
 func _ready():
 	stageWidth = get_viewport_rect().size.x
 	timer.start()
 
 func initialize(player: PlayerEntity):
 	minigameState = MinigameState.new(player.playerStateStack, self)
-	playerNumber = player.rosterNumber
-	input = player.input
+	localInput = player.input
+	#playerNumber = player.rosterNumber
 
-func update(delta):
+func update(_delta: float, deviceNum: int):
+	if localDeviceNum != deviceNum:
+		localDeviceNum = deviceNum
+		localInput = PlayerRoster.getPlayerByJoyNum(deviceNum).input
+	
 	##Get input vector
 	inputDir = Vector2.ZERO
-	inputDir = input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	inputDir = MultiplayerInput.get_vector(deviceNum, "ui_left", "ui_right", "ui_up", "ui_down")
 	
 	##Convert joystick movement to 8 Directions
-	if input.is_joypad() && inputDir != Vector2.ZERO:
+	if localInput.is_joypad() && inputDir != Vector2.ZERO:
 		inputDir = Helper.convertToEightDir(inputDir)
 	
 	##Reduce background timer
@@ -41,9 +42,9 @@ func update(delta):
 	progressBar.position.x = currentPos
 
 func handleInput(_event: InputEvent):
-	if _event.device != playerNumber:
-		return
-	
+	#if _event.device != playerNumber:
+		#return
+	#
 	buttonPressed(_event)
 
 func buttonPressed(_event: InputEvent):

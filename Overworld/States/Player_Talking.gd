@@ -6,7 +6,7 @@ func handleInput(event : InputEvent):
 func enter(msg := {}):
 	owner.animState.travel("Idle")
 
-func update(delta : float):
+func update(_delta: float, deviceNum: int):
 	pass
 
 func physicsUpdate(delta : float):

@@ -20,7 +20,7 @@ func sm_handleInput(event):
 	state.handleInput(event)
 
 func sm_update(delta):
-	state.update(delta)
+	state.update(delta, 0)	#Is this even used??
 
 func sm_physicsUpdate(delta):
 	state.physicsUpdate(delta)

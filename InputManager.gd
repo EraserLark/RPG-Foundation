@@ -9,7 +9,9 @@ func _ready() -> void:
 
 func initialize():
 	#Assumes keyboard is always connected atm. Gives it player 1
-	emit_signal("newPlayerJoined", -1)
+	var joypadCount:= Input.get_connected_joypads().size()
+	if joypadCount==0:
+		emit_signal("newPlayerJoined", -1)
 
 func _process(delta: float) -> void:
 	pass

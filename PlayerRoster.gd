@@ -3,7 +3,6 @@ extends Node
 @export var profileBank: Array[PlayerInfo]
 @export var roster: Array[PlayerEntity]	#Includes Empty Entities
 @export var rosterColors: Array[Color]
-#@export var activeRoster: Array[Entity]	#Bad idea? Only contains Initialized Entities
 
 signal newRosterPlayer(info: PlayerInfo)
 signal discardRosterPlayer(info: PlayerInfo)
@@ -11,6 +10,7 @@ signal discardRosterPlayer(info: PlayerInfo)
 func _ready():
 	InputManager.playerLeft.connect(removePlayer)
 
+###GETTERS
 ##Filters out empty entities
 func getActiveRoster() -> Array[PlayerEntity]:
 	var activeRoster: Array[PlayerEntity]
@@ -27,6 +27,21 @@ func getLivingRoster() -> Array[PlayerEntity]:
 			livingRoster.append(player)
 	return livingRoster
 
+func getPlayerByRosterNum(rosterNum: int) -> PlayerEntity:
+	if roster[rosterNum] != null:
+		return roster[rosterNum]
+	else:
+		printerr("That number slot in the player roster is empty")
+		return null
+
+func getPlayerByJoyNum(joyNum: int) -> PlayerEntity:
+	for player in roster:
+		if player.deviceNumber == joyNum:
+			return player
+	printerr("No Player has that joypad number")
+	return null
+
+
 ##Player joined, create Empty Entity
 func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	var emptyEntity = PlayerEntity.new()
@@ -40,7 +55,7 @@ func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	roster.append(emptyEntity)
 	roster.sort_custom(sortPlayerEntities)	#Sort to adjust to new device numbers
 	emptyEntity.rosterNumber = roster.find(emptyEntity)
-	emptyEntity.playerStateStack.playerNumber = emptyEntity.rosterNumber
+	#emptyEntity.playerStateStack.playerNumber = emptyEntity.rosterNumber
 	
 	##Creating Stage UI + Updating UI positions
 	var emptyUI = stageManager.stageUI.createPlayerUI(emptyEntity.rosterNumber)

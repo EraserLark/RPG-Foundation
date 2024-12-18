@@ -3,7 +3,7 @@ class_name BattleEntity
 
 var entityActor: BattleActor
 var entityUI: EntityUI
-var playerStateStack:= StateStack.new()	#REDUNDANT. Just here to quell errors
+#var playerStateStack:= StateStack.new()	#REDUNDANT. Just here to quell errors
 
 ##Outside references
 var battleManager: BattleManager

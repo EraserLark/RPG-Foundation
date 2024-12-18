@@ -3,8 +3,6 @@ class_name OverworldManager
 
 ##Children references
 @onready var overworldWorld:= $World
-#@onready var worldRoster:= $WorldRoster
-#@onready var overworldUI:= $CanvasLayer/OW_UI
 @onready var musicPlayer:= $World/AudioStreamPlayer
 @onready var cutsceneManager:= $CutsceneManager
 
@@ -12,7 +10,7 @@ class_name OverworldManager
 #None
 
 ##Non export vars
-#var playerEntities: Array[PlayerEntity]
+#None
 
 func _ready():
 	print("Overworld Ready Start")

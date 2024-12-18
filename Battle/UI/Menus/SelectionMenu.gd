@@ -51,8 +51,8 @@ func OpenMenu():
 	
 	playerPointer.set_visible(true)
 
-func runMenuUpdate(input: DeviceInput):
-	if input.is_action_pressed("ui_right"):
+func runMenuUpdate(deviceNum: int):
+	if MultiplayerInput.is_action_pressed(deviceNum, "ui_right"):
 		if initialInput:
 			inputTimerFinished = false
 			heldActionName = "ui_right"
@@ -74,7 +74,7 @@ func runMenuUpdate(input: DeviceInput):
 			
 			currentTimer = echoTimer
 			currentTimer.start()
-	elif input.is_action_pressed("ui_left"):
+	elif MultiplayerInput.is_action_pressed(deviceNum, "ui_left"):
 		if initialInput:
 			inputTimerFinished = false
 			heldActionName = "ui_left"
@@ -97,7 +97,7 @@ func runMenuUpdate(input: DeviceInput):
 			currentTimer = echoTimer
 			currentTimer.start()
 	elif heldActionName != "":
-		if input.is_action_just_released(heldActionName):
+		if MultiplayerInput.is_action_just_released(deviceNum, heldActionName):
 			currentTimer.stop()
 			#heldActionName = ""
 			initialInput = true

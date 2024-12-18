@@ -1,7 +1,7 @@
 extends Entity
 class_name PlayerEntity
 
-var playerStateStack := StateStack.new()
+var playerStateStack: StateStack
 var dialogueManager:= DialogueManager.new(self)
 var rosterNumber: int
 enum STAGE {WORLD, BATTLE}
@@ -32,9 +32,11 @@ signal playerDied
 
 func _ready():
 	if currentStage == STAGE.WORLD:
-		self.add_child(playerStateStack)	#Add so _process() gets called
+		#Important Order!
+		#Need to set up input before passing self to StateStack so it can get accurate local copy of input
 		input = DeviceInput.new(deviceNumber)
-		playerStateStack.playerNumber
+		playerStateStack = StateStack.new(self)
+		self.add_child(playerStateStack)	#Add so _process() gets called
 	elif currentStage == STAGE.BATTLE:
 		pass
 
@@ -66,6 +68,10 @@ func initialize(sm: StageManager = null):
 
 func getClassInstance():
 	return self
+
+func changeDeviceNumber(newNumber: int):
+	deviceNumber = newNumber
+	input = DeviceInput.new(deviceNumber)
 
 #Only built for battle rn
 func gainStatus(statusType):

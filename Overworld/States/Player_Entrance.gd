@@ -29,8 +29,8 @@ func _init(sStack: StateStack, plyr: OW_Player):
 	roomPhantomCam.erase_follow_targets(playerActor)
 
 func handleInput(event : InputEvent):
-	if event.device != playerActor.playerEntity.deviceNumber:
-		return
+	#if event.device != playerActor.playerEntity.deviceNumber:
+		#return
 	
 	if(event.is_action_pressed("ui_accept")):
 		if !turbo:
