@@ -5,12 +5,14 @@ var stateStack: Array[State]
 var currentState: State = null
 var playerEntity: PlayerEntity
 var playerInput: DeviceInput
-#var playerNumber:= -99
-#var deviceNumber:= -99
+var localPlayerNumber:= -99
+var localDeviceNumber:= -99
 
 func _init(pe: PlayerEntity):
 	playerEntity = pe
 	playerInput = playerEntity.input
+	localPlayerNumber = playerEntity.rosterNumber
+	localDeviceNumber = playerEntity.deviceNumber
 	var baseState = State.new(self)
 	addState(baseState)
 
@@ -34,13 +36,14 @@ func addState(s: State, _msg:={}):
 		#else:
 			#print(state.get_script().resource_path.get_file())
 	#print("\n")
+	
 	currentState.enter(_msg)
 
 func resumeCurrentState():
 	currentState.resumeState()
 
 func removeState():
-	stateStack.pop_front()
+	var discardedState = stateStack.pop_front()
 	
 	if(stateStack.is_empty()):
 		print("STACK EMPTY")
@@ -52,7 +55,6 @@ func removeState():
 		#else:
 			#print(state.get_script().resource_path.get_file())
 	#print("\n")
-	
 	resumeCurrentState()
 
 func removeGameState():
@@ -72,6 +74,16 @@ func removeGameState():
 		#Pop each state found along the way.
 		removeGameState()
 
+func changeRosterNumber(newNumber: int):
+	localPlayerNumber = newNumber
+	for state in stateStack:
+		state.changeRosterNum(localPlayerNumber)
+
+func changeDeviceNumber(newNumber: int):
+	localDeviceNumber = newNumber
+	for state in stateStack:
+		state.changeDeviceNum(localDeviceNumber)
+
 func _unhandled_input(event):
 	if playerInput.is_keyboard():
 		if event.device <= 0:
@@ -80,7 +92,7 @@ func _unhandled_input(event):
 		currentState.handleInput(event)
 
 func _process(delta):
-	currentState.update(delta, playerInput.device)
+	currentState.update(delta)
 
 func _physics_process(delta):
 	currentState.physicsUpdate(delta)

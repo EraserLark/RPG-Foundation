@@ -60,3 +60,7 @@ func resumeState():
 
 func exit():
 	pass
+
+func changeDeviceNum(newNum: int):
+	super(newNum)
+	input = stateStack.playerEntity.input	#Update DeviceInput

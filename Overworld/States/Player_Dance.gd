@@ -47,3 +47,7 @@ func resumeState():
 ##NOT CALLED INTRINSICALLY. STATE IS USUALLY ENDED IN OW_PLAYER :P
 func exit():
 	super()
+
+func changeDeviceNum(newNum: int):
+	super(newNum)
+	input = stateStack.playerEntity.input	#Update DeviceInput

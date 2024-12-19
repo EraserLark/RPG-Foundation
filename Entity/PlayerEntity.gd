@@ -29,14 +29,19 @@ var isDead:= false
 ##Signals
 signal playerDied
 
+func _init():
+	input = DeviceInput.new(deviceNumber)
+	playerStateStack = StateStack.new(self)
+	self.add_child(playerStateStack)	#Add so _process() gets called
 
 func _ready():
 	if currentStage == STAGE.WORLD:
+		pass
 		#Important Order!
 		#Need to set up input before passing self to StateStack so it can get accurate local copy of input
-		input = DeviceInput.new(deviceNumber)
-		playerStateStack = StateStack.new(self)
-		self.add_child(playerStateStack)	#Add so _process() gets called
+		#input = DeviceInput.new(deviceNumber)
+		#playerStateStack = StateStack.new(self)
+		#self.add_child(playerStateStack)	#Add so _process() gets called
 	elif currentStage == STAGE.BATTLE:
 		pass
 
@@ -69,9 +74,15 @@ func initialize(sm: StageManager = null):
 func getClassInstance():
 	return self
 
-func changeDeviceNumber(newNumber: int):
+func setRosterNumber(newNumber: int):
+	rosterNumber = newNumber
+	playerStateStack.changeRosterNumber(rosterNumber)
+
+#This is the multiplayer input device number
+func setDeviceNumber(newNumber: int):
 	deviceNumber = newNumber
-	input = DeviceInput.new(deviceNumber)
+	input = DeviceInput.new(deviceNumber)	#How do I discard old device input?
+	playerStateStack.changeDeviceNumber(deviceNumber)
 
 #Only built for battle rn
 func gainStatus(statusType):

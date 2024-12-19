@@ -51,10 +51,10 @@ func addEmptySlot(stageManager: StageManager, joypadNum: int):
 	else:
 		emptyEntity.overworldManager = stageManager
 	
-	emptyEntity.deviceNumber = joypadNum
+	emptyEntity.setDeviceNumber(joypadNum)
 	roster.append(emptyEntity)
 	roster.sort_custom(sortPlayerEntities)	#Sort to adjust to new device numbers
-	emptyEntity.rosterNumber = roster.find(emptyEntity)
+	emptyEntity.setRosterNumber(roster.find(emptyEntity))
 	#emptyEntity.playerStateStack.playerNumber = emptyEntity.rosterNumber
 	
 	##Creating Stage UI + Updating UI positions

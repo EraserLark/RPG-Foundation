@@ -17,7 +17,7 @@ func enter(_msg := {}):
 	dialogueBox.ownerState = self
 	dialogueBox.advanceLineQueue()
 
-func update(_delta: float, deviceInput: int):
+func update(_delta: float):
 	pass
 
 func handleInput(_event: InputEvent):

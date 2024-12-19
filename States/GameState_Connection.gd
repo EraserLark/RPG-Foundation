@@ -17,7 +17,7 @@ func handleInput(_event: InputEvent):
 func enter(_msg:= {}):
 	gameState.enter(stateStack.playerEntity.rosterNumber, _msg)
 
-func update(_delta: float, deviceNum: int):
+func update(_delta: float):
 	gameState.update(stateStack.playerEntity.rosterNumber, _delta)
 
 func physicsUpdate(_delta: float):

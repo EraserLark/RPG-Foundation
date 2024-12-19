@@ -27,11 +27,17 @@ func handleInput(_event: InputEvent):
 	#Accomodate keyboard inputs registered as 0 in _event, -1 in DeviceInput
 	#This means keyboard can only be player 1
 	#But also Controller 1 will be listed as 0 lmaooooo in _event
-	if playerInput.is_keyboard():
-		if _event.device <= 0:
-			menuSystem.menuStack.currentMenu.buttonPressed(_event)
-	elif _event.device == playerInput.device:
-		menuSystem.menuStack.currentMenu.buttonPressed(_event)
+	#if playerInput.is_keyboard():
+		#if _event.device <= 0:
+			#menuSystem.menuStack.currentMenu.buttonPressed(_event)
+	#elif _event.device == playerInput.device:
+		#menuSystem.menuStack.currentMenu.buttonPressed(_event)
+	
+	menuSystem.menuStack.currentMenu.buttonPressed(_event)
 
 func exit():
 	super()
+
+func changeDeviceNum(newNum: int):
+	super(newNum)
+	playerInput = stateStack.playerEntity.input	#Don't create new input

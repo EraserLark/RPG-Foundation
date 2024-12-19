@@ -10,7 +10,7 @@ func _init(sStack: StateStack, mg):
 	super(sStack)
 	minigameManager = mg
 	#battleManager = bm
-	playerPanel = PlayerRoster.roster[stateStack.playerNumber].battleUI.playerPanel
+	playerPanel = stateStack.playerEntity.battleUI.playerPanel
 	
 	sStack.addState(self)
 
@@ -22,14 +22,14 @@ func enter(_msg := {}):
 	playerPanel.showMinigame(true)
  
 func update(_delta : float):
-	minigameManager.update(_delta)	
+	minigameManager.update(_delta)
 
 func physicsUpdate(_delta : float):
 	minigameManager.physicsUpdate(_delta)
 
 func resumeState():
 	#Give attack boost to the attack the player selected
-	PlayerRoster.roster[stateStack.playerNumber].entityInfo.selectedAction.bonusDamage = atkBoost
+	stateStack.playerEntity.entityInfo.selectedAction.bonusDamage = atkBoost
 	exit()
 
 func exit():

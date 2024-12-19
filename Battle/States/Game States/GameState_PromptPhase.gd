@@ -40,8 +40,8 @@ func update(playerNum: int, delta):
 
 ##For button presses
 func handleInput(playerNum: int, _event: InputEvent):
-	if _event.device != PlayerRoster.roster[playerNum].deviceNumber:
-		return
+	#if _event.device != PlayerRoster.roster[playerNum].deviceNumber:
+		#return
 	
 	var currentMenu = menuSystems[playerNum].menuStack.currentMenu
 	currentMenu.buttonPressed(_event)
