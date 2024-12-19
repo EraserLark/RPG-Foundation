@@ -9,8 +9,8 @@ var speed:= 5
 var jumpForce: int = 200
 var goalGot:= false
 
-func update(_delta: float, deviceNum: int):
-	super(_delta, deviceNum)
+func update(delta):
+	super(delta)
 
 func buttonPressed(_event: InputEvent):
 	if player.is_on_floor():

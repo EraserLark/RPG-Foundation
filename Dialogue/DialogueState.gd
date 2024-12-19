@@ -3,7 +3,7 @@ class_name DialogueState
 
 var dialogueManager: DialogueManager
 var playerEntity: PlayerEntity
-#var playerInput
+var playerInput
 var inputHeld:= false
 var currentRoom: Room
 
@@ -23,10 +23,10 @@ func handleInput(_event: InputEvent):
 	if _event.is_action("ui_cancel") and _event.is_pressed() and not _event.is_echo():
 		dialogueManager.focusStep.denyInput()
 
-func update(_delta: float, deviceNum: int):
+func update(delta: float):
 	var input = Vector2.ZERO
 	#input.x = MultiplayerInput.get_action_strength(playerEntity.deviceNumber, "ui_right") - MultiplayerInput.get_action_strength(playerEntity.deviceNumber, "ui_left")
-	input.y = MultiplayerInput.get_action_strength(deviceNum, "ui_down") - MultiplayerInput.get_action_strength(deviceNum, "ui_up")
+	input.y = MultiplayerInput.get_action_strength(playerEntity.deviceNumber, "ui_down") - MultiplayerInput.get_action_strength(playerEntity.deviceNumber, "ui_up")
 	if(input != Vector2.ZERO && dialogueManager.focusStep):	#breaks if focusStep is null
 		if(!inputHeld):
 			inputHeld = true

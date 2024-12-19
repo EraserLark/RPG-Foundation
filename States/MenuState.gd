@@ -16,8 +16,8 @@ func resumeState():
 	else:
 		menu.menuStack.currentMenu.ResumeMenu()
 
-func update(_delta: float, deviceNum: int):
-	if(MultiplayerInput.is_action_just_pressed(deviceNum, "ui_cancel")):
+func update(delta):
+	if(Input.is_action_just_pressed("ui_cancel")):
 		menu.backOut()
 
 func exit():

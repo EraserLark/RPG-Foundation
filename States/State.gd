@@ -16,7 +16,7 @@ func handleInput(_event: InputEvent):
 func enter(_msg:= {}):
 	pass
 
-func update(_delta: float, deviceNum: int):
+func update(_delta: float):
 	pass
 
 func physicsUpdate(_delta: float):

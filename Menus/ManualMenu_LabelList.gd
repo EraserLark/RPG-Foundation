@@ -70,8 +70,8 @@ func grabFirstFocus():
 	focusLabel = labelList.get_child(currentSelection)
 	focusLabel.theme_type_variation = "Selected"
 
-func runMenuUpdate(deviceNum: int):
-	if MultiplayerInput.is_action_pressed(deviceNum, "ui_down"):
+func runMenuUpdate(input: DeviceInput):
+	if input.is_action_pressed("ui_down"):
 		if initialInput:
 			inputTimerFinished = false
 			heldActionName = "ui_down"
@@ -93,7 +93,7 @@ func runMenuUpdate(deviceNum: int):
 			
 			currentTimer = echoTimer
 			currentTimer.start()
-	elif MultiplayerInput.is_action_pressed(deviceNum, "ui_up"):
+	elif input.is_action_pressed("ui_up"):
 		if initialInput:
 			inputTimerFinished = false
 			heldActionName = "ui_up"
@@ -116,7 +116,7 @@ func runMenuUpdate(deviceNum: int):
 			currentTimer = echoTimer
 			currentTimer.start()
 	elif heldActionName != "":
-		if MultiplayerInput.is_action_just_released(deviceNum,heldActionName):
+		if input.is_action_just_released(heldActionName):
 			currentTimer.stop()
 			#heldActionName = ""
 			initialInput = true

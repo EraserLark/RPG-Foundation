@@ -2,16 +2,12 @@ extends State
 class_name Player_Dance
 
 var playerActor: OW_Player
-var localDeviceNum: int
-var localInput: DeviceInput
-#var input: DeviceInput
+var input: DeviceInput
 
 func _init(sStack, plyr: OW_Player):
 	super(sStack)
 	playerActor = plyr
-	localInput = playerActor.playerEntity.input
-	localDeviceNum = playerActor.playerEntity.deviceNumber
-	#input = playerActor.playerEntity.input
+	input = playerActor.playerEntity.input
 
 func handleInput(event : InputEvent):
 	pass
@@ -19,14 +15,10 @@ func handleInput(event : InputEvent):
 func enter(msg := {}):
 	playerActor.animState.travel("Dance")
 
-func update(_delta: float, deviceNum: int):
-	if localDeviceNum != deviceNum:
-		localDeviceNum = deviceNum
-		localInput = playerActor.playerEntity.input
-	
+func update(delta : float):
 	var inputDir = Vector2.ZERO;
-	inputDir.x = MultiplayerInput.get_action_strength(deviceNum, "ui_right") - MultiplayerInput.get_action_strength(deviceNum, "ui_left");
-	inputDir.y = MultiplayerInput.get_action_strength(deviceNum, "ui_down") - MultiplayerInput.get_action_strength(deviceNum, "ui_up");
+	inputDir.x = input.get_action_strength("ui_right") - input.get_action_strength("ui_left");
+	inputDir.y = input.get_action_strength("ui_down") - input.get_action_strength("ui_up");
 	
 	if(inputDir != Vector2.ZERO):
 		playerActor.animTree.set("parameters/Dance/blend_position", inputDir)

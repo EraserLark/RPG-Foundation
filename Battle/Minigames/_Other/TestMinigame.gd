@@ -9,8 +9,8 @@ var onSprite = preload("res://Art/Full.png")
 func _ready():
 	super()
 
-func update(_delta: float, deviceNum: int):
-	super(_delta, deviceNum)
+func update(delta):
+	super(delta)
 
 ##Parent class filters out other player input
 func buttonPressed(_event : InputEvent):

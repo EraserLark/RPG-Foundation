@@ -4,7 +4,7 @@ class_name ManualMenu
 var prevFocus: int = 0
 
 ##Direct feed of 'update()' from the ManualMenuState
-func runMenuUpdate(deviceNum: int):
+func runMenuUpdate(input: DeviceInput):
 	pass
 
 ##Direct feed of 'handleInput()' from the ManualMenuState

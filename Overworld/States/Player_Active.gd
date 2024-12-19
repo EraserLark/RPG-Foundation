@@ -2,14 +2,12 @@ extends State
 class_name Player_Active
 
 var playerActor: OW_Player
-var localDeviceNum: int	#Store to check if device # changes
-var localInput: DeviceInput
+var input: DeviceInput
 
 func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
 	playerActor = plyr
-	localInput = playerActor.playerEntity.input
-	localDeviceNum = playerActor.playerEntity.deviceNumber
+	input = playerActor.playerEntity.input
 
 func handleInput(event : InputEvent):
 	#if event.device != playerActor.playerEntity.deviceNumber:
@@ -23,19 +21,16 @@ func handleInput(event : InputEvent):
 func enter(msg := {}):
 	pass
 
-func update(_delta: float, deviceNum: int):
+func update(delta : float):
 	if(playerActor == null):
 		return
-	if localDeviceNum != deviceNum:
-		localDeviceNum = deviceNum
-		localInput = playerActor.playerEntity.input
 	
 	##Get input vector
 	var inputDir = Vector2.ZERO
-	inputDir = MultiplayerInput.get_vector(deviceNum, "ui_left", "ui_right", "ui_up", "ui_down")
+	inputDir = input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	##Convert joystick movement to 8 Directions
-	if localInput.is_joypad() && inputDir != Vector2.ZERO:
+	if input.is_joypad() && inputDir != Vector2.ZERO:
 		inputDir = Helper.convertToEightDir(inputDir)
 	
 	##Move playerActor
