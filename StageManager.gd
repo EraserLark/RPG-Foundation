@@ -17,9 +17,9 @@ func newControllerJoined(joypadNum: int):
 	var connectedJoypads = Input.get_connected_joypads()
 	
 	if connectedJoypads.size() == 1:
-		var entity = PlayerRoster.getPlayerByJoyNum(0)
+		var entity = PlayerRoster.getPlayerByJoyNum(-1)
 		if entity != null:
-			entity.changeDeviceNumber(joypadNum)
+			entity.setDeviceNumber(joypadNum)
 			return
 		else:
 			emptyEntity = PlayerRoster.addEmptySlot(self, joypadNum)
