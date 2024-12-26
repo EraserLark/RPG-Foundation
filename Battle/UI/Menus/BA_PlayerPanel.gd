@@ -10,7 +10,7 @@ class_name PlayerPanel_Battle
 
 ##Parent/Outside references
 var battleManager: BattleManager
-var playerUI: PlayerUI_Battle
+#var playerUI: PlayerUI_Battle
 var selectionMenu: TargetSelectionMenu
 var playerPointer: Cursor
 

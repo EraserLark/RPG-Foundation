@@ -20,41 +20,41 @@ func createPlayerUI(playerNumber = null) -> PlayerUI:
 	if playerNumber != null:
 		pUI.playerPanel.profileMenu.deviceNum = playerNumber
 	
+	pUI.stageManager = stageManager	#Setting here to allow updating anchors
 	playerUIRoster.append(pUI)
+	
 	#Update UI anchors
-	stageManager.stageUI.updateMenusLayout()
+	updateMenusLayout()
 	#Move new UI offscreen
-	pUI.playerPanel.position = pUI.currentStageAnchor.position - Vector2((pUI.playerPanel.size.x / 2), 0)
+	pUI.emptyPanel()
 	#Move UI layout
-	stageManager.stageUI.adjustMenusLayout()
+	adjustMenusLayout()
 	return pUI
 
 func initializePlayerUI(pUI: PlayerUI, pEntity: PlayerEntity):
 	#Initialize
 	pUI.initialize(stageManager, pUI.playerPanel, pEntity, playerAnchors.currentAnchorLayout)
 	playerUIRoster.sort_custom(sortPlayerUI)
+	
+	#Update UI anchors in case controller num is diff than inferred
+	updateMenusLayout()
+	#Move UI layout
+	adjustMenusLayout()
 
 ##Update each ui's anchor info
 func updateMenusLayout():
 	playerAnchors.determineAnchorLayout()
 	var i=0
 	for ui in playerUIRoster:
-		var panelAnchorIndex = stageManager.stageUI.playerAnchors.panelAnchorPositions[i]
-		ui.currentPanelAnchor = ui.playerPanel.panelAnchors[panelAnchorIndex]
-		ui.currentStageAnchor = playerAnchors.currentAnchorLayout[i]
+		ui.updatePanelAnchors(i)
 		
 		i+=1
 
 ##Move each ui based off (presumably new) anchor info
 func adjustMenusLayout():
-	#playerAnchors.determineAnchorLayout()
 	var i=0
 	for ui in playerUIRoster:
-		##var rosterIndex = PlayerRoster.roster.size()-1	#Grabs most recent addition to playerRoster
-		#var panelAnchorIndex = stageManager.stageUI.playerAnchors.panelAnchorPositions[i]
-		#ui.currentPanelAnchor = ui.playerPanel.panelAnchors[panelAnchorIndex]
-		#ui.currentStageAnchor = playerAnchors.currentAnchorLayout[i]
-		ui.centerPlayerPanel()
+		ui.migratePlayerPanel()
 		
 		if self is Battle_UI:
 			ui.playerPanel.flipHealthbar(playerAnchors.panelAttachmentsFlip[i][0])

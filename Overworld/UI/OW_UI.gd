@@ -7,9 +7,6 @@ class_name Overworld_UI
 ##Parent references
 var owManager: OverworldManager
 
-func _ready():
-	pass
-
 #Runs after all nodes have finished _ready()
 func initialize(sm: StageManager):
 	super(sm)

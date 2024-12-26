@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xy1fadjc5rwx"]
+[gd_scene load_steps=5 format=3 uid="uid://xy1fadjc5rwx"]
 
 [ext_resource type="Texture2D" uid="uid://c20tligm8hcrg" path="res://Art/PlayerBox.png" id="1_sxvnm"]
 [ext_resource type="Script" path="res://PlayerPanel.gd" id="2_cm5au"]
+[ext_resource type="Script" path="res://UI/PlayerPanelBox.gd" id="3_5mnb6"]
 [ext_resource type="Script" path="res://UI/ProfileMenu.gd" id="3_m7k2y"]
 
 [node name="PlayerPanel" type="Control"]
@@ -22,6 +23,7 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("3_5mnb6")
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
@@ -76,32 +78,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Panel/PanelAnchors"]
+[node name="Anch_0" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 0
 
-[node name="Control2" type="Control" parent="Panel/PanelAnchors"]
+[node name="Anch_1" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 
-[node name="Control3" type="Control" parent="Panel/PanelAnchors"]
+[node name="Anch_2" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 
-[node name="Control4" type="Control" parent="Panel/PanelAnchors"]
+[node name="Anch_3" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="Control5" type="Control" parent="Panel/PanelAnchors"]
+[node name="Anch_4" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -111,7 +113,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Control6" type="Control" parent="Panel/PanelAnchors"]
+[node name="Anch_5" type="Control" parent="Panel/PanelAnchors"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

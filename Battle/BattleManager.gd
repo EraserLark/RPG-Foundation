@@ -38,7 +38,6 @@ func _ready():
 	stageUI = $CanvasLayer/BattleUI
 	
 	for player in PlayerRoster.getActiveRoster():
-		#player.battleManager = self
 		if player.entityInfo.hp > 0:
 			player.isDead = false
 	

@@ -68,7 +68,7 @@ func physicsUpdate(_delta: float):
 	#Player floats down, spinning in circles
 	t += _delta * 13
 	var dirVector = Vector2(cos(t), sin(t)).normalized()
-	print(dirVector)
+	#print(dirVector)
 	
 	#Simplified playerActor.faceDirection() (No dance detection)
 	playerActor.interactRay.target_position = dirVector * playerActor.rayLength;

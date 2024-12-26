@@ -4,15 +4,10 @@ class_name PlayerPanel_World
 ##Children References
 @onready var marginContainer:= $Panel/MarginContainer
 @onready var initialMenu:= $Panel/MarginContainer/InitialMenu
-#@onready var menuList:= $MarginContainer/InitialMenu/ItemList
 @onready var subMenuNodes:= $Panel/MarginContainer/Submenus
-#@onready var panelAnchorNodes:= $PanelAnchors
 
 ##Parent References
 var owManager: OverworldManager
-#var player: OW_Player	#unused?
-#var player: PlayerInfo
-#var playerEntity: OWEntity_Player
 var playerNum: int
 
 ##Non export vars
