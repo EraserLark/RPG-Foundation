@@ -7,6 +7,8 @@ var input: DeviceInput
 var shakeQuota: int
 var currentShakes: int = 0
 
+var sfx_tripStruggle = preload("res://Audio/TripStruggle.wav")
+
 func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
 	playerActor = plyr
@@ -27,6 +29,8 @@ func handleInput(event: InputEvent):
 		shake()
 
 func shake():
+	playerActor.playSFX(sfx_tripStruggle)
+	
 	currentShakes += 1
 	if currentShakes >= shakeQuota:
 		wakeUp()

@@ -729,6 +729,9 @@ parameters/Dance/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
+[node name="AudioStreamPlayer2D" parent="." index="5"]
+bus = &"SFX"
+
 [node name="DanceTimer" type="Timer" parent="." index="7"]
 wait_time = 0.1
 one_shot = true

@@ -17,6 +17,8 @@ var t = 0.0
 var turbo = false
 var tweenLength = 2
 
+var sfx_robotDescend = preload("res://Audio/RobotDescend.wav")
+
 func _init(sStack: StateStack, plyr: OW_Player):
 	super(sStack)
 	playerActor = plyr
@@ -29,24 +31,24 @@ func _init(sStack: StateStack, plyr: OW_Player):
 	roomPhantomCam.erase_follow_targets(playerActor)
 
 func handleInput(event : InputEvent):
-	#if event.device != playerActor.playerEntity.deviceNumber:
-		#return
-	
 	if(event.is_action_pressed("ui_accept")):
 		if !turbo:
 			turbo = true
-			
+			#Add fire
 			fireInstance = fireScene.instantiate()
 			playerActor.add_child(fireInstance)
-			
+			#Get time left in current tween, then kill it
 			var timeRan = descentTween.get_total_elapsed_time()
 			descentTween.disconnect("finished", postLanding)
 			descentTween.kill()
-			
+			#Create new tween with time remaining
 			descentTween = playerActor.get_tree().create_tween()
 			descentTween.finished.connect(postLanding)
 			descentTween.tween_property(playerActor, "position", landingPosition, (tweenLength - timeRan)).set_trans(Tween.TRANS_LINEAR)
 			descentTween.set_speed_scale(4)
+			#Play descent sfx, speed up descent sfx
+			playerActor.playSFX(sfx_robotDescend)
+			playerActor.audioPlayer.pitch_scale = 2
 
 func enter(_msg:= {}):
 	#Start player off screen, disable collision
@@ -63,6 +65,11 @@ func enter(_msg:= {}):
 	descentTween = playerActor.get_tree().create_tween()
 	descentTween.finished.connect(postLanding)
 	descentTween.tween_property(playerActor, "position", landingPosition, tweenLength).set_trans(Tween.TRANS_CUBIC)
+	#Play descent sfx
+	beamInstance.audioPlayer.play()
+	await beamInstance.audioPlayer.finished
+	if !playerActor.audioPlayer.playing:	#Check in case sfx already playing bc of turbo fall
+		playerActor.playSFX(sfx_robotDescend)
 
 func physicsUpdate(_delta: float):
 	#Player floats down, spinning in circles
@@ -99,4 +106,6 @@ func resumeState():
 	exit()
 
 func exit():
+	#Set audio player pitch back to normal
+	playerActor.audioPlayer.pitch_scale = 1
 	super()

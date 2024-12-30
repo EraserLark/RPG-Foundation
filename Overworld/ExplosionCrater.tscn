@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxdngve1bniaf"]
+[gd_scene load_steps=7 format=3 uid="uid://cxdngve1bniaf"]
 
 [ext_resource type="Texture2D" uid="uid://b4rywysprgiwl" path="res://Art/Crater.png" id="1_if3xf"]
 [ext_resource type="Texture2D" uid="uid://bowuolnlc01tq" path="res://Art/Explosion.png" id="2_aaqar"]
+[ext_resource type="AudioStream" uid="uid://ecatlbe15gxg" path="res://Audio/Explode1.wav" id="3_gww0h"]
 
 [sub_resource type="Animation" id="Animation_myab0"]
 length = 0.001
@@ -85,3 +86,8 @@ libraries = {
 "": SubResource("AnimationLibrary_hnx8s")
 }
 autoplay = "Spawn"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gww0h")
+autoplay = true
+bus = &"SFX"

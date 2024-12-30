@@ -9,6 +9,7 @@ class_name OW_Player
 @onready var interactRay:= $"RayCast2D"
 @onready var danceTimer:= $DanceTimer
 @onready var collisionShape:= $CollisionShape2D
+@onready var audioPlayer:= $AudioStreamPlayer2D
 
 ##Parent references
 var playerEntity: PlayerEntity
@@ -143,3 +144,7 @@ func addItemToInv(item : Item):
 
 func endPlayerActor():
 	pass
+
+func playSFX(audio: AudioStream):
+	audioPlayer.set_stream(audio)
+	audioPlayer.play()
