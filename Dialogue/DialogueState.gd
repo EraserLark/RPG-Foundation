@@ -3,7 +3,7 @@ class_name DialogueState
 
 var dialogueManager: DialogueManager
 var playerEntity: PlayerEntity
-#var playerInput
+#var playerInput	
 var inputHeld:= false
 var currentRoom: Room
 
@@ -14,9 +14,6 @@ func _init(pEntity: PlayerEntity, dm: DialogueManager):
 	currentRoom = playerEntity.overworldManager.overworldWorld.currentRoom
 
 func handleInput(_event: InputEvent):
-	#if _event.device != playerEntity.deviceNumber:
-		#return
-	
 	if _event.is_action("ui_accept") and _event.is_pressed() and not _event.is_echo():
 		dialogueManager.focusStep.confirmInput()
 	
