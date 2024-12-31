@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c7fouswjqgykh"]
+[gd_scene load_steps=25 format=3 uid="uid://c7fouswjqgykh"]
 
 [ext_resource type="Script" path="res://Battle/UI/PlayerUI_Battle.gd" id="1_qvh2h"]
 [ext_resource type="Script" path="res://Battle/UI/Menus/SelectionMenu.gd" id="2_h70pe"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" path="res://Battle/UI/Menus/MiscMenu.gd" id="13_clnyn"]
 [ext_resource type="Script" path="res://Battle/UI/WaitingMenu.gd" id="13_hqadu"]
 [ext_resource type="PackedScene" uid="uid://djbkplk44r1sh" path="res://Battle/UI/Menus/action_menu.tscn" id="14_1tgmc"]
+[ext_resource type="AudioStream" uid="uid://jgaoftqqr65a" path="res://Battle/Audio/Death.wav" id="15_6ia78"]
+[ext_resource type="AudioStream" uid="uid://dbuwdfor0rk4n" path="res://Battle/Audio/Hurt_1.wav" id="16_oov3g"]
+[ext_resource type="AudioStream" uid="uid://qv8vhmyeuf2x" path="res://Battle/Audio/Heal_1.wav" id="17_3yjq7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pbj4b"]
 atlas = ExtResource("3_rgjmw")
@@ -37,6 +40,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.06, 0.06, 0.06, 1)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerPanel/Panel/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_6ia78")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_gqoo2"]
 resource_name = "Player_Damaged"
@@ -66,6 +84,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(10, 10), Vector2(-8, -8), Vector2(6, 6), Vector2(-4, -4), Vector2(2, 2), Vector2(0, 0), Vector2(0, 0)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerPanel/Panel/AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("16_oov3g")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_io652"]
 resource_name = "Player_Healed"
@@ -83,6 +116,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerPanel/Panel/AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("17_3yjq7")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_sving"]
 length = 0.001
@@ -177,6 +225,9 @@ mandatory = true
 [node name="Panel" parent="PlayerPanel" index="0"]
 offset_right = 216.0
 offset_bottom = 107.457
+
+[node name="AudioStreamPlayer" parent="PlayerPanel/Panel" index="2"]
+volume_db = 10.0
 
 [node name="Stats" type="PanelContainer" parent="PlayerPanel/Panel" index="3"]
 layout_mode = 1

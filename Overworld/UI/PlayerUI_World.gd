@@ -14,4 +14,4 @@ func setHP(value):
 	hpLabel.text = str("HP: ", value, "/", player.entityInfo.hp)
 
 func setItems(value):
-	itemsList.populateMenu(value)
+	itemsList.populateItems(value)
