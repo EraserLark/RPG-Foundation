@@ -29,7 +29,7 @@ func enter(playerNum: int, _msg:= {}):
 		message += ["[rainbow]LEVEL UP![/rainbow]", str("You are now Level ", playerEntity.entityInfo.level)]
 	
 	var playerPanel = playerEntity.battleUI.playerPanel
-	var tbContainer = playerPanel
+	var tbContainer = playerPanel.panel
 	playerPanel.showPlayerMenu(true)	#gross, will be obsolete soon
 	var tbState = Textbox_State.new(playerEntity.playerStateStack, message, tbContainer)
 	playerEntity.playerStateStack.addState(tbState)
